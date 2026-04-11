@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Taylor Christian Academy Online Preschool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════ */
+    :root {
+      --navy:      #1B3A6B;
+      --gold:      #F0B429;
+      --red:       #C0392B;
+      --white:     #FFFFFF;
+      --light:     #F9F7F4;
+      --dark-navy: #0F2347;
+
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Lato', system-ui, sans-serif;
+
+      --shadow-soft: 0 4px 32px rgba(0,0,0,.06);
+      --shadow-mid:  0 8px 48px rgba(0,0,0,.10);
+      --shadow-lg:   0 16px 64px rgba(0,0,0,.14);
+
+      --radius-card: 20px;
+      --radius-pill: 50px;
+
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      color: #1a1a1a;
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; background: none; border: none; }
+
+    /* ═══════════════════════════════════════════
+       TYPOGRAPHY
+    ═══════════════════════════════════════════ */
+    h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.18; }
+
+    /* ═══════════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════════ */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+
+    /* ═══════════════════════════════════════════
+       SHARED COMPONENTS
+    ═══════════════════════════════════════════ */
+
+    /* — Section label — */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .section-label::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-left: 12px;
+    }
+
+    /* — Section heading — */
+    .section-heading {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--navy);
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-subtext {
+      font-size: 17px;
+      color: #5a6070;
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 600px;
+    }
+
+    /* — Buttons — */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 48px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      transition: all .3s ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      box-shadow: 0 8px 24px rgba(240,180,41,.40);
+    }
+    .btn-gold:hover { background: #E0A419; box-shadow: 0 12px 32px rgba(240,180,41,.55); }
+
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.5);
+    }
+    .btn-outline-white:hover {
+      border-color: var(--white);
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+    .btn-outline-gold:hover {
+      background: rgba(240,180,41,.08);
+    }
+
+    /* ═══════════════════════════════════════════
+       SCROLL REVEAL ANIMATIONS
+    ═══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s var(--ease-spring), transform .6s var(--ease-spring);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity .6s var(--ease-spring), transform .6s var(--ease-spring);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity .6s var(--ease-spring), transform .6s var(--ease-spring);
+    }
+    .reveal.visible,
+    .reveal-left.visible,
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    /* Stagger delays */
+    .stagger > *:nth-child(1)  { transition-delay:   0ms; }
+    .stagger > *:nth-child(2)  { transition-delay: 100ms; }
+    .stagger > *:nth-child(3)  { transition-delay: 200ms; }
+    .stagger > *:nth-child(4)  { transition-delay: 300ms; }
+    .stagger > *:nth-child(5)  { transition-delay: 400ms; }
+    .stagger > *:nth-child(6)  { transition-delay: 500ms; }
+    .stagger > *:nth-child(7)  { transition-delay: 600ms; }
+    .stagger > *:nth-child(8)  { transition-delay: 700ms; }
+    .stagger > *:nth-child(9)  { transition-delay: 800ms; }
+    .stagger > *:nth-child(10) { transition-delay: 900ms; }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      transition: background .3s ease, box-shadow .3s ease, top .3s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 4px 32px rgba(0,0,0,.08);
+    }
+    #navbar::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, #C0392B, #F0B429, #1B3A6B);
+      pointer-events: none;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    /* ── HTML/CSS Logo ─────────────────────────── */
+    .tca-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .tca-letters {
+      display: flex;
+      align-items: center;
+      line-height: 1;
+      font-family: var(--font-serif);
+      font-weight: 900;
+      font-size: 36px;
+    }
+    .letter-t { color: var(--red); }
+    .letter-c { color: var(--gold); }
+    .letter-a { color: var(--navy); }
+
+    @keyframes tcaLetterIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #navbar .letter-t { animation: tcaLetterIn 0.5s var(--ease-spring) 0.4s both; }
+    #navbar .letter-c { animation: tcaLetterIn 0.5s var(--ease-spring) 0.6s both; }
+    #navbar .letter-a { animation: tcaLetterIn 0.5s var(--ease-spring) 0.8s both; }
+
+    /* Footer logo variant */
+    .tca-logo-footer .letter-t { color: #e85d4e; }
+    .tca-logo-footer .letter-c { color: var(--gold); }
+    .tca-logo-footer .letter-a { color: var(--white); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: .02em;
+      position: relative;
+      transition: color .3s ease;
+    }
+    .nav-links a:not(.nav-enroll):hover { color: var(--gold); }
+    .nav-links a:not(.nav-enroll)::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: width .3s ease;
+    }
+    .nav-links a:not(.nav-enroll):hover::after { width: 100%; }
+    .nav-links a.nav-active { color: var(--gold); }
+    .nav-links a.nav-active::after { width: 100%; }
+
+    .nav-enroll {
+      padding: 10px 26px;
+      font-size: 14px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: all .3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,.06);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      padding: 15px 36px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      border-bottom: 1px solid rgba(0,0,0,.05);
+      transition: background .3s ease, color .3s ease;
+    }
+    .mobile-nav a:hover { background: var(--light); color: var(--gold); }
+    .mobile-nav a.nav-active { color: var(--gold); }
+    .mobile-nav a:last-child { border-bottom: none; }
+
+    /* ═══════════════════════════════════════════
+       ANNOUNCEMENT BAR
+    ═══════════════════════════════════════════ */
+    #announce-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1001;
+      background: #C0392B;
+      padding: 10px 20px;
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      max-height: 80px;
+      transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    }
+    #announce-bar.hidden {
+      max-height: 0;
+      opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      pointer-events: none;
+    }
+    .announce-text {
+      flex: 1;
+      text-align: center;
+    }
+    .announce-phone {
+      color: #F0B429;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .announce-phone:hover { text-decoration: underline; }
+    .announce-close {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+    .announce-close:hover { opacity: 1; }
+
+    /* How To Enroll nav button */
+    .nav-how-to-enroll {
+      display: inline-block;
+      background: #C0392B;
+      color: var(--white) !important;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(192,57,43,0.4);
+      transition: background 0.3s ease, transform 0.3s ease;
+      white-space: nowrap;
+    }
+    .nav-how-to-enroll:hover {
+      background: #A93226;
+      transform: translateY(-2px);
+      color: var(--white) !important;
+    }
+    .nav-how-to-enroll::after { display: none !important; }
+
+    /* ═══════════════════════════════════════════
+       PAGE HERO
+    ═══════════════════════════════════════════ */
+    #page-hero {
+      position: relative;
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a1a35 0%, #0F2347 40%, #1B3A6B 100%);
+      margin-top: 80px;
+    }
+    .page-hero-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(15,35,71,0.70);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 36px;
+      max-width: 900px;
+    }
+    .page-hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .page-hero-label::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .page-hero-h1 {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--white);
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .page-hero-sub {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      color: rgba(255,255,255,.85);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 28px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page-hero-badge {
+      display: inline-block;
+      background: rgba(240,180,41,.18);
+      border: 1px solid rgba(240,180,41,.45);
+      color: var(--gold);
+      border-radius: var(--radius-pill);
+      padding: 9px 28px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    /* ═══════════════════════════════════════════
+       WELCOME & PROGRAM OVERVIEW
+    ═══════════════════════════════════════════ */
+    #welcome {
+      padding: 100px 0;
+      background: var(--light);
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+      margin-top: 52px;
+    }
+    .welcome-text p {
+      font-size: 17px;
+      color: #4a5060;
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 22px;
+    }
+    .welcome-text p:last-child { margin-bottom: 0; }
+
+    .welcome-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: #3a4060;
+      line-height: 1.6;
+    }
+    .check-icon {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .check-icon svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .welcome-quote-block {
+      text-align: center;
+      margin-top: 64px;
+      padding: 0 24px;
+    }
+    .welcome-italic-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--navy);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .welcome-verse {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--gold);
+      border-left: 3px solid var(--gold);
+      padding-left: 20px;
+      display: inline-block;
+      text-align: left;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .welcome-cta {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ═══════════════════════════════════════════
+       ABOUT STATS BAR
+    ═══════════════════════════════════════════ */
+    #about-stats {
+      padding: 60px 0;
+      background: var(--navy);
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-stats-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-stat-item {
+      text-align: center;
+      padding: 0 52px;
+      flex: 1;
+    }
+    .about-stat-number {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .about-stat-label {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+    }
+    .about-stat-divider {
+      width: 1px;
+      height: 64px;
+      background: rgba(240,180,41,.3);
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       MISSION STATEMENT
+    ═══════════════════════════════════════════ */
+    #mission {
+      padding: 100px 0;
+      background: var(--navy);
+      text-align: center;
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    #mission .section-label { justify-content: center; }
+
+    .mission-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .mission-rule {
+      display: block;
+      width: 120px;
+      height: 1px;
+      background: rgba(240,180,41,.45);
+      margin: 32px auto;
+    }
+    .mission-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(20px, 3vw, 32px);
+      color: var(--white);
+      line-height: 1.8;
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+    .mission-tagline {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(255,255,255,.8);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ═══════════════════════════════════════════
+       ABOUT VIDEO BANNERS
+    ═══════════════════════════════════════════ */
+    .about-video-banner {
+      position: relative;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0a1a35 0%, #1B3A6B 100%);
+    }
+    .avb-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .avb-overlay-dark {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,35,71,0.70);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .avb-overlay-warm {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,35,71,0.55);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .avb-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 32px;
+      max-width: 860px;
+    }
+    .avb-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .avb-label::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .avb-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(20px, 3vw, 36px);
+      color: var(--white);
+      line-height: 1.8;
+      font-weight: 400;
+      max-width: 750px;
+      margin: 0 auto 16px;
+    }
+    .avb-attribution {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--gold);
+    }
+    .avb-heading {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 48px);
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 700px;
+      margin: 0 auto 16px;
+    }
+    .avb-body {
+      font-size: 17px;
+      color: rgba(255,255,255,.85);
+      line-height: 1.8;
+      max-width: 550px;
+      margin: 0 auto 28px;
+    }
+
+    /* ═══════════════════════════════════════════
+       WHY CHRISTIAN EDUCATION
+    ═══════════════════════════════════════════ */
+    #why-christian {
+      padding: 100px 0;
+      background: var(--white);
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-christian-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .why-christian-header .section-label { justify-content: center; }
+
+    .christian-prose {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .christian-prose p {
+      font-size: 17px;
+      color: #4a5060;
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+    .christian-prose p:last-child { margin-bottom: 0; }
+
+    /* Elegant quote block (replaces mountain photo) */
+    .christian-quote-block {
+      background: var(--navy);
+      padding: 48px 40px;
+      border-radius: 16px;
+      max-width: 800px;
+      margin: 52px auto;
+      text-align: center;
+    }
+    .christian-quote-mark {
+      font-family: var(--font-serif);
+      font-size: 64px;
+      color: var(--gold);
+      opacity: 0.4;
+      display: block;
+      margin-bottom: 16px;
+      line-height: 0.8;
+    }
+    .christian-quote-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--white);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .christian-quote-attr {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════
+       10 REASONS WHY TCA
+    ═══════════════════════════════════════════ */
+    #ten-reasons {
+      padding: 100px 0;
+      background: var(--light);
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ten-reasons-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .ten-reasons-header .section-label { justify-content: center; }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .reason-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .reason-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-mid);
+    }
+    .reason-number {
+      font-family: var(--font-serif);
+      font-weight: 800;
+      font-size: 40px;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 48px;
+    }
+    .reason-text {
+      font-size: 15px;
+      color: #3a4060;
+      line-height: 1.75;
+      padding-top: 4px;
+    }
+
+    /* ═══════════════════════════════════════════
+       CORE COMPETENCIES
+    ═══════════════════════════════════════════ */
+    #competencies {
+      padding: 100px 0;
+      background: var(--white);
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .competencies-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .competencies-header .section-label { justify-content: center; }
+    .competencies-header .section-subtext { margin: 0 auto; }
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .comp-card {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      border-top: 3px solid var(--gold);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .comp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,.18);
+    }
+    .comp-card h3 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .comp-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,.8);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOUNDER FEATURE
+    ═══════════════════════════════════════════ */
+    #founder {
+      padding: 100px 0;
+      background: var(--light);
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .founder-photo-wrap { display: flex; justify-content: center; }
+    .founder-photo {
+      width: 100%;
+      max-width: 420px;
+      height: 520px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 16px;
+      border: 4px solid var(--gold);
+      box-shadow: 0 20px 60px rgba(0,0,0,.15);
+      display: block;
+    }
+    .founder-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .founder-name {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .founder-title {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .founder-rule {
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .founder-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--navy);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .founder-attribution {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .founder-verse {
+      border-left: 3px solid var(--gold);
+      padding-left: 16px;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--gold);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════
+       TIMELINE
+    ═══════════════════════════════════════════ */
+    #timeline {
+      padding: 100px 0;
+      background: var(--white);
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .timeline-header .section-label { justify-content: center; }
+    .timeline-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .timeline-track::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 2px;
+      background: var(--gold);
+      z-index: 0;
+    }
+    .milestone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 12px;
+    }
+    .milestone-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--navy);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .milestone-card {
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 24px;
+      width: 100%;
+      text-align: center;
+    }
+    .milestone-title {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .milestone-text {
+      font-size: 13px;
+      color: rgba(255,255,255,.8);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ═══════════════════════════════════════════
+       BOTTOM CTA BANNER
+    ═══════════════════════════════════════════ */
+    #about-cta {
+      padding: 100px 0;
+      background: var(--navy);
+      text-align: center;
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .about-cta-inner .section-label { justify-content: center; }
+    .about-cta-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .about-cta-body {
+      font-size: 17px;
+      color: rgba(255,255,255,.85);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+    .about-cta-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .about-cta-verse {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--gold);
+      line-height: 1.8;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer {
+      background: var(--dark-navy);
+      padding: 72px 0 40px;
+    }
+
+    .footer-top {
+      text-align: center;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(240,180,41,.15);
+      margin-bottom: 40px;
+    }
+    .footer-logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .footer-nav a {
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,.55);
+      letter-spacing: .03em;
+      transition: color .3s ease;
+    }
+    .footer-nav a:hover { color: var(--gold); }
+
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      transition: background .3s ease, border-color .3s ease, color .3s ease;
+    }
+    .social-btn svg { width: 20px; height: 20px; }
+    .social-btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .footer-donate {
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,.3);
+      line-height: 2.0;
+    }
+    .footer-bottom a {
+      color: rgba(255,255,255,.45);
+      transition: color .3s ease;
+    }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .welcome-grid { grid-template-columns: 1fr; gap: 48px; }
+      .reasons-grid { grid-template-columns: 1fr; max-width: 560px; }
+      .comp-grid { grid-template-columns: repeat(2, 1fr); }
+      .founder-grid { grid-template-columns: 1fr; }
+      .founder-photo { max-width: 380px; height: 440px; }
+      .timeline-track { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .timeline-track::before { display: none; }
+      .about-stats-grid { flex-wrap: wrap; gap: 32px 0; }
+      .about-stat-item { flex: 1 1 40%; }
+      .about-stat-divider { display: none; }
+      .about-cta-btns { flex-direction: column; align-items: center; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .page-hero-content { padding: 0 20px; }
+      #page-hero { height: 380px; }
+      #welcome { padding: 60px 0; }
+      #ten-reasons { padding: 60px 0; }
+      #competencies { padding: 60px 0; }
+      #founder { padding: 60px 0; }
+      #timeline { padding: 60px 0; }
+      #about-cta { padding: 60px 0; }
+      .about-video-banner { height: 280px; }
+      .comp-grid { grid-template-columns: 1fr; }
+      .timeline-track { grid-template-columns: 1fr; gap: 24px; }
+      .about-stat-item { flex: 1 1 100%; }
+      .christian-quote-block { padding: 36px 24px; }
+      .christian-quote-text { font-size: 18px; }
+      .founder-photo { height: 360px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       ANNOUNCEMENT BAR
+  ══════════════════════════════════════════ -->
+  <div id="announce-bar">
+    <span class="announce-text">
+      ✦ Christ-Centered Online Preschool for Ages 3–5 &nbsp;·&nbsp; Now Enrolling &nbsp;·&nbsp;
+      <a href="tel:9087381343" class="announce-phone">908-738-1343</a>
+    </span>
+    <button class="announce-close" id="announce-close" aria-label="Close announcement">✕</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="tca-logo">
+        <div class="tca-letters">
+          <span class="letter-t">T</span><span class="letter-c">C</span><span class="letter-a">A</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="nav-active">About</a></li>
+        <li><a href="index.html#team">Our Team</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li>
+          <a href="index.html#pricing" class="nav-how-to-enroll">How To Enroll</a>
+        </li>
+        <li>
+          <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
+             target="_blank"
+             class="btn btn-gold nav-enroll">Enroll Now</a>
+        </li>
+      </ul>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html"     onclick="closeMobile()">Home</a>
+      <a href="about.html"     onclick="closeMobile()" class="nav-active">About</a>
+      <a href="index.html#team"    onclick="closeMobile()">Our Team</a>
+      <a href="index.html#pricing" onclick="closeMobile()">Pricing</a>
+      <a href="index.html#pricing" onclick="closeMobile()">How To Enroll</a>
+      <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
+         target="_blank" onclick="closeMobile()">Enroll Now</a>
+    </nav>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 — PAGE HERO  (FIX 1 + FIX 2)
+  ══════════════════════════════════════════ -->
+  <section id="page-hero">
+    <video class="page-hero-video" autoplay loop muted playsinline>
+      <source src="hero-video.mp4" type="video/mp4">
+    </video>
+
+    <div class="page-hero-content">
+      <div class="page-hero-label">About Us</div>
+      <h1 class="page-hero-h1">
+        About
+        <span style="color:#C0392B">Taylor</span>
+        <span style="color:#F0B429">Christian</span>
+        Academy
+      </h1>
+      <p class="page-hero-sub">
+        Learn about our mission, our values, and the program we've built for your child.
+      </p>
+      <div class="page-hero-badge">✦ &nbsp;Christ-Centered &nbsp;·&nbsp; Ages 3–5 &nbsp;·&nbsp; Online</div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 — WELCOME  (FIX 3)
+  ══════════════════════════════════════════ -->
+  <section id="welcome">
+    <div class="container">
+
+      <div class="reveal" style="text-align: center;">
+        <div class="section-label" style="justify-content: center;">Welcome</div>
+        <h2 class="section-heading" style="text-align: center; margin: 0 auto 16px;">
+          Welcome to TCA
+        </h2>
+      </div>
+
+      <div class="welcome-grid">
+
+        <!-- Left: intro text -->
+        <div class="welcome-text reveal-left">
+          <p>
+            Preschool is crucial for building a strong foundation during a critical period of
+            brain development. It fosters language, social, cognitive, and emotional skills,
+            setting the stage for future success for your child.
+          </p>
+          <p>
+            We offer a comprehensive preschool curriculum with a great blend of academics and
+            faith-based learning. Our program is designed to build a strong foundation in
+            literacy, math, science and critical thinking skills while nurturing creativity
+            and a love for learning. With a rigorous, age-appropriate approach, students are
+            challenged to grow intellectually and spiritually, preparing them for success in
+            kindergarten and beyond.
+          </p>
+        </div>
+
+        <!-- Right: checklist -->
+        <div class="welcome-checklist reveal-right">
+
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span>Learn math, literacy, and science through fun hands-on interactive activities</span>
+          </div>
+
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span>Enjoy 40–45 minute sessions that include music and movement</span>
+          </div>
+
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span>Explore their God-given talents and grow in the knowledge of His Word</span>
+          </div>
+
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span>Experience the joy of knowing God's love every day</span>
+          </div>
+
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span>Build confidence as they develop and discover their unique strengths and abilities</span>
+          </div>
+
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span>Convenient online classes via Zoom from the comfort of your home</span>
+          </div>
+
+          <div class="check-item">
+            <div class="check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span>Spaces are limited — reserve your spot today</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Centered quote, verse, and CTA -->
+      <div class="welcome-quote-block reveal">
+        <p class="welcome-italic-quote">
+          "Our preschool program is designed to help children build confidence in
+          speaking and expressing their ideas."
+        </p>
+        <div class="welcome-verse">
+          "The people that know their God shall be strong<br>
+          and do great exploits for Him." — Daniel 11:32
+        </div>
+        <div class="welcome-cta">
+          <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
+             target="_blank" class="btn btn-gold">Enroll Your Child Today</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       STATS BAR  (FIX 4)
+  ══════════════════════════════════════════ -->
+  <section id="about-stats">
+    <div class="container">
+      <div class="about-stats-grid">
+
+        <div class="about-stat-item reveal">
+          <div class="about-stat-number">2022</div>
+          <div class="about-stat-label">Year Founded</div>
+        </div>
+
+        <div class="about-stat-divider"></div>
+
+        <div class="about-stat-item reveal reveal-delay-1">
+          <div class="about-stat-number">8 yrs</div>
+          <div class="about-stat-label">Teaching Experience</div>
+        </div>
+
+        <div class="about-stat-divider"></div>
+
+        <div class="about-stat-item reveal reveal-delay-2">
+          <div class="about-stat-number">3–5</div>
+          <div class="about-stat-label">Ages We Serve</div>
+        </div>
+
+        <div class="about-stat-divider"></div>
+
+        <div class="about-stat-item reveal reveal-delay-3">
+          <div class="about-stat-number">501(c)(3)</div>
+          <div class="about-stat-label">Non-Profit</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 — MISSION STATEMENT
+  ══════════════════════════════════════════ -->
+  <section id="mission">
+    <div class="container">
+      <div class="mission-inner reveal">
+
+        <div class="section-label" style="justify-content: center;">Our Mission</div>
+
+        <span class="mission-rule"></span>
+
+        <blockquote class="mission-quote">
+          "The mission of Taylor Christian Academy of the Arts is to become a recognized
+          leader in education, providing children with a rigorous Christ-centered education
+          that will prepare them to be creative critical-thinkers, problem-solvers, and
+          entrepreneurs — to raise a generation to love God and embrace His precepts."
+        </blockquote>
+
+        <span class="mission-rule"></span>
+
+        <p class="mission-tagline">
+          We offer a comprehensive preschool curriculum with a great blend of academics and
+          faith-based learning — designed to build a strong foundation in literacy, math,
+          science and critical thinking skills while nurturing creativity and a love for learning.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       PROVERBS VIDEO BANNER  (FIX 5)
+  ══════════════════════════════════════════ -->
+  <div class="about-video-banner">
+    <video class="avb-video" autoplay loop muted playsinline>
+      <source src="proverbs-banner.mp4" type="video/mp4">
+    </video>
+    <div class="avb-overlay-dark"></div>
+    <div class="avb-content">
+      <div class="avb-label">Our Foundation</div>
+      <p class="avb-quote">
+        "To raise a generation to love God,<br>
+        embrace His precepts, and become<br>
+        creative critical-thinkers and<br>
+        problem-solvers."
+      </p>
+      <div class="avb-attribution">— TCA Mission</div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 4 — WHY CHRISTIAN EDUCATION  (FIX 6)
+  ══════════════════════════════════════════ -->
+  <section id="why-christian">
+    <div class="container">
+
+      <div class="why-christian-header reveal">
+        <div class="section-label" style="justify-content: center;">Why Christian Education</div>
+        <h2 class="section-heading" style="text-align: center;">
+          The Benefits of a Christ-Centered School
+        </h2>
+      </div>
+
+      <div class="christian-prose">
+
+        <p class="reveal">
+          There are many benefits to attending a Christian school. One of which is that your
+          child will gain a strong Christian foundation. With prayer embedded in the school day
+          and the curriculum aligning with biblical principles, each student will thrive in an
+          environment that nurtures their growth. Their character will be developed in a positive
+          way because of the physically and emotionally safe atmosphere. Additionally, there is
+          a strong sense of family and unity.
+        </p>
+
+        <p class="reveal">
+          Gaining a strong Christian foundation is crucial for students. Students will not only
+          learn about God and His love, but they will see the love of God in action daily through
+          their teachers, who will become great role models for them. In turn, students will seek
+          a relationship with God and learn to make moral and ethical choices.
+        </p>
+
+      </div>
+
+      <!-- Elegant quote block replacing mountain photo -->
+      <div class="christian-quote-block reveal">
+        <span class="christian-quote-mark">"</span>
+        <p class="christian-quote-text">
+          Faith is not just a subject —<br>
+          it is the foundation of<br>
+          everything we teach.
+        </p>
+        <div class="christian-quote-attr">— Taylor Christian Academy</div>
+      </div>
+
+      <div class="christian-prose">
+        <p class="reveal">
+          Prayer is a key component to the school day. Not only is it the path to a personal
+          relationship with God, but it also strengthens students' relationships with one another.
+          Therefore, Christian schools foster a sense of unity and family amongst all, emphasizing
+          an understanding of our need for God in order to succeed.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 5 — 10 REASONS WHY TCA
+  ══════════════════════════════════════════ -->
+  <section id="ten-reasons">
+    <div class="container">
+
+      <div class="ten-reasons-header reveal">
+        <div class="section-label" style="justify-content: center;">Why Choose Us</div>
+        <h2 class="section-heading" style="text-align: center;">
+          10 Reasons Why TCA Is the Right Choice
+        </h2>
+      </div>
+
+      <div class="reasons-grid stagger">
+
+        <div class="reason-card reveal">
+          <div class="reason-number">1</div>
+          <div class="reason-text">
+            We are a Christ-Centered School where your child will not learn anything that
+            contradicts the Word of God.
+          </div>
+        </div>
+
+        <div class="reason-card reveal">
+          <div class="reason-number">2</div>
+          <div class="reason-text">
+            We focus on the whole child and are committed to their success in every area —
+            socially, academically, spiritually, self-awareness, gifts, and talents.
+          </div>
+        </div>
+
+        <div class="reason-card reveal">
+          <div class="reason-number">3</div>
+          <div class="reason-text">
+            Character Formation is essential. Our model taught to students is:
+            <strong>Every Day, I Choose Jesus.</strong>
+          </div>
+        </div>
+
+        <div class="reason-card reveal">
+          <div class="reason-number">4</div>
+          <div class="reason-text">
+            All students will participate in our Bible-based Youth Program — Vertical
+            Leap/BOSS (Building On Spiritual Substance).
+          </div>
+        </div>
+
+        <div class="reason-card reveal">
+          <div class="reason-number">5</div>
+          <div class="reason-text">
+            Teachers are not only professionals in education, but believe this is not a
+            job — it is a calling. They are passionate and committed to your child's growth.
+          </div>
+        </div>
+
+        <div class="reason-card reveal">
+          <div class="reason-number">6</div>
+          <div class="reason-text">
+            Instruction is tailored to the needs and interests of each child through an
+            assessment given within the first 2 weeks. An individual plan is created ensuring
+            progress for all.
+          </div>
+        </div>
+
+        <div class="reason-card reveal">
+          <div class="reason-number">7</div>
+          <div class="reason-text">
+            We offer a variety of programs to meet each student's needs — including gifted
+            enrichment and remedial support — so every child can thrive at their own pace.
+          </div>
+        </div>
+
+        <div class="reason-card reveal">
+          <div class="reason-number">8</div>
+          <div class="reason-text">
+            Small class sizes ensure that every child receives personalized attention,
+            fostering deeper connections between teachers and students.
+          </div>
+        </div>
+
+        <div class="reason-card reveal">
+          <div class="reason-number">9</div>
+          <div class="reason-text">
+            Families are partners in learning. We communicate openly and consistently with
+            parents to celebrate growth and address every child's unique needs together.
+          </div>
+        </div>
+
+        <div class="reason-card reveal">
+          <div class="reason-number">10</div>
+          <div class="reason-text">
+            As a 501(c)(3) non-profit, our commitment is to your child — not to profit.
+            Every dollar is reinvested into building the best possible learning experience.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       TESTIMONIAL VIDEO BANNER  (FIX 7)
+  ══════════════════════════════════════════ -->
+  <div class="about-video-banner">
+    <video class="avb-video" autoplay loop muted playsinline>
+      <source src="testimonial-video.mp4" type="video/mp4">
+    </video>
+    <div class="avb-overlay-warm"></div>
+    <div class="avb-content">
+      <div class="avb-label">Every Child Matters</div>
+      <h2 class="avb-heading">Every Child Deserves a Strong Start</h2>
+      <p class="avb-body">
+        At TCA we nurture the whole child — academically, spiritually, and emotionally —
+        preparing them for a lifetime of success.
+      </p>
+      <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
+         target="_blank" class="btn btn-gold">Enroll Today</a>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       CORE COMPETENCIES  (FIX 8)
+  ══════════════════════════════════════════ -->
+  <section id="competencies">
+    <div class="container">
+
+      <div class="competencies-header reveal">
+        <div class="section-label" style="justify-content: center;">Core Competencies</div>
+        <h2 class="section-heading" style="text-align: center;">What Every TCA Student Will Develop</h2>
+        <p class="section-subtext" style="text-align: center; margin: 0 auto;">
+          Our Core Competencies provide a strong foundation for TCA and the families we serve.
+        </p>
+      </div>
+
+      <div class="comp-grid stagger">
+
+        <div class="comp-card reveal">
+          <h3>Self-Awareness</h3>
+          <p>Students know who they are in Christ Jesus — their values, beliefs, passion, gifts and talents expressed with confidence.</p>
+        </div>
+
+        <div class="comp-card reveal">
+          <h3>Communication</h3>
+          <p>Students articulate and exchange ideas effectively, presenting themselves competently in any setting.</p>
+        </div>
+
+        <div class="comp-card reveal">
+          <h3>Leadership</h3>
+          <p>Students lead with confidence, take on responsibility, solve problems and work effectively as a team.</p>
+        </div>
+
+        <div class="comp-card reveal">
+          <h3>Creativity</h3>
+          <p>Students produce new ideas through daily journaling, brainstorming and STEAM projects — trained to think innovatively.</p>
+        </div>
+
+        <div class="comp-card reveal">
+          <h3>Critical Thinking</h3>
+          <p>Students make well-reasoned conclusions, questioning and thinking independently rather than accepting everything.</p>
+        </div>
+
+        <div class="comp-card reveal">
+          <h3>Collaboration &amp; Unity</h3>
+          <p>Students work together as a team, sharing ideas and welcoming contributions and knowledge from peers.</p>
+        </div>
+
+        <div class="comp-card reveal">
+          <h3>Motivation</h3>
+          <p>Students are active participants in their learning, eager to collaborate and apply what they have learned.</p>
+        </div>
+
+        <div class="comp-card reveal">
+          <h3>Personal Growth &amp; Well-Being</h3>
+          <p>Students understand the importance of self-care — emotionally, intellectually, physically, socially and spiritually.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FOUNDER FEATURE  (FIX 9)
+  ══════════════════════════════════════════ -->
+  <section id="founder">
+    <div class="container">
+      <div class="founder-grid">
+
+        <!-- Left: Photo -->
+        <div class="founder-photo-wrap reveal-left">
+          <img src="Sherri.png" alt="Sherri Taylor, Founder &amp; CEO" class="founder-photo" />
+        </div>
+
+        <!-- Right: Content -->
+        <div class="reveal-right">
+          <p class="founder-label">From the Founder</p>
+          <h2 class="founder-name">Sherri Taylor</h2>
+          <p class="founder-title">Founder &amp; CEO</p>
+          <span class="founder-rule"></span>
+
+          <p class="founder-quote">
+            "I believe all children deserve a quality education in a loving, safe environment
+            and should have fun while attaining it. I also believe children should know God
+            and love Him and in turn, they will know who they are — their identity is in
+            Christ Jesus.
+          </p>
+          <p class="founder-quote">
+            True success, happiness, and fulfillment is when you love God and operate in your
+            God-given purpose. As a Christian parent, I ensured my daughter — a recent Harvard
+            graduate and now a Law Clerk at the United States Court of Appeals — enjoyed a
+            quality education that prepared her for lasting success. This is what TCA will
+            make happen for children all over the world."
+          </p>
+
+          <span class="founder-attribution">— Sherri Taylor, Founder &amp; CEO</span>
+
+          <div class="founder-verse">
+            "The people that know their God shall be strong and do great exploits for Him."<br>
+            — Daniel 11:32
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       TIMELINE  (FIX 10)
+  ══════════════════════════════════════════ -->
+  <section id="timeline">
+    <div class="container">
+
+      <div class="timeline-header reveal">
+        <div class="section-label" style="justify-content: center;">Our Journey</div>
+        <h2 class="section-heading" style="text-align: center;">Building TCA One Phase at a Time</h2>
+      </div>
+
+      <div class="timeline-track stagger">
+
+        <div class="milestone reveal">
+          <div class="milestone-circle">2022</div>
+          <div class="milestone-card">
+            <div class="milestone-title">TCA Founded</div>
+            <p class="milestone-text">Taylor Christian Academy was established with a vision to provide Christ-centered education to families everywhere.</p>
+          </div>
+        </div>
+
+        <div class="milestone reveal">
+          <div class="milestone-circle">2023</div>
+          <div class="milestone-card">
+            <div class="milestone-title">Online Preschool Launches</div>
+            <p class="milestone-text">TCA Online Preschool opens its virtual doors welcoming its first families into a nurturing faith-based environment.</p>
+          </div>
+        </div>
+
+        <div class="milestone reveal">
+          <div class="milestone-circle">2024</div>
+          <div class="milestone-card">
+            <div class="milestone-title">Growing Community</div>
+            <p class="milestone-text">TCA continues to grow, expanding its reach and strengthening its curriculum and program offerings.</p>
+          </div>
+        </div>
+
+        <div class="milestone reveal">
+          <div class="milestone-circle">Future</div>
+          <div class="milestone-card">
+            <div class="milestone-title">K-12 Vision</div>
+            <p class="milestone-text">TCA plans to expand into a full K-12 program adding one phase every year.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       BOTTOM CTA BANNER  (FIX 11)
+  ══════════════════════════════════════════ -->
+  <section id="about-cta">
+    <div class="container">
+      <div class="about-cta-inner reveal">
+        <div class="section-label" style="justify-content: center;">Get Started</div>
+        <h2 class="about-cta-heading">
+          Ready to Give Your Child<br>a Strong Foundation?
+        </h2>
+        <p class="about-cta-body">
+          Join the TCA family today. Spaces are limited and enrollment is open now.
+          Give your child the Christ-centered education they deserve.
+        </p>
+        <div class="about-cta-btns">
+          <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
+             target="_blank" class="btn btn-gold">Enroll Today</a>
+          <a href="index.html" class="btn btn-outline-white">Back to Home</a>
+        </div>
+        <p class="about-cta-verse">
+          "Train up a child in the way he should go,<br>
+          and when he is old he will not depart from it."<br>
+          — Proverbs 22:6
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-top">
+        <div class="footer-logo-wrap">
+          <div class="tca-logo tca-logo-footer">
+            <div class="tca-letters">
+              <span class="letter-t">T</span><span class="letter-c">C</span><span class="letter-a">A</span>
+            </div>
+          </div>
+        </div>
+        <p class="footer-tagline">Rooted in Faith. Built for Excellence.</p>
+
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="index.html#team">Our Team</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
+             target="_blank">Enroll Now</a>
+        </nav>
+
+        <div class="social-row">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/profile.php?id=61556835478280"
+             target="_blank" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/tca_artsacademy?igsh=MXF6MHluczVld3Vj"
+             target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="footer-donate">
+          <a href="https://www.paypal.com/donate?business=info@tcaarts.org&currency_code=USD"
+             target="_blank" class="btn btn-outline-gold">
+            💛 &nbsp;Donate to Support TCA
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2025 Taylor Christian Academy of the Arts</div>
+        <div>501(c)(3) Non-Profit Organization &nbsp;·&nbsp; All donations are tax-deductible.</div>
+        <div>
+          <a href="mailto:info@tcaarts.org">info@tcaarts.org</a>
+          &nbsp;·&nbsp;
+          <a href="tel:9087381343">908-738-1343</a>
+        </div>
+        <div>3 Skiles Avenue #841, Piscataway, NJ 08855</div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════════ -->
+  <script>
+    // Named delay classes for stats bar
+    document.querySelectorAll('.reveal-delay-1').forEach(el => el.style.transitionDelay = '100ms');
+    document.querySelectorAll('.reveal-delay-2').forEach(el => el.style.transitionDelay = '200ms');
+    document.querySelectorAll('.reveal-delay-3').forEach(el => el.style.transitionDelay = '300ms');
+
+    // ── Announcement bar ─────────────────────────────────────
+    const announceBar   = document.getElementById('announce-bar');
+    const announceClose = document.getElementById('announce-close');
+
+    function getBarHeight() {
+      return announceBar && !announceBar.classList.contains('hidden')
+        ? announceBar.offsetHeight : 0;
+    }
+    function syncNavbarTop() {
+      navbar.style.top = getBarHeight() + 'px';
+    }
+
+    if (localStorage.getItem('tcaAnnounceClosed') === '1') {
+      announceBar.classList.add('hidden');
+    }
+
+    announceClose.addEventListener('click', () => {
+      announceBar.classList.add('hidden');
+      navbar.style.top = '0px';
+      localStorage.setItem('tcaAnnounceClosed', '1');
+    });
+
+    // ── Navbar scroll shadow ─────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    syncNavbarTop();
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // ── Hamburger / mobile menu ──────────────────────────────
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav    = document.getElementById('mobileNav');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburgerBtn.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    function closeMobile() {
+      mobileNav.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // Close on outside tap
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target)) closeMobile();
+    });
+
+    // ── Intersection Observer — scroll reveal ────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.10,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+      .forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
