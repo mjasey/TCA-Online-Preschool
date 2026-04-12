@@ -299,9 +299,9 @@
       font-size: 14px;
     }
 
-    .nav-how-to-enroll {
+    .nav-how-it-works {
       display: inline-block;
-      background: #C0392B;
+      background: var(--navy);
       color: var(--white) !important;
       font-family: var(--font-sans);
       font-weight: 700;
@@ -309,16 +309,16 @@
       padding: 12px 24px;
       border-radius: 50px;
       text-decoration: none;
-      box-shadow: 0 4px 16px rgba(192,57,43,0.4);
+      box-shadow: 0 4px 16px rgba(27,58,107,0.4);
       transition: background 0.3s ease, transform 0.3s ease;
       white-space: nowrap;
     }
-    .nav-how-to-enroll:hover {
-      background: #A93226;
+    .nav-how-it-works:hover {
+      background: var(--dark-navy);
       transform: translateY(-2px);
       color: var(--white) !important;
     }
-    .nav-how-to-enroll::after { display: none !important; }
+    .nav-how-it-works::after { display: none !important; }
 
     /* Nav Dropdowns */
     .nav-dropdown { position: relative; }
@@ -564,12 +564,11 @@
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect x='19' y='15' width='2' height='10' fill='white' fill-opacity='0.04'/%3E%3Crect x='15' y='19' width='10' height='2' fill='white' fill-opacity='0.04'/%3E%3C/svg%3E") repeat,
         linear-gradient(135deg, #0a1a35 0%, #0F2347 35%, #1B3A6B 70%, #1e4a85 100%);
     }
-    #enroll-hero::before {
-      content: '';
+    .hero-video {
       position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1600') center / cover no-repeat;
-      opacity: .12;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
       z-index: 0;
       pointer-events: none;
     }
@@ -577,7 +576,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(10,26,53,.82) 0%, rgba(15,35,71,.78) 35%, rgba(27,58,107,.75) 70%, rgba(30,74,133,.72) 100%);
+      background: linear-gradient(135deg, rgba(10,26,53,.70) 0%, rgba(15,35,71,.70) 35%, rgba(27,58,107,.70) 70%, rgba(30,74,133,.70) 100%);
       z-index: 1;
       pointer-events: none;
     }
@@ -1194,7 +1193,7 @@
 
         <li><a href="index.html#pricing">Pricing</a></li>
         <li>
-          <a href="#plans" class="nav-how-to-enroll nav-active">How To Enroll</a>
+          <a href="#plans" class="nav-how-it-works nav-active">How It Works</a>
         </li>
         <li>
           <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
@@ -1228,7 +1227,7 @@
       </div>
 
       <a href="index.html#pricing" onclick="closeMobile()">Pricing</a>
-      <a href="#plans" onclick="closeMobile()" class="nav-active">How To Enroll</a>
+      <a href="#plans" onclick="closeMobile()" class="nav-active">How It Works</a>
       <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
          target="_blank" onclick="closeMobile()" class="mobile-enroll-btn">Enroll Now</a>
     </nav>
@@ -1239,6 +1238,9 @@
        SECTION 1: PAGE HERO
   ══════════════════════════════════════════ -->
   <section id="enroll-hero">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="hero-video.mp4" type="video/mp4">
+    </video>
     <div class="enroll-hero-content reveal">
       <div class="enroll-hero-badge">✦ Now Enrolling — Ages 3–5</div>
       <h1 class="enroll-hero-h1">Secure Your Child's <em>Spot</em></h1>

@@ -441,10 +441,10 @@
     }
     .announce-close:hover { opacity: 1; }
 
-    /* How To Enroll nav button */
-    .nav-how-to-enroll {
+    /* How It Works nav button */
+    .nav-how-it-works {
       display: inline-block;
-      background: #C0392B;
+      background: var(--navy);
       color: var(--white) !important;
       font-family: var(--font-sans);
       font-weight: 700;
@@ -452,16 +452,16 @@
       padding: 12px 24px;
       border-radius: 50px;
       text-decoration: none;
-      box-shadow: 0 4px 16px rgba(192,57,43,0.4);
+      box-shadow: 0 4px 16px rgba(27,58,107,0.4);
       transition: background 0.3s ease, transform 0.3s ease;
       white-space: nowrap;
     }
-    .nav-how-to-enroll:hover {
-      background: #A93226;
+    .nav-how-it-works:hover {
+      background: var(--dark-navy);
       transform: translateY(-2px);
       color: var(--white) !important;
     }
-    .nav-how-to-enroll::after { display: none !important; }
+    .nav-how-it-works::after { display: none !important; }
 
     /* ═══════════════════════════════════════════
        HERO
@@ -2667,7 +2667,7 @@
 
         <li><a href="#pricing">Pricing</a></li>
         <li>
-          <a href="enroll.html" class="nav-how-to-enroll">How To Enroll</a>
+          <a href="enroll.html" class="nav-how-it-works">How It Works</a>
         </li>
         <li>
           <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
@@ -2704,7 +2704,7 @@
       </div>
 
       <a href="#pricing" onclick="closeMobile()">Pricing</a>
-      <a href="enroll.html" onclick="closeMobile()">How To Enroll</a>
+      <a href="enroll.html" onclick="closeMobile()">How It Works</a>
       <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
          target="_blank" onclick="closeMobile()" class="mobile-enroll-btn">Enroll Now</a>
     </nav>
