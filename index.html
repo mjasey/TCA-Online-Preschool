@@ -841,7 +841,7 @@
     }
     .outcomes-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-bottom: 56px;
     }
@@ -899,7 +899,7 @@
        TEACHING PHILOSOPHY
     ═══════════════════════════════════════════ */
     #philosophy {
-      padding: 80px 0;
+      padding: 60px 0;
       background: var(--light);
     }
     .philosophy-header {
@@ -964,98 +964,62 @@
     }
 
     /* ═══════════════════════════════════════════
-       HOW IT WORKS — TIMELINE
+       HOW IT WORKS — 4-CARD GRID
     ═══════════════════════════════════════════ */
     #how-it-works {
-      padding: 100px 0;
+      padding: 80px 0;
       background: var(--white);
     }
     .hiw-header {
       text-align: center;
-      margin-bottom: 64px;
+      margin-bottom: 48px;
     }
     .hiw-header .section-label { justify-content: center; }
     .hiw-header .section-subtext { margin: 0 auto; }
-
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto 48px;
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
     }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--gold);
-      transform: translateX(-50%);
+    .hiw-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.06);
+      border-top: 3px solid transparent;
+      transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
     }
-    .timeline-block {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 48px;
+    .hiw-card:hover {
+      border-top-color: var(--gold);
+      box-shadow: 0 8px 32px rgba(0,0,0,.10);
+      transform: translateY(-4px);
     }
-    .timeline-block:last-child { margin-bottom: 0; }
-    .timeline-block:nth-child(odd) {
-      flex-direction: row-reverse;
-      text-align: right;
+    .hiw-card-emoji {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: block;
     }
-    .timeline-block:nth-child(even) {
-      text-align: left;
-    }
-    .timeline-number {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 44px;
-      height: 44px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .hiw-card h3 {
       font-family: var(--font-serif);
-      font-weight: 700;
       font-size: 16px;
-      color: var(--navy);
-      z-index: 2;
-      box-shadow: 0 4px 12px rgba(240,180,41,.3);
-    }
-    .timeline-content {
-      width: calc(50% - 48px);
-    }
-    .timeline-block:nth-child(odd) .timeline-content {
-      margin-right: auto;
-      padding-right: 0;
-    }
-    .timeline-block:nth-child(even) .timeline-content {
-      margin-left: auto;
-      padding-left: 0;
-    }
-    .timeline-content h3 {
-      font-family: var(--font-serif);
-      font-size: 18px;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
-    .timeline-content p {
+    .hiw-card p {
       font-size: 14px;
       color: #5a6070;
       line-height: 1.7;
       font-weight: 300;
     }
-
     .hiw-info-bar {
       background: var(--navy);
       border-radius: 12px;
-      padding: 20px 32px;
+      padding: 16px 32px;
       text-align: center;
       max-width: 800px;
-      margin: 0 auto;
+      margin: 0 auto 20px;
     }
     .hiw-info-bar p {
       font-family: var(--font-sans);
@@ -1064,9 +1028,20 @@
       color: var(--gold);
       letter-spacing: .02em;
     }
+    .hiw-more-link {
+      text-align: center;
+    }
+    .hiw-more-link a {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+      transition: text-decoration .2s ease;
+    }
+    .hiw-more-link a:hover { text-decoration: underline; }
 
     /* ═══════════════════════════════════════════
-       WHAT PARENTS RECEIVE
+       WHAT PARENTS RECEIVE — SLIM
     ═══════════════════════════════════════════ */
     #parents-receive {
       padding: 60px 0;
@@ -1077,93 +1052,54 @@
       margin-bottom: 48px;
     }
     .parents-header .section-label { justify-content: center; }
-    .parents-grid {
+    .parents-steps {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
       max-width: 900px;
-      margin: 0 auto;
+      margin: 0 auto 32px;
     }
-    .parents-col h3 {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 24px;
+    .parents-step {
+      text-align: center;
     }
-    .materials-list {
-      list-style: none;
-      padding: 0;
+    .parents-step-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
     }
-    .materials-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 16px;
-      color: var(--navy);
-      font-weight: 600;
-      padding: 8px 0;
-    }
-    .materials-list li::before {
-      content: '✓';
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      background: var(--gold);
-      border-radius: 50%;
-      font-size: 13px;
-      font-weight: 900;
-      color: var(--navy);
-      flex-shrink: 0;
-    }
-    .materials-note {
-      font-size: 14px;
-      font-style: italic;
-      color: #888;
-      margin-top: 16px;
-      line-height: 1.7;
-    }
-
-    .enroll-timeline-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .enroll-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .enroll-step-num {
-      width: 40px;
-      height: 40px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-serif);
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--navy);
-      flex-shrink: 0;
-    }
-    .enroll-step-content strong {
+    .parents-step-icon svg { width: 100%; height: 100%; }
+    .parents-step strong {
       display: block;
       font-family: var(--font-serif);
       font-size: 16px;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
-    .enroll-step-content p {
+    .parents-step p {
       font-size: 14px;
       color: #5a6070;
-      line-height: 1.6;
+      line-height: 1.7;
       font-weight: 300;
     }
+    .parents-note {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 16px;
+      font-size: 14px;
+      color: #888;
+      line-height: 1.7;
+    }
+    .parents-more-link {
+      text-align: center;
+    }
+    .parents-more-link a {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .parents-more-link a:hover { text-decoration: underline; }
 
     /* ═══════════════════════════════════════════
        MISSION STATEMENT
@@ -1778,71 +1714,25 @@
     }
 
     /* ═══════════════════════════════════════════
-       POLICY ACCORDION
+       POLICY INLINE NOTE
     ═══════════════════════════════════════════ */
-    #policies {
-      padding: 60px 0;
-      background: var(--light);
-    }
-    .policies-header {
+    .policy-inline {
       text-align: center;
-      margin-bottom: 40px;
+      margin-top: 20px;
     }
-    .policies-header .section-label { justify-content: center; }
-    .policies-header h3 {
-      font-family: var(--font-serif);
-      font-size: 24px;
+    .policy-inline p {
+      font-size: 13px;
+      font-style: italic;
+      color: #888;
+      margin-bottom: 4px;
+    }
+    .policy-inline a {
+      font-family: var(--font-sans);
+      font-size: 13px;
       font-weight: 700;
-      color: var(--navy);
-    }
-    .policy-accordion {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-    .policy-item {
-      border-bottom: 1px solid var(--gold);
-    }
-    .policy-trigger {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      padding: 20px 0;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--navy);
-      text-align: left;
-    }
-    .policy-icon {
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
       color: var(--gold);
-      transition: transform .3s ease;
-      flex-shrink: 0;
     }
-    .policy-item.open .policy-icon {
-      transform: rotate(45deg);
-    }
-    .policy-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .3s ease;
-    }
-    .policy-body-inner {
-      padding: 0 0 24px;
-      font-size: 15px;
-      color: #5a6070;
-      line-height: 1.8;
-      font-weight: 300;
-    }
+    .policy-inline a:hover { text-decoration: underline; }
 
     /* ═══════════════════════════════════════════
        FOOTER
@@ -2031,7 +1921,7 @@
     ═══════════════════════════════════════════ */
     #hero, #trust, #trust-bar, #about, #outcomes, #philosophy,
     #how-it-works, #parents-receive, #stats, #mission, #team,
-    #pricing, #curriculum, #testimonial, #enroll, #policies {
+    #pricing, #curriculum, #testimonial, #enroll {
       scroll-margin-top: 100px;
     }
 
@@ -2373,7 +2263,7 @@
     .curriculum-header .section-subtext { margin: 0 auto; }
     .curriculum-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 28px;
     }
     .curriculum-card {
@@ -2677,7 +2567,6 @@
     ═══════════════════════════════════════════ */
     @media (max-width: 1024px) {
       .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-      .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 860px) {
       .nav-links { display: none; }
@@ -2685,7 +2574,7 @@
       .about-two-col { grid-template-columns: 1fr; gap: 40px; padding: 40px 0; }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      .curriculum-grid { grid-template-columns: repeat(2, 1fr); }
+      .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
       .team-grid { flex-direction: column; max-width: 480px; }
       .enroll-grid { grid-template-columns: 1fr; gap: 56px; }
       .enroll-info { padding-right: 0; }
@@ -2698,22 +2587,8 @@
       .trust-bar-item { padding: 0 20px; flex: 1 1 40%; }
       .trust-bar-divider { display: none; }
       .philosophy-grid { grid-template-columns: 1fr; }
-      .parents-grid { grid-template-columns: 1fr; }
-      .timeline::before { left: 22px; }
-      .timeline-number { left: 22px; transform: none; }
-      .timeline-block,
-      .timeline-block:nth-child(odd) {
-        flex-direction: row;
-        text-align: left;
-      }
-      .timeline-content,
-      .timeline-block:nth-child(odd) .timeline-content,
-      .timeline-block:nth-child(even) .timeline-content {
-        width: auto;
-        margin-left: 64px;
-        margin-right: 0;
-        padding: 0;
-      }
+      .parents-steps { grid-template-columns: 1fr; }
+      .hiw-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .container { padding: 0 20px; }
@@ -3043,7 +2918,7 @@
         <div class="section-label" style="justify-content: center;">What to Expect</div>
         <h2 class="section-heading">What Your Child Will Gain</h2>
         <p class="section-subtext">
-          In just a few weeks with TCA your child will begin building skills that last a lifetime — academically, spiritually and socially.
+          In just a few weeks with TCA your child will build skills that last a lifetime — academically, spiritually and socially — entering Kindergarten with confidence and a strong foundation ready to excel.
         </p>
       </div>
 
@@ -3083,18 +2958,6 @@
           <div class="outcome-num">06</div>
           <h3>Social Skills</h3>
           <p>Learns to interact, collaborate and build relationships in a safe nurturing environment.</p>
-        </div>
-
-        <div class="outcome-card reveal">
-          <div class="outcome-num">07</div>
-          <h3>Spiritual Foundation</h3>
-          <p>Grows in knowledge of God's love and develops a faith foundation that lasts a lifetime.</p>
-        </div>
-
-        <div class="outcome-card reveal">
-          <div class="outcome-num">08</div>
-          <h3>Kindergarten Readiness</h3>
-          <p>Enters Kindergarten with confidence and a strong academic foundation — ready to stand head and shoulders above peers.</p>
         </div>
 
       </div>
@@ -3236,57 +3099,21 @@
         <div class="curriculum-card reveal">
           <div class="curriculum-card-num">04</div>
           <div class="curriculum-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="2" x2="12" y2="22"/>
-              <line x1="4" y1="8" x2="20" y2="8"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
             </svg>
           </div>
-          <h3>Bible &amp; Faith</h3>
-          <p>Scripture, values and character woven throughout every lesson. Children learn God's Word through stories, songs and prayer.</p>
-        </div>
-
-        <div class="curriculum-card reveal">
-          <div class="curriculum-card-num">05</div>
-          <div class="curriculum-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="2"/>
-              <path d="M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/>
-            </svg>
-          </div>
-          <h3>Arts &amp; Creativity</h3>
-          <p>Music, movement, drawing and creative expression develop fine motor skills and nurture each child's God-given talents.</p>
-        </div>
-
-        <div class="curriculum-card reveal">
-          <div class="curriculum-card-num">06</div>
-          <div class="curriculum-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h3>Public Speaking &amp; Confidence</h3>
-          <p>Building confidence in speaking and expressing ideas through show and tell, group discussions and presentations.</p>
+          <h3>Arts, Science &amp; Confidence</h3>
+          <p>Music, movement, science exploration, arts and public speaking woven throughout every session.</p>
         </div>
 
       </div>
 
       <div class="curriculum-cta">
-        <button class="btn-vanessa" onclick="openVanessaVideo()">
-          <div class="btn-vanessa-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-              <polygon points="5 3 19 12 5 21 5 3"/>
-            </svg>
-          </div>
-          <div class="btn-vanessa-text">
-            <span class="btn-vanessa-main">SEE US IN ACTION</span>
-            <span class="btn-vanessa-sub">Watch Miss Vanessa teach</span>
-          </div>
-        </button>
-        <div class="curriculum-enroll-cta">
-          <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
-             target="_blank" class="btn btn-gold">Enroll Your Child Today</a>
+        <a href="https://www.powr.io/checkout_screen?unique_label=1a0a146a_1737210627"
+           target="_blank" class="btn btn-gold">Enroll Today</a>
+        <div style="margin-top: 12px;">
+          <a href="#" style="font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--gold);">View full curriculum →</a>
         </div>
       </div>
 
@@ -3390,82 +3217,43 @@
 
       <div class="hiw-header reveal">
         <div class="section-label">How It Works</div>
-        <h2 class="section-heading">What a 45-Minute TCA Class Looks Like</h2>
-        <p class="section-subtext">
-          Every session is thoughtfully structured to maximize learning, engagement and spiritual growth in 45 minutes.
-        </p>
+        <h2 class="section-heading">What a TCA Class Looks Like</h2>
       </div>
 
-      <div class="timeline">
+      <div class="hiw-grid stagger">
 
-        <div class="timeline-block reveal">
-          <div class="timeline-number">1</div>
-          <div class="timeline-content">
-            <h3>Greeting &amp; Check-In</h3>
-            <p>We welcome every child by name, creating a warm and safe space where they feel seen and ready to learn.</p>
-          </div>
+        <div class="hiw-card reveal">
+          <span class="hiw-card-emoji">🙏</span>
+          <h3>Faith First</h3>
+          <p>Every class opens with prayer and a Bible story — building a spiritual foundation from day one.</p>
         </div>
 
-        <div class="timeline-block reveal">
-          <div class="timeline-number">2</div>
-          <div class="timeline-content">
-            <h3>Prayer</h3>
-            <p>Every class opens with prayer — building a personal relationship with God and setting a peaceful tone for learning.</p>
-          </div>
+        <div class="hiw-card reveal">
+          <span class="hiw-card-emoji">📚</span>
+          <h3>Academic Learning</h3>
+          <p>Structured literacy and math lessons using hands-on materials keep young minds engaged and growing.</p>
         </div>
 
-        <div class="timeline-block reveal">
-          <div class="timeline-number">3</div>
-          <div class="timeline-content">
-            <h3>Math or Science</h3>
-            <p>Hands-on math and science lessons alternate each class using manipulatives like counting links, cubes and playdough.</p>
-          </div>
+        <div class="hiw-card reveal">
+          <span class="hiw-card-emoji">🎨</span>
+          <h3>Creative Expression</h3>
+          <p>Music, movement, arts and crafts develop creativity, fine motor skills and joyful self-expression.</p>
         </div>
 
-        <div class="timeline-block reveal">
-          <div class="timeline-number">4</div>
-          <div class="timeline-content">
-            <h3>Language &amp; Literacy</h3>
-            <p>Interactive literacy activities build phonics, letter recognition and early reading skills through hands-on learning.</p>
-          </div>
-        </div>
-
-        <div class="timeline-block reveal">
-          <div class="timeline-number">5</div>
-          <div class="timeline-content">
-            <h3>Bible Story</h3>
-            <p>A Bible story taught in an age-appropriate way so children truly understand and connect with God's Word.</p>
-          </div>
-        </div>
-
-        <div class="timeline-block reveal">
-          <div class="timeline-number">6</div>
-          <div class="timeline-content">
-            <h3>Music &amp; Movement</h3>
-            <p>Songs and movement activities keep energy high, reinforce concepts and make learning joyful and memorable.</p>
-          </div>
-        </div>
-
-        <div class="timeline-block reveal">
-          <div class="timeline-number">7</div>
-          <div class="timeline-content">
-            <h3>Arts &amp; Crafts</h3>
-            <p>Creative activities develop fine motor skills and allow children to express themselves through art.</p>
-          </div>
-        </div>
-
-        <div class="timeline-block reveal">
-          <div class="timeline-number">8</div>
-          <div class="timeline-content">
-            <h3>Show &amp; Tell</h3>
-            <p>Children share and speak in front of the group — building confidence, vocabulary and public speaking skills from day one.</p>
-          </div>
+        <div class="hiw-card reveal">
+          <span class="hiw-card-emoji">🎤</span>
+          <h3>Confidence Building</h3>
+          <p>Show and tell and group activities build public speaking skills and social confidence every session.</p>
         </div>
 
       </div>
 
       <div class="hiw-info-bar reveal">
-        <p>Every session is 40–45 minutes · Max 10 students · Live on Zoom · Materials provided</p>
+        <p>40–45 min sessions · Max 10 students · Live on Zoom · Faith-based curriculum</p>
+      </div>
+
+      <div class="hiw-more-link reveal">
+        <a href="#">See the full class breakdown →</a>
       </div>
 
     </div>
@@ -3480,70 +3268,57 @@
 
       <div class="parents-header reveal">
         <div class="section-label">After You Enroll</div>
-        <h2 class="section-heading">Here's What Happens Next</h2>
+        <h2 class="section-heading">What Happens Next</h2>
       </div>
 
-      <div class="parents-grid">
+      <div class="parents-steps stagger">
 
-        <!-- Left: What Gets Mailed -->
-        <div class="parents-col reveal-left">
-          <h3>What Gets Mailed (Within 1 Week)</h3>
-          <ul class="materials-list">
-            <li>Math counters</li>
-            <li>Math links</li>
-            <li>Linking cubes</li>
-            <li>Playdough</li>
-            <li>Crayons and markers</li>
-            <li>Fat pencils</li>
-            <li>Dot art supplies</li>
-            <li>Whiteboard with dry erase markers</li>
-          </ul>
-          <p class="materials-note">
-            Learning sheets are emailed weekly for you to print at home. For an additional $30 we will mail printed learning sheets with your materials kit.
-          </p>
-        </div>
-
-        <!-- Right: Enrollment Timeline -->
-        <div class="parents-col reveal-right">
-          <h3>Your Enrollment Timeline</h3>
-          <div class="enroll-timeline-steps">
-
-            <div class="enroll-step">
-              <div class="enroll-step-num">1</div>
-              <div class="enroll-step-content">
-                <strong>Day 1</strong>
-                <p>Registration payment received. Welcome email sent to you.</p>
-              </div>
-            </div>
-
-            <div class="enroll-step">
-              <div class="enroll-step-num">2</div>
-              <div class="enroll-step-content">
-                <strong>Within 1 Week</strong>
-                <p>Your materials kit ships to your home.</p>
-              </div>
-            </div>
-
-            <div class="enroll-step">
-              <div class="enroll-step-num">3</div>
-              <div class="enroll-step-content">
-                <strong>Before First Class</strong>
-                <p>Weekly learning sheets emailed to you. Zoom link provided.</p>
-              </div>
-            </div>
-
-            <div class="enroll-step">
-              <div class="enroll-step-num">4</div>
-              <div class="enroll-step-content">
-                <strong>Class Day</strong>
-                <p>Log into Zoom 3 minutes early. Your child's journey begins!</p>
-              </div>
-            </div>
-
+        <div class="parents-step reveal">
+          <div class="parents-step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
           </div>
+          <strong>Day 1</strong>
+          <p>Welcome email sent with your class details and Zoom link.</p>
+        </div>
+
+        <div class="parents-step reveal">
+          <div class="parents-step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/>
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <strong>Within 1 Week</strong>
+          <p>Your learning materials kit ships directly to your home.</p>
+        </div>
+
+        <div class="parents-step reveal">
+          <div class="parents-step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <strong>Class Day</strong>
+          <p>Log in 3 minutes early. Your child's journey begins!</p>
         </div>
 
       </div>
+
+      <p class="parents-note">
+        Materials kit includes hands-on learning supplies for every session. Optional printed learning sheets available for $30 add-on.
+      </p>
+
+      <div class="parents-more-link">
+        <a href="#">See full materials list →</a>
+      </div>
+
     </div>
   </section>
 
@@ -3901,63 +3676,13 @@
             <p class="form-note">We respond within 24 hours &nbsp;·&nbsp; Your info is never shared</p>
           </form>
 
+          <div class="policy-inline">
+            <p>By enrolling you agree to our class policies including our refund and attendance terms.</p>
+            <a href="#">View full policies →</a>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       POLICIES
-  ══════════════════════════════════════════ -->
-  <section id="policies">
-    <div class="container">
-
-      <div class="policies-header reveal">
-        <div class="section-label">Policies</div>
-        <h3>Good to Know Before You Enroll</h3>
-      </div>
-
-      <div class="policy-accordion">
-
-        <div class="policy-item">
-          <button class="policy-trigger">
-            Refund Policy
-            <span class="policy-icon">+</span>
-          </button>
-          <div class="policy-body">
-            <div class="policy-body-inner">
-              Tuition payments are non-refundable once a billing cycle has begun. If a family chooses to withdraw a written notice of at least 14 days is required before the next billing cycle. No refunds or credits will be issued for partial months, missed classes or unused time. In the rare event that TCA cancels a class a make-up class or credit will be provided.
-            </div>
-          </div>
-        </div>
-
-        <div class="policy-item">
-          <button class="policy-trigger">
-            Missed Class Policy
-            <span class="policy-icon">+</span>
-          </button>
-          <div class="policy-body">
-            <div class="policy-body-inner">
-              We understand life happens! However missed classes are not refundable or credited. Supplies and activities can still be completed offline with family using provided materials. Please send a message to the teacher via text or email at info@tcaarts.org in advance if your child will not be attending.
-            </div>
-          </div>
-        </div>
-
-        <div class="policy-item">
-          <button class="policy-trigger">
-            Class Expectations
-            <span class="policy-icon">+</span>
-          </button>
-          <div class="policy-body">
-            <div class="policy-body-inner">
-              Please have your child log into Zoom at least 3 minutes early. Classes begin and end on time to respect all families. If your child joins late the teacher will help them transition smoothly. Families are responsible for ensuring a stable internet connection. If a teacher is unable to teach a qualified substitute will lead the class or a make-up session will be scheduled.
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
   </section>
 
@@ -4154,26 +3879,6 @@
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
       .forEach(el => revealObserver.observe(el));
 
-    // ── Policy Accordion ─────────────────────────────────────
-    document.querySelectorAll('.policy-trigger').forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const item = trigger.closest('.policy-item');
-        const body = item.querySelector('.policy-body');
-        const isOpen = item.classList.contains('open');
-
-        // Close all
-        document.querySelectorAll('.policy-item').forEach(pi => {
-          pi.classList.remove('open');
-          pi.querySelector('.policy-body').style.maxHeight = null;
-        });
-
-        // Open clicked if it was closed
-        if (!isOpen) {
-          item.classList.add('open');
-          body.style.maxHeight = body.scrollHeight + 'px';
-        }
-      });
-    });
   </script>
 
 </body>
