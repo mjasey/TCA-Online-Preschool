@@ -2370,7 +2370,7 @@
       letter-spacing: .02em;
       background: none;
       border: none;
-      cursor: pointer;
+      cursor: default;
       padding: 0;
       position: relative;
     }
@@ -2401,7 +2401,8 @@
       border-radius: 12px;
       box-shadow: 0 8px 32px rgba(0,0,0,.12);
       min-width: 200px;
-      padding: 16px 0 8px;
+      padding: 10px 0 8px;
+      padding-top: 10px;
       opacity: 0;
       pointer-events: none;
       transform: translateX(-50%) translateY(-8px);
@@ -2647,7 +2648,7 @@
         <li><a href="#hero" class="nav-active">Home</a></li>
 
         <li class="nav-dropdown">
-          <a href="about.html" class="nav-dropdown-trigger">About <span class="nav-arrow">▾</span></a>
+          <span class="nav-dropdown-trigger">About <span class="nav-arrow">▾</span></span>
           <div class="nav-dropdown-menu">
             <a href="about.html#mission" onclick="closeAllDropdowns()">Mission</a>
             <a href="#how-it-works" onclick="closeAllDropdowns()">How It Works</a>
