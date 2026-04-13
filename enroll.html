@@ -1117,6 +1117,166 @@
     .tca-logo-footer .letter-a { color: var(--white); }
 
     /* ═══════════════════════════════════════════
+       REGISTRATION NOTICE (above Stripe table)
+    ═══════════════════════════════════════════ */
+    .registration-notice {
+      background: #FEF9E7;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 20px 24px;
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+    .registration-notice-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--navy);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .registration-notice-icon {
+      flex-shrink: 0;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+    .registration-notice-body {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: #5a6070;
+      line-height: 1.8;
+      font-weight: 400;
+      padding-left: 28px;
+    }
+    .registration-notice-body strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════════════
+       STRIPE PRICING TABLE WRAPPER
+    ═══════════════════════════════════════════ */
+    .stripe-table-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* ═══════════════════════════════════════════
+       LEARNING SHEETS ADD-ON (slim)
+    ═══════════════════════════════════════════ */
+    .addon-slim {
+      background: var(--light);
+      border: 2px dashed var(--gold);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 500px;
+      margin: 40px auto 0;
+      text-align: center;
+    }
+    .addon-slim-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .addon-slim-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .addon-slim-body {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: #5a6070;
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .addon-slim-price {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .addon-slim-period {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+    .addon-slim-btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+      border-radius: var(--radius-pill);
+      padding: 12px 28px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-decoration: none;
+      transition: all .3s ease;
+      margin-bottom: 14px;
+    }
+    .addon-slim-btn:hover {
+      background: rgba(240,180,41,.1);
+      transform: translateY(-2px);
+    }
+    .addon-slim-note {
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 12px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════
+       STEP 2 — PAY REGISTRATION CTA
+    ═══════════════════════════════════════════ */
+    .step-cta-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      border-radius: var(--radius-pill);
+      padding: 12px 28px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(192,57,43,.3);
+      transition: all .3s ease;
+      margin-top: 18px;
+    }
+    .step-cta-btn:hover {
+      background: #A93226;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(192,57,43,.45);
+    }
+    .step-cta-note {
+      display: block;
+      font-family: var(--font-sans);
+      font-style: italic;
+      font-size: 12px;
+      color: #888;
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+
+    /* ═══════════════════════════════════════════
        SCROLL OFFSET
     ═══════════════════════════════════════════ */
     #enroll-hero, #enroll-steps, #plans, #class-times, #closing-cta {
@@ -1292,6 +1452,8 @@
           <h3>Pay Registration Fee</h3>
           <p>A one-time $60 registration fee secures your child's spot and covers their welcome materials kit.</p>
           <span class="step-pill">One-Time Fee</span>
+          <a href="#" class="step-cta-btn">Pay Registration Fee</a>
+          <span class="step-cta-note">After paying registration you will be redirected to select your class plan.</span>
         </div>
 
         <!-- Step 3 -->
@@ -1324,59 +1486,39 @@
         <p class="section-subtext">Start with a single session or save with our monthly plan. Every option includes live, teacher-led instruction.</p>
       </div>
 
-      <!-- Registration Fee — centered standalone -->
-      <div class="plans-registration reveal">
-        <div class="plan-card" style="border-left: 4px solid var(--red);">
-          <div class="plan-label">Required</div>
-          <div class="plan-amount"><sup>$</sup>60</div>
-          <div class="plan-period">One-Time Registration</div>
-          <p class="plan-desc">Secures your child's spot and includes their welcome materials kit shipped to your door.</p>
-          <a href="#" class="plan-btn plan-btn-red">Pay Registration Fee</a>
+      <!-- Registration Fee Notice -->
+      <div class="registration-notice reveal">
+        <div class="registration-notice-head">
+          <span class="registration-notice-icon">⚠️</span>
+          <span>Please note: All plans require a one-time $60 registration fee collected at your first payment.</span>
+        </div>
+        <div class="registration-notice-body">
+          <strong>Total due today:</strong><br>
+          1 Session/week → $85 ($60 + $25)<br>
+          2 Sessions/week → $100 ($60 + $40)<br>
+          Monthly Plan → $210 ($60 + $150)
         </div>
       </div>
 
-      <!-- 4-column pricing grid -->
-      <div class="plans-grid reveal stagger">
-        <!-- 1 Session -->
-        <div class="plan-card">
-          <div class="plan-label">Single Session</div>
-          <div class="plan-amount"><sup>$</sup>25</div>
-          <div class="plan-period">per class</div>
-          <p class="plan-desc">Try a single live class — perfect for seeing if TCA is the right fit.</p>
-          <a href="#" class="plan-btn plan-btn-outline">Select Plan</a>
-        </div>
-
-        <!-- 2 Sessions -->
-        <div class="plan-card">
-          <div class="plan-label">2 Sessions</div>
-          <div class="plan-amount"><sup>$</sup>40</div>
-          <div class="plan-period">per week</div>
-          <p class="plan-desc">Two classes per week for consistent learning and routine building.</p>
-          <a href="#" class="plan-btn plan-btn-outline">Select Plan</a>
-        </div>
-
-        <!-- Monthly Plan — Featured -->
-        <div class="plan-card featured">
-          <div class="best-value-ribbon">Best Value</div>
-          <div class="plan-label">Monthly Plan</div>
-          <div class="plan-amount"><sup>$</sup>150</div>
-          <div class="plan-period">per month</div>
-          <p class="plan-desc">Full access — 8 sessions per month with the most savings per class.</p>
-          <a href="#" class="plan-btn plan-btn-navy">Select Plan</a>
-        </div>
-
-        <!-- Learning Sheets Add-On -->
-        <div class="plan-card addon">
-          <div class="addon-tag">Add-On</div>
-          <div class="plan-label">Learning Sheets</div>
-          <div class="plan-amount"><sup>$</sup>30</div>
-          <div class="plan-period">per month</div>
-          <p class="plan-desc">Supplemental printable worksheets aligned with weekly lessons for extra practice at home.</p>
-          <a href="#" class="plan-btn plan-btn-gold">Add to Plan</a>
-        </div>
+      <!-- Stripe Pricing Table -->
+      <div class="stripe-table-wrap reveal">
+        <stripe-pricing-table
+          pricing-table-id="prctbl_1TLc5iRo1oygAuNkencGVxPy"
+          publishable-key="pk_live_51RyxQvRo1oygAuNkBVR2TXWy7CYeh4SsdSlTEKqMYiGdmP5QAq4O1qQ436SqPeD1X15Bl5jNNmSdTgrB6dtv5xFL00YsaGjoVw">
+        </stripe-pricing-table>
       </div>
 
-      <p class="plans-note">All plans include live, interactive Zoom instruction led by certified teachers. Cancel anytime.</p>
+      <!-- Optional Add-On: Mailed Learning Sheets -->
+      <div class="addon-slim reveal">
+        <div class="addon-slim-label">Optional Add-On</div>
+        <h3 class="addon-slim-title">Want Your Learning Sheets Mailed?</h3>
+        <p class="addon-slim-body">Skip the printing! Have all your weekly learning sheets mailed directly to your home with your materials kit.</p>
+        <div class="addon-slim-price">$30</div>
+        <div class="addon-slim-period">one-time</div>
+        <a href="#" target="_blank" class="addon-slim-btn">Add Learning Sheets</a>
+        <p class="addon-slim-note">Purchase separately after selecting your class plan above.</p>
+      </div>
+
     </div>
   </section>
 
@@ -1607,6 +1749,9 @@
       .forEach(el => revealObserver.observe(el));
 
   </script>
+
+  <!-- Stripe Pricing Table -->
+  <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
 
 </body>
 </html>
