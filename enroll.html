@@ -1487,26 +1487,46 @@
         <p class="section-subtext">Start with a single session or save with our monthly plan. Every option includes live, teacher-led instruction.</p>
       </div>
 
-      <!-- Registration Fee Notice -->
-      <div class="registration-notice reveal">
-        <div class="registration-notice-head">
-          <span class="registration-notice-icon">⚠️</span>
-          <span>Please note: All plans require a one-time $60 registration fee collected at your first payment.</span>
+      <!-- Pricing Cards -->
+      <div class="plans-grid reveal stagger">
+        <!-- Card 1: One-Time Fee -->
+        <div class="plan-card">
+          <div class="plan-label">One-Time Fee</div>
+          <div class="plan-amount"><sup>$</sup>60</div>
+          <div class="plan-period">registration</div>
+          <p class="plan-desc">Covers enrollment processing and your child's complete learning materials kit mailed to your door within one week.</p>
+          <a href="https://buy.stripe.com/14AbJ3crrdQd02T1Eh9bO01"
+             target="_blank"
+             class="plan-btn plan-btn-red">Pay Registration Fee</a>
         </div>
-        <div class="registration-notice-body">
-          <strong>Total due today:</strong><br>
-          1 Session/week → $85 ($60 + $25)<br>
-          2 Sessions/week → $100 ($60 + $40)<br>
-          Monthly Plan → $210 ($60 + $150)
-        </div>
-      </div>
 
-      <!-- Stripe Pricing Table -->
-      <div class="stripe-table-wrap reveal">
-        <stripe-pricing-table
-          pricing-table-id="prctbl_1TLc5iRo1oygAuNkencGVxPy"
-          publishable-key="pk_live_51RyxQvRo1oygAuNkBVR2TXWy7CYeh4SsdSlTEKqMYiGdmP5QAq4O1qQ436SqPeD1X15Bl5jNNmSdTgrB6dtv5xFL00YsaGjoVw">
-        </stripe-pricing-table>
+        <!-- Card 2: 1 Session / Week -->
+        <div class="plan-card">
+          <div class="plan-label">1 Session / Week</div>
+          <div class="plan-amount"><sup>$</sup>25</div>
+          <div class="plan-period">per week</div>
+          <p class="plan-desc">One live Zoom class per week. Perfect for families just getting started with TCA.</p>
+          <a href="#" class="plan-btn plan-btn-gold">Select This Plan</a>
+        </div>
+
+        <!-- Card 3: 2 Sessions / Week -->
+        <div class="plan-card">
+          <div class="plan-label">2 Sessions / Week</div>
+          <div class="plan-amount"><sup>$</sup>40</div>
+          <div class="plan-period">per week</div>
+          <p class="plan-desc">Two live Zoom classes per week for deeper learning and a more consistent routine.</p>
+          <a href="#" class="plan-btn plan-btn-gold">Select This Plan</a>
+        </div>
+
+        <!-- Card 4: Monthly Plan (Best Value) -->
+        <div class="plan-card featured">
+          <div class="best-value-ribbon">Best Value</div>
+          <div class="plan-label">Monthly Plan</div>
+          <div class="plan-amount"><sup>$</sup>150</div>
+          <div class="plan-period">per month · 8 sessions</div>
+          <p class="plan-desc">Maximum learning. Maximum savings. Our most popular plan for committed families.</p>
+          <a href="#" class="plan-btn plan-btn-navy">Select This Plan</a>
+        </div>
       </div>
 
       <!-- Optional Add-On: Mailed Learning Sheets -->
@@ -1750,9 +1770,6 @@
       .forEach(el => revealObserver.observe(el));
 
   </script>
-
-  <!-- Stripe Pricing Table -->
-  <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
 
 </body>
 </html>
