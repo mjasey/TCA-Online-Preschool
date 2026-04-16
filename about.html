@@ -247,6 +247,24 @@
     .letter-c { color: var(--gold); }
     .letter-a { color: var(--navy); }
 
+    .tca-logo-img {
+      display: block;
+      height: 64px;
+      width: auto;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      border-radius: 6px;
+    }
+    .tca-logo-footer .tca-logo-img {
+      height: 96px;
+      border-radius: 10px;
+    }
+    @media (max-width: 640px) {
+      .tca-logo-img { height: 52px; }
+      .tca-logo-footer .tca-logo-img { height: 80px; }
+    }
+
     @keyframes tcaLetterIn {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1287,9 +1305,7 @@
   <nav id="navbar">
     <div class="container nav-inner">
       <a href="index.html" class="tca-logo">
-        <div class="tca-letters">
-          <span class="letter-t">T</span><span class="letter-c">C</span><span class="letter-a">A</span>
-        </div>
+        <img src="tca-logo.png" alt="Taylor Christian Academy" class="tca-logo-img">
       </a>
 
       <ul class="nav-links">
@@ -1934,9 +1950,7 @@
       <div class="footer-top">
         <div class="footer-logo-wrap">
           <div class="tca-logo tca-logo-footer">
-            <div class="tca-letters">
-              <span class="letter-t">T</span><span class="letter-c">C</span><span class="letter-a">A</span>
-            </div>
+            <img src="tca-logo.png" alt="Taylor Christian Academy" class="tca-logo-img">
           </div>
         </div>
         <p class="footer-tagline">Rooted in Faith. Built for Excellence.</p>
