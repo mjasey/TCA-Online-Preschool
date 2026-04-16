@@ -2636,6 +2636,814 @@
       #how-it-works { padding: 60px 0; }
       .trust-bar-item { flex: 1 1 40%; }
     }
+
+    /* ═══════════════════════════════════════════
+       MONARCH RESTYLE — calm, spacious, minimal
+       (appended last so cascade overrides above)
+    ═══════════════════════════════════════════ */
+    :root {
+      --tca-navy:       #1B2F5E;
+      --tca-red:        #D42B2B;
+      --tca-gold:       #F9C31C;
+      --tca-blue:       #1A4FC4;
+      --tca-cream:      #FAF8F3;
+      --tca-white:      #FFFFFF;
+      --tca-text:       #1A1A1A;
+      --tca-text-muted: #6B6B6B;
+      --tca-border:     #E8E5DC;
+    }
+
+    body {
+      background: var(--tca-cream);
+      color: var(--tca-text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--tca-text);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    h1 { font-size: clamp(40px, 6vw, 64px); }
+    h2 { font-size: clamp(28px, 3.5vw, 40px); }
+    h3 { font-size: 20px; font-weight: 600; }
+
+    /* Anchor scroll offset for sticky nav */
+    section[id], div[id] { scroll-margin-top: 80px; }
+
+    /* Section spacing + container width */
+    section {
+      padding: 96px 24px;
+      background: var(--tca-cream);
+    }
+    section .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* Headers / inner text blocks centered narrow */
+    .about-header,
+    .outcomes-header,
+    .philosophy-header,
+    .curriculum-header,
+    .hiw-header,
+    .parents-header,
+    .team-header,
+    .pricing-header {
+      max-width: 720px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .section-subtext {
+      color: var(--tca-text-muted);
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Section labels — small caps */
+    .section-label {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--tca-text-muted);
+      margin-bottom: 16px;
+      background: none;
+    }
+    .section-label::after { display: none; }
+
+    /* ── BUTTONS ───────────────────────────── */
+    .btn-primary,
+    .btn.btn-gold,
+    .btn-gold,
+    .nav-enroll,
+    .mobile-enroll-btn {
+      background: var(--tca-gold);
+      color: var(--tca-navy);
+      border: none;
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform .15s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: none;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .btn-primary:hover,
+    .btn.btn-gold:hover,
+    .btn-gold:hover,
+    .nav-enroll:hover,
+    .mobile-enroll-btn:hover { transform: translateY(-1px); box-shadow: none; }
+
+    .btn-secondary,
+    .btn.btn-outline-white,
+    .btn-outline-white {
+      background: transparent;
+      color: var(--tca-white);
+      border: 1.5px solid rgba(255,255,255,.85);
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn.btn-navy {
+      background: var(--tca-navy);
+      color: var(--tca-white);
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: none;
+    }
+
+    .btn.btn-red {
+      background: var(--tca-gold);
+      color: var(--tca-navy);
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: none;
+      width: 100%;
+      border: none;
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--tca-gold);
+      border: 1.5px solid var(--tca-gold);
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-weight: 600;
+      box-shadow: none;
+    }
+
+    /* ── NAVBAR ───────────────────────────── */
+    #navbar {
+      background: var(--tca-white);
+      border-bottom: 0.5px solid var(--tca-border);
+      box-shadow: none;
+    }
+    #navbar.scrolled {
+      background: var(--tca-white);
+      box-shadow: none;
+      border-bottom: 0.5px solid var(--tca-border);
+    }
+    .nav-links a {
+      font-size: 15px;
+      color: var(--tca-text);
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .nav-links a:not(.nav-enroll):hover { color: var(--tca-navy); }
+    .nav-enroll {
+      padding: 10px 24px !important;
+      font-size: 15px !important;
+    }
+
+    /* ── HERO ───────────────────────────── */
+    #hero { padding: 0; }
+    #hero::before,
+    #hero .hero-overlay,
+    #hero .video-overlay {
+      background: rgba(15, 25, 50, 0.55) !important;
+    }
+    .hero-content { max-width: 760px; }
+    .hero-subtitle,
+    .hero-sub {
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── TRUST / STATS BAR (Section C) ───── */
+    #trust-bar {
+      background: var(--tca-cream);
+      padding: 72px 24px;
+    }
+    #trust-bar .trust-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      border: none;
+    }
+    #trust-bar .trust-bar-item {
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      text-align: center;
+    }
+    #trust-bar .trust-bar-divider { display: none; }
+    #trust-bar .trust-bar-icon { display: none; }
+    #trust-bar .trust-bar-stat {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--tca-navy);
+      font-family: 'Playfair Display', Georgia, serif;
+      margin-bottom: 8px;
+    }
+    #trust-bar .trust-bar-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--tca-text-muted);
+      font-weight: 500;
+    }
+    @media (max-width: 720px) {
+      #trust-bar .trust-bar-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── WHY TCA / About (Section D) ───── */
+    #about { background: var(--tca-cream); }
+    #about .section-heading,
+    #about .feature-heading,
+    #about .feature-label,
+    #about .sherri-video-label,
+    #about .sherri-caption { color: var(--tca-text); }
+    #about .section-subtext { color: var(--tca-text-muted); }
+
+    .feature-rows { display: flex; flex-direction: column; gap: 0; }
+    .feature-row {
+      background: none !important;
+      box-shadow: none !important;
+      border: none;
+      border-top: 0.5px solid var(--tca-border);
+      padding: 20px 0;
+      border-radius: 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .feature-row:last-child { border-bottom: 0.5px solid var(--tca-border); }
+    .feature-row p { color: var(--tca-text); }
+    .feature-divider { background: var(--tca-border); }
+    .feature-quote { color: var(--tca-text-muted); font-style: italic; }
+
+    /* ── OUTCOMES — "What Your Child Will Gain" (Section E) ── */
+    #outcomes {
+      background: var(--tca-white) !important;
+      color: var(--tca-text);
+    }
+    #outcomes::before, #outcomes::after { display: none; }
+    #outcomes .section-heading,
+    #outcomes h3 { color: var(--tca-text) !important; }
+    #outcomes .section-subtext,
+    #outcomes p { color: var(--tca-text-muted) !important; }
+    #outcomes .section-label { color: var(--tca-text-muted) !important; }
+
+    #outcomes .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    #outcomes .outcome-card {
+      background: none !important;
+      border: none !important;
+      border-top: 0.5px solid var(--tca-border) !important;
+      box-shadow: none !important;
+      padding: 32px 24px !important;
+      border-radius: 0 !important;
+    }
+    #outcomes .outcome-num {
+      color: var(--tca-gold) !important;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    #outcomes .outcomes-quote {
+      max-width: 720px;
+      margin: 56px auto 0;
+      text-align: center;
+      color: var(--tca-text-muted);
+      border: none;
+      background: none;
+    }
+    #outcomes .outcomes-quote p { color: var(--tca-text); font-style: italic; }
+    @media (max-width: 900px) {
+      #outcomes .outcomes-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PHILOSOPHY — "How We Teach" (Section F) ─── */
+    #philosophy { background: var(--tca-cream); }
+    #philosophy .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    #philosophy .philosophy-card {
+      background: none !important;
+      border: none !important;
+      border-top: 0.5px solid var(--tca-border) !important;
+      box-shadow: none !important;
+      padding: 32px 20px !important;
+      border-radius: 0 !important;
+    }
+    #philosophy .philosophy-card-icon { margin-bottom: 16px; opacity: .85; }
+    #philosophy .philosophy-pull-quote {
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 56px 0 0;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--tca-text-muted);
+    }
+    @media (max-width: 900px) {
+      #philosophy .philosophy-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CURRICULUM (Section G) ─── */
+    #curriculum { background: var(--tca-white); }
+    #curriculum .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    #curriculum .curriculum-card {
+      background: none !important;
+      border: none !important;
+      border-top: 0.5px solid var(--tca-border) !important;
+      box-shadow: none !important;
+      padding: 32px 20px !important;
+      border-radius: 0 !important;
+    }
+    #curriculum .curriculum-card-num {
+      color: var(--tca-gold) !important;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    #curriculum .curriculum-icon { margin-bottom: 16px; opacity: .85; }
+    @media (max-width: 900px) {
+      #curriculum .curriculum-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PHOTO STRIP — keep but soften ─── */
+    .photo-strip { background: var(--tca-cream); }
+
+    /* ── STATS section (501c3 row) ─── */
+    #stats {
+      background: var(--tca-cream);
+      padding: 72px 24px;
+    }
+    #stats .stat-item { background: none; box-shadow: none; border: none; }
+    #stats .stat-number {
+      color: var(--tca-navy);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+    }
+    #stats .stat-label {
+      color: var(--tca-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 13px;
+    }
+    #stats .stat-divider { background: var(--tca-border); }
+
+    /* ── MISSION (Section H) ─── */
+    #mission {
+      background: var(--tca-navy);
+      padding: 160px 24px;
+    }
+    #mission .mission-quote,
+    #mission .mission-inner *,
+    #mission .section-label {
+      color: var(--tca-white) !important;
+    }
+    #mission .mission-quote {
+      max-width: 680px;
+      margin: 24px auto;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(22px, 2.6vw, 32px);
+      line-height: 1.5;
+      font-style: italic;
+    }
+    #mission .mission-rule,
+    #mission .mission-rule-bottom { background: var(--tca-gold); }
+
+    /* ── PROVERBS BANNER — keep video, calm overlay ── */
+    #proverbs-banner { background: var(--tca-navy); }
+    #proverbs-banner::before,
+    #proverbs-banner .proverbs-overlay { background: rgba(15,25,50,0.55) !important; }
+    .proverbs-btn-enroll {
+      background: var(--tca-gold);
+      color: var(--tca-navy);
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-weight: 600;
+      box-shadow: none;
+    }
+
+    /* ── HOW IT WORKS — "What a TCA Class Looks Like" (Section I) ── */
+    #how-it-works { background: var(--tca-cream); }
+    #how-it-works .hiw-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    #how-it-works .hiw-card {
+      background: none !important;
+      border: none !important;
+      border-top: 0.5px solid var(--tca-border) !important;
+      box-shadow: none !important;
+      padding: 32px 20px !important;
+      border-radius: 0 !important;
+      text-align: center;
+    }
+    #how-it-works .hiw-card-emoji {
+      font-size: 32px !important;
+      display: block;
+      margin-bottom: 16px;
+    }
+    #how-it-works .hiw-info-bar {
+      background: none;
+      box-shadow: none;
+      border: 0.5px solid var(--tca-border);
+      border-radius: 999px;
+      padding: 14px 24px;
+      margin-top: 56px;
+      max-width: 720px;
+      text-align: center;
+      color: var(--tca-text-muted);
+    }
+    @media (max-width: 900px) {
+      #how-it-works .hiw-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PARENTS RECEIVE — "What Happens Next" (Section J) ── */
+    #parents-receive { background: var(--tca-white); }
+    #parents-receive .parents-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    #parents-receive .parents-steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 12%;
+      right: 12%;
+      height: 0.5px;
+      background: var(--tca-border);
+      z-index: 0;
+    }
+    #parents-receive .parents-step {
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    #parents-receive .parents-step-icon {
+      background: var(--tca-cream);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      border: 0.5px solid var(--tca-border);
+    }
+    #parents-receive .parents-note {
+      max-width: 680px;
+      margin: 56px auto 0;
+      text-align: center;
+      color: var(--tca-text-muted);
+      font-size: 14px;
+    }
+    @media (max-width: 720px) {
+      #parents-receive .parents-steps { grid-template-columns: 1fr; }
+      #parents-receive .parents-steps::before { display: none; }
+    }
+
+    /* ── TEAM — "Hearts Behind TCA" (Section K) ── */
+    #team { background: var(--tca-cream); }
+    #team .team-pull-quote {
+      background: none;
+      border: none;
+      border-left: 2px solid var(--tca-gold);
+      box-shadow: none;
+      padding: 12px 0 12px 24px;
+      max-width: 720px;
+      margin: 0 auto 56px;
+      color: var(--tca-text);
+      font-style: italic;
+    }
+    #team .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    #team .team-card {
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      text-align: left;
+    }
+    #team .team-photo {
+      border-radius: 8px !important;
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin: 0 0 24px 0;
+      border: none;
+    }
+    #team .team-bio {
+      max-width: 560px;
+      color: var(--tca-text);
+    }
+    #team .team-verse {
+      color: var(--tca-text-muted);
+      font-style: italic;
+      border-left: 2px solid var(--tca-gold);
+      padding-left: 16px;
+      margin-top: 16px;
+      background: none;
+    }
+    #team .team-creds {
+      text-align: left;
+      color: var(--tca-text-muted);
+    }
+    .fun-fact-pill {
+      background: var(--tca-white);
+      border: 0.5px solid var(--tca-border);
+      color: var(--tca-text);
+      box-shadow: none;
+    }
+    @media (max-width: 900px) {
+      #team .team-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── TEAM CTA BANNER — calm cream ── */
+    .team-cta-banner {
+      background: var(--tca-cream);
+      padding: 72px 24px;
+    }
+    .team-cta-inner {
+      background: var(--tca-white);
+      border: 0.5px solid var(--tca-border);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: none;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── PRICING (Section L) ── */
+    #pricing { background: var(--tca-white); }
+    #pricing .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    #pricing .price-card {
+      background: var(--tca-white) !important;
+      border: 0.5px solid var(--tca-border) !important;
+      border-radius: 12px !important;
+      padding: 32px !important;
+      box-shadow: none !important;
+      color: var(--tca-text);
+      position: relative;
+    }
+    #pricing .price-card.featured {
+      border: 2px solid var(--tca-gold) !important;
+    }
+    #pricing .price-card.featured .best-value-ribbon {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--tca-gold);
+      color: var(--tca-navy);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: none;
+      writing-mode: horizontal-tb !important;
+    }
+    #pricing .price-label {
+      color: var(--tca-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    #pricing .price-amount {
+      color: var(--tca-navy);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+    }
+    #pricing .price-period { color: var(--tca-text-muted); }
+    #pricing .price-desc { color: var(--tca-text-muted); font-size: 15px; }
+    #pricing .price-card.addon {
+      background: var(--tca-cream) !important;
+      border: 0.5px dashed var(--tca-border) !important;
+      padding: 24px !important;
+    }
+    #pricing .addon-tag {
+      color: var(--tca-text-muted);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    #pricing .times-box {
+      background: var(--tca-cream);
+      border: 0.5px solid var(--tca-border);
+      box-shadow: none;
+      border-radius: 12px;
+      padding: 32px;
+      margin-top: 56px;
+      text-align: center;
+    }
+    #pricing .time-pill {
+      background: var(--tca-white);
+      border: 0.5px solid var(--tca-border);
+      box-shadow: none;
+      color: var(--tca-text);
+    }
+    @media (max-width: 1000px) {
+      #pricing .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      #pricing .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── TESTIMONIALS (Section M) ── */
+    #testimonial { background: var(--tca-cream); }
+    #testimonial .testimonials-flex {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    #testimonial .testimonial-card {
+      background: var(--tca-white) !important;
+      border: 0.5px solid var(--tca-border) !important;
+      border-radius: 12px !important;
+      box-shadow: none !important;
+      padding: 32px !important;
+    }
+    #testimonial .star-row { color: var(--tca-gold); }
+    #testimonial .quote-mark { color: var(--tca-gold); }
+    #testimonial .testimonial-quote { color: var(--tca-text); }
+    #testimonial .author-avatar {
+      background: var(--tca-navy);
+      color: var(--tca-white);
+    }
+    @media (max-width: 900px) {
+      #testimonial .testimonials-flex { grid-template-columns: 1fr; }
+    }
+
+    /* ── ENROLL VIDEO — keep dark video bg ── */
+    #enroll-video::before,
+    #enroll-video .enroll-video-overlay { background: rgba(15,25,50,0.55) !important; }
+
+    /* ── FINAL CTA / ENROLL CONTACT (Sections N + O) ── */
+    #enroll { background: var(--tca-white); }
+    #enroll .enroll-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    #enroll .enroll-info,
+    #enroll .enroll-form-wrap {
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+    #enroll .form-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--tca-text);
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+    #enroll input,
+    #enroll textarea {
+      background: var(--tca-white);
+      border: 0.5px solid var(--tca-border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 16px;
+      width: 100%;
+      color: var(--tca-text);
+      font-family: inherit;
+    }
+    #enroll input:focus,
+    #enroll textarea:focus {
+      outline: none;
+      border-color: var(--tca-navy);
+    }
+    #enroll label {
+      color: var(--tca-text);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      display: block;
+    }
+    #enroll .form-field { margin-bottom: 16px; }
+    #enroll .contact-icon-wrap {
+      background: var(--tca-cream);
+      border: 0.5px solid var(--tca-border);
+      box-shadow: none;
+    }
+    #enroll .contact-icon-wrap svg { stroke: var(--tca-navy); }
+    @media (max-width: 900px) {
+      #enroll .enroll-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── FOOTER (Section P) ── */
+    footer {
+      background: var(--tca-navy);
+      color: var(--tca-white);
+      padding: 48px 24px;
+    }
+    footer .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    footer .footer-top { padding: 0; text-align: center; }
+    footer .footer-tagline { color: rgba(255,255,255,.85); }
+    footer .footer-nav a { color: var(--tca-white); }
+    footer .footer-nav a:hover { color: var(--tca-gold); }
+    footer .social-btn {
+      background: rgba(255,255,255,.08);
+      color: var(--tca-white);
+      border: none;
+      box-shadow: none;
+    }
+    footer .footer-bottom { color: rgba(255,255,255,.65); }
+    footer .footer-bottom a { color: rgba(255,255,255,.85); }
+
+    /* Photo strip — maintain visual rhythm */
+    .photo-overlay { background: rgba(15,25,50,0.25) !important; }
+
+    /* Responsive — collapse outcomes/philosophy/curriculum/hiw to 2 cols mid */
+    @media (max-width: 1100px) and (min-width: 901px) {
+      #philosophy .philosophy-grid,
+      #curriculum .curriculum-grid,
+      #how-it-works .hiw-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Mobile section padding */
+    @media (max-width: 720px) {
+      section { padding: 64px 20px; }
+      #mission { padding: 96px 24px; }
+    }
+
   </style>
 </head>
 <body>
