@@ -1,3493 +1,1277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TCA Online Preschool | Taylor Christian Academy</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Taylor Christian Academy — a Christ-centered online preschool for ages 3–5. Live, teacher-led classes from home.">
+  <title>Taylor Christian Academy of the Arts — Online Preschool, Ages 3–5</title>
+
+  <link rel="icon" type="image/png" sizes="512x512" href="logo-icon.png">
+  <link rel="apple-touch-icon" href="logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ═══════════════════════════════════════════
-       DESIGN TOKENS
-    ═══════════════════════════════════════════ */
+    /* ──────────────────────────────────────────
+       DESIGN SYSTEM
+    ────────────────────────────────────────── */
     :root {
-      --navy:      #1B3A6B;
-      --gold:      #F0B429;
-      --red:       #C0392B;
-      --white:     #FFFFFF;
-      --light:     #F9F7F4;
-      --dark-navy: #0F2347;
-
-      --font-serif: 'Playfair Display', Georgia, serif;
-      --font-sans:  'Lato', system-ui, sans-serif;
-
-      --shadow-soft: 0 4px 32px rgba(0,0,0,.06);
-      --shadow-mid:  0 8px 48px rgba(0,0,0,.10);
-      --shadow-lg:   0 16px 64px rgba(0,0,0,.14);
-
-      --radius-card: 20px;
-      --radius-pill: 50px;
-
-      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --paper:        #F6F1E6;
+      --paper-dark:   #EEE7D5;
+      --ink:          #1A2340;
+      --ink-soft:     #2A3458;
+      --gilt:         #B8860B;
+      --gilt-soft:    #D4A933;
+      --burgundy:     #8B1A1A;
+      --sage:         #7A8471;
+      --sage-soft:    #A5AF9C;
+      --text:         #2B2418;
+      --text-muted:   #6B6456;
+      --rule:         #C9BFA7;
+      --serif-display: 'Cormorant Garamond', Georgia, serif;
+      --serif-body:    'Lora', Georgia, serif;
+      --sans-accent:   'Inter', -apple-system, sans-serif;
     }
 
-    /* ═══════════════════════════════════════════
-       RESET & BASE
-    ═══════════════════════════════════════════ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
-      font-family: var(--font-sans);
-      font-size: 17px;
-      color: #1a1a1a;
-      background: var(--white);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    button { font-family: inherit; cursor: pointer; background: none; border: none; }
-
-    /* ═══════════════════════════════════════════
-       TYPOGRAPHY
-    ═══════════════════════════════════════════ */
-    h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.18; }
-
-    /* ═══════════════════════════════════════════
-       LAYOUT
-    ═══════════════════════════════════════════ */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 36px;
-    }
-
-    /* ═══════════════════════════════════════════
-       SHARED COMPONENTS
-    ═══════════════════════════════════════════ */
-
-    /* — Section label — */
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 18px;
-    }
-    .section-label::after {
-      content: '';
-      display: inline-block;
-      width: 40px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      margin-left: 12px;
-    }
-
-    /* — Section heading — */
-    .section-heading {
-      font-family: var(--font-serif);
-      font-weight: 700;
-      color: var(--navy);
-      font-size: clamp(28px, 4vw, 42px);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .section-subtext {
-      font-size: 17px;
-      color: #5a6070;
-      line-height: 1.8;
-      font-weight: 300;
-      max-width: 600px;
-    }
-
-    /* — Buttons — */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 16px 48px;
-      border-radius: var(--radius-pill);
-      font-family: var(--font-sans);
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: .03em;
-      transition: all .3s ease;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-    .btn:hover { transform: translateY(-3px); }
-    .btn:active { transform: translateY(0); }
-
-    .btn-gold {
-      background: var(--gold);
-      color: var(--navy);
-      box-shadow: 0 8px 24px rgba(240,180,41,.40);
-    }
-    .btn-gold:hover { background: #E0A419; box-shadow: 0 12px 32px rgba(240,180,41,.55); }
-
-    .btn-outline-white {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,.5);
-    }
-    .btn-outline-white:hover {
-      border-color: var(--white);
-      background: var(--white);
-      color: var(--navy);
-    }
-
-    .btn-red {
-      background: var(--red);
-      color: var(--white);
-      width: 100%;
-      box-shadow: 0 4px 20px rgba(192,57,43,.25);
-    }
-    .btn-red:hover { box-shadow: 0 8px 32px rgba(192,57,43,.38); }
-
-    .btn-outline-gold {
-      background: transparent;
-      color: var(--gold);
-      border: 2px solid var(--gold);
-    }
-    .btn-outline-gold:hover {
-      background: rgba(240,180,41,.08);
-    }
-
-    .btn-navy {
-      background: var(--navy);
-      color: var(--white);
-      box-shadow: 0 8px 24px rgba(27,58,107,.30);
-    }
-    .btn-navy:hover { background: var(--dark-navy); box-shadow: 0 12px 32px rgba(27,58,107,.45); }
-
-    /* ═══════════════════════════════════════════
-       SCROLL REVEAL ANIMATIONS
-    ═══════════════════════════════════════════ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .6s var(--ease-spring), transform .6s var(--ease-spring);
-    }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity .6s var(--ease-spring), transform .6s var(--ease-spring);
-    }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: opacity .6s var(--ease-spring), transform .6s var(--ease-spring);
-    }
-    .reveal.visible,
-    .reveal-left.visible,
-    .reveal-right.visible {
-      opacity: 1;
-      transform: translate(0);
-    }
-
-    /* Stagger delays for grid children */
-    .stagger > *:nth-child(1) { transition-delay: 0ms; }
-    .stagger > *:nth-child(2) { transition-delay: 100ms; }
-    .stagger > *:nth-child(3) { transition-delay: 200ms; }
-    .stagger > *:nth-child(4) { transition-delay: 300ms; }
-    .stagger > *:nth-child(5) { transition-delay: 400ms; }
-    .stagger > *:nth-child(6) { transition-delay: 500ms; }
-    .stagger > *:nth-child(7) { transition-delay: 600ms; }
-    .stagger > *:nth-child(8) { transition-delay: 700ms; }
-
-    /* Named delay classes (for stats bar and other standalone items) */
-    .reveal-delay-1 { transition-delay: 100ms; }
-    .reveal-delay-2 { transition-delay: 200ms; }
-    .reveal-delay-3 { transition-delay: 300ms; }
-
-    /* ═══════════════════════════════════════════
-       NAVIGATION
-    ═══════════════════════════════════════════ */
-    #navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      transition: background .3s ease, box-shadow .3s ease, top .3s ease;
-    }
-    #navbar.scrolled {
-      background: rgba(255,255,255,0.92);
-      box-shadow: 0 4px 32px rgba(0,0,0,.08);
-    }
-    #navbar::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, #C0392B, #F0B429, #1B3A6B);
-      pointer-events: none;
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 80px;
-    }
-
-    /* ── HTML/CSS Logo ───────��───────────────────── */
-    .tca-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .tca-letters {
-      display: flex;
-      align-items: center;
-      line-height: 1;
-      font-family: var(--font-serif);
-      font-weight: 900;
-      font-size: 36px;
-    }
-    .letter-t { color: var(--red); }
-    .letter-c { color: var(--gold); }
-    .letter-a { color: var(--navy); }
-
-    .tca-logo-img {
-      display: block;
-      height: 64px;
-      width: auto;
-      object-fit: contain;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-      border-radius: 6px;
-    }
-    .tca-logo-footer .tca-logo-img {
-      height: 96px;
-      border-radius: 10px;
-    }
-    @media (max-width: 640px) {
-      .tca-logo-img { height: 52px; }
-      .tca-logo-footer .tca-logo-img { height: 80px; }
-    }
-
-    @keyframes tcaLetterIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    #navbar .letter-t { animation: tcaLetterIn 0.5s var(--ease-spring) 0.4s both; }
-    #navbar .letter-c { animation: tcaLetterIn 0.5s var(--ease-spring) 0.6s both; }
-    #navbar .letter-a { animation: tcaLetterIn 0.5s var(--ease-spring) 0.8s both; }
-
-    .tca-wordmark {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.3;
-    }
-    .word-taylor {
-      color: var(--red);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .15em;
-      font-family: var(--font-sans);
-      text-transform: uppercase;
-    }
-    .word-christian {
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .15em;
-      font-family: var(--font-sans);
-      text-transform: uppercase;
-    }
-    .word-academy {
-      color: var(--navy);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .15em;
-      font-family: var(--font-sans);
-      text-transform: uppercase;
-    }
-
-    /* Footer logo variant — lighter colors for dark bg */
-    .tca-logo-footer .letter-t { color: #e85d4e; }
-    .tca-logo-footer .letter-c { color: var(--gold); }
-    .tca-logo-footer .letter-a {
-      color: var(--white);
-    }
-    .tca-logo-footer .word-taylor  { color: #e85d4e; }
-    .tca-logo-footer .word-christian { color: var(--gold); }
-    .tca-logo-footer .word-academy { color: rgba(255,255,255,.85); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: .02em;
-      position: relative;
-      transition: color .3s ease;
-    }
-    .nav-links a:not(.nav-enroll):hover { color: var(--gold); }
-    .nav-links a:not(.nav-enroll)::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      transition: width .3s ease;
-    }
-    .nav-links a:not(.nav-enroll):hover::after { width: 100%; }
-    .nav-links a.nav-active { color: var(--gold); }
-    .nav-links a.nav-active::after { width: 100%; }
-
-    .nav-enroll {
-      padding: 10px 26px;
-      font-size: 14px;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      padding: 6px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--navy);
-      border-radius: 2px;
-      transition: all .3s ease;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* Mobile drawer */
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      background: var(--white);
-      border-top: 1px solid rgba(0,0,0,.06);
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a {
-      padding: 15px 36px;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--navy);
-      border-bottom: 1px solid rgba(0,0,0,.05);
-      transition: background .3s ease, color .3s ease;
-    }
-    .mobile-nav a:hover { background: var(--light); color: var(--gold); }
-    .mobile-nav a:last-child { border-bottom: none; }
-
-    /* ═══════════════════════════════════════════
-       ANNOUNCEMENT BAR
-    ═══════════════════════════════════════════ */
-    #announce-bar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1001;
-      background: #C0392B;
-      padding: 10px 20px;
-      text-align: center;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      max-height: 80px;
-      transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
-    }
-    #announce-bar.hidden {
-      max-height: 0;
-      opacity: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      pointer-events: none;
-    }
-    .announce-text {
-      flex: 1;
-      text-align: center;
-    }
-    .announce-phone {
-      color: #F0B429;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .announce-phone:hover { text-decoration: underline; }
-    .announce-close {
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: var(--white);
-      font-size: 18px;
-      cursor: pointer;
-      line-height: 1;
-      padding: 4px 8px;
-      opacity: 0.85;
-      transition: opacity 0.2s ease;
-    }
-    .announce-close:hover { opacity: 1; }
-
-    /* How It Works nav button */
-    .nav-how-it-works {
-      display: inline-block;
-      background: var(--navy);
-      color: var(--white) !important;
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 14px;
-      padding: 12px 24px;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(27,58,107,0.4);
-      transition: background 0.3s ease, transform 0.3s ease;
-      white-space: nowrap;
-    }
-    .nav-how-it-works:hover {
-      background: var(--dark-navy);
-      transform: translateY(-2px);
-      color: var(--white) !important;
-    }
-    .nav-how-it-works::after { display: none !important; }
-
-    /* ═══════════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════════ */
-    #hero {
-      position: relative;
-      min-height: 105vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 140px;
-      overflow: hidden;
-      background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect x='19' y='15' width='2' height='10' fill='white' fill-opacity='0.04'/%3E%3Crect x='15' y='19' width='10' height='2' fill='white' fill-opacity='0.04'/%3E%3C/svg%3E") repeat,
-        linear-gradient(135deg, #0a1a35 0%, #0F2347 35%, #1B3A6B 70%, #1e4a85 100%);
-    }
-
-    /* Video element */
-    .hero-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* Navy gradient overlay — sits on top of video, keeps text readable */
-    #hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(10,26,53,.72) 0%, rgba(15,35,71,.72) 35%, rgba(27,58,107,.72) 70%, rgba(30,74,133,.72) 100%);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* Decorative circles */
-    #hero::before {
-      content: '';
-      position: absolute;
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      border: 1px solid rgba(240,180,41,.06);
-      top: -300px;
-      right: -300px;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 80px 24px;
-      max-width: 820px;
-      width: 100%;
-    }
-
-    /* Hero school name */
-    .hero-school-name {
-      font-family: var(--font-serif);
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 700;
-      margin-bottom: 20px;
-      letter-spacing: .05em;
-      text-align: center;
-      line-height: 1.2;
-    }
-    .name-taylor    { color: var(--red); }
-    .name-christian { color: var(--gold); }
-    .name-academy   { color: var(--white); }
-
-    /* Hero subtitle */
-    .hero-subtitle {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 16px;
-      color: rgba(255,255,255,.85);
-      text-align: center;
-      margin-bottom: 24px;
-      letter-spacing: .04em;
-    }
-
-    /* Hero Proverbs verse */
-    .hero-verse {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 15px;
-      color: var(--gold);
-      opacity: .9;
-      max-width: 500px;
-      margin: 0 auto 40px;
-      line-height: 1.8;
-      text-align: center;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(240,180,41,.10);
-      border: 1px solid rgba(240,180,41,.30);
-      border-radius: var(--radius-pill);
-      padding: 8px 22px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .2em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-
-    .hero-h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(48px, 7vw, 88px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    .hero-h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-sub {
-      font-size: 18px;
-      color: rgba(255,255,255,.9);
-      line-height: 1.8;
-      max-width: 600px;
-      margin: 0 auto 48px;
-      font-weight: 300;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* Bouncing scroll arrow */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,.3);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      animation: scrollBounce 2.2s ease-in-out infinite;
-    }
-    @keyframes scrollBounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); opacity: .5; }
-      50%       { transform: translateX(-50%) translateY(10px); opacity: .25; }
-    }
-
-    /* ═══════════════════════════════════════════
-       TRUST BAR
-    ═══════════════════════════════════════════ */
-    #trust-bar {
-      background: var(--white);
-      border-top: 3px solid var(--gold);
-      border-bottom: 3px solid var(--gold);
-      padding: 24px 0;
-    }
-    .trust-bar-grid {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-    }
-    .trust-bar-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0 40px;
-    }
-    .trust-bar-icon {
-      width: 32px;
-      height: 32px;
-      margin-bottom: 8px;
-    }
-    .trust-bar-icon svg { width: 100%; height: 100%; }
-    .trust-bar-stat {
-      font-family: var(--font-serif);
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--navy);
-      margin-bottom: 2px;
-    }
-    .trust-bar-label {
-      font-family: var(--font-sans);
-      font-size: 12px;
-      color: #888;
-      font-weight: 400;
-    }
-    .trust-bar-divider {
-      width: 1px;
-      height: 48px;
-      background: var(--gold);
-      opacity: .5;
-      flex-shrink: 0;
-    }
-
-    /* ═══════════════════════════════════════════
-       WHY TCA / ABOUT
-    ═══════════════════════════════════════════ */
-    #about {
-      padding: 80px 0;
-      background: #F0EDE6;
-      position: relative;
-    }
-    /* Subtle texture photo behind the light bg */
-    #about::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1600') center / cover no-repeat;
-      opacity: .04;
-      z-index: 0;
-      pointer-events: none;
-    }
-    #about .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .about-header .section-subtext { margin: 0 auto; }
-
-    /* ── Two-column about layout ─────────────────── */
-    .about-two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      padding: 60px 0;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .about-video-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .feature-label {
-      font-family: var(--font-sans);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 24px;
-    }
-    .feature-heading {
-      font-family: var(--font-serif);
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.3;
-      margin-bottom: 32px;
-    }
-    .feature-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-    .feature-check {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      margin-top: 2px;
-    }
-    .feature-row p {
-      font-size: 16px;
-      color: var(--navy);
-      line-height: 1.7;
-      margin: 0;
-    }
-    .feature-divider {
-      display: block;
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      margin: 32px 0;
-    }
-    .feature-quote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 17px;
-      color: var(--gold);
-      line-height: 1.8;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .why-card {
-      background: var(--white);
-      border-radius: var(--radius-card);
-      padding: 40px;
-      box-shadow: var(--shadow-soft);
-      border-bottom: 3px solid transparent;
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-    }
-    .why-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-mid);
-      border-bottom-color: var(--gold);
-    }
-
-    .why-icon {
-      width: 64px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .why-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .why-card h3 {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .why-card p {
-      font-size: 15px;
-      color: #5a6070;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    /* ═══════════════════════════════════════════
-       OUTCOMES SECTION
-    ═══════════════════════════════════════════ */
-    #outcomes {
-      padding: 100px 0;
-      background: var(--navy);
-    }
-    .outcomes-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .outcomes-header .section-heading {
-      color: var(--white);
-      font-size: clamp(28px, 4vw, 42px);
-    }
-    .outcomes-header .section-subtext {
-      color: rgba(255,255,255,.8);
-      margin: 0 auto;
-      max-width: 640px;
-    }
-    .outcomes-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 56px;
-    }
-    .outcome-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.08);
-    }
-    .outcome-num {
-      font-family: var(--font-serif);
-      font-weight: 700;
-      font-size: 28px;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .outcome-card h3 {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .outcome-card p {
-      font-size: 14px;
-      color: #5a6070;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-    .outcomes-quote {
-      text-align: center;
-      max-width: 750px;
-      margin: 0 auto 40px;
-    }
-    .outcomes-quote p {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 18px;
-      color: var(--gold);
-      line-height: 1.8;
-      margin-bottom: 8px;
-    }
-    .outcomes-quote cite {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      color: rgba(255,255,255,.6);
-      font-style: normal;
-      font-weight: 700;
-    }
-    .outcomes-cta {
-      text-align: center;
-    }
-
-    /* ═══════════════════════════════════════════
-       TEACHING PHILOSOPHY
-    ═══════════════════════════════════════════ */
-    #philosophy {
-      padding: 60px 0;
-      background: var(--light);
-    }
-    .philosophy-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .philosophy-header .section-label { justify-content: center; }
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      margin-bottom: 56px;
-    }
-    .philosophy-card {
-      background: var(--white);
-      border-radius: 12px;
-      border-top: 3px solid var(--gold);
-      padding: 32px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.06);
-    }
-    .philosophy-card-icon {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 16px;
-    }
-    .philosophy-card-icon svg { width: 100%; height: 100%; }
-    .philosophy-card h3 {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .philosophy-card p {
-      font-size: 15px;
-      color: #5a6070;
-      line-height: 1.75;
-      font-weight: 300;
-    }
-    .philosophy-pull-quote {
-      max-width: 750px;
-      margin: 0 auto;
-      border-left: 4px solid var(--gold);
-      padding-left: 24px;
-    }
-    .philosophy-pull-quote p {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 20px;
-      color: var(--navy);
-      line-height: 1.75;
-      margin-bottom: 8px;
-    }
-    .philosophy-pull-quote cite {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--gold);
-      font-style: normal;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    /* ═══════════════════════════════════════════
-       HOW IT WORKS — 4-CARD GRID
-    ═══════════════════════════════════════════ */
-    #how-it-works {
-      padding: 80px 0;
-      background: var(--white);
-    }
-    .hiw-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .hiw-header .section-label { justify-content: center; }
-    .hiw-header .section-subtext { margin: 0 auto; }
-    .hiw-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 32px;
-    }
-    .hiw-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.06);
-      border-top: 3px solid transparent;
-      transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
-    }
-    .hiw-card:hover {
-      border-top-color: var(--gold);
-      box-shadow: 0 8px 32px rgba(0,0,0,.10);
-      transform: translateY(-4px);
-    }
-    .hiw-card-emoji {
-      font-size: 32px;
-      margin-bottom: 12px;
-      display: block;
-    }
-    .hiw-card h3 {
-      font-family: var(--font-serif);
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .hiw-card p {
-      font-size: 14px;
-      color: #5a6070;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-    .hiw-info-bar {
-      background: var(--navy);
-      border-radius: 12px;
-      padding: 16px 32px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 20px;
-    }
-    .hiw-info-bar p {
-      font-family: var(--font-sans);
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: .02em;
-    }
-    .hiw-more-link {
-      text-align: center;
-    }
-    .hiw-more-link a {
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--gold);
-      transition: text-decoration .2s ease;
-    }
-    .hiw-more-link a:hover { text-decoration: underline; }
-
-    /* ═══════════════════════════════════════════
-       WHAT PARENTS RECEIVE — SLIM
-    ═══════════════════════════════════════════ */
-    #parents-receive {
-      padding: 60px 0;
-      background: var(--light);
-    }
-    .parents-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .parents-header .section-label { justify-content: center; }
-    .parents-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 900px;
-      margin: 0 auto 32px;
-    }
-    .parents-step {
-      text-align: center;
-    }
-    .parents-step-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 16px;
-    }
-    .parents-step-icon svg { width: 100%; height: 100%; }
-    .parents-step strong {
-      display: block;
-      font-family: var(--font-serif);
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
-    .parents-step p {
-      font-size: 14px;
-      color: #5a6070;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-    .parents-note {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 16px;
-      font-size: 14px;
-      color: #888;
-      line-height: 1.7;
-    }
-    .parents-more-link {
-      text-align: center;
-    }
-    .parents-more-link a {
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--gold);
-    }
-    .parents-more-link a:hover { text-decoration: underline; }
-
-    /* ═══════════════════════════════════════════
-       MISSION STATEMENT
-    ═══════════════════════════════════════════ */
-    /* ═══════════════════════════════════════════
-       STATS BAR
-    ═══════════════════════════════════════════ */
-    #stats {
-      padding: 60px 0;
-      background: var(--navy);
-    }
-    .stats-grid {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .stat-item {
-      text-align: center;
-      padding: 0 52px;
-      flex: 1;
-    }
-    .stat-number {
-      font-family: var(--font-serif);
-      font-size: 40px;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-    .stat-label {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.65);
-    }
-    .stat-divider {
-      width: 1px;
-      height: 64px;
-      background: rgba(240,180,41,.3);
-      flex-shrink: 0;
-    }
-
-    #mission {
-      padding: 100px 0;
-      background: var(--navy);
-      text-align: center;
-      position: relative;
-    }
-    /* Subtle depth photo behind navy */
-    #mission::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1529390079861-591de354faf5?w=1600') center / cover no-repeat;
-      opacity: .08;
-      z-index: 0;
-      pointer-events: none;
-    }
-    #mission .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    .mission-inner {
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    .mission-inner .section-label { justify-content: center; }
-
-    .mission-rule {
-      display: block;
-      width: 80px;
-      height: 1px;
-      background: rgba(240,180,41,.5);
-      margin: 0 auto 40px;
-    }
-
-    .mission-quote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(20px, 3vw, 32px);
-      color: var(--white);
-      line-height: 1.8;
-      font-weight: 400;
-    }
-
-    .mission-rule-bottom {
-      display: block;
-      width: 80px;
-      height: 1px;
-      background: rgba(240,180,41,.5);
-      margin: 40px auto 0;
-    }
-
-    /* ═══════════════════════════════════════════
-       OUR TEAM
-    ═══════════════════════════════════════════ */
-    #team {
-      padding: 80px 0;
-      background: var(--white);
-    }
-
-    .team-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .team-header .section-label { justify-content: center; }
-
-    .team-pull-quote {
-      max-width: 700px;
-      margin: 0 auto 72px;
-      border-left: 4px solid var(--gold);
-      padding-left: 28px;
-      text-align: left;
-    }
-    .team-pull-quote p {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(17px, 2.5vw, 22px);
-      color: var(--navy);
-      line-height: 1.75;
-      margin-bottom: 12px;
-    }
-    .team-pull-quote cite {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-style: normal;
-    }
-
-    .team-grid {
-      display: flex;
-      align-items: stretch;
-      gap: 32px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .team-card {
-      flex: 1;
-      background: var(--light);
-      border-radius: var(--radius-card);
-      padding: 40px;
-      box-shadow: var(--shadow-soft);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-    }
-
-    .team-photo {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top center;
-      border: 4px solid var(--gold);
-      margin: 0 auto 24px;
-      display: block;
-    }
-
-    .team-name {
-      font-family: var(--font-serif);
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
-    .team-title {
-      font-family: var(--font-sans);
-      font-style: italic;
-      font-size: 14px;
-      color: var(--gold);
-      margin-bottom: 22px;
-      font-weight: 400;
-    }
-
-    .team-creds {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-      text-align: left;
-      display: inline-flex;
-    }
-    .team-creds li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--navy);
-      font-weight: 700;
-      line-height: 1.45;
-    }
-    .team-creds li::before {
-      content: '';
-      display: block;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-      margin-top: 1px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B3A6B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-      background-size: 11px;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    .fun-facts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .fun-fact-pill {
-      background: #F3F3F3;
-      border-radius: var(--radius-pill);
-      padding: 4px 12px;
-      font-size: 12px;
-      color: var(--navy);
-      font-weight: 400;
-    }
-
-    .team-bio {
-      font-size: 15px;
-      color: #5a6070;
-      line-height: 1.8;
-      font-weight: 300;
-      text-align: left;
-      flex: 1 1 auto;
-      margin-bottom: 0;
-    }
-
-    .team-verse {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 14px;
-      color: var(--gold);
-      border-left: 3px solid var(--gold);
-      padding-left: 16px;
-      margin-top: auto;
-      padding-top: 20px;
-      line-height: 1.7;
-      text-align: left;
-      flex-shrink: 0;
-    }
-
-    /* ═══════════════════════════════════════════
-       PRICING
-    ═══════════════════════════════════════════ */
-    #pricing {
-      padding: 100px 0;
-      background: var(--light);
-    }
-
-    .pricing-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    .pricing-header .section-label { justify-content: center; }
-    .pricing-header .section-heading { color: var(--navy); }
-    .pricing-header .section-subtext {
-      color: rgba(15, 25, 50, 0.7);
-      margin: 0 auto;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-bottom: 24px;
-    }
-
-    .price-card {
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius-card);
-      padding: 36px 24px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: transform .3s ease, background .3s ease;
-    }
-    .price-card:hover {
-      transform: translateY(-4px);
-      background: rgba(255,255,255,.11);
-    }
-
-    .price-card.featured {
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-    .price-card.featured:hover { background: #f5be3d; }
-    .price-card.featured .price-label,
-    .price-card.featured .price-amount,
-    .price-card.featured .price-period,
-    .price-card.featured .price-desc { color: var(--navy) !important; }
-
-    .best-value-ribbon {
-      position: absolute;
-      top: 18px;
-      right: -30px;
-      background: var(--red);
-      color: var(--white);
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 5px 40px;
-      transform: rotate(45deg);
-    }
-
-    .price-label {
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.5);
-      margin-bottom: 16px;
-    }
-    .price-amount {
-      font-family: var(--font-serif);
-      font-size: 56px;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .price-amount sup {
-      font-size: 22px;
-      vertical-align: top;
-      margin-top: 10px;
-      display: inline-block;
-    }
-    .price-period {
-      font-size: 13px;
-      color: rgba(255,255,255,.45);
-      margin-bottom: 20px;
-    }
-    .price-desc {
-      font-size: 14px;
-      color: rgba(255,255,255,.65);
+      font-family: var(--serif-body);
+      background: var(--paper);
+      color: var(--text);
       line-height: 1.65;
-      font-weight: 300;
-    }
-
-    /* Add-on card */
-    .price-card.addon {
-      background: transparent;
-      border: 2px dashed rgba(255,255,255,.25);
-    }
-    .price-card.addon:hover {
-      border-color: var(--gold);
-      background: rgba(255,255,255,.05);
-    }
-    .addon-tag {
-      display: inline-block;
-      font-family: var(--font-sans);
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--navy);
-      background: var(--gold);
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      margin-bottom: 16px;
-    }
-
-    /* Class times box */
-    .times-box {
-      background: rgba(255,255,255,.92);
-      border-radius: var(--radius-card);
-      padding: 36px;
-      text-align: center;
-      margin-bottom: 44px;
-    }
-    .times-box h3 {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 22px;
-    }
-    .times-pills {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .time-pill {
-      background: var(--navy);
-      color: var(--white);
-      border-radius: var(--radius-pill);
-      padding: 10px 24px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .pricing-cta {
-      text-align: center;
-    }
-
-    /* ─── Pricing preview (clean light cards) ─── */
-    .preview-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-    .preview-card {
-      background: var(--white);
-      border: 0.5px solid #E8E5DC;
-      border-radius: 12px;
-      padding: 36px 28px;
-      text-align: left;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-    .preview-card.featured {
-      border: 2px solid var(--gold);
-    }
-    .best-value-pill {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--navy);
-      font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-      align-self: flex-start;
-    }
-    .preview-label {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: #6B6B6B;
-      margin-bottom: 14px;
-    }
-    .preview-amount {
-      font-family: var(--font-serif);
-      font-size: 56px;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .preview-amount sup {
-      font-size: 22px;
-      vertical-align: top;
-      margin-top: 10px;
-      display: inline-block;
-    }
-    .preview-period {
-      font-size: 14px;
-      color: #6B6B6B;
-      margin-bottom: 14px;
-    }
-    .preview-fee {
-      font-size: 13px;
-      color: #6B6B6B;
-      font-style: italic;
-      margin-bottom: 24px;
-      padding-bottom: 24px;
-      border-bottom: 0.5px solid #E8E5DC;
-    }
-    .preview-features {
-      list-style: none;
-      padding: 0;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
       margin: 0;
     }
-    .preview-features li {
-      font-size: 15px;
-      color: #4A4A4A;
-      line-height: 1.6;
-      padding: 8px 0;
-      font-weight: 400;
-    }
 
-    .preview-cta-wrap {
-      text-align: center;
-      margin-top: 48px;
-    }
-    .preview-cta-note {
-      font-size: 14px;
-      color: #6B6B6B;
-      margin-top: 18px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 860px) {
-      .preview-grid { grid-template-columns: 1fr; gap: 16px; }
-    }
-
-    /* ═══════════════════════════════════════════
-       TESTIMONIAL
-    ═══════════════════════════════════════════ */
-    #testimonial {
-      padding: 80px 0;
-      background: var(--light);
-      position: relative;
-    }
-    #testimonial::before {
+    body::before {
       content: '';
-      position: absolute;
+      position: fixed;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1600') center / cover no-repeat;
-      opacity: .05;
-      z-index: 0;
       pointer-events: none;
-    }
-    #testimonial .container {
-      position: relative;
+      opacity: 0.35;
       z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.35  0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    .testimonials-flex {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      max-width: 1000px;
-      margin: 0 auto;
+    img, video { max-width: 100%; display: block; }
+
+    h1, h2, h3 {
+      font-family: var(--serif-display);
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      margin: 0;
+      color: var(--ink);
     }
-    .testimonial-card {
-      background: var(--white);
-      border-radius: var(--radius-card);
-      padding: 40px;
-      box-shadow: var(--shadow-soft);
+    h1 { font-size: clamp(48px, 7vw, 96px); line-height: 0.98; }
+    h2 { font-size: clamp(36px, 5vw, 64px); line-height: 1.05; }
+    h3 { font-size: 28px; line-height: 1.2; }
+    h1 em, .hero em { font-style: italic; color: var(--gilt); font-weight: 400; }
+    h2 em { font-style: italic; color: var(--burgundy); font-weight: 400; }
+    p { margin: 0 0 20px; }
+    a { color: var(--ink); }
+
+    .btn-primary {
+      font-family: var(--sans-accent);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      background: var(--ink); color: var(--paper);
+      padding: 18px 36px; text-decoration: none;
+      border: 1px solid var(--ink);
+      display: inline-block;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--burgundy); border-color: var(--burgundy); color: var(--paper); }
+
+    .btn-link {
+      font-family: var(--serif-display);
+      font-style: italic; font-size: 18px;
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px solid var(--gilt);
+      padding-bottom: 2px;
+    }
+    .btn-link:hover { color: var(--burgundy); }
+
+    .section-kicker {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--gilt); margin-bottom: 20px; display: inline-block;
+    }
+
+    /* ──────────────────────────────────────────
+       MASTHEAD BAND
+    ────────────────────────────────────────── */
+    .masthead-top {
+      background: var(--ink);
+      color: var(--paper);
       text-align: center;
+      padding: 10px 20px;
+      font-family: var(--sans-accent);
+      font-size: 12px;
+      letter-spacing: 1px;
+      position: relative; z-index: 10;
+    }
+    .masthead-top .star { color: var(--gilt); margin: 0 10px; }
+    .masthead-top a { color: var(--gilt); text-decoration: none; }
+
+    /* ──────────────────────────────────────────
+       NAV
+    ────────────────────────────────────────── */
+    .nav {
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      position: sticky; top: 0; z-index: 50;
+      padding: 16px 0;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand img { height: 60px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 40px; align-items: center; }
+    .nav-link {
+      font-family: var(--serif-display);
+      font-size: 19px; color: var(--ink); text-decoration: none;
+    }
+    .nav-link:hover { color: var(--burgundy); }
+    .nav-cta {
+      font-family: var(--sans-accent);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--ink); border: 1px solid var(--ink);
+      padding: 10px 22px; text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .nav-cta:hover { background: var(--ink); color: var(--paper); }
+    @media (max-width: 768px) {
+      .nav-brand img { height: 48px; }
+      .nav-links { gap: 20px; }
+      .nav-link { font-size: 15px; }
+      .nav-cta { padding: 8px 14px; font-size: 11px; }
     }
 
-    .quote-mark {
-      font-family: var(--font-serif);
-      font-size: 80px;
-      color: var(--gold);
-      line-height: .7;
-      opacity: .3;
-      display: block;
-      margin-bottom: 16px;
+    /* ──────────────────────────────────────────
+       HERO
+    ────────────────────────────────────────── */
+    .hero { padding: 80px 0 100px; position: relative; z-index: 2; }
+    .hero-grid {
+      max-width: 1400px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .hero-issue {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gilt); margin-bottom: 32px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .hero-issue::before { content: ''; width: 40px; height: 1px; background: var(--gilt); }
+    .hero-rule { width: 60px; height: 2px; background: var(--gilt); margin: 28px 0; }
+    .hero-subtitle {
+      font-family: var(--serif-body); font-size: 20px;
+      line-height: 1.55; max-width: 460px;
+      margin-bottom: 40px; font-style: italic;
+    }
+    .hero-meta { display: flex; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
+    .hero-meta-item {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);
+    }
+    .hero-meta-value {
+      font-family: var(--serif-display); font-size: 28px;
+      color: var(--ink); font-weight: 500; display: block;
+      margin-bottom: 4px; letter-spacing: 0; text-transform: none;
+    }
+    .hero-ctas { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+    .hero-video-frame {
+      aspect-ratio: 4/5; background: var(--ink);
+      overflow: hidden; position: relative;
+    }
+    .hero-video-frame video { width: 100%; height: 100%; object-fit: cover; }
+    .caption {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--text-muted); margin-top: 16px;
+      padding-left: 16px; border-left: 1px solid var(--rule);
+    }
+    .caption-label {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 14px; color: var(--gilt);
+      letter-spacing: 0; text-transform: none; margin-right: 8px;
+    }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; padding: 0 28px; }
+      .hero { padding: 48px 0 64px; }
     }
 
-    .star-row {
-      display: block;
-      font-size: 22px;
-      color: var(--gold);
-      letter-spacing: 5px;
-      margin-bottom: 32px;
+    /* ──────────────────────────────────────────
+       FOUNDATION (STORY)
+    ────────────────────────────────────────── */
+    .foundation {
+      background: var(--paper-dark);
+      padding: 140px 0;
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .foundation-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 48px;
+      display: grid; grid-template-columns: 5fr 7fr;
+      gap: 80px; align-items: start;
+    }
+    .foundation-video {
+      aspect-ratio: 4/5; background: var(--ink); overflow: hidden;
+    }
+    .foundation-video video { width: 100%; height: 100%; object-fit: cover; }
+    .foundation-video-caption {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--text-muted); margin-top: 16px;
+      padding-left: 14px; border-left: 1px solid var(--rule);
+    }
+    .foundation-text h2 { margin-bottom: 32px; max-width: 540px; }
+    .foundation-text p { font-size: 18px; line-height: 1.75; max-width: 580px; }
+    .foundation-text p:first-of-type::first-letter {
+      font-family: var(--serif-display); font-size: 64px;
+      float: left; line-height: 0.85;
+      padding-right: 12px; padding-top: 6px;
+      color: var(--burgundy); font-weight: 500;
+    }
+    .foundation-list { margin-top: 48px; }
+    .foundation-item {
+      display: grid; grid-template-columns: 64px 1fr;
+      gap: 24px; padding: 28px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .foundation-item:last-child { border-bottom: 1px solid var(--rule); }
+    .foundation-item-num {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 32px; color: var(--gilt); line-height: 1;
+    }
+    .foundation-item p {
+      margin: 0; font-size: 17px; line-height: 1.6; color: var(--text);
+    }
+    .foundation-quote {
+      margin-top: 40px; padding: 24px 28px;
+      border-left: 2px solid var(--gilt);
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 22px; line-height: 1.45; color: var(--ink-soft);
+    }
+    @media (max-width: 900px) {
+      .foundation { padding: 80px 0; }
+      .foundation-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 28px; }
     }
 
-    .testimonial-quote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 17px;
-      color: var(--navy);
-      line-height: 1.9;
-      margin-bottom: 32px;
+    /* ──────────────────────────────────────────
+       SCRIPTURE BANNERS
+    ────────────────────────────────────────── */
+    .scripture {
+      position: relative; padding: 160px 0;
+      overflow: hidden; color: var(--paper);
+      min-height: 500px; z-index: 2;
+    }
+    .scripture-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 1;
+    }
+    .scripture-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(135deg, rgba(10,20,40,0.85), rgba(26,35,64,0.8));
+    }
+    .scripture-inner {
+      position: relative; z-index: 3;
+      max-width: 820px; margin: 0 auto;
+      padding: 0 48px; text-align: center;
+    }
+    .scripture-mark {
+      font-family: var(--serif-display); font-size: 100px;
+      line-height: 0.4; color: var(--gilt);
+      margin-bottom: 30px; display: inline-block;
+    }
+    .scripture-text {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: clamp(32px, 4.5vw, 52px); font-weight: 400;
+      line-height: 1.25; color: var(--paper);
+      margin-bottom: 40px; letter-spacing: -0.3px;
+    }
+    .scripture-attribution {
+      font-family: var(--sans-accent); font-size: 12px;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--gilt);
+    }
+    .scripture-attribution::before, .scripture-attribution::after {
+      content: '—'; margin: 0 12px; color: rgba(184,134,11,0.4);
+    }
+    @media (max-width: 768px) {
+      .scripture { padding: 100px 0; }
     }
 
-    .testimonial-author {
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
+    /* ──────────────────────────────────────────
+       EDITORIAL SECTIONS — SHARED
+    ────────────────────────────────────────── */
+    .ed-section {
+      padding: 140px 0;
+      position: relative; z-index: 2;
     }
-    .author-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), #e6a51a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--navy);
-      flex-shrink: 0;
+    .ed-section.alt { background: var(--paper-dark); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .ed-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    .ed-header { text-align: center; margin-bottom: 80px; max-width: 760px; margin-left: auto; margin-right: auto; }
+    .ed-header h2 { margin-bottom: 24px; }
+    .ed-header p {
+      font-family: var(--serif-body); font-style: italic;
+      font-size: 18px; line-height: 1.65; color: var(--text-muted);
+      max-width: 620px; margin: 0 auto;
     }
-    .author-info { text-align: left; }
-    .author-info strong {
-      display: block;
-      font-size: 15px;
-      font-weight: 900;
-      color: var(--navy);
-    }
-    .author-info span {
-      font-size: 13px;
-      color: #5a6070;
-      font-style: italic;
+    @media (max-width: 768px) {
+      .ed-section { padding: 80px 0; }
+      .ed-inner { padding: 0 28px; }
+      .ed-header { margin-bottom: 56px; }
     }
 
-    /* ═══════════════════════════════════════════
-       ENROLL / CONTACT
-    ═══════════════════════════════════════════ */
-    #enroll {
-      padding: 80px 0;
-      background: var(--white);
-    }
-
-    .enroll-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+    /* Numbered editorial list (used in multiple sections) */
+    .ed-list { display: grid; gap: 0; }
+    .ed-list-item {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 32px; padding: 36px 0;
+      border-top: 1px solid var(--rule);
       align-items: start;
     }
+    .ed-list-item:last-child { border-bottom: 1px solid var(--rule); }
+    .ed-list-num {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 36px; color: var(--gilt); line-height: 1;
+      letter-spacing: -1px;
+    }
+    .ed-list-body h3 {
+      font-size: 26px; margin-bottom: 10px; color: var(--ink);
+    }
+    .ed-list-body p { margin: 0; font-size: 17px; line-height: 1.65; color: var(--text); }
 
-    .enroll-info .section-subtext { margin-bottom: 44px; }
-    .enroll-info .section-heading { margin-bottom: 20px; }
+    /* Two-column editorial grid for short cards */
+    .ed-two-col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .ed-two-col .ed-list-item:nth-child(odd) { border-right: 1px solid var(--rule); padding-right: 40px; }
+    .ed-two-col .ed-list-item:nth-child(even) { padding-left: 40px; }
+    .ed-two-col .ed-list-item:nth-child(2) { border-top: 1px solid var(--rule); }
+    @media (max-width: 768px) {
+      .ed-two-col { grid-template-columns: 1fr; }
+      .ed-two-col .ed-list-item:nth-child(odd) { border-right: none; padding-right: 0; }
+      .ed-two-col .ed-list-item:nth-child(even) { padding-left: 0; }
+    }
 
-    .contact-list { display: flex; flex-direction: column; gap: 16px; }
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .contact-icon-wrap {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .contact-icon-wrap svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--navy);
-    }
-    .contact-text strong {
-      display: block;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 2px;
-    }
-    .contact-text a,
-    .contact-text span {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--navy);
-      transition: color .3s ease;
-    }
-    .contact-text a:hover { color: var(--gold); }
-
-    /* Form */
-    .enroll-form-wrap {
-      background: var(--light);
-      border-radius: var(--radius-card);
-      padding: 48px;
-    }
-    .form-heading {
-      font-family: var(--font-serif);
-      font-size: 26px;
-      color: var(--navy);
-      margin-bottom: 30px;
-    }
-    .form-field { margin-bottom: 20px; }
-    .form-field label {
-      display: block;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .form-field input,
-    .form-field textarea {
-      width: 100%;
-      padding: 14px 18px;
-      border: 2px solid #e8e2d8;
-      border-radius: 12px;
-      font-family: var(--font-sans);
-      font-size: 15px;
-      color: #1a1a1a;
-      background: var(--white);
-      outline: none;
-      transition: border-color .3s ease, box-shadow .3s ease;
-      -webkit-appearance: none;
-    }
-    .form-field input:focus,
-    .form-field textarea:focus {
-      border-color: var(--navy);
-      box-shadow: 0 0 0 3px rgba(27,58,107,.08);
-    }
-    .form-field textarea { height: 130px; resize: vertical; }
-    .form-note {
-      font-size: 12px;
-      color: #888;
+    .ed-quote {
+      max-width: 760px; margin: 64px auto 0;
+      padding: 36px 32px; border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
       text-align: center;
-      margin-top: 14px;
+    }
+    .ed-quote p {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 24px; line-height: 1.45; color: var(--ink-soft);
+      margin: 0 0 16px;
+    }
+    .ed-quote cite {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gilt); font-style: normal;
+    }
+    .ed-cta-row {
+      text-align: center; margin-top: 64px;
     }
 
-    /* ═══════════════════════════════════════════
-       POLICY INLINE NOTE
-    ═══════════════════════════════════════════ */
-    .policy-inline {
-      text-align: center;
-      margin-top: 20px;
+    /* ──────────────────────────────────────────
+       WATCH A CLASS
+    ────────────────────────────────────────── */
+    .watch-class {
+      padding: 140px 0; background: var(--ink);
+      color: var(--paper);
+      position: relative; z-index: 2;
     }
-    .policy-inline p {
-      font-size: 13px;
-      font-style: italic;
-      color: #888;
-      margin-bottom: 4px;
+    .watch-class h2, .watch-class h3 { color: var(--paper); }
+    .watch-class .section-kicker { color: var(--gilt-soft); }
+    .watch-class .ed-header p { color: var(--sage-soft); }
+    .watch-frame {
+      max-width: 900px; margin: 0 auto;
+      aspect-ratio: 16/10;
+      background: #000; overflow: hidden;
+      border: 1px solid var(--gilt);
     }
-    .policy-inline a {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--gold);
+    .watch-frame video { width: 100%; height: 100%; object-fit: cover; }
+    .watch-caption {
+      max-width: 900px; margin: 16px auto 0;
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gilt-soft);
+      padding-left: 16px; border-left: 1px solid rgba(212,169,51,0.4);
     }
-    .policy-inline a:hover { text-decoration: underline; }
+    .watch-caption-italic {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 14px; color: var(--gilt);
+      letter-spacing: 0; text-transform: none; margin-right: 8px;
+    }
+    @media (max-width: 768px) { .watch-class { padding: 80px 0; } }
 
-    /* ═══════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════ */
-    footer {
-      background: var(--dark-navy);
-      padding: 72px 0 40px;
+    /* ──────────────────────────────────────────
+       MISSION
+    ────────────────────────────────────────── */
+    .mission { padding: 160px 0; position: relative; z-index: 2; background: var(--paper); }
+    .mission-inner {
+      max-width: 880px; margin: 0 auto;
+      padding: 0 48px; text-align: center;
     }
+    .mission-rule {
+      width: 60px; height: 1px; background: var(--gilt);
+      display: block; margin: 24px auto 32px;
+    }
+    .mission-quote {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: clamp(26px, 3.4vw, 38px); font-weight: 400;
+      line-height: 1.4; color: var(--ink); letter-spacing: -0.3px;
+      margin: 0;
+    }
+    @media (max-width: 768px) { .mission { padding: 100px 0; } .mission-inner { padding: 0 28px; } }
 
-    .footer-top {
-      text-align: center;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(240,180,41,.15);
-      margin-bottom: 40px;
+    /* ──────────────────────────────────────────
+       TEAM
+    ────────────────────────────────────────── */
+    .team { padding: 140px 0; background: var(--paper-dark); position: relative; z-index: 2; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .team-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .team-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; margin-top: 64px;
     }
-    .footer-logo-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
+    .team-card { display: flex; flex-direction: column; }
+    .team-photo-wrap {
+      aspect-ratio: 3/4; max-width: 360px; width: 100%;
+      overflow: hidden; background: var(--ink); margin-bottom: 28px;
     }
-    .footer-tagline {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 18px;
-      color: var(--gold);
-      margin-bottom: 32px;
-    }
-
-    .footer-nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-bottom: 32px;
-    }
-    .footer-nav a {
-      font-size: 14px;
-      font-weight: 700;
-      color: rgba(255,255,255,.55);
-      letter-spacing: .03em;
-      transition: color .3s ease;
-    }
-    .footer-nav a:hover { color: var(--gold); }
-
-    /* Social icons */
-    .social-row {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
+    .team-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .team-pull-quote {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 22px; line-height: 1.5; color: var(--ink-soft);
+      padding-left: 20px; border-left: 2px solid var(--gilt);
       margin-bottom: 28px;
     }
-    .social-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.20);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      transition: all .3s ease;
+    .team-name {
+      font-family: var(--serif-display); font-size: 32px;
+      color: var(--ink); margin-bottom: 4px;
     }
-    .social-btn svg { width: 22px; height: 22px; }
-    .social-btn:hover {
-      background: #F0B429;
-      border-color: #F0B429;
-      color: var(--navy);
-      transform: translateY(-3px);
+    .team-role {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gilt); margin-bottom: 24px;
+    }
+    .team-creds {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gilt); margin-bottom: 12px;
+    }
+    .team-creds-list { list-style: none; padding: 0; margin: 0 0 24px; }
+    .team-creds-list li {
+      font-family: var(--serif-body); font-size: 15px;
+      color: var(--text); padding: 6px 0;
+      border-bottom: 1px dashed var(--rule);
+    }
+    .team-bio {
+      font-family: var(--serif-body); font-size: 16px;
+      line-height: 1.75; color: var(--text);
+    }
+    .team-verse {
+      margin-top: 24px; padding: 20px 24px;
+      background: rgba(184,134,11,0.08);
+      border-left: 2px solid var(--gilt);
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 17px; line-height: 1.55; color: var(--ink-soft);
+    }
+    .fun-facts {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px;
+    }
+    .fun-fact-pill {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--ink); padding: 6px 12px;
+      border: 1px solid var(--rule); background: var(--paper);
+    }
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: 1fr; gap: 64px; }
+      .team-photo-wrap { max-width: 320px; margin-left: auto; margin-right: auto; }
+    }
+    @media (max-width: 768px) { .team { padding: 80px 0; } .team-inner { padding: 0 28px; } }
+
+    /* ──────────────────────────────────────────
+       TUITION PREVIEW
+    ────────────────────────────────────────── */
+    .tuition { padding: 140px 0; background: var(--paper); position: relative; z-index: 2; }
+    .tuition-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-subtitle {
+      font-family: var(--serif-body); font-style: italic;
+      font-size: 17px; color: var(--text-muted);
+      margin-top: 20px; max-width: 560px; margin-left: auto; margin-right: auto;
+    }
+    .tuition-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; margin-top: 60px;
+    }
+    .plan {
+      background: var(--paper-dark); border: 1px solid var(--rule);
+      padding: 48px 36px; position: relative;
+      transition: all 0.3s ease;
+    }
+    .plan:hover { transform: translateY(-4px); border-color: var(--gilt); }
+    .plan.featured {
+      background: var(--ink); border-color: var(--gilt); color: var(--paper);
+    }
+    .plan.featured::before {
+      content: 'BEST VALUE'; position: absolute; top: -12px; left: 50%;
+      transform: translateX(-50%); background: var(--gilt); color: var(--ink);
+      font-family: var(--sans-accent); font-size: 10px; font-weight: 600;
+      letter-spacing: 2.5px; padding: 6px 16px;
+    }
+    .plan-label {
+      font-family: var(--sans-accent); font-size: 10px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gilt); margin-bottom: 24px; display: block;
+    }
+    .plan.featured .plan-label { color: var(--gilt-soft); }
+    .plan-price {
+      font-family: var(--serif-display); font-size: 72px;
+      font-weight: 500; line-height: 1; color: var(--ink);
+      letter-spacing: -2px; margin-bottom: 8px;
+    }
+    .plan.featured .plan-price { color: var(--paper); }
+    .plan-period {
+      font-family: var(--serif-body); font-style: italic;
+      font-size: 16px; color: var(--text-muted); margin-bottom: 24px;
+    }
+    .plan.featured .plan-period { color: var(--sage-soft); }
+    .plan-note {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 1px; color: var(--gilt);
+      margin-bottom: 32px; padding-bottom: 32px;
+      border-bottom: 1px solid var(--rule); text-transform: uppercase;
+    }
+    .plan.featured .plan-note { color: var(--gilt-soft); border-color: rgba(201,191,167,0.3); }
+    .plan-features { list-style: none; padding: 0; margin: 0; }
+    .plan-features li {
+      font-family: var(--serif-body); font-size: 15px;
+      line-height: 1.5; color: var(--text);
+      padding: 10px 0; padding-left: 20px; position: relative;
+    }
+    .plan.featured .plan-features li { color: var(--paper); }
+    .plan-features li::before {
+      content: '—'; position: absolute; left: 0; color: var(--gilt);
+    }
+    .tuition-cta { text-align: center; margin-top: 64px; }
+    .tuition-cta-note {
+      font-family: var(--serif-body); font-style: italic;
+      font-size: 14px; color: var(--text-muted); margin-top: 20px;
+    }
+    @media (max-width: 900px) {
+      .tuition-grid { grid-template-columns: 1fr; }
+      .tuition { padding: 80px 0; }
+      .tuition-inner { padding: 0 28px; }
     }
 
-    .footer-donate {
-      display: flex;
-      justify-content: center;
+    /* ──────────────────────────────────────────
+       TESTIMONIALS
+    ────────────────────────────────────────── */
+    .testimonials {
+      padding: 140px 0; background: var(--paper-dark);
+      border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      position: relative; z-index: 2;
+    }
+    .testimonials-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; margin-bottom: 80px;
+    }
+    .testimonial-card {
+      background: var(--paper); border: 1px solid var(--rule);
+      padding: 48px 40px; position: relative;
+    }
+    .testimonial-stars {
+      font-family: var(--sans-accent); color: var(--gilt);
+      font-size: 18px; letter-spacing: 4px; margin-bottom: 24px;
+    }
+    .testimonial-quote {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 19px; line-height: 1.6; color: var(--ink-soft);
+      margin: 0 0 32px;
+    }
+    .testimonial-author {
+      padding-top: 24px; border-top: 1px solid var(--rule);
+    }
+    .testimonial-name {
+      font-family: var(--serif-display); font-size: 20px;
+      color: var(--ink); display: block;
+    }
+    .testimonial-role {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--text-muted); margin-top: 4px; display: block;
+    }
+    .testimonial-video-wrap {
+      max-width: 900px; margin: 0 auto;
+      aspect-ratio: 16/9; overflow: hidden;
+      background: #000; border: 1px solid var(--gilt);
+    }
+    .testimonial-video-wrap video { width: 100%; height: 100%; object-fit: cover; }
+    .testimonial-video-caption {
+      max-width: 900px; margin: 16px auto 0;
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--text-muted);
+      padding-left: 16px; border-left: 1px solid var(--rule);
+    }
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr; gap: 32px; }
+      .testimonials { padding: 80px 0; }
+      .testimonials-inner { padding: 0 28px; }
     }
 
-    .footer-bottom {
-      text-align: center;
-      font-size: 13px;
-      color: rgba(255,255,255,.3);
-      line-height: 2.0;
+    /* ──────────────────────────────────────────
+       NEWSLETTER
+    ────────────────────────────────────────── */
+    .newsletter {
+      background: var(--paper); padding: 140px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      position: relative; z-index: 2;
     }
-    .footer-bottom a {
-      color: rgba(255,255,255,.45);
-      transition: color .3s ease;
+    .newsletter-inner {
+      max-width: 680px; margin: 0 auto;
+      padding: 0 48px; text-align: center;
     }
-    .footer-bottom a:hover { color: var(--gold); }
-    .footer-disclaimer {
-      font-size: 12px;
-      color: rgba(255,255,255,.6);
-      text-align: center;
-      margin-top: 8px;
-      line-height: 1.6;
+    .newsletter h2 { margin-bottom: 8px; }
+    .newsletter-intro {
+      font-family: var(--serif-body); font-style: italic;
+      font-size: 18px; line-height: 1.7; color: var(--text);
+      max-width: 560px; margin: 30px auto 40px;
     }
-
-    /* ═══════════════════════════════════════════
-       TRUST SIGNALS
-    ═══════════════════════════════════════════ */
-    #trust {
-      padding: 80px 0;
-      background: var(--white);
-    }
-    .trust-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .trust-header h2 {
-      font-family: var(--font-serif);
-      font-weight: 700;
-      color: var(--navy);
-      font-size: 32px;
-    }
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-    }
-    .trust-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.06);
-      border-bottom: 3px solid transparent;
-      text-align: center;
-      transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
-    }
-    .trust-card:hover {
-      border-bottom-color: var(--gold);
-      box-shadow: 0 8px 32px rgba(0,0,0,.10);
-      transform: translateY(-4px);
-    }
-    .trust-icon {
-      width: 52px;
-      height: 52px;
-      margin: 0 auto 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .trust-icon svg { width: 100%; height: 100%; }
-    .trust-card h3 {
-      font-family: var(--font-serif);
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .trust-card p {
-      font-size: 14px;
-      color: #5a6070;
-      line-height: 1.75;
-      font-weight: 300;
-    }
-
-    /* ═══════════════════════════════════════════
-       TEAM CTA BANNER
-    ═══════════════════════════════════════════ */
-    .team-cta-banner {
-      background: var(--gold);
-      padding: 48px 0;
-    }
-    .team-cta-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .team-cta-text h3 {
-      font-family: var(--font-serif);
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .team-cta-text p {
-      font-size: 15px;
-      color: var(--navy);
-      opacity: 0.75;
-      line-height: 1.6;
-    }
-
-    /* ═══════════════════════════════════════════
-       SCROLL OFFSET — keeps headings below sticky nav
-    ═══════════════════════════════════════════ */
-    #hero, #trust, #trust-bar, #about, #outcomes, #philosophy,
-    #how-it-works, #parents-receive, #stats, #mission, #team,
-    #pricing, #curriculum, #testimonial, #enroll {
-      scroll-margin-top: 100px;
-    }
-
-    /* ═══════════════════════════════════════════
-       PHOTO STRIP
-    ═══════════════════════════════════════════ */
-    .photo-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      height: 380px;
-    }
-    .photo-strip-item {
+    .newsletter-form {
+      display: flex; gap: 12px; max-width: 480px;
+      margin: 0 auto; flex-wrap: wrap; justify-content: center;
       position: relative;
-      overflow: hidden;
     }
-    .photo-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      transition: transform .4s ease;
+    .newsletter-input {
+      flex: 1; min-width: 240px; padding: 16px 20px;
+      font-family: var(--serif-body); font-size: 16px;
+      background: var(--paper-dark); border: 1px solid var(--rule);
+      color: var(--text); outline: none;
     }
-    .photo-strip-item:hover .photo-bg { transform: scale(1.03); }
-    .photo-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(27, 58, 107, 0.15);
-      pointer-events: none;
-      z-index: 1;
+    .newsletter-input:focus { border-color: var(--ink); }
+    .newsletter-input::placeholder { color: var(--text-muted); font-style: italic; }
+    .newsletter-submit {
+      font-family: var(--sans-accent); font-size: 12px;
+      font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+      background: var(--ink); color: var(--paper);
+      padding: 16px 28px; border: 1px solid var(--ink);
+      cursor: pointer; transition: background 0.25s ease;
     }
+    .newsletter-submit:hover { background: var(--burgundy); border-color: var(--burgundy); }
+    .newsletter-disclaimer {
+      font-family: var(--serif-body); font-style: italic;
+      font-size: 13px; color: var(--text-muted); margin-top: 24px;
+    }
+    @media (max-width: 768px) { .newsletter { padding: 80px 0; } .newsletter-inner { padding: 0 28px; } }
 
-    /* ═══════════════════════════════════════════
-       PROVERBS BANNER (between mission & team)
-    ═══════════════════════════════════════════ */
-    #proverbs-banner {
-      position: relative;
-      height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #0a1a35 0%, #0F2347 50%, #1B3A6B 100%);
+    /* ──────────────────────────────────────────
+       CONTACT (QUESTIONS)
+    ────────────────────────────────────────── */
+    .contact { padding: 140px 0; background: var(--paper-dark); border-top: 1px solid var(--rule); position: relative; z-index: 2; }
+    .contact-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    .contact-grid {
+      display: grid; grid-template-columns: 5fr 7fr;
+      gap: 80px; margin-top: 64px; align-items: start;
     }
-    .proverbs-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
+    .contact-info h2 { margin-bottom: 24px; }
+    .contact-info p {
+      font-family: var(--serif-body); font-size: 17px;
+      line-height: 1.7; color: var(--text); margin-bottom: 32px;
     }
-    #proverbs-banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(15,35,71,.70), rgba(15,35,71,.70));
-      z-index: 1;
-      pointer-events: none;
+    .contact-list { list-style: none; padding: 0; margin: 0; }
+    .contact-list li {
+      padding: 18px 0; border-top: 1px solid var(--rule);
+      display: flex; gap: 16px; align-items: baseline;
     }
-    .proverbs-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 0 32px;
-      max-width: 860px;
+    .contact-list li:last-child { border-bottom: 1px solid var(--rule); }
+    .contact-list .label {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gilt); min-width: 90px;
     }
-    .proverbs-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--font-sans);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 24px;
+    .contact-list .value, .contact-list a {
+      font-family: var(--serif-body); font-size: 17px;
+      color: var(--ink); text-decoration: none;
     }
-    .proverbs-quote {
-      font-family: var(--font-serif);
+    .contact-list a:hover { color: var(--burgundy); }
+    .contact-form {
+      background: var(--paper); border: 1px solid var(--rule);
+      padding: 48px 40px;
+    }
+    .form-field { margin-bottom: 24px; }
+    .form-field label {
+      font-family: var(--sans-accent); font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gilt); display: block; margin-bottom: 8px;
+    }
+    .form-field input, .form-field textarea {
+      width: 100%; padding: 14px 16px;
+      font-family: var(--serif-body); font-size: 16px;
+      background: var(--paper); border: 1px solid var(--rule);
+      color: var(--text); outline: none;
+      box-sizing: border-box;
+    }
+    .form-field textarea { min-height: 140px; resize: vertical; }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--ink); }
+    .form-checkbox {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--serif-body); font-size: 14px;
+      color: var(--text); margin: 16px 0 24px;
       font-style: italic;
-      font-size: clamp(20px, 3vw, 36px);
-      color: var(--white);
-      line-height: 1.8;
-      font-weight: 400;
-      max-width: 750px;
-      margin: 0 auto 10px;
     }
-    .proverbs-attribution {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 16px;
-      color: var(--gold);
+    .form-checkbox input { width: auto; margin: 0; }
+    .form-note {
+      font-family: var(--serif-body); font-style: italic;
+      font-size: 13px; color: var(--text-muted); margin-top: 16px;
     }
-    .proverbs-divider {
-      display: block;
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      margin: 20px auto;
-    }
-    .proverbs-quote-2 {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 15px;
-      color: rgba(255,255,255,.85);
-      line-height: 1.8;
-      margin-bottom: 8px;
-    }
-    .proverbs-join-label {
-      font-family: var(--font-sans);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .proverbs-join-heading {
-      font-family: var(--font-serif);
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 700;
-      color: var(--white);
-      max-width: 700px;
-      margin: 0 auto 20px;
-      line-height: 1.3;
-    }
-    .proverbs-join-body {
-      font-size: 17px;
-      color: rgba(255,255,255,.85);
-      max-width: 550px;
-      margin: 0 auto;
-      line-height: 1.8;
-    }
-    .proverbs-join-btns {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
-    .proverbs-btn-enroll {
-      display: inline-block;
-      background: #F0B429;
-      color: #1B3A6B;
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 16px;
-      padding: 16px 48px;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 8px 24px rgba(240,180,41,0.4);
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .proverbs-btn-enroll:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 36px rgba(240,180,41,0.6);
-    }
-    .proverbs-btn-learn {
-      display: inline-block;
-      background: transparent;
-      color: var(--white);
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 16px;
-      padding: 16px 48px;
-      border-radius: 50px;
-      border: 2px solid var(--white);
-      text-decoration: none;
-      transition: background .2s ease, color .2s ease, transform .2s ease;
-    }
-    .proverbs-btn-learn:hover {
-      background: var(--white);
-      color: var(--navy);
-      transform: translateY(-3px);
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .contact { padding: 80px 0; }
+      .contact-inner { padding: 0 28px; }
+      .contact-form { padding: 36px 28px; }
     }
 
-    /* ═══════════════════════════════════════════
-       ENROLL VIDEO (between testimonial & enroll)
-    ═══════════════════════════════════════════ */
-    #enroll-video {
-      position: relative;
-      height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #0a1a35 0%, #1B3A6B 100%);
+    /* ──────────────────────────────────────────
+       FOOTER
+    ────────────────────────────────────────── */
+    footer {
+      background: var(--ink); color: var(--paper);
+      padding: 80px 0 40px; position: relative; z-index: 2;
+      border-top: 1px solid var(--gilt);
     }
-    .enroll-video-bg {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 48px; text-align: center;
     }
-    #enroll-video::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(15,35,71,.55), rgba(15,35,71,.55));
-      z-index: 1;
-      pointer-events: none;
+    .footer-logo { margin: 0 auto 24px; max-width: 200px; }
+    .footer-logo img { height: 80px; width: auto; margin: 0 auto; display: block; }
+    .footer-tagline {
+      font-family: var(--serif-display); font-style: italic;
+      font-size: 22px; color: var(--gilt-soft);
+      margin: 0 0 32px;
     }
-    .enroll-video-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 0 36px;
-      max-width: 760px;
+    .footer-nav {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 28px; margin-bottom: 32px;
+      padding-bottom: 32px; border-bottom: 1px solid rgba(201,191,167,0.2);
     }
-    .enroll-video-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--font-sans);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
+    .footer-nav a {
+      font-family: var(--sans-accent); font-size: 12px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--paper); text-decoration: none;
     }
-    .enroll-video-label::after {
-      content: '';
-      display: inline-block;
-      width: 40px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
+    .footer-nav a:hover { color: var(--gilt-soft); }
+    .footer-donate { margin-bottom: 40px; }
+    .footer-donate-btn {
+      font-family: var(--sans-accent); font-size: 12px;
+      font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gilt); border: 1px solid var(--gilt);
+      padding: 14px 28px; text-decoration: none;
+      display: inline-block; transition: all 0.25s ease;
     }
-    .enroll-video-heading {
-      font-family: var(--font-serif);
-      font-weight: 700;
-      font-size: clamp(28px, 4vw, 48px);
-      color: var(--white);
-      line-height: 1.2;
-      max-width: 700px;
-      margin: 0 auto;
+    .footer-donate-btn:hover { background: var(--gilt); color: var(--ink); }
+    .footer-social { display: flex; justify-content: center; gap: 16px; margin-bottom: 32px; }
+    .footer-social a {
+      width: 40px; height: 40px; border: 1px solid rgba(201,191,167,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--paper); transition: all 0.25s ease;
     }
-    .enroll-video-body {
-      font-family: var(--font-sans);
-      font-size: 17px;
-      color: rgba(255,255,255,.85);
-      line-height: 1.8;
-      max-width: 550px;
-      margin: 16px auto 0;
+    .footer-social a:hover { border-color: var(--gilt); color: var(--gilt); }
+    .footer-social svg { width: 18px; height: 18px; }
+    .footer-meta {
+      font-family: var(--serif-body); font-size: 13px;
+      color: var(--sage-soft); line-height: 1.8;
     }
-    .enroll-video-btn {
-      margin-top: 24px;
-    }
+    .footer-meta a { color: var(--sage-soft); text-decoration: none; }
+    .footer-meta a:hover { color: var(--gilt-soft); }
+    @media (max-width: 768px) { footer { padding: 60px 0 32px; } .footer-inner { padding: 0 28px; } }
 
-    /* ═══════════════════════════════════════════
-       ENROLL — left column soft photo bg
-    ═══════════════════════════════════════════ */
-    .enroll-info {
-      position: relative;
-      isolation: isolate;
-      padding-right: 40px;
+    /* ──────────────────────────────────────────
+       SCROLL REVEAL
+    ────────────────────────────────────────── */
+    .reveal, .reveal-left, .reveal-right {
+      opacity: 0; transition: opacity 0.9s ease, transform 0.9s ease;
     }
-    .enroll-info::before {
-      content: '';
-      position: absolute;
-      inset: -24px;
-      background: url('https://images.unsplash.com/photo-1529390079861-591de354faf5?w=1600') center / cover no-repeat;
-      opacity: .07;
-      z-index: -1;
-      pointer-events: none;
-      border-radius: 20px;
+    .reveal { transform: translateY(24px); }
+    .reveal-left { transform: translateX(-30px); }
+    .reveal-right { transform: translateX(30px); }
+    .reveal.visible, .reveal-left.visible, .reveal-right.visible {
+      opacity: 1; transform: none;
     }
-
-    /* ═══════════════════════════════════════════
-       SHERRI VIDEO
-    ═══════════════════════════════════════════ */
-    .sherri-video-wrap {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .sherri-video-label {
-      font-family: var(--font-sans);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    @keyframes goldPulse {
-      from { box-shadow: 0 12px 40px rgba(240,180,41,0.3); }
-      to   { box-shadow: 0 12px 60px rgba(240,180,41,0.6); }
-    }
-    .sherri-video-portrait {
-      max-width: 380px;
-      margin: 0 auto;
-      position: relative;
-      background: #000;
-      border-radius: 20px;
-      border: 3px solid #F0B429;
-      overflow: hidden;
-      animation: goldPulse 2s ease infinite alternate;
-    }
-    .sherri-video {
-      width: 100%;
-      height: auto;
-      border-radius: 17px;
-      display: block;
-    }
-    .sherri-caption {
-      font-family: var(--font-sans);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--gold);
-      text-align: center;
-      margin-top: 16px;
-    }
-
-    /* ═══════════════════════════════════════════
-       CURRICULUM SECTION
-    ═══════════════════════════════════════════ */
-    #curriculum {
-      padding: 80px 0;
-      background: var(--white);
-      position: relative;
-      overflow: hidden;
-      margin: 0;
-    }
-    .curriculum-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .curriculum-header .section-label { justify-content: center; }
-    .curriculum-header .section-subtext { margin: 0 auto; }
-    .curriculum-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-    }
-    .curriculum-card {
-      background: var(--white);
-      border-radius: var(--radius-card);
-      padding: 32px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(0,0,0,.05);
-      transition: transform .3s ease, box-shadow .3s ease;
-    }
-    .curriculum-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-mid);
-    }
-    .curriculum-card-num {
-      font-family: var(--font-serif);
-      font-weight: 800;
-      font-size: 12px;
-      color: var(--gold);
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .curriculum-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .curriculum-icon svg { width: 100%; height: 100%; }
-    .curriculum-card h3 {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .curriculum-card p {
-      font-size: 15px;
-      color: #5a6070;
-      line-height: 1.75;
-      font-weight: 300;
-    }
-    .curriculum-cta {
-      text-align: center;
-      margin-top: 48px;
-    }
-    .btn-vanessa {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      background: #4B4F8F;
-      color: var(--white);
-      border-radius: 12px;
-      padding: 16px 32px;
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.20);
-      cursor: pointer;
-      border: none;
-      transition: transform .3s ease, box-shadow .3s ease;
-      max-width: 320px;
-      width: 100%;
-      text-decoration: none;
-    }
-    .btn-vanessa:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.28);
-      color: var(--white);
-    }
-    .btn-vanessa-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .btn-vanessa-text {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-    }
-    .btn-vanessa-main { font-size: 16px; font-weight: 700; letter-spacing: .04em; }
-    .btn-vanessa-sub  { font-size: 12px; font-weight: 400; opacity: .8; margin-top: 2px; }
-    .curriculum-enroll-cta { margin-top: 24px; }
-
-    /* ═══════════════════════════════════════════
-       NAV DROPDOWNS
-    ═══════════════════════════════════════════ */
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: .02em;
-      background: none;
-      border: none;
-      cursor: default;
-      padding: 0;
-      position: relative;
-    }
-    .nav-dropdown-trigger::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      transition: width .3s ease;
-    }
-    .nav-dropdown:hover .nav-dropdown-trigger::after { width: 100%; }
-    .nav-arrow {
-      display: inline-block;
-      font-size: 10px;
-      transition: transform .2s ease;
-      line-height: 1;
-    }
-    .nav-dropdown:hover .nav-arrow { transform: rotate(180deg); }
-    .nav-dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0,0,0,.12);
-      min-width: 200px;
-      padding: 10px 0 8px;
-      padding-top: 10px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateX(-50%) translateY(-8px);
-      transition: opacity .2s ease, transform .2s ease;
-      z-index: 200;
-    }
-    .nav-dropdown:hover .nav-dropdown-menu {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
-    .nav-dropdown-menu a,
-    .nav-dropdown-menu button {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      padding: 12px 24px;
-      font-family: var(--font-sans);
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--navy);
-      text-align: left;
-      white-space: nowrap;
-      border: none;
-      border-left: 3px solid transparent;
-      background: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background .2s ease, border-left-color .2s ease;
-    }
-    .nav-dropdown-menu a:hover,
-    .nav-dropdown-menu button:hover {
-      background: var(--light);
-      border-left-color: var(--gold);
-    }
-    .nav-play-dot {
-      width: 18px;
-      height: 18px;
-      background: #4B4F8F;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 8px;
-      color: var(--white);
-      line-height: 1;
-    }
-
-    /* ═══════════════════════════════════════════
-       MOBILE ACCORDION
-    ═══════════════════════════════════════════ */
-    .mobile-accordion { border-bottom: 1px solid rgba(0,0,0,.05); }
-    .mobile-acc-trigger {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      padding: 15px 36px;
-      font-family: var(--font-sans);
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--navy);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      transition: background .3s ease, color .3s ease;
-    }
-    .mobile-acc-trigger:hover { background: var(--light); color: var(--gold); }
-    .mobile-acc-arrow {
-      font-size: 10px;
-      transition: transform .2s ease;
-    }
-    .mobile-accordion.open .mobile-acc-arrow { transform: rotate(180deg); }
-    .mobile-acc-content { display: none; background: rgba(249,247,244,.8); }
-    .mobile-accordion.open .mobile-acc-content { display: block; }
-    .mobile-acc-content a,
-    .mobile-acc-content button {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      padding: 12px 52px;
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--navy);
-      border: none;
-      border-bottom: 1px solid rgba(0,0,0,.04);
-      background: none;
-      cursor: pointer;
-      text-align: left;
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-    .mobile-acc-content a:hover,
-    .mobile-acc-content button:hover { color: var(--gold); }
-    .mobile-enroll-btn {
-      display: block !important;
-      background: var(--gold) !important;
-      color: var(--navy) !important;
-      text-align: center !important;
-      padding: 16px 36px !important;
-    }
-    .mobile-enroll-btn:hover { color: var(--navy) !important; }
-
-    /* ═══════════════════════════════════════════
-       VANESSA LIGHTBOX
-    ═══════════════════════════════════════════ */
-    .vanessa-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.85);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .3s ease;
-    }
-    .vanessa-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .vanessa-modal {
-      position: relative;
-      background: var(--white);
-      border-radius: 16px;
-      padding: 8px;
-      max-width: 860px;
-      width: 100%;
-    }
-    .vanessa-close {
-      position: absolute;
-      top: -16px;
-      right: -16px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,.3);
-      border: none;
-      color: #1a1a1a;
-      line-height: 1;
-    }
-    .vanessa-video {
-      width: 100%;
-      border-radius: 12px;
-      display: block;
-    }
-
-    /* ═══════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════ */
-    @media (max-width: 1024px) {
-      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 860px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .about-two-col { grid-template-columns: 1fr; gap: 40px; padding: 40px 0; }
-      .why-grid { grid-template-columns: repeat(2, 1fr); }
-      .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
-      .team-grid { flex-direction: column; max-width: 480px; }
-      .enroll-grid { grid-template-columns: 1fr; gap: 56px; }
-      .enroll-info { padding-right: 0; }
-      .stats-grid { flex-wrap: wrap; gap: 32px 0; }
-      .stat-item { flex: 1 1 40%; }
-      .stat-divider { display: none; }
-      .team-cta-inner { flex-direction: column; text-align: center; }
-      .testimonials-flex { grid-template-columns: 1fr; }
-      .trust-bar-grid { flex-wrap: wrap; gap: 24px; }
-      .trust-bar-item { padding: 0 20px; flex: 1 1 40%; }
-      .trust-bar-divider { display: none; }
-      .philosophy-grid { grid-template-columns: 1fr; }
-      .parents-steps { grid-template-columns: 1fr; }
-      .hiw-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .container { padding: 0 20px; }
-      #about { padding: 60px 0; }
-      #curriculum { padding: 60px 0; }
-      #trust { padding: 60px 0; }
-      .about-two-col { padding: 30px 0; gap: 32px; }
-      .sherri-video-portrait { max-width: 100%; }
-      .why-grid { grid-template-columns: 1fr; }
-      .trust-grid { grid-template-columns: 1fr; }
-      .curriculum-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .outcomes-grid { grid-template-columns: 1fr; }
-      .hero-btns { flex-direction: column; align-items: center; }
-      .enroll-form-wrap { padding: 32px 24px; }
-      .team-pull-quote { padding-left: 18px; }
-      .stat-item { flex: 1 1 100%; }
-      .photo-strip { grid-template-columns: 1fr; height: auto; }
-      .photo-strip-item { height: 220px; }
-      #proverbs-banner { height: 280px; }
-      #enroll-video { height: 280px; }
-      .btn-vanessa { max-width: 100%; }
-      .team-cta-banner { padding: 40px 0; }
-      #outcomes { padding: 60px 0; }
-      #philosophy { padding: 60px 0; }
-      #how-it-works { padding: 60px 0; }
-      .trust-bar-item { flex: 1 1 40%; }
-    }
+    .stagger > * { transition-delay: 0ms; }
+    .stagger > *:nth-child(1) { transition-delay: 60ms; }
+    .stagger > *:nth-child(2) { transition-delay: 140ms; }
+    .stagger > *:nth-child(3) { transition-delay: 220ms; }
+    .stagger > *:nth-child(4) { transition-delay: 300ms; }
+    .stagger > *:nth-child(5) { transition-delay: 380ms; }
+    .stagger > *:nth-child(6) { transition-delay: 460ms; }
   </style>
 </head>
 <body>
 
   <!-- ══════════════════════════════════════════
-       ANNOUNCEMENT BAR
+       MASTHEAD
   ══════════════════════════════════════════ -->
-  <div id="announce-bar">
-    <span class="announce-text">
-      ✦ Christ-Centered Online Preschool for Ages 3–5 &nbsp;·&nbsp; Now Enrolling &nbsp;·&nbsp;
-      <a href="tel:9087381343" class="announce-phone">908-738-1343</a>
-    </span>
-    <button class="announce-close" id="announce-close" aria-label="Close announcement">✕</button>
+  <div class="masthead-top">
+    <span class="star">✦</span> Christ-Centered Online Preschool for Ages 3–5
+    <span class="star">·</span> Now Enrolling
+    <span class="star">·</span> <a href="tel:9087381343">908-738-1343</a>
   </div>
 
   <!-- ══════════════════════════════════════════
-       NAVIGATION
+       NAV
   ══════════════════════════════════════════ -->
-  <nav id="navbar">
-    <div class="container nav-inner">
-      <a href="#hero" class="tca-logo">
-        <img src="tca-logo.png" alt="Taylor Christian Academy" class="tca-logo-img">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="logo-navbar.png" alt="Taylor Christian Academy of the Arts" height="60" style="display:block; width:auto;">
       </a>
-
-      <ul class="nav-links">
-        <li><a href="#hero" class="nav-active">Home</a></li>
-
-        <li class="nav-dropdown">
-          <span class="nav-dropdown-trigger">About <span class="nav-arrow">▾</span></span>
-          <div class="nav-dropdown-menu">
-            <a href="index.html#mission" onclick="closeAllDropdowns()">Mission</a>
-            <a href="#how-it-works" onclick="closeAllDropdowns()">How It Works</a>
-            <a href="#team" onclick="closeAllDropdowns()">Our Team</a>
-          </div>
-        </li>
-
-        <li class="nav-dropdown">
-          <button class="nav-dropdown-trigger">Program <span class="nav-arrow">▾</span></button>
-          <div class="nav-dropdown-menu">
-            <a href="#curriculum" onclick="closeAllDropdowns()">Curriculum</a>
-            <button onclick="closeAllDropdowns(); openVanessaVideo()">
-              <span class="nav-play-dot">▶</span>See Us in Action
-            </button>
-          </div>
-        </li>
-
-        <li><a href="#pricing">Pricing</a></li>
-        <li>
-          <a href="enroll.html" class="nav-how-it-works">How It Works</a>
-        </li>
-        <li>
-          <a href="enroll.html#plans"
-             class="btn btn-gold nav-enroll">Enroll Now</a>
-        </li>
-      </ul>
-
-      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-links">
+        <a href="index.html#story" class="nav-link">Our Story</a>
+        <a href="index.html#tuition" class="nav-link">Tuition</a>
+        <a href="enroll.html#plans" class="nav-cta">Enroll Now</a>
+      </div>
     </div>
-
-    <nav class="mobile-nav" id="mobileNav">
-      <a href="#hero" onclick="closeMobile()" class="nav-active">Home</a>
-
-      <div class="mobile-accordion">
-        <button class="mobile-acc-trigger">About <span class="mobile-acc-arrow">▾</span></button>
-        <div class="mobile-acc-content">
-          <a href="index.html#mission" onclick="closeMobile()">Mission</a>
-          <a href="#how-it-works" onclick="closeMobile()">How It Works</a>
-          <a href="#team" onclick="closeMobile()">Our Team</a>
-        </div>
-      </div>
-
-      <div class="mobile-accordion">
-        <button class="mobile-acc-trigger">Program <span class="mobile-acc-arrow">▾</span></button>
-        <div class="mobile-acc-content">
-          <a href="#curriculum" onclick="closeMobile()">Curriculum</a>
-          <button onclick="closeMobile(); openVanessaVideo()">
-            <span class="nav-play-dot">▶</span>See Us in Action
-          </button>
-        </div>
-      </div>
-
-      <a href="#pricing" onclick="closeMobile()">Pricing</a>
-      <a href="enroll.html" onclick="closeMobile()">How It Works</a>
-      <a href="enroll.html#plans"
-         onclick="closeMobile()" class="mobile-enroll-btn">Enroll Now</a>
-    </nav>
   </nav>
-
 
   <!-- ══════════════════════════════════════════
        HERO
   ══════════════════════════════════════════ -->
-  <section id="hero">
-    <video class="hero-video" autoplay loop muted playsinline>
-      <source src="hero-video.mp4" type="video/mp4">
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div class="hero-left reveal-left">
+        <div class="hero-issue">Vol. I &nbsp;·&nbsp; Est. 2022 &nbsp;·&nbsp; Now Enrolling</div>
+        <h1>Where <em>Faith</em><br>Meets Learning</h1>
+        <div class="hero-rule"></div>
+        <p class="hero-subtitle">A Christ-centered online preschool where small classes, patient teachers, and God's Word shape a child's earliest years.</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-value">10</span>Max per class
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-value">3–5</span>Ages served
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-value">Live</span>Teacher-led
+          </div>
+        </div>
+        <div class="hero-ctas">
+          <a href="enroll.html#plans" class="btn-primary">Enroll Today</a>
+          <a href="#story" class="btn-link">Read our story →</a>
+        </div>
+      </div>
+      <div class="hero-right reveal-right">
+        <div class="hero-video-frame">
+          <video autoplay muted loop playsinline>
+            <source src="hero-video.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="caption">
+          <span class="caption-label">Now Playing —</span>
+          A live look inside a TCA class with Miss Vanessa
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOUNDATION (STORY)
+  ══════════════════════════════════════════ -->
+  <section class="foundation" id="story">
+    <div class="foundation-inner">
+      <div class="foundation-video-wrap reveal-left">
+        <div class="foundation-video">
+          <video controls poster="">
+            <source src="Sherri-Why-Choose.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="foundation-video-caption">A message from Sherri Taylor, Founder &amp; CEO</p>
+      </div>
+      <div class="foundation-text reveal-right">
+        <span class="section-kicker">Why Choose TCA</span>
+        <h2>A Foundation Built on<br>Faith &amp; <em>Excellence</em></h2>
+        <p>We combine a rigorous early childhood curriculum with the warmth of a Christ-centered community, all delivered conveniently online.</p>
+
+        <div class="foundation-list">
+          <div class="foundation-item">
+            <div class="foundation-item-num">01</div>
+            <p>Faith woven into every lesson — your child will know God's Word and grow in His love daily.</p>
+          </div>
+          <div class="foundation-item">
+            <div class="foundation-item-num">02</div>
+            <p>Live interactive Zoom classes with a real passionate teacher who knows your child by name.</p>
+          </div>
+          <div class="foundation-item">
+            <div class="foundation-item-num">03</div>
+            <p>Small intimate class sizes ensure every child gets the individual attention they deserve.</p>
+          </div>
+          <div class="foundation-item">
+            <div class="foundation-item-num">04</div>
+            <p>Learning materials provided conveniently so your child always has everything they need to engage, explore and grow.</p>
+          </div>
+        </div>
+
+        <div class="foundation-quote">
+          "Our preschool program is designed to help children build confidence in speaking and expressing their ideas."
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SCRIPTURE #1 — PROVERBS 22:6
+  ══════════════════════════════════════════ -->
+  <section class="scripture">
+    <video class="scripture-bg" autoplay muted loop playsinline>
+      <source src="proverbs-banner.mp4" type="video/mp4">
     </video>
-
-    <div class="hero-content">
-
-      <h2 class="hero-school-name">
-        <span class="name-taylor">Taylor</span>
-        <span class="name-christian"> Christian </span>
-        <span class="name-academy">Academy</span>
-      </h2>
-
-      <div class="hero-badge">✦ &nbsp;Christ-Centered &nbsp;·&nbsp; Ages 3–5 &nbsp;·&nbsp; Online</div>
-
-      <h1 class="hero-h1">
-        Where <em>Faith</em><br>Meets Learning
-      </h1>
-
-      <p class="hero-subtitle">Build Your Child's Academic and Spiritual Foundation — From Home</p>
-
-      <p class="hero-sub">
-        Live teacher-led online preschool for ages 3–5 · Small class sizes (max 10 students) · Kindergarten readiness focused
-      </p>
-
-      <p class="hero-verse">
-        "Train up a child in the way he should go,<br>
-        and when he is old he will not depart from it."<br>
-        — Proverbs 22:6
-      </p>
-
-      <div class="hero-btns">
-        <a href="enroll.html#plans"
-           class="btn btn-gold">Enroll Today</a>
-        <a href="index.html#mission" class="btn btn-outline-white">Learn More</a>
-      </div>
-
-    </div>
-
-    <div class="scroll-indicator">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
-      Scroll
+    <div class="scripture-overlay"></div>
+    <div class="scripture-inner reveal">
+      <div class="scripture-mark">"</div>
+      <p class="scripture-text">Train up a child in the way he should go, and when he is old he will not depart from it.</p>
+      <div class="scripture-attribution">Proverbs 22:6</div>
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
-       TRUST BAR
+       WHAT YOUR CHILD WILL GAIN
   ══════════════════════════════════════════ -->
-  <section id="trust-bar">
-    <div class="container">
-      <div class="trust-bar-grid reveal">
-        <div class="trust-bar-item">
-          <div class="trust-bar-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <div class="trust-bar-stat">Max 10</div>
-          <div class="trust-bar-label">Students Per Class</div>
-        </div>
-        <div class="trust-bar-divider"></div>
-        <div class="trust-bar-item">
-          <div class="trust-bar-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="23 7 16 12 23 17 23 7"/>
-              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-            </svg>
-          </div>
-          <div class="trust-bar-stat">Live</div>
-          <div class="trust-bar-label">Teacher-Led Instruction</div>
-        </div>
-        <div class="trust-bar-divider"></div>
-        <div class="trust-bar-item">
-          <div class="trust-bar-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="2" x2="12" y2="22"/>
-              <line x1="4" y1="8" x2="20" y2="8"/>
-            </svg>
-          </div>
-          <div class="trust-bar-stat">Faith-Based</div>
-          <div class="trust-bar-label">Academic Curriculum</div>
-        </div>
-        <div class="trust-bar-divider"></div>
-        <div class="trust-bar-item">
-          <div class="trust-bar-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-            </svg>
-          </div>
-          <div class="trust-bar-stat">K-Ready</div>
-          <div class="trust-bar-label">Kindergarten Readiness Focused</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       WHY TCA
-  ══════════════════════════════════════════ -->
-  <section id="about">
-    <div class="container">
-
-      <div class="reveal" style="text-align: center; margin-bottom: 28px;">
-        <div class="section-label" style="justify-content: center; font-size: 13px; letter-spacing: 0.25em; font-weight: 800; margin-bottom: 16px;">Why Choose TCA</div>
+  <section class="ed-section" id="outcomes">
+    <div class="ed-inner">
+      <div class="ed-header reveal">
+        <span class="section-kicker">What to Expect</span>
+        <h2>What Your Child<br>Will <em>Gain</em></h2>
+        <p>In just a few weeks with TCA your child will build skills that last a lifetime — academically, spiritually and socially — entering Kindergarten with confidence and a strong foundation ready to excel.</p>
       </div>
 
-      <div class="about-header reveal">
-        <h2 class="section-heading" style="font-size: clamp(42px, 6vw, 68px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #1B3A6B; margin-bottom: 24px;">A Foundation Built on<br>Faith &amp; Excellence</h2>
-        <p class="section-subtext" style="font-size: 19px; max-width: 680px; margin: 0 auto; line-height: 1.9; color: #555;">
-          We combine a rigorous early childhood curriculum with the warmth of a Christ-centered
-          community, all delivered conveniently online.
-        </p>
-      </div>
-
-      <div class="about-two-col">
-
-        <!-- Left: Founder Video -->
-        <div class="about-video-col reveal-left">
-          <p class="sherri-video-label">A Message From Our Founder</p>
-          <div class="sherri-video-portrait">
-            <video class="sherri-video" controls>
-              <source src="Sherri-Why-Choose.mp4" type="video/mp4">
-            </video>
-          </div>
-          <p class="sherri-caption">Sherri Taylor, Founder &amp; CEO</p>
-        </div>
-
-        <!-- Right: Feature Rows -->
-        <div class="about-features-col reveal-right">
-          <p class="feature-label">Our Promise to You</p>
-          <h3 class="feature-heading">What Makes TCA Different</h3>
-
-          <div class="feature-rows">
-
-            <div class="feature-row">
-              <svg class="feature-check" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="11" fill="#F0B429"/>
-                <polyline points="7 12 10.5 15.5 17 9" stroke="#1B3A6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <p>Faith woven into every lesson — your child will know God's Word and grow in His love daily.</p>
-            </div>
-
-            <div class="feature-row">
-              <svg class="feature-check" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="11" fill="#F0B429"/>
-                <polyline points="7 12 10.5 15.5 17 9" stroke="#1B3A6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <p>Live interactive Zoom classes with a real passionate teacher who knows your child by name.</p>
-            </div>
-
-            <div class="feature-row">
-              <svg class="feature-check" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="11" fill="#F0B429"/>
-                <polyline points="7 12 10.5 15.5 17 9" stroke="#1B3A6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <p>Small intimate class sizes ensure every child gets the individual attention they deserve.</p>
-            </div>
-
-            <div class="feature-row">
-              <svg class="feature-check" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="11" fill="#F0B429"/>
-                <polyline points="7 12 10.5 15.5 17 9" stroke="#1B3A6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <p>Learning materials provided conveniently so your child always has everything they need to engage, explore and grow.</p>
-            </div>
-
-          </div>
-
-          <span class="feature-divider"></span>
-
-          <p class="feature-quote">
-            "Our preschool program is designed to help children build confidence in
-            speaking and expressing their ideas."
-          </p>
-
-          <div style="margin-top: 32px;">
-            <a href="enroll.html#plans"
-               class="btn btn-gold">Enroll Today</a>
+      <div class="ed-list ed-two-col stagger">
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">01</div>
+          <div class="ed-list-body">
+            <h3>Letter Recognition</h3>
+            <p>Identifies letters and begins building early reading and phonics skills.</p>
           </div>
         </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       OUTCOMES
-  ══════════════════════════════════════════ -->
-  <section id="outcomes">
-    <div class="container">
-
-      <div class="outcomes-header reveal">
-        <div class="section-label" style="justify-content: center;">What to Expect</div>
-        <h2 class="section-heading">What Your Child Will Gain</h2>
-        <p class="section-subtext">
-          In just a few weeks with TCA your child will build skills that last a lifetime — academically, spiritually and socially — entering Kindergarten with confidence and a strong foundation ready to excel.
-        </p>
-      </div>
-
-      <div class="outcomes-grid stagger">
-
-        <div class="outcome-card reveal">
-          <div class="outcome-num">01</div>
-          <h3>Letter Recognition</h3>
-          <p>Identifies letters and begins building early reading and phonics skills.</p>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">02</div>
+          <div class="ed-list-body">
+            <h3>Number Confidence</h3>
+            <p>Counts, recognizes numbers and understands basic math concepts through hands-on activities.</p>
+          </div>
         </div>
-
-        <div class="outcome-card reveal">
-          <div class="outcome-num">02</div>
-          <h3>Number Confidence</h3>
-          <p>Counts, recognizes numbers and understands basic math concepts through hands-on activities.</p>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">03</div>
+          <div class="ed-list-body">
+            <h3>Bible Knowledge</h3>
+            <p>Learns scripture, Bible stories and how to open and close in prayer with confidence.</p>
+          </div>
         </div>
-
-        <div class="outcome-card reveal">
-          <div class="outcome-num">03</div>
-          <h3>Bible Knowledge</h3>
-          <p>Learns scripture, Bible stories and how to open and close in prayer with confidence.</p>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">04</div>
+          <div class="ed-list-body">
+            <h3>Creative Expression</h3>
+            <p>Develops fine motor skills through art, music, movement and hands-on crafts.</p>
+          </div>
         </div>
-
-        <div class="outcome-card reveal">
-          <div class="outcome-num">04</div>
-          <h3>Creative Expression</h3>
-          <p>Develops fine motor skills through art, music, movement and hands-on crafts.</p>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">05</div>
+          <div class="ed-list-body">
+            <h3>Public Speaking</h3>
+            <p>Builds confidence speaking and expressing ideas through show and tell and group discussions.</p>
+          </div>
         </div>
-
-        <div class="outcome-card reveal">
-          <div class="outcome-num">05</div>
-          <h3>Public Speaking</h3>
-          <p>Builds confidence speaking and expressing ideas through show and tell and group discussions.</p>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">06</div>
+          <div class="ed-list-body">
+            <h3>Social Skills</h3>
+            <p>Learns to interact, collaborate and build relationships in a safe nurturing environment.</p>
+          </div>
         </div>
-
-        <div class="outcome-card reveal">
-          <div class="outcome-num">06</div>
-          <h3>Social Skills</h3>
-          <p>Learns to interact, collaborate and build relationships in a safe nurturing environment.</p>
-        </div>
-
       </div>
 
-      <div class="outcomes-quote reveal">
+      <div class="ed-quote reveal">
         <p>"Our goal is to ensure students are academically prepared so they enter Kindergarten with confidence, having a strong foundation, ready to excel."</p>
         <cite>— Sherri Taylor, Founder &amp; CEO</cite>
       </div>
 
-      <div class="outcomes-cta reveal">
-        <a href="enroll.html#plans"
-           class="btn btn-gold">Enroll Today</a>
+      <div class="ed-cta-row reveal">
+        <a href="enroll.html#plans" class="btn-primary">Enroll Today</a>
       </div>
-
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
-       TEACHING PHILOSOPHY
+       HOW WE TEACH
   ══════════════════════════════════════════ -->
-  <section id="philosophy">
-    <div class="container">
-
-      <div class="philosophy-header reveal">
-        <div class="section-label">Our Teaching Philosophy</div>
-        <h2 class="section-heading">How We Teach</h2>
+  <section class="ed-section alt" id="philosophy">
+    <div class="ed-inner">
+      <div class="ed-header reveal">
+        <span class="section-kicker">Our Teaching Philosophy</span>
+        <h2>How We <em>Teach</em></h2>
       </div>
 
-      <div class="philosophy-grid stagger">
-
-        <div class="philosophy-card reveal">
-          <div class="philosophy-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="23 4 23 10 17 10"/>
-              <polyline points="1 20 1 14 7 14"/>
-              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-            </svg>
+      <div class="ed-list stagger">
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">01</div>
+          <div class="ed-list-body">
+            <h3>Repetition</h3>
+            <p>We use repetition to strengthen understanding and build true mastery of every concept.</p>
           </div>
-          <h3>Repetition</h3>
-          <p>We use repetition to strengthen understanding and build true mastery of every concept.</p>
         </div>
-
-        <div class="philosophy-card reveal">
-          <div class="philosophy-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
-              <path d="M7 17c0 2.8 2.2 5 5 5s5-2.2 5-5"/>
-            </svg>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">02</div>
+          <div class="ed-list-body">
+            <h3>Hands-On Learning</h3>
+            <p>Engaging, fun, hands-on experiences support deep comprehension and long-term retention.</p>
           </div>
-          <h3>Hands-On Learning</h3>
-          <p>Engaging, fun, hands-on experiences support deep comprehension and long-term retention.</p>
         </div>
-
-        <div class="philosophy-card reveal">
-          <div class="philosophy-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">03</div>
+          <div class="ed-list-body">
+            <h3>Meaningful Relationships</h3>
+            <p>Through meaningful relationships and interactive activities we make every child feel safe, valued and confident.</p>
           </div>
-          <h3>Meaningful Relationships</h3>
-          <p>Through meaningful relationships and interactive activities we make every child feel safe, valued and confident.</p>
         </div>
-
-        <div class="philosophy-card reveal">
-          <div class="philosophy-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2a5 5 0 0 1 5 5v3a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5z"/>
-              <path d="M9 22h6"/><path d="M12 17v5"/>
-            </svg>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">04</div>
+          <div class="ed-list-body">
+            <h3>Whole Child Approach</h3>
+            <p>We nurture the whole child — academically, socially, emotionally and spiritually.</p>
           </div>
-          <h3>Whole Child Approach</h3>
-          <p>We nurture the whole child — academically, socially, emotionally and spiritually.</p>
         </div>
-
       </div>
 
-      <div class="philosophy-pull-quote reveal">
+      <div class="ed-quote reveal">
         <p>"At TCA we believe children ages 3–5 learn best in a loving, nurturing environment where they feel safe, valued and confident — equipped to stand head and shoulders beyond their peers with confidence and joy."</p>
         <cite>— Sherri Taylor, Founder &amp; CEO</cite>
       </div>
-
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
-       CURRICULUM
+       WHAT YOUR CHILD WILL LEARN
   ══════════════════════════════════════════ -->
-  <section id="curriculum">
-    <div class="container">
-
-      <div class="curriculum-header reveal">
-        <div class="section-label">Curriculum</div>
-        <h2 class="section-heading">What Your Child Will Learn</h2>
-        <p class="section-subtext">
-          Our comprehensive preschool curriculum combines academics and faith-based learning
-          to build a strong foundation in every area of your child's development.
-        </p>
+  <section class="ed-section" id="curriculum">
+    <div class="ed-inner">
+      <div class="ed-header reveal">
+        <span class="section-kicker">Curriculum</span>
+        <h2>What Your Child<br>Will <em>Learn</em></h2>
+        <p>Our comprehensive preschool curriculum combines academics and faith-based learning to build a strong foundation in every area of your child's development.</p>
       </div>
 
-      <div class="curriculum-grid stagger">
-
-        <div class="curriculum-card reveal">
-          <div class="curriculum-card-num">01</div>
-          <div class="curriculum-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-            </svg>
+      <div class="ed-list ed-two-col stagger">
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">01</div>
+          <div class="ed-list-body">
+            <h3>Literacy &amp; Reading</h3>
+            <p>Building strong foundations in phonics, letter recognition, and early reading skills through fun interactive activities.</p>
           </div>
-          <h3>Literacy &amp; Reading</h3>
-          <p>Building strong foundations in phonics, letter recognition, and early reading skills through fun interactive activities.</p>
         </div>
-
-        <div class="curriculum-card reveal">
-          <div class="curriculum-card-num">02</div>
-          <div class="curriculum-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/>
-              <line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/>
-            </svg>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">02</div>
+          <div class="ed-list-body">
+            <h3>Math &amp; Numbers</h3>
+            <p>Introducing numbers, counting, patterns and basic math concepts through hands-on learning and movement activities.</p>
           </div>
-          <h3>Math &amp; Numbers</h3>
-          <p>Introducing numbers, counting, patterns and basic math concepts through hands-on learning and movement activities.</p>
         </div>
-
-        <div class="curriculum-card reveal">
-          <div class="curriculum-card-num">03</div>
-          <div class="curriculum-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
-            </svg>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">03</div>
+          <div class="ed-list-body">
+            <h3>Science Exploration</h3>
+            <p>Nurturing natural curiosity through simple science experiments and discovery activities that make learning exciting.</p>
           </div>
-          <h3>Science Exploration</h3>
-          <p>Nurturing natural curiosity through simple science experiments and discovery activities that make learning exciting.</p>
         </div>
-
-        <div class="curriculum-card reveal">
-          <div class="curriculum-card-num">04</div>
-          <div class="curriculum-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">04</div>
+          <div class="ed-list-body">
+            <h3>Arts, Science &amp; Confidence</h3>
+            <p>Music, movement, science exploration, arts and public speaking woven throughout every session.</p>
           </div>
-          <h3>Arts, Science &amp; Confidence</h3>
-          <p>Music, movement, science exploration, arts and public speaking woven throughout every session.</p>
-        </div>
-
-      </div>
-
-      <div class="curriculum-cta">
-        <a href="enroll.html#plans"
-           class="btn btn-gold">Enroll Today</a>
-        <div style="margin-top: 12px;">
-          <a href="#" style="font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--gold);">View full curriculum →</a>
         </div>
       </div>
 
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       PHOTO STRIP
-  ══════════════════════════════════════════ -->
-  <div class="photo-strip">
-    <div class="photo-strip-item">
-      <div class="photo-bg" style="background-image: url('teacher_zoom.png'); background-position: center center;"></div>
-      <div class="photo-overlay"></div>
-    </div>
-    <div class="photo-strip-item">
-      <div class="photo-bg" style="background-image: url('Parent_and_child_.png'); background-position: center center;"></div>
-      <div class="photo-overlay"></div>
-    </div>
-    <div class="photo-strip-item">
-      <div class="photo-bg" style="background-image: url('bro-sis.png'); background-position: center center;"></div>
-      <div class="photo-overlay"></div>
-    </div>
-  </div>
-
-
-  <!-- ══════════════════════════════════════════
-       STATS BAR
-  ══════════════════════════════════════════ -->
-  <section id="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item reveal">
-          <div class="stat-number">2022</div>
-          <div class="stat-label">Year Founded</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item reveal reveal-delay-1">
-          <div class="stat-number">8 yrs</div>
-          <div class="stat-label">Teaching Experience</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item reveal reveal-delay-2">
-          <div class="stat-number">3–5</div>
-          <div class="stat-label">Ages We Serve</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item reveal reveal-delay-3">
-          <div class="stat-number">501(c)(3)</div>
-          <div class="stat-label">Non-Profit Organization</div>
-        </div>
+      <div class="ed-cta-row reveal">
+        <a href="enroll.html#plans" class="btn-primary">Enroll Today</a>
       </div>
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
-       MISSION STATEMENT
+       WATCH A CLASS
   ══════════════════════════════════════════ -->
-  <section id="mission">
-    <div class="container">
-      <div class="mission-inner reveal">
-        <div class="section-label" style="justify-content:center;">Our Mission</div>
-        <span class="mission-rule"></span>
-        <p class="mission-quote">
-          "The mission of Taylor Christian Academy of the Arts is to become a recognized leader in
-          education, providing children with a rigorous Christ-centered education that will prepare
-          them to be creative critical-thinkers, problem-solvers, and entrepreneurs — to raise a
-          generation to love God and embrace His precepts."
-        </p>
-        <span class="mission-rule-bottom"></span>
+  <section class="watch-class" id="watch">
+    <div class="ed-inner">
+      <div class="ed-header reveal">
+        <span class="section-kicker">See It In Action</span>
+        <h2>Watch a <em>Class</em></h2>
+        <p>Take a quiet seat in the back of the room. Here's what a TCA session looks like with Miss Vanessa.</p>
+      </div>
+      <div class="watch-frame reveal">
+        <video controls preload="metadata">
+          <source src="Vanessa-Demo.MP4" type="video/mp4">
+        </video>
+      </div>
+      <div class="watch-caption">
+        <span class="watch-caption-italic">Featured —</span>
+        Miss Vanessa leading a live preschool session
       </div>
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
-       PROVERBS BANNER
+       MISSION
   ══════════════════════════════════════════ -->
-  <section id="proverbs-banner">
-    <video class="proverbs-video" autoplay loop muted playsinline>
-      <source src="proverbs-banner.mp4" type="video/mp4">
-    </video>
-
-    <div class="proverbs-content">
-      <div class="proverbs-join-label">Join the TCA Family</div>
-      <h2 class="proverbs-join-heading">Give Your Child a Future Rooted<br>in Faith &amp; Excellence</h2>
-      <p class="proverbs-join-body">Every child deserves a joyful, faith-filled start. We would love to welcome yours.</p>
-      <div class="proverbs-join-btns">
-        <a href="enroll.html#plans" class="proverbs-btn-enroll">Enroll Today</a>
-      </div>
+  <section class="mission" id="mission">
+    <div class="mission-inner reveal">
+      <span class="section-kicker">Our Mission</span>
+      <span class="mission-rule"></span>
+      <p class="mission-quote">"The mission of Taylor Christian Academy of the Arts is to become a recognized leader in education, providing children with a rigorous Christ-centered education that will prepare them to be creative critical-thinkers, problem-solvers, and entrepreneurs — to raise a generation to love God and embrace His precepts."</p>
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
-       HOW IT WORKS
+       WHAT A TCA CLASS LOOKS LIKE
   ══════════════════════════════════════════ -->
-  <section id="how-it-works">
-    <div class="container">
-
-      <div class="hiw-header reveal">
-        <div class="section-label">How It Works</div>
-        <h2 class="section-heading">What a TCA Class Looks Like</h2>
+  <section class="ed-section alt" id="how-it-works">
+    <div class="ed-inner">
+      <div class="ed-header reveal">
+        <span class="section-kicker">How It Works</span>
+        <h2>What a TCA Class<br><em>Looks Like</em></h2>
       </div>
 
-      <div class="hiw-grid stagger">
-
-        <div class="hiw-card reveal">
-          <span class="hiw-card-emoji">🙏</span>
-          <h3>Faith First</h3>
-          <p>Every class opens with prayer and a Bible story — building a spiritual foundation from day one.</p>
+      <div class="ed-list ed-two-col stagger">
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">01</div>
+          <div class="ed-list-body">
+            <h3>Faith First</h3>
+            <p>Every class opens with prayer and a Bible story — building a spiritual foundation from day one.</p>
+          </div>
         </div>
-
-        <div class="hiw-card reveal">
-          <span class="hiw-card-emoji">📚</span>
-          <h3>Academic Learning</h3>
-          <p>Structured literacy and math lessons using hands-on materials keep young minds engaged and growing.</p>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">02</div>
+          <div class="ed-list-body">
+            <h3>Academic Learning</h3>
+            <p>Structured literacy and math lessons using hands-on materials keep young minds engaged and growing.</p>
+          </div>
         </div>
-
-        <div class="hiw-card reveal">
-          <span class="hiw-card-emoji">🎨</span>
-          <h3>Creative Expression</h3>
-          <p>Music, movement, arts and crafts develop creativity, fine motor skills and joyful self-expression.</p>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">03</div>
+          <div class="ed-list-body">
+            <h3>Creative Expression</h3>
+            <p>Music, movement, arts and crafts develop creativity, fine motor skills and joyful self-expression.</p>
+          </div>
         </div>
-
-        <div class="hiw-card reveal">
-          <span class="hiw-card-emoji">🎤</span>
-          <h3>Confidence Building</h3>
-          <p>Show and tell and group activities build public speaking skills and social confidence every session.</p>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">04</div>
+          <div class="ed-list-body">
+            <h3>Confidence Building</h3>
+            <p>Show and tell and group activities build public speaking skills and social confidence every session.</p>
+          </div>
         </div>
-
       </div>
 
-      <div class="hiw-info-bar reveal">
+      <div class="ed-quote reveal">
         <p>40–45 min sessions · Max 10 students · Live on Zoom · Faith-based curriculum</p>
       </div>
-
-      <div class="hiw-more-link reveal">
-        <a href="#">See the full class breakdown →</a>
-      </div>
-
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
-       WHAT PARENTS RECEIVE
+       WHAT HAPPENS NEXT
   ══════════════════════════════════════════ -->
-  <section id="parents-receive">
-    <div class="container">
-
-      <div class="parents-header reveal">
-        <div class="section-label">After You Enroll</div>
-        <h2 class="section-heading">What Happens Next</h2>
+  <section class="ed-section" id="parents-receive">
+    <div class="ed-inner">
+      <div class="ed-header reveal">
+        <span class="section-kicker">After You Enroll</span>
+        <h2>What Happens <em>Next</em></h2>
       </div>
 
-      <div class="parents-steps stagger">
-
-        <div class="parents-step reveal">
-          <div class="parents-step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
+      <div class="ed-list stagger">
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">01</div>
+          <div class="ed-list-body">
+            <h3>Day 1</h3>
+            <p>Welcome email sent with your class details and Zoom link.</p>
           </div>
-          <strong>Day 1</strong>
-          <p>Welcome email sent with your class details and Zoom link.</p>
         </div>
-
-        <div class="parents-step reveal">
-          <div class="parents-step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/>
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-              <line x1="12" y1="22.08" x2="12" y2="12"/>
-            </svg>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">02</div>
+          <div class="ed-list-body">
+            <h3>Within 1 Week</h3>
+            <p>Your learning materials kit ships directly to your home.</p>
           </div>
-          <strong>Within 1 Week</strong>
-          <p>Your learning materials kit ships directly to your home.</p>
         </div>
-
-        <div class="parents-step reveal">
-          <div class="parents-step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F0B429" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-              <line x1="8" y1="21" x2="16" y2="21"/>
-              <line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
+        <div class="ed-list-item reveal">
+          <div class="ed-list-num">03</div>
+          <div class="ed-list-body">
+            <h3>Class Day</h3>
+            <p>Log in 3 minutes early. Your child's journey begins!</p>
           </div>
-          <strong>Class Day</strong>
-          <p>Log in 3 minutes early. Your child's journey begins!</p>
         </div>
-
       </div>
 
-      <p class="parents-note">
-        Materials kit includes hands-on learning supplies for every session. Optional printed learning sheets available for $30 add-on.
-      </p>
-
-      <div class="parents-more-link">
-        <a href="#">See full materials list →</a>
+      <div class="ed-quote reveal">
+        <p>Materials kit includes hands-on learning supplies for every session. Optional printed learning sheets available for $30 add-on.</p>
       </div>
-
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
-       OUR TEAM
+       HEARTS BEHIND TCA
   ══════════════════════════════════════════ -->
-  <section id="team">
-    <div class="container">
-
-      <div class="team-header reveal">
-        <div class="section-label">Our Team</div>
-        <h2 class="section-heading">The Hearts Behind TCA</h2>
-      </div>
-
-      <div class="team-pull-quote reveal">
-        <p>"I believe all children deserve a quality education in a loving, safe environment —
-          and should have fun while attaining it."</p>
-        <cite>— Sherri Taylor</cite>
+  <section class="team" id="team">
+    <div class="team-inner">
+      <div class="ed-header reveal">
+        <span class="section-kicker">Our Team</span>
+        <h2>The Hearts<br>Behind <em>TCA</em></h2>
+        <p>"I believe all children deserve a quality education in a loving, safe environment — and should have fun while attaining it." — Sherri Taylor</p>
       </div>
 
       <div class="team-grid">
-
         <!-- Sherri -->
         <div class="team-card reveal-left">
-          <img src="Sherri.png" alt="Sherri Taylor, Founder & CEO" class="team-photo" />
-          <div class="team-name">Sherri Taylor</div>
-          <div class="team-title">Founder &amp; CEO</div>
-          <p class="team-bio">
-            Sherri Taylor founded Taylor Christian Academy of the Arts with a singular vision: to make
-            exceptional, faith-rooted education accessible to every family. She believes all children
-            deserve a quality education in a loving, safe environment — and should have fun while
-            attaining it. As a Christian parent, she ensured her own daughter — a recent Harvard
-            graduate and now a Law Clerk at the United States Court of Appeals — enjoyed a quality
-            education that prepared her for lasting success. This is exactly what TCA will make happen
-            for children all over the world.
-          </p>
-          <div class="team-verse">
-            "The people that know their God shall be strong and do great exploits for Him."
-            <br>— Daniel 11:32
+          <div class="team-photo-wrap">
+            <img src="Sherri.png" alt="Sherri Taylor, Founder & CEO">
           </div>
+          <div class="team-pull-quote">"The people that know their God shall be strong and do great exploits for Him." — Daniel 11:32</div>
+          <div class="team-role">Founder &amp; CEO</div>
+          <div class="team-name">Sherri Taylor</div>
+          <p class="team-bio">Sherri Taylor founded Taylor Christian Academy of the Arts with a singular vision: to make exceptional, faith-rooted education accessible to every family. She believes all children deserve a quality education in a loving, safe environment — and should have fun while attaining it. As a Christian parent, she ensured her own daughter — a recent Harvard graduate and now a Law Clerk at the United States Court of Appeals — enjoyed a quality education that prepared her for lasting success. This is exactly what TCA will make happen for children all over the world.</p>
         </div>
 
-        <!-- Miss Vanessa -->
+        <!-- Vanessa -->
         <div class="team-card reveal-right">
-          <img src="Vanessa.png" alt="Miss Vanessa, Lead Preschool Teacher" class="team-photo" />
+          <div class="team-photo-wrap">
+            <img src="Vanessa.png" alt="Miss Vanessa, Lead Preschool Teacher">
+          </div>
+          <div class="team-role">Lead Preschool Teacher</div>
           <div class="team-name">Miss Vanessa</div>
-          <div class="team-title">Lead Preschool Teacher</div>
 
-          <ul class="team-creds" style="margin: 0 auto 20px;">
+          <div class="team-creds">Credentials</div>
+          <ul class="team-creds-list">
             <li>B.S. Early Childhood Education</li>
-            <li>M.S. Psychology – Early Childhood &amp; Adolescent Development</li>
+            <li>M.S. Psychology — Early Childhood &amp; Adolescent Development</li>
             <li>8 Years Teaching Experience</li>
           </ul>
 
@@ -3498,476 +1282,235 @@
             <span class="fun-fact-pill">🎨 Pink</span>
           </div>
 
-          <p class="team-bio">
-            Miss Vanessa brings warmth, patience, and deep expertise to every class. Her master's-level
-            training means she understands not just what to teach, but how young minds grow and thrive —
-            making every Zoom session something your child will look forward to all week long.
-          </p>
+          <p class="team-bio">Miss Vanessa brings warmth, patience, and deep expertise to every class. Her master's-level training means she understands not just what to teach, but how young minds grow and thrive — making every Zoom session something your child will look forward to all week long.</p>
         </div>
-
       </div>
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
-       TEAM CTA BANNER
+       TUITION PREVIEW
   ══════════════════════════════════════════ -->
-  <div class="team-cta-banner">
-    <div class="container">
-      <div class="team-cta-inner">
-        <div class="team-cta-text">
-          <h3>Ready to get started?</h3>
-          <p>Join the TCA family today and give your child a faith-filled academic foundation.</p>
-        </div>
-        <a href="enroll.html#plans"
-           class="btn btn-navy">Enroll Now</a>
+  <section class="tuition" id="tuition">
+    <div class="tuition-inner">
+      <div class="section-header reveal">
+        <span class="section-kicker">Tuition &amp; Enrollment</span>
+        <h2>Simple, Transparent<br><em>Pricing</em></h2>
+        <p class="section-subtitle">No hidden fees. Every plan includes live Zoom classes with Miss Vanessa and a supportive TCA community. Spaces are limited to ten students per class.</p>
       </div>
-    </div>
-  </div>
-
-
-  <!-- ══════════════════════════════════════════
-       PRICING
-  ══════════════════════════════════════════ -->
-  <section id="pricing">
-    <div class="container">
-
-      <div class="pricing-header reveal">
-        <div class="section-label">Tuition &amp; Fees</div>
-        <h2 class="section-heading">Simple, Transparent Pricing</h2>
-        <p class="section-subtext">
-          No hidden fees. Every plan includes live Zoom classes with Miss Vanessa and
-          a supportive TCA community. Spaces are limited to 10 students per class.
-        </p>
-      </div>
-
-      <div class="preview-grid stagger">
-
-        <!-- Card 1: 1 Session / Week -->
-        <div class="preview-card reveal">
-          <div class="preview-label">1 Session / Week</div>
-          <div class="preview-amount"><sup>$</sup>25</div>
-          <div class="preview-period">per week</div>
-          <div class="preview-fee">$60 registration fee included in first payment</div>
-          <ul class="preview-features">
+      <div class="tuition-grid stagger">
+        <div class="plan reveal">
+          <span class="plan-label">One Session / Week</span>
+          <div class="plan-price">$25</div>
+          <div class="plan-period">per week</div>
+          <div class="plan-note">$60 registration included in first payment</div>
+          <ul class="plan-features">
             <li>One live Zoom class per week</li>
             <li>Max 10 students per class</li>
             <li>Materials kit included</li>
             <li>Cancel anytime</li>
           </ul>
         </div>
-
-        <!-- Card 2: 2 Sessions / Week -->
-        <div class="preview-card reveal">
-          <div class="preview-label">2 Sessions / Week</div>
-          <div class="preview-amount"><sup>$</sup>40</div>
-          <div class="preview-period">per week</div>
-          <div class="preview-fee">$60 registration fee included in first payment</div>
-          <ul class="preview-features">
+        <div class="plan featured reveal">
+          <span class="plan-label">Monthly Plan</span>
+          <div class="plan-price">$150</div>
+          <div class="plan-period">per month</div>
+          <div class="plan-note">$60 registration included</div>
+          <ul class="plan-features">
+            <li>Eight sessions per month</li>
+            <li>Save $10/month vs weekly</li>
+            <li>Materials kit included</li>
+            <li>Cancel anytime</li>
+          </ul>
+        </div>
+        <div class="plan reveal">
+          <span class="plan-label">Two Sessions / Week</span>
+          <div class="plan-price">$40</div>
+          <div class="plan-period">per week</div>
+          <div class="plan-note">$60 registration included in first payment</div>
+          <ul class="plan-features">
             <li>Two live Zoom classes per week</li>
             <li>Better routine building</li>
             <li>Materials kit included</li>
             <li>Cancel anytime</li>
           </ul>
         </div>
+      </div>
+      <div class="tuition-cta reveal">
+        <a href="enroll.html#plans" class="btn-primary">See Plans &amp; Enroll</a>
+        <p class="tuition-cta-note">All plans include your $60 registration fee and materials kit in the first payment.</p>
+      </div>
+    </div>
+  </section>
 
-        <!-- Card 3: Monthly Plan (Best Value) -->
-        <div class="preview-card featured reveal">
-          <div class="best-value-pill">Best Value</div>
-          <div class="preview-label">Monthly Plan</div>
-          <div class="preview-amount"><sup>$</sup>150</div>
-          <div class="preview-period">per month</div>
-          <div class="preview-fee">$60 registration fee included in first payment</div>
-          <ul class="preview-features">
-            <li>8 sessions per month</li>
-            <li>Save $10/month vs weekly plan</li>
-            <li>Materials kit included</li>
-            <li>Cancel anytime</li>
+  <!-- ══════════════════════════════════════════
+       FAMILIES LOVE TCA
+  ══════════════════════════════════════════ -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-inner">
+      <div class="ed-header reveal">
+        <span class="section-kicker">What Parents Say</span>
+        <h2>Families <em>Love</em> TCA</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal-left">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"I am so grateful for TCA! I have watched my daughter grow in confidence in learning, interacting, and opening and closing in prayer on this online school platform. TCA fosters her creativity with their play, work, discuss, dance strategies. Thank you Ms. Vanessa for being an amazing, enthusiastic and patient teacher. Thank you to the founder Mrs. Taylor, for upholding core Christian values, teaching the unwavering truth through Bible stories, and introducing her to the PreK basics. We love the flexibility of the program, being able to do the evening class option at TCA now that she is in fulltime Preschool in the public school system. We highly encourage everyone to enroll their children in this program. What a great place to learn and grow!"</p>
+          <div class="testimonial-author">
+            <span class="testimonial-name">The Simms Family</span>
+            <span class="testimonial-role">TCA Online Preschool Parent</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal-right">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"TCA has been a very fun and meaningful experience for my daughter Zara. 'Read your Bible and Pray Every day' is a song that Zara has learned from one of TCA's teachers. When I asked Zara where she learned it she had the biggest smile on her face and proudly said 'Ms. Vanessa taught me!' TCA is such a great online school because it not only teaches preschool fundamentals but more importantly for me as a mother it is rooted in faith and the teaching of the Bible. That foundation is something every child needs at every age."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-name">The Sykes Family</span>
+            <span class="testimonial-role">TCA Online Preschool Parent</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-video-wrap reveal">
+        <video autoplay muted loop playsinline>
+          <source src="testimonial-video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="testimonial-video-caption">
+        <span class="watch-caption-italic" style="color: var(--gilt);">Inside TCA —</span>
+        Classes are limited to 10 students. Once a class is full enrollment closes.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       LETTERS FROM SHERRI
+  ══════════════════════════════════════════ -->
+  <section class="newsletter" id="letters">
+    <div class="newsletter-inner reveal">
+      <span class="section-kicker">Letters from Sherri</span>
+      <h2>A <em>quiet invitation</em></h2>
+      <p class="newsletter-intro">Join our small circle of parents. Twice a month, I send notes on raising children in faith, what we're reading in class this month, scripture for weary parents, and a quiet heads-up whenever a new class opens.</p>
+      <form action="PASTE_MAILCHIMP_FORM_ACTION_URL_HERE" method="post" target="_blank" class="newsletter-form" novalidate>
+        <input type="email" name="EMAIL" placeholder="Your email address" required class="newsletter-input">
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+          <input type="text" name="b_XXXX_XXXX" tabindex="-1" value="">
+        </div>
+        <button type="submit" class="newsletter-submit">Subscribe</button>
+      </form>
+      <p class="newsletter-disclaimer">No spam. Unsubscribe anytime. Your email stays with us.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       QUESTIONS? (CONTACT)
+  ══════════════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <span class="section-kicker">Get In Touch</span>
+          <h2><em>Questions?</em></h2>
+          <p>We'd love to welcome your child into the TCA family. Send us a note and we'll be in touch within 24 hours to answer your questions and help you pick the perfect class time.</p>
+          <ul class="contact-list">
+            <li>
+              <span class="label">Phone</span>
+              <a href="tel:9087381343">908-738-1343</a>
+            </li>
+            <li>
+              <span class="label">Email</span>
+              <a href="mailto:info@tcaarts.org">info@tcaarts.org</a>
+            </li>
+            <li>
+              <span class="label">Ages</span>
+              <span class="value">3–5 Years Old</span>
+            </li>
+            <li>
+              <span class="label">Org</span>
+              <span class="value">501(c)(3) Non-Profit</span>
+            </li>
           </ul>
         </div>
 
-      </div>
-
-      <div class="preview-cta-wrap reveal">
-        <a href="enroll.html#plans" class="btn btn-gold">See Plans &amp; Enroll &rarr;</a>
-        <p class="preview-cta-note">All plans include your $60 registration fee and materials kit in the first payment. Cancel anytime.</p>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       TESTIMONIALS
-  ══════════════════════════════════════════ -->
-  <section id="testimonial">
-    <div class="container">
-
-      <div style="text-align: center; margin-bottom: 48px;" class="reveal">
-        <div class="section-label" style="justify-content: center;">What Parents Say</div>
-        <h2 class="section-heading">Families Love TCA</h2>
-      </div>
-
-      <div class="testimonials-flex">
-
-        <!-- Simms Family -->
-        <div class="testimonial-card reveal-left">
-          <span class="quote-mark">"</span>
-          <span class="star-row">★★★★★</span>
-          <p class="testimonial-quote">
-            I am so grateful for TCA! I have watched my daughter grow in confidence in learning,
-            interacting, and opening and closing in prayer on this online school platform. TCA fosters
-            her creativity with their play, work, discuss, dance strategies. Thank you Ms. Vanessa for
-            being an amazing, enthusiastic and patient teacher. Thank you to the founder Mrs. Taylor,
-            for upholding core Christian values, teaching the unwavering truth through Bible stories,
-            and introducing her to the PreK basics. We love the flexibility of the program, being able
-            to do the evening class option at TCA now that she is in fulltime Preschool in the public
-            school system. We highly encourage everyone to enroll their children in this program.
-            What a great place to learn and grow!
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar">S</div>
-            <div class="author-info">
-              <strong>The Simms Family</strong>
-              <span>TCA Online Preschool Parent</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sykes Family -->
-        <div class="testimonial-card reveal-right">
-          <span class="quote-mark">"</span>
-          <span class="star-row">★★★★★</span>
-          <p class="testimonial-quote">
-            TCA has been a very fun and meaningful experience for my daughter Zara. 'Read your Bible
-            and Pray Every day' is a song that Zara has learned from one of TCA's teachers. When I
-            asked Zara where she learned it she had the biggest smile on her face and proudly said
-            'Ms. Vanessa taught me!'<br><br>
-            TCA is such a great online school because it not only teaches preschool fundamentals but
-            more importantly for me as a mother it is rooted in faith and the teaching of the Bible.
-            That foundation is something every child needs at every age.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar">S</div>
-            <div class="author-info">
-              <strong>The Sykes Family</strong>
-              <span>TCA Online Preschool Parent</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       ENROLL VIDEO
-  ══════════════════════════════════════════ -->
-  <section id="enroll-video">
-    <video class="enroll-video-bg" autoplay loop muted playsinline>
-      <source src="testimonial-video.mp4" type="video/mp4">
-    </video>
-
-    <div class="enroll-video-content">
-      <div class="enroll-video-label">Join Our Family</div>
-      <h2 class="enroll-video-heading">Secure Your Child's Spot Today</h2>
-      <p class="enroll-video-body">
-        Classes are limited to 10 students. Once a class is full enrollment closes. Give your child a faith-filled academic foundation that prepares them for Kindergarten and beyond.
-      </p>
-      <div class="enroll-video-btn">
-        <a href="enroll.html#plans"
-           class="btn btn-gold">Enroll Today</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       ENROLL / CONTACT
-  ══════════════════════════════════════════ -->
-  <section id="enroll">
-    <div class="container">
-      <div class="enroll-grid">
-
-        <!-- Left: Info -->
-        <div class="enroll-info reveal">
-          <div class="section-label">Get Started</div>
-          <h2 class="section-heading">Ready to Enroll?</h2>
-          <p class="section-subtext">
-            We'd love to welcome your child into the TCA family. Fill out the form and we'll be
-            in touch within 24 hours to answer your questions and help you pick the perfect
-            class time.
-          </p>
-
-          <div class="contact-list">
-
-            <div class="contact-row">
-              <div class="contact-icon-wrap">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-              </div>
-              <div class="contact-text">
-                <strong>Phone</strong>
-                <a href="tel:9087381343">908-738-1343</a>
-              </div>
-            </div>
-
-            <div class="contact-row">
-              <div class="contact-icon-wrap">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <div class="contact-text">
-                <strong>Email</strong>
-                <a href="mailto:info@tcaarts.org">info@tcaarts.org</a>
-              </div>
-            </div>
-
-            <div class="contact-row">
-              <div class="contact-icon-wrap">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                </svg>
-              </div>
-              <div class="contact-text">
-                <strong>Ages Served</strong>
-                <span>3–5 Years Old</span>
-              </div>
-            </div>
-
-            <div class="contact-row">
-              <div class="contact-icon-wrap">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              </div>
-              <div class="contact-text">
-                <strong>Organization</strong>
-                <span>501(c)(3) Non-Profit</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Right: Form -->
-        <div class="enroll-form-wrap reveal reveal-right" style="transition-delay:120ms">
-          <div class="form-heading">Send Us a Message</div>
-
+        <div class="contact-form reveal-right">
           <form action="mailto:info@tcaarts.org" method="POST" enctype="text/plain">
             <div class="form-field">
               <label for="f-name">Full Name</label>
-              <input type="text" id="f-name" name="Name" placeholder="Your full name" required />
+              <input type="text" id="f-name" name="Name" placeholder="Your full name" required>
             </div>
             <div class="form-field">
               <label for="f-email">Email Address</label>
-              <input type="email" id="f-email" name="Email" placeholder="you@example.com" required />
+              <input type="email" id="f-email" name="Email" placeholder="you@example.com" required>
             </div>
             <div class="form-field">
               <label for="f-phone">Phone Number</label>
-              <input type="tel" id="f-phone" name="Phone" placeholder="(555) 000-0000" />
+              <input type="tel" id="f-phone" name="Phone" placeholder="(555) 000-0000">
             </div>
             <div class="form-field">
               <label for="f-msg">Message</label>
               <textarea id="f-msg" name="Message" placeholder="Tell us about your child and any questions you have…"></textarea>
             </div>
-            <button type="submit" class="btn btn-red">Send Message</button>
-            <p class="form-note">We respond within 24 hours &nbsp;·&nbsp; Your info is never shared</p>
+            <label class="form-checkbox">
+              <input type="checkbox" name="newsletter-optin" value="yes">
+              Also add me to Letters from Sherri
+            </label>
+            <button type="submit" class="btn-primary">Send Message</button>
+            <p class="form-note">We respond within 24 hours · Your info is never shared.</p>
           </form>
-
-          <div class="policy-inline">
-            <p>By enrolling you agree to our class policies including our refund and attendance terms.</p>
-            <a href="#">View full policies →</a>
-          </div>
-
         </div>
       </div>
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════
        FOOTER
   ══════════════════════════════════════════ -->
   <footer>
-    <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo-transparent.png" alt="Taylor Christian Academy of the Arts">
+      </div>
+      <p class="footer-tagline">Rooted in Faith. Built for Excellence.</p>
 
-      <div class="footer-top">
-        <div class="footer-logo-wrap">
-          <div class="tca-logo tca-logo-footer">
-            <img src="tca-logo.png" alt="Taylor Christian Academy" class="tca-logo-img">
-          </div>
-        </div>
-        <p class="footer-tagline">Rooted in Faith. Built for Excellence.</p>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#story">Our Story</a>
+        <a href="index.html#tuition">Tuition</a>
+        <a href="enroll.html#plans">Enroll</a>
+      </nav>
 
-        <nav class="footer-nav">
-          <a href="#hero">Home</a>
-          <a href="index.html#mission">About</a>
-          <a href="#team">Our Team</a>
-          <a href="#pricing">Pricing</a>
-          <a href="enroll.html#plans">Enroll Now</a>
-        </nav>
-
-        <div class="social-row">
-          <!-- Facebook -->
-          <a href="https://www.facebook.com/profile.php?id=61556835478280"
-             target="_blank" class="social-btn" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-          </a>
-          <!-- Instagram -->
-          <a href="https://www.instagram.com/tca_artsacademy?igsh=MXF6MHluczVld3Vj"
-             target="_blank" class="social-btn" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-          </a>
-        </div>
-
-        <div class="footer-donate">
-          <a href="https://www.paypal.com/donate?business=info@tcaarts.org&currency_code=USD"
-             target="_blank" class="btn btn-outline-gold">
-            💛 &nbsp;Donate to Support TCA
-          </a>
-        </div>
+      <div class="footer-donate">
+        <a href="https://www.paypal.com/donate?business=info@tcaarts.org&currency_code=USD" target="_blank" class="footer-donate-btn">Donate to Support TCA</a>
       </div>
 
-      <div class="footer-bottom">
-        <div>© 2025 Taylor Christian Academy of the Arts</div>
-        <div>501(c)(3) Non-Profit Organization &nbsp;·&nbsp; All donations are tax-deductible.</div>
-        <div>
-          <a href="mailto:info@tcaarts.org">info@tcaarts.org</a>
-          &nbsp;·&nbsp;
-          <a href="tel:9087381343">908-738-1343</a>
-        </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/profile.php?id=61556835478280" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/tca_artsacademy?igsh=MXF6MHluczVld3Vj" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-meta">
         <div>3 Skiles Avenue #841, Piscataway, NJ 08855</div>
-        <p class="footer-disclaimer">Taylor Christian Academy of the Arts is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible.</p>
+        <div><a href="mailto:info@tcaarts.org">info@tcaarts.org</a> · <a href="tel:9087381343">908-738-1343</a></div>
+        <div>501(c)(3) Non-Profit Organization · All donations are tax-deductible.</div>
+        <div style="margin-top: 12px;">© 2025 Taylor Christian Academy of the Arts</div>
       </div>
-
     </div>
   </footer>
 
-
   <!-- ══════════════════════════════════════════
-       VANESSA LIGHTBOX
-  ══════════════════════════════════════════ -->
-  <div class="vanessa-overlay" id="vanessaOverlay">
-    <div class="vanessa-modal">
-      <button class="vanessa-close" onclick="closeVanessaVideo()" aria-label="Close video">&#x2715;</button>
-      <video class="vanessa-video" id="vanessaVideo" controls>
-        <source src="Vanessa-Demo.MP4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-
-
-  <!-- ══════════════════════════════════════════
-       JAVASCRIPT
+       SCROLL REVEAL
   ══════════════════════════════════════════ -->
   <script>
-    // ── Announcement bar ─────────────────────────────────────
-    const announceBar   = document.getElementById('announce-bar');
-    const announceClose = document.getElementById('announce-close');
-
-    function getBarHeight() {
-      return announceBar && !announceBar.classList.contains('hidden')
-        ? announceBar.offsetHeight : 0;
-    }
-    function syncNavbarTop() {
-      navbar.style.top = getBarHeight() + 'px';
-    }
-
-    // Restore closed state from localStorage
-    if (localStorage.getItem('tcaAnnounceClosed') === '1') {
-      announceBar.classList.add('hidden');
-    }
-
-    announceClose.addEventListener('click', () => {
-      announceBar.classList.add('hidden');
-      navbar.style.top = '0px';
-      localStorage.setItem('tcaAnnounceClosed', '1');
-    });
-
-    // ── Navbar scroll shadow ─────────────────────────────────
-    const navbar = document.getElementById('navbar');
-    syncNavbarTop(); // position navbar below bar on load
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    // ── Hamburger / mobile menu ──────────────────────────────
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav    = document.getElementById('mobileNav');
-
-    hamburgerBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = mobileNav.classList.toggle('open');
-      hamburgerBtn.classList.toggle('open', isOpen);
-      hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    function closeMobile() {
-      mobileNav.classList.remove('open');
-      hamburgerBtn.classList.remove('open');
-      hamburgerBtn.setAttribute('aria-expanded', 'false');
-      document.querySelectorAll('.mobile-accordion').forEach(a => a.classList.remove('open'));
-    }
-
-    // ── Desktop dropdown menus (CSS :hover — no JS needed) ───
-    // closeAllDropdowns kept for onclick handlers in mobile/anchor links
-    function closeAllDropdowns() {
-      // no-op for desktop (CSS hover); retains compatibility with onclick calls
-    }
-
-    // ── Mobile accordion ─────────────────────────────────────
-    document.querySelectorAll('.mobile-acc-trigger').forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        trigger.closest('.mobile-accordion').classList.toggle('open');
-      });
-    });
-
-    // ── Close all menus on outside click ─────────────────────
-    document.addEventListener('click', (e) => {
-      if (!navbar.contains(e.target)) {
-        closeMobile();
-        closeAllDropdowns();
-      }
-    });
-
-    // ── Vanessa Lightbox ──────────────────────────────────────
-    const vanessaOverlay = document.getElementById('vanessaOverlay');
-    const vanessaVideo   = document.getElementById('vanessaVideo');
-
-    function openVanessaVideo() {
-      vanessaOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      vanessaVideo.play().catch(() => {});
-    }
-
-    function closeVanessaVideo() {
-      vanessaOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-      vanessaVideo.pause();
-      vanessaVideo.currentTime = 0;
-    }
-
-    vanessaOverlay.addEventListener('click', (e) => {
-      if (e.target === vanessaOverlay) closeVanessaVideo();
-    });
-
-    // ── Intersection Observer — scroll reveal ────────────────
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -3975,14 +1518,10 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.10,
-      rootMargin: '0px 0px -60px 0px'
-    });
+    }, { threshold: 0.10, rootMargin: '0px 0px -60px 0px' });
 
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
       .forEach(el => revealObserver.observe(el));
-
   </script>
 
 </body>
