@@ -2,7 +2,7 @@
 
 ## What This Project Is
 
-A two-page marketing website for **Taylor Christian Academy Online Preschool** — a Christ-centered, live online preschool program for children ages 3–5, founded by Sherri Taylor. The site is built as plain HTML/CSS/JS with no frameworks or build tools. All styles and scripts are inline within each HTML file.
+A marketing website for **Taylor Christian Academy Online Preschool** — a Christ-centered, live online preschool program for children ages 3–5, founded by Sherri Taylor. The site is built as plain HTML/CSS/JS with no frameworks or build tools. All styles and scripts are inline within each HTML file.
 
 **Live Repository:** https://github.com/mjasey/TCA-Online-Preschool
 **GitHub Pages (when enabled):** https://mjasey.github.io/TCA-Online-Preschool/
@@ -30,13 +30,13 @@ A two-page marketing website for **Taylor Christian Academy Online Preschool** �
 ### HTML Pages
 | File | Purpose |
 |------|---------|
-| `index.html` | Main homepage — hero, Why TCA, curriculum, photo strip, stats, mission, proverbs banner, team, pricing, testimonial, enroll video, enroll/contact, footer |
-| `about.html` | About page — hero, welcome, stats bar, mission, proverbs video banner, Why Christian, 10 reasons, testimonial video banner, core competencies, founder feature, timeline, CTA, footer |
+| `index.html` | Main homepage — hero, Why TCA, curriculum, photo strip, stats, mission, proverbs banner, team, pricing, testimonial, enroll video, enroll/contact, footer. About info merged here under #mission. |
+| `enroll.html` | Enrollment page — 3-step process, pricing cards, class times |
 
 ### Images
 | File | Used In |
 |------|---------|
-| `Sherri.png` | Team section (index.html) + Founder section (about.html) |
+| `Sherri.png` | Team section (index.html) |
 | `Vanessa.png` | Team section (index.html) |
 | `teacher_zoom.png` | Photo strip (index.html) |
 | `Parent_and_child_.png` | Photo strip (index.html) |
@@ -46,9 +46,9 @@ A two-page marketing website for **Taylor Christian Academy Online Preschool** �
 ### Videos
 | File | Used In | Behavior |
 |------|---------|---------|
-| `hero-video.mp4` | Hero section (index.html) + Page hero (about.html) | `autoplay loop muted` background |
-| `proverbs-banner.mp4` | Proverbs/JOIN banner (index.html) + Proverbs banner (about.html) | `autoplay loop muted` background |
-| `testimonial-video.mp4` | Enroll video section (index.html) + Testimonial banner (about.html) | `autoplay loop muted` background |
+| `hero-video.mp4` | Hero section (index.html) | `autoplay loop muted` background |
+| `proverbs-banner.mp4` | Proverbs/JOIN banner (index.html) | `autoplay loop muted` background |
+| `testimonial-video.mp4` | Enroll video section (index.html) | `autoplay loop muted` background |
 | `Sherri-Why-Choose.mp4` | Why Choose TCA two-column section (index.html) | `controls` — user plays, NOT muted |
 | `Vanessa-Demo.MP4` | Vanessa lightbox overlay (index.html) | `controls` — user plays, NOT muted |
 
@@ -101,21 +101,8 @@ A two-page marketing website for **Taylor Christian Academy Online Preschool** �
 - Enroll/Contact section with form and contact info
 - Footer: logo, nav, social icons, donate button, disclaimer
 
-### about.html
-- Same navbar + announcement bar as index.html
-- Page hero with video background and colored title spans
-- Welcome section with two-column text layout
-- Stats bar: 4 stats (founding year, years experience, age range, nonprofit status)
-- Mission section
-- Proverbs video banner
-- Why Christian section with quote block
-- 10 Reasons section
-- Testimonial video banner with CTA
-- Core Competencies: 8-card grid (navy cards, gold border)
-- Founder feature: two-column (Sherri photo + bio + Daniel 11:32 verse)
-- Timeline: 4 milestones (2022 / 2023 / 2024 / Future)
-- Bottom CTA banner
-- Footer (same as index.html)
+### About page (removed)
+- The standalone About page was removed. About content (mission, team, how-it-works) is consolidated under sections within index.html and linked via the About dropdown anchors (`#mission`, `#how-it-works`, `#team`).
 
 ---
 
