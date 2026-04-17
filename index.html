@@ -340,9 +340,22 @@
     }
     .teacher-card {
       background: var(--paper);
-      padding: var(--s-7);
+      padding: 0;
       border-top: 3px solid var(--gilt);
       border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .teacher-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center 20%;
+      background: var(--paper-dark);
+    }
+    .teacher-body {
+      padding: var(--s-6) var(--s-7) var(--s-7);
     }
     .teacher-card h3 {
       margin-bottom: var(--s-1);
@@ -778,40 +791,42 @@
 
       <div class="team-grid">
         <article class="teacher-card">
-          <h3>Sherri Taylor</h3>
-          <div class="teacher-role">Founder · Director</div>
-          <p>
-            Sherri has spent decades teaching children to read, to wonder, and to trust
-            the Lord with their whole hearts. She founded Taylor Christian Academy to
-            bring that same patience and warmth into Christian homes everywhere.
-          </p>
-          <p>
-            She also directs TCA Arts, where children explore music, movement, and
-            scripture memorization through the love of the arts.
-          </p>
-          <div class="rule"></div>
-          <div class="teacher-actions">
-            <a href="https://tcaarts.org" target="_rel" class="btn btn-outline" style="padding: 10px 18px; font-size: 12px;">Visit TCA Arts</a>
+          <img src="Sherri.png" alt="Sherri Taylor, Founder and Director of Taylor Christian Academy" class="teacher-photo" loading="lazy" />
+          <div class="teacher-body">
+            <h3>Sherri Taylor</h3>
+            <div class="teacher-role">Founder · Director</div>
+            <p>
+              Sherri has spent decades teaching children to read, to wonder, and to trust
+              the Lord with their whole hearts. She founded Taylor Christian Academy to
+              bring that same patience and warmth into Christian homes everywhere.
+            </p>
+            <p>
+              Her passion is simple — to help children fall in love with learning while
+              their hearts are still soft enough to be shaped by God's Word.
+            </p>
           </div>
         </article>
 
         <article class="teacher-card">
-          <h3>Vanessa</h3>
-          <div class="teacher-role">Lead Teacher</div>
-          <p>
-            Miss Vanessa brings joy and rhythm into every class — from letter sounds
-            and number games to hymns, prayer, and gentle conversations about faith.
-          </p>
-          <p>
-            Her classroom is calm, kind, and full of laughter. See for yourself with
-            a short look inside one of her lessons.
-          </p>
-          <div class="rule"></div>
-          <div class="teacher-actions">
-            <button class="watch-link" id="open-vanessa-modal" type="button" aria-haspopup="dialog">
-              <span class="play-icon" aria-hidden="true"></span>
-              Watch a Class in Session
-            </button>
+          <img src="Vanessa.png" alt="Miss Vanessa, Lead Teacher at Taylor Christian Academy" class="teacher-photo" loading="lazy" />
+          <div class="teacher-body">
+            <h3>Vanessa</h3>
+            <div class="teacher-role">Lead Teacher</div>
+            <p>
+              Miss Vanessa brings joy and rhythm into every class — from letter sounds
+              and number games to hymns, prayer, and gentle conversations about faith.
+            </p>
+            <p>
+              Her classroom is calm, kind, and full of laughter. See for yourself with
+              a short look inside one of her lessons.
+            </p>
+            <div class="rule"></div>
+            <div class="teacher-actions">
+              <button class="watch-link" id="open-vanessa-modal" type="button" aria-haspopup="dialog">
+                <span class="play-icon" aria-hidden="true"></span>
+                Watch a Class in Session
+              </button>
+            </div>
           </div>
         </article>
       </div>
