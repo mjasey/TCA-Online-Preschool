@@ -1,1528 +1,1085 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Taylor Christian Academy — a Christ-centered online preschool for ages 3–5. Live, teacher-led classes from home.">
-  <title>Taylor Christian Academy of the Arts — Online Preschool, Ages 3–5</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taylor Christian Academy — Where Faith Meets Learning</title>
+  <meta name="description" content="A Christ-centered online preschool where small classes, patient teachers, and God's Word shape a child's earliest years. Ages 3–5." />
+  <link rel="icon" href="logo-icon.png" />
 
-  <link rel="icon" type="image/png" sizes="512x512" href="logo-icon.png">
-  <link rel="apple-touch-icon" href="logo-icon.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts: Cormorant Garamond (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* ──────────────────────────────────────────
-       DESIGN SYSTEM
-    ────────────────────────────────────────── */
+    /* ============================================================
+       DESIGN TOKENS — "Parish, simplified"
+       (Editorial Parish palette + Monarch spacing/rhythm + Inter body)
+       ============================================================ */
     :root {
-      --paper:        #F6F1E6;
-      --paper-dark:   #EEE7D5;
-      --ink:          #1A2340;
-      --ink-soft:     #2A3458;
-      --gilt:         #B8860B;
-      --gilt-soft:    #D4A933;
-      --burgundy:     #8B1A1A;
-      --sage:         #7A8471;
-      --sage-soft:    #A5AF9C;
-      --text:         #2B2418;
-      --text-muted:   #6B6456;
-      --rule:         #C9BFA7;
-      --serif-display: 'Cormorant Garamond', Georgia, serif;
-      --serif-body:    'Lora', Georgia, serif;
-      --sans-accent:   'Inter', -apple-system, sans-serif;
+      /* Color */
+      --paper:       #F6F1E6;
+      --paper-dark:  #EEE7D5;
+      --ink:         #1A2340;
+      --ink-soft:    #2A3458;
+      --gilt:        #B8860B;
+      --gilt-soft:   #D4A933;
+      --burgundy:    #8B1A1A;
+      --sage:        #7A8471;
+      --sage-soft:   #A5AF9C;
+      --text:        #2B2418;
+      --text-muted:  #6B6456;
+      --rule:        #C9BFA7;
+      --white:       #FFFFFF;
+
+      /* Type */
+      --serif:  'Cormorant Garamond', Georgia, serif;
+      --sans:   'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      /* Spacing scale */
+      --s-1: 4px;  --s-2: 8px;   --s-3: 12px;  --s-4: 16px;
+      --s-5: 24px; --s-6: 32px;  --s-7: 48px;  --s-8: 64px;
+      --s-9: 96px; --s-10: 128px;
+
+      /* Layout */
+      --max-w: 1200px;
+      --max-w-narrow: 920px;
+      --radius: 2px;
+      --radius-lg: 6px;
+
+      /* Shadow */
+      --shadow-1: 0 1px 2px rgba(26,35,64,0.06);
+      --shadow-2: 0 8px 24px rgba(26,35,64,0.08);
     }
 
+    /* ============================================================
+       RESET / BASE
+       ============================================================ */
     *, *::before, *::after { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: var(--serif-body);
-      background: var(--paper);
-      color: var(--text);
-      line-height: 1.65;
+      margin: 0;
+      font-family: var(--sans);
       font-size: 17px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--paper);
       -webkit-font-smoothing: antialiased;
-      margin: 0;
+      -moz-osx-font-smoothing: grayscale;
     }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.35;
-      z-index: 1;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.35  0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
     img, video { max-width: 100%; display: block; }
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { color: var(--burgundy); }
 
-    h1, h2, h3 {
-      font-family: var(--serif-display);
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
       font-weight: 500;
-      letter-spacing: -0.5px;
-      margin: 0;
       color: var(--ink);
+      margin: 0 0 var(--s-4) 0;
     }
-    h1 { font-size: clamp(48px, 7vw, 96px); line-height: 0.98; }
-    h2 { font-size: clamp(36px, 5vw, 64px); line-height: 1.05; }
-    h3 { font-size: 28px; line-height: 1.2; }
-    h1 em, .hero em { font-style: italic; color: var(--gilt); font-weight: 400; }
-    h2 em { font-style: italic; color: var(--burgundy); font-weight: 400; }
-    p { margin: 0 0 20px; }
-    a { color: var(--ink); }
+    h1 {
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+    }
+    h1 em { color: var(--gilt); font-style: italic; }
+    h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+    }
+    h2 em { color: var(--burgundy); font-style: italic; }
+    h3 { font-size: 24px; line-height: 1.25; }
+    p { margin: 0 0 var(--s-4) 0; }
 
-    .btn-primary {
-      font-family: var(--sans-accent);
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 2px; text-transform: uppercase;
-      background: var(--ink); color: var(--paper);
-      padding: 18px 36px; text-decoration: none;
-      border: 1px solid var(--ink);
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gilt);
+      margin-bottom: var(--s-4);
+    }
+
+    /* ============================================================
+       LAYOUT HELPERS
+       ============================================================ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding-left: var(--s-5);
+      padding-right: var(--s-5);
+    }
+    .container-narrow {
+      max-width: var(--max-w-narrow);
+      margin: 0 auto;
+      padding-left: var(--s-5);
+      padding-right: var(--s-5);
+    }
+    section {
+      padding-top: var(--s-9);
+      padding-bottom: var(--s-9);
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: var(--s-8);
+    }
+    .section-head p {
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-muted);
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--rule);
+      border: 0;
+      margin: 0;
+    }
+    .ornament {
+      text-align: center;
+      color: var(--gilt);
+      font-size: 20px;
+      letter-spacing: 0.4em;
+      margin-bottom: var(--s-4);
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
       display: inline-block;
-      transition: all 0.25s ease;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
       cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
     }
-    .btn-primary:hover { background: var(--burgundy); border-color: var(--burgundy); color: var(--paper); }
-
-    .btn-link {
-      font-family: var(--serif-display);
-      font-style: italic; font-size: 18px;
-      color: var(--ink); text-decoration: none;
-      border-bottom: 1px solid var(--gilt);
-      padding-bottom: 2px;
-    }
-    .btn-link:hover { color: var(--burgundy); }
-
-    .section-kicker {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 3.5px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 20px; display: inline-block;
-    }
-
-    /* ──────────────────────────────────────────
-       MASTHEAD BAND
-    ────────────────────────────────────────── */
-    .masthead-top {
+    .btn-primary {
       background: var(--ink);
       color: var(--paper);
-      text-align: center;
-      padding: 10px 20px;
-      font-family: var(--sans-accent);
-      font-size: 12px;
-      letter-spacing: 1px;
-      position: relative; z-index: 10;
+      border-color: var(--ink);
     }
-    .masthead-top .star { color: var(--gilt); margin: 0 10px; }
-    .masthead-top a { color: var(--gilt); text-decoration: none; }
+    .btn-primary:hover {
+      background: var(--burgundy);
+      color: var(--paper);
+      border-color: var(--burgundy);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+    .btn-outline:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .btn-gilt {
+      background: var(--gilt);
+      color: var(--paper);
+      border-color: var(--gilt);
+    }
+    .btn-gilt:hover {
+      background: var(--gilt-soft);
+      border-color: var(--gilt-soft);
+      color: var(--ink);
+    }
 
-    /* ──────────────────────────────────────────
-       NAV
-    ────────────────────────────────────────── */
+    /* ============================================================
+       MASTHEAD BAND + NAV
+       ============================================================ */
+    .masthead {
+      background: var(--ink);
+      color: var(--gilt-soft);
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 10px var(--s-5);
+    }
+    .masthead a { color: var(--gilt-soft); }
+    .masthead a:hover { color: var(--paper); }
+
     .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
       background: var(--paper);
       border-bottom: 1px solid var(--rule);
-      position: sticky; top: 0; z-index: 50;
-      padding: 16px 0;
+      backdrop-filter: saturate(180%) blur(8px);
     }
     .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 32px;
-      display: flex; align-items: center; justify-content: space-between;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: var(--s-3) var(--s-5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-4);
     }
-    .nav-brand img { height: 60px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 40px; align-items: center; }
-    .nav-link {
-      font-family: var(--serif-display);
-      font-size: 19px; color: var(--ink); text-decoration: none;
+    .nav-logo img {
+      height: 56px;
+      width: auto;
     }
-    .nav-link:hover { color: var(--burgundy); }
-    .nav-cta {
-      font-family: var(--sans-accent);
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--ink); border: 1px solid var(--ink);
-      padding: 10px 22px; text-decoration: none;
-      transition: all 0.25s ease;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--s-6);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
     }
-    .nav-cta:hover { background: var(--ink); color: var(--paper); }
-    @media (max-width: 768px) {
-      .nav-brand img { height: 48px; }
-      .nav-links { gap: 20px; }
-      .nav-link { font-size: 15px; }
-      .nav-cta { padding: 8px 14px; font-size: 11px; }
+    .nav-links a { color: var(--text); }
+    .nav-links a:hover { color: var(--burgundy); }
+    .nav-cta { padding: 10px 20px !important; font-size: 13px !important; }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 24px;
     }
 
-    /* ──────────────────────────────────────────
+    @media (max-width: 820px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: var(--s-4);
+        background: var(--paper);
+        padding: var(--s-5);
+        border-bottom: 1px solid var(--rule);
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+    }
+
+    /* ============================================================
        HERO
-    ────────────────────────────────────────── */
-    .hero { padding: 80px 0 100px; position: relative; z-index: 2; }
+       ============================================================ */
+    .hero {
+      padding-top: var(--s-8);
+      padding-bottom: var(--s-8);
+      border-bottom: 1px solid var(--rule);
+    }
     .hero-grid {
-      max-width: 1400px; margin: 0 auto; padding: 0 48px;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--s-8);
+      align-items: center;
     }
-    .hero-issue {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 4px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 32px;
-      display: flex; align-items: center; gap: 16px;
+    .hero-text h1 { margin-bottom: var(--s-5); }
+    .hero-text .lede {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: var(--s-6);
+      max-width: 520px;
     }
-    .hero-issue::before { content: ''; width: 40px; height: 1px; background: var(--gilt); }
-    .hero-rule { width: 60px; height: 2px; background: var(--gilt); margin: 28px 0; }
-    .hero-subtitle {
-      font-family: var(--serif-body); font-size: 20px;
-      line-height: 1.55; max-width: 460px;
-      margin-bottom: 40px; font-style: italic;
+    .hero-cta {
+      display: flex;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--s-6);
     }
-    .hero-meta { display: flex; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
-    .hero-meta-item {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);
-    }
-    .hero-meta-value {
-      font-family: var(--serif-display); font-size: 28px;
-      color: var(--ink); font-weight: 500; display: block;
-      margin-bottom: 4px; letter-spacing: 0; text-transform: none;
-    }
-    .hero-ctas { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
     .hero-video-frame {
-      aspect-ratio: 4/5; background: var(--ink);
-      overflow: hidden; position: relative;
-    }
-    .hero-video-frame video { width: 100%; height: 100%; object-fit: cover; }
-    .caption {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--text-muted); margin-top: 16px;
-      padding-left: 16px; border-left: 1px solid var(--rule);
-    }
-    .caption-label {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 14px; color: var(--gilt);
-      letter-spacing: 0; text-transform: none; margin-right: 8px;
-    }
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 48px; padding: 0 28px; }
-      .hero { padding: 48px 0 64px; }
-    }
-
-    /* ──────────────────────────────────────────
-       FOUNDATION (STORY)
-    ────────────────────────────────────────── */
-    .foundation {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
       background: var(--paper-dark);
-      padding: 140px 0;
-      position: relative; z-index: 2;
+      box-shadow: var(--shadow-2);
+      border: 1px solid var(--rule);
+    }
+    .hero-video-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-stats {
+      margin-top: var(--s-8);
+      padding-top: var(--s-6);
       border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
     }
-    .foundation-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 48px;
-      display: grid; grid-template-columns: 5fr 7fr;
-      gap: 80px; align-items: start;
-    }
-    .foundation-video {
-      aspect-ratio: 4/5; background: var(--ink); overflow: hidden;
-    }
-    .foundation-video video { width: 100%; height: 100%; object-fit: cover; }
-    .foundation-video-caption {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--text-muted); margin-top: 16px;
-      padding-left: 14px; border-left: 1px solid var(--rule);
-    }
-    .foundation-text h2 { margin-bottom: 32px; max-width: 540px; }
-    .foundation-text p { font-size: 18px; line-height: 1.75; max-width: 580px; }
-    .foundation-text p:first-of-type::first-letter {
-      font-family: var(--serif-display); font-size: 64px;
-      float: left; line-height: 0.85;
-      padding-right: 12px; padding-top: 6px;
-      color: var(--burgundy); font-weight: 500;
-    }
-    .foundation-list { margin-top: 48px; }
-    .foundation-item {
-      display: grid; grid-template-columns: 64px 1fr;
-      gap: 24px; padding: 28px 0;
-      border-top: 1px solid var(--rule);
-    }
-    .foundation-item:last-child { border-bottom: 1px solid var(--rule); }
-    .foundation-item-num {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 32px; color: var(--gilt); line-height: 1;
-    }
-    .foundation-item p {
-      margin: 0; font-size: 17px; line-height: 1.6; color: var(--text);
-    }
-    .foundation-quote {
-      margin-top: 40px; padding: 24px 28px;
-      border-left: 2px solid var(--gilt);
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 22px; line-height: 1.45; color: var(--ink-soft);
-    }
-    @media (max-width: 900px) {
-      .foundation { padding: 80px 0; }
-      .foundation-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 28px; }
-    }
-
-    /* ──────────────────────────────────────────
-       SCRIPTURE BANNERS
-    ────────────────────────────────────────── */
-    .scripture {
-      position: relative; padding: 160px 0;
-      overflow: hidden; color: var(--paper);
-      min-height: 500px; z-index: 2;
-    }
-    .scripture-bg {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; z-index: 1;
-    }
-    .scripture-overlay {
-      position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(135deg, rgba(10,20,40,0.85), rgba(26,35,64,0.8));
-    }
-    .scripture-inner {
-      position: relative; z-index: 3;
-      max-width: 820px; margin: 0 auto;
-      padding: 0 48px; text-align: center;
-    }
-    .scripture-mark {
-      font-family: var(--serif-display); font-size: 100px;
-      line-height: 0.4; color: var(--gilt);
-      margin-bottom: 30px; display: inline-block;
-    }
-    .scripture-text {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: clamp(32px, 4.5vw, 52px); font-weight: 400;
-      line-height: 1.25; color: var(--paper);
-      margin-bottom: 40px; letter-spacing: -0.3px;
-    }
-    .scripture-attribution {
-      font-family: var(--sans-accent); font-size: 12px;
-      letter-spacing: 3px; text-transform: uppercase; color: var(--gilt);
-    }
-    .scripture-attribution::before, .scripture-attribution::after {
-      content: '—'; margin: 0 12px; color: rgba(184,134,11,0.4);
-    }
-    @media (max-width: 768px) {
-      .scripture { padding: 100px 0; }
-    }
-
-    /* ──────────────────────────────────────────
-       EDITORIAL SECTIONS — SHARED
-    ────────────────────────────────────────── */
-    .ed-section {
-      padding: 140px 0;
-      position: relative; z-index: 2;
-    }
-    .ed-section.alt { background: var(--paper-dark); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    .ed-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
-    .ed-header { text-align: center; margin-bottom: 80px; max-width: 760px; margin-left: auto; margin-right: auto; }
-    .ed-header h2 { margin-bottom: 24px; }
-    .ed-header p {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 18px; line-height: 1.65; color: var(--text-muted);
-      max-width: 620px; margin: 0 auto;
-    }
-    @media (max-width: 768px) {
-      .ed-section { padding: 80px 0; }
-      .ed-inner { padding: 0 28px; }
-      .ed-header { margin-bottom: 56px; }
-    }
-
-    /* Numbered editorial list (used in multiple sections) */
-    .ed-list { display: grid; gap: 0; }
-    .ed-list-item {
-      display: grid; grid-template-columns: 80px 1fr;
-      gap: 32px; padding: 36px 0;
-      border-top: 1px solid var(--rule);
-      align-items: start;
-    }
-    .ed-list-item:last-child { border-bottom: 1px solid var(--rule); }
-    .ed-list-num {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 36px; color: var(--gilt); line-height: 1;
-      letter-spacing: -1px;
-    }
-    .ed-list-body h3 {
-      font-size: 26px; margin-bottom: 10px; color: var(--ink);
-    }
-    .ed-list-body p { margin: 0; font-size: 17px; line-height: 1.65; color: var(--text); }
-
-    /* Two-column editorial grid for short cards */
-    .ed-two-col {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .ed-two-col .ed-list-item:nth-child(odd) { border-right: 1px solid var(--rule); padding-right: 40px; }
-    .ed-two-col .ed-list-item:nth-child(even) { padding-left: 40px; }
-    .ed-two-col .ed-list-item:nth-child(2) { border-top: 1px solid var(--rule); }
-    @media (max-width: 768px) {
-      .ed-two-col { grid-template-columns: 1fr; }
-      .ed-two-col .ed-list-item:nth-child(odd) { border-right: none; padding-right: 0; }
-      .ed-two-col .ed-list-item:nth-child(even) { padding-left: 0; }
-    }
-
-    .ed-quote {
-      max-width: 760px; margin: 64px auto 0;
-      padding: 36px 32px; border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
+    .hero-stat {
       text-align: center;
     }
-    .ed-quote p {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 24px; line-height: 1.45; color: var(--ink-soft);
-      margin: 0 0 16px;
+    .hero-stat .num {
+      font-family: var(--serif);
+      font-size: 36px;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: var(--s-2);
     }
-    .ed-quote cite {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--gilt); font-style: normal;
-    }
-    .ed-cta-row {
-      text-align: center; margin-top: 64px;
-    }
-
-    /* ──────────────────────────────────────────
-       WATCH A CLASS
-    ────────────────────────────────────────── */
-    .watch-class {
-      padding: 140px 0; background: var(--ink);
-      color: var(--paper);
-      position: relative; z-index: 2;
-    }
-    .watch-class h2, .watch-class h3 { color: var(--paper); }
-    .watch-class .section-kicker { color: var(--gilt-soft); }
-    .watch-class .ed-header p { color: var(--sage-soft); }
-    .watch-frame {
-      max-width: 900px; margin: 0 auto;
-      aspect-ratio: 16/10;
-      background: #000; overflow: hidden;
-      border: 1px solid var(--gilt);
-    }
-    .watch-frame video { width: 100%; height: 100%; object-fit: cover; }
-    .watch-caption {
-      max-width: 900px; margin: 16px auto 0;
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--gilt-soft);
-      padding-left: 16px; border-left: 1px solid rgba(212,169,51,0.4);
-    }
-    .watch-caption-italic {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 14px; color: var(--gilt);
-      letter-spacing: 0; text-transform: none; margin-right: 8px;
-    }
-    @media (max-width: 768px) { .watch-class { padding: 80px 0; } }
-
-    /* ──────────────────────────────────────────
-       MISSION
-    ────────────────────────────────────────── */
-    .mission { padding: 160px 0; position: relative; z-index: 2; background: var(--paper); }
-    .mission-inner {
-      max-width: 880px; margin: 0 auto;
-      padding: 0 48px; text-align: center;
-    }
-    .mission-rule {
-      width: 60px; height: 1px; background: var(--gilt);
-      display: block; margin: 24px auto 32px;
-    }
-    .mission-quote {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: clamp(26px, 3.4vw, 38px); font-weight: 400;
-      line-height: 1.4; color: var(--ink); letter-spacing: -0.3px;
-      margin: 0;
-    }
-    @media (max-width: 768px) { .mission { padding: 100px 0; } .mission-inner { padding: 0 28px; } }
-
-    /* ──────────────────────────────────────────
-       TEAM
-    ────────────────────────────────────────── */
-    .team { padding: 140px 0; background: var(--paper-dark); position: relative; z-index: 2; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    .team-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
-    .team-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; margin-top: 64px;
-    }
-    .team-card { display: flex; flex-direction: column; }
-    .team-photo-wrap {
-      aspect-ratio: 3/4; max-width: 360px; width: 100%;
-      overflow: hidden; background: var(--ink); margin-bottom: 28px;
-    }
-    .team-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
-    .team-pull-quote {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 22px; line-height: 1.5; color: var(--ink-soft);
-      padding-left: 20px; border-left: 2px solid var(--gilt);
-      margin-bottom: 28px;
-    }
-    .team-name {
-      font-family: var(--serif-display); font-size: 32px;
-      color: var(--ink); margin-bottom: 4px;
-    }
-    .team-role {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 24px;
-    }
-    .team-creds {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 12px;
-    }
-    .team-creds-list { list-style: none; padding: 0; margin: 0 0 24px; }
-    .team-creds-list li {
-      font-family: var(--serif-body); font-size: 15px;
-      color: var(--text); padding: 6px 0;
-      border-bottom: 1px dashed var(--rule);
-    }
-    .team-bio {
-      font-family: var(--serif-body); font-size: 16px;
-      line-height: 1.75; color: var(--text);
-    }
-    .team-verse {
-      margin-top: 24px; padding: 20px 24px;
-      background: rgba(184,134,11,0.08);
-      border-left: 2px solid var(--gilt);
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 17px; line-height: 1.55; color: var(--ink-soft);
-    }
-    .fun-facts {
-      display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px;
-    }
-    .fun-fact-pill {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--ink); padding: 6px 12px;
-      border: 1px solid var(--rule); background: var(--paper);
-    }
-    @media (max-width: 900px) {
-      .team-grid { grid-template-columns: 1fr; gap: 64px; }
-      .team-photo-wrap { max-width: 320px; margin-left: auto; margin-right: auto; }
-    }
-    @media (max-width: 768px) { .team { padding: 80px 0; } .team-inner { padding: 0 28px; } }
-
-    /* ──────────────────────────────────────────
-       TUITION PREVIEW
-    ────────────────────────────────────────── */
-    .tuition { padding: 140px 0; background: var(--paper); position: relative; z-index: 2; }
-    .tuition-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-subtitle {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 17px; color: var(--text-muted);
-      margin-top: 20px; max-width: 560px; margin-left: auto; margin-right: auto;
-    }
-    .tuition-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 32px; margin-top: 60px;
-    }
-    .plan {
-      background: var(--paper-dark); border: 1px solid var(--rule);
-      padding: 48px 36px; position: relative;
-      transition: all 0.3s ease;
-    }
-    .plan:hover { transform: translateY(-4px); border-color: var(--gilt); }
-    .plan.featured {
-      background: var(--ink); border-color: var(--gilt); color: var(--paper);
-    }
-    .plan.featured::before {
-      content: 'BEST VALUE'; position: absolute; top: -12px; left: 50%;
-      transform: translateX(-50%); background: var(--gilt); color: var(--ink);
-      font-family: var(--sans-accent); font-size: 10px; font-weight: 600;
-      letter-spacing: 2.5px; padding: 6px 16px;
-    }
-    .plan-label {
-      font-family: var(--sans-accent); font-size: 10px;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 24px; display: block;
-    }
-    .plan.featured .plan-label { color: var(--gilt-soft); }
-    .plan-price {
-      font-family: var(--serif-display); font-size: 72px;
-      font-weight: 500; line-height: 1; color: var(--ink);
-      letter-spacing: -2px; margin-bottom: 8px;
-    }
-    .plan.featured .plan-price { color: var(--paper); }
-    .plan-period {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 16px; color: var(--text-muted); margin-bottom: 24px;
-    }
-    .plan.featured .plan-period { color: var(--sage-soft); }
-    .plan-note {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 1px; color: var(--gilt);
-      margin-bottom: 32px; padding-bottom: 32px;
-      border-bottom: 1px solid var(--rule); text-transform: uppercase;
-    }
-    .plan.featured .plan-note { color: var(--gilt-soft); border-color: rgba(201,191,167,0.3); }
-    .plan-features { list-style: none; padding: 0; margin: 0; }
-    .plan-features li {
-      font-family: var(--serif-body); font-size: 15px;
-      line-height: 1.5; color: var(--text);
-      padding: 10px 0; padding-left: 20px; position: relative;
-    }
-    .plan.featured .plan-features li { color: var(--paper); }
-    .plan-features li::before {
-      content: '—'; position: absolute; left: 0; color: var(--gilt);
-    }
-    .tuition-cta { text-align: center; margin-top: 64px; }
-    .tuition-cta-note {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 14px; color: var(--text-muted); margin-top: 20px;
-    }
-    @media (max-width: 900px) {
-      .tuition-grid { grid-template-columns: 1fr; }
-      .tuition { padding: 80px 0; }
-      .tuition-inner { padding: 0 28px; }
-    }
-
-    /* ──────────────────────────────────────────
-       TESTIMONIALS
-    ────────────────────────────────────────── */
-    .testimonials {
-      padding: 140px 0; background: var(--paper-dark);
-      border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
-      position: relative; z-index: 2;
-    }
-    .testimonials-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
-    .testimonials-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 48px; margin-bottom: 80px;
-    }
-    .testimonial-card {
-      background: var(--paper); border: 1px solid var(--rule);
-      padding: 48px 40px; position: relative;
-    }
-    .testimonial-stars {
-      font-family: var(--sans-accent); color: var(--gilt);
-      font-size: 18px; letter-spacing: 4px; margin-bottom: 24px;
-    }
-    .testimonial-quote {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 19px; line-height: 1.6; color: var(--ink-soft);
-      margin: 0 0 32px;
-    }
-    .testimonial-author {
-      padding-top: 24px; border-top: 1px solid var(--rule);
-    }
-    .testimonial-name {
-      font-family: var(--serif-display); font-size: 20px;
-      color: var(--ink); display: block;
-    }
-    .testimonial-role {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--text-muted); margin-top: 4px; display: block;
-    }
-    .testimonial-video-wrap {
-      max-width: 900px; margin: 0 auto;
-      aspect-ratio: 16/9; overflow: hidden;
-      background: #000; border: 1px solid var(--gilt);
-    }
-    .testimonial-video-wrap video { width: 100%; height: 100%; object-fit: cover; }
-    .testimonial-video-caption {
-      max-width: 900px; margin: 16px auto 0;
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 1.5px; text-transform: uppercase;
+    .hero-stat .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       color: var(--text-muted);
-      padding-left: 16px; border-left: 1px solid var(--rule);
     }
-    @media (max-width: 900px) {
-      .testimonials-grid { grid-template-columns: 1fr; gap: 32px; }
-      .testimonials { padding: 80px 0; }
-      .testimonials-inner { padding: 0 28px; }
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; gap: var(--s-6); }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
     }
 
-    /* ──────────────────────────────────────────
-       NEWSLETTER
-    ────────────────────────────────────────── */
-    .newsletter {
-      background: var(--paper); padding: 140px 0;
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      position: relative; z-index: 2;
+    /* ============================================================
+       FOUNDATION + SCRIPTURE
+       ============================================================ */
+    .foundation {
+      background: var(--paper-dark);
     }
-    .newsletter-inner {
-      max-width: 680px; margin: 0 auto;
-      padding: 0 48px; text-align: center;
+    .foundation-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: var(--s-8);
+      align-items: center;
     }
-    .newsletter h2 { margin-bottom: 8px; }
-    .newsletter-intro {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 18px; line-height: 1.7; color: var(--text);
-      max-width: 560px; margin: 30px auto 40px;
+    .foundation-video {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      box-shadow: var(--shadow-2);
     }
-    .newsletter-form {
-      display: flex; gap: 12px; max-width: 480px;
-      margin: 0 auto; flex-wrap: wrap; justify-content: center;
+    .foundation-video video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .scripture-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.5;
+      color: var(--burgundy);
+      border-left: 2px solid var(--gilt);
+      padding: var(--s-2) 0 var(--s-2) var(--s-5);
+      margin: var(--s-6) 0;
+    }
+    .scripture-quote cite {
+      display: block;
+      font-style: normal;
+      font-family: var(--sans);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-top: var(--s-3);
+    }
+    @media (max-width: 820px) {
+      .foundation-grid { grid-template-columns: 1fr; gap: var(--s-6); }
+    }
+
+    /* ============================================================
+       WATCH A CLASS
+       ============================================================ */
+    .watch .section-head { margin-bottom: var(--s-6); }
+    .watch-video {
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+      box-shadow: var(--shadow-2);
+      border: 1px solid var(--rule);
+    }
+    .watch-video video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* ============================================================
+       OUR APPROACH — 2x2 GRID
+       ============================================================ */
+    .approach {
+      background: var(--paper-dark);
+    }
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-5);
+    }
+    .approach-card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+      padding: var(--s-7);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .approach-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-2);
+    }
+    .approach-card .num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--gilt);
+      margin-bottom: var(--s-3);
+    }
+    .approach-card h3 {
+      font-size: 28px;
+      margin-bottom: var(--s-3);
+    }
+    .approach-card p {
+      color: var(--text-muted);
+      margin-bottom: var(--s-5);
+    }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-2);
+    }
+    .chip {
+      font-size: 13px;
+      font-family: var(--sans);
+      background: var(--paper-dark);
+      color: var(--ink);
+      padding: 6px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--rule);
+    }
+    @media (max-width: 820px) {
+      .approach-grid { grid-template-columns: 1fr; }
+      .approach-card { padding: var(--s-6); }
+    }
+
+    /* ============================================================
+       MEET THE TEACHERS
+       ============================================================ */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .team-card {
+      text-align: center;
+    }
+    .team-portrait {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto var(--s-5);
+      background: var(--paper-dark);
+      border: 3px solid var(--paper);
+      box-shadow: var(--shadow-2);
+    }
+    .team-portrait img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .team-card h3 {
+      margin-bottom: var(--s-2);
+    }
+    .team-card .role {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gilt);
+      margin-bottom: var(--s-4);
+    }
+    .team-card p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+    .team-card .quote {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.5;
+      margin-top: var(--s-4);
+    }
+    .credentials {
+      list-style: none;
+      padding: 0;
+      margin: var(--s-4) 0 0;
+      text-align: left;
+      display: inline-block;
+    }
+    .credentials li {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding: 4px 0;
+      padding-left: 20px;
       position: relative;
     }
-    .newsletter-input {
-      flex: 1; min-width: 240px; padding: 16px 20px;
-      font-family: var(--serif-body); font-size: 16px;
-      background: var(--paper-dark); border: 1px solid var(--rule);
-      color: var(--text); outline: none;
+    .credentials li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gilt);
     }
-    .newsletter-input:focus { border-color: var(--ink); }
-    .newsletter-input::placeholder { color: var(--text-muted); font-style: italic; }
-    .newsletter-submit {
-      font-family: var(--sans-accent); font-size: 12px;
-      font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
-      background: var(--ink); color: var(--paper);
-      padding: 16px 28px; border: 1px solid var(--ink);
-      cursor: pointer; transition: background 0.25s ease;
+    @media (max-width: 820px) {
+      .team-grid { grid-template-columns: 1fr; gap: var(--s-7); }
     }
-    .newsletter-submit:hover { background: var(--burgundy); border-color: var(--burgundy); }
-    .newsletter-disclaimer {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 13px; color: var(--text-muted); margin-top: 24px;
-    }
-    @media (max-width: 768px) { .newsletter { padding: 80px 0; } .newsletter-inner { padding: 0 28px; } }
 
-    /* ──────────────────────────────────────────
-       CONTACT (QUESTIONS)
-    ────────────────────────────────────────── */
-    .contact { padding: 140px 0; background: var(--paper-dark); border-top: 1px solid var(--rule); position: relative; z-index: 2; }
-    .contact-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
-    .contact-grid {
-      display: grid; grid-template-columns: 5fr 7fr;
-      gap: 80px; margin-top: 64px; align-items: start;
+    /* ============================================================
+       TUITION + TESTIMONIALS (side by side)
+       ============================================================ */
+    .tuition-section {
+      background: var(--paper-dark);
     }
-    .contact-info h2 { margin-bottom: 24px; }
-    .contact-info p {
-      font-family: var(--serif-body); font-size: 17px;
-      line-height: 1.7; color: var(--text); margin-bottom: 32px;
+    .tuition-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--s-8);
+      align-items: start;
     }
-    .contact-list { list-style: none; padding: 0; margin: 0; }
-    .contact-list li {
-      padding: 18px 0; border-top: 1px solid var(--rule);
-      display: flex; gap: 16px; align-items: baseline;
+    .tuition-cards {
+      display: grid;
+      gap: var(--s-4);
     }
-    .contact-list li:last-child { border-bottom: 1px solid var(--rule); }
-    .contact-list .label {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gilt); min-width: 90px;
+    .price-card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+      padding: var(--s-6);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: var(--s-5);
+      align-items: center;
     }
-    .contact-list .value, .contact-list a {
-      font-family: var(--serif-body); font-size: 17px;
-      color: var(--ink); text-decoration: none;
+    .price-card.featured {
+      border-color: var(--gilt);
+      background: #FEFBF0;
+      box-shadow: var(--shadow-2);
     }
-    .contact-list a:hover { color: var(--burgundy); }
-    .contact-form {
-      background: var(--paper); border: 1px solid var(--rule);
-      padding: 48px 40px;
+    .price-card .price {
+      font-family: var(--serif);
+      font-size: 40px;
+      color: var(--ink);
+      line-height: 1;
     }
-    .form-field { margin-bottom: 24px; }
-    .form-field label {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gilt); display: block; margin-bottom: 8px;
+    .price-card .price .per {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
-    .form-field input, .form-field textarea {
-      width: 100%; padding: 14px 16px;
-      font-family: var(--serif-body); font-size: 16px;
-      background: var(--paper); border: 1px solid var(--rule);
-      color: var(--text); outline: none;
-      box-sizing: border-box;
+    .price-card h4 {
+      font-family: var(--serif);
+      font-size: 22px;
+      margin: 0 0 4px 0;
+      color: var(--ink);
     }
-    .form-field textarea { min-height: 140px; resize: vertical; }
-    .form-field input:focus, .form-field textarea:focus { border-color: var(--ink); }
-    .form-checkbox {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--serif-body); font-size: 14px;
-      color: var(--text); margin: 16px 0 24px;
+    .price-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: var(--gilt);
+      color: var(--paper);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .price-card { position: relative; }
+    .tuition-cta { margin-top: var(--s-5); text-align: center; }
+
+    .testimonials {
+      display: grid;
+      gap: var(--s-5);
+    }
+    .testimonial {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+      padding: var(--s-6);
+    }
+    .stars { color: var(--gilt); letter-spacing: 2px; margin-bottom: var(--s-3); }
+    .testimonial blockquote {
+      font-family: var(--serif);
       font-style: italic;
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--text);
+      margin: 0 0 var(--s-3);
     }
-    .form-checkbox input { width: auto; margin: 0; }
-    .form-note {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 13px; color: var(--text-muted); margin-top: 16px;
+    .testimonial cite {
+      font-style: normal;
+      font-family: var(--sans);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gilt);
     }
+    .testimonial-video {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .testimonial-video video { width: 100%; height: 100%; object-fit: cover; }
     @media (max-width: 900px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-      .contact { padding: 80px 0; }
-      .contact-inner { padding: 0 28px; }
-      .contact-form { padding: 36px 28px; }
+      .tuition-grid { grid-template-columns: 1fr; gap: var(--s-7); }
+      .price-card { grid-template-columns: 1fr; gap: var(--s-2); text-align: left; }
     }
 
-    /* ──────────────────────────────────────────
+    /* ============================================================
+       STAY IN TOUCH (Newsletter + Contact)
+       ============================================================ */
+    .connect {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .connect h2, .connect h3 { color: var(--paper); }
+    .connect .eyebrow { color: var(--gilt-soft); }
+    .connect-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+    }
+    .connect-col p { color: rgba(246, 241, 230, 0.75); }
+    .connect label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gilt-soft);
+      margin-bottom: var(--s-2);
+    }
+    .connect input,
+    .connect textarea {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(246,241,230,0.3);
+      color: var(--paper);
+      font-family: var(--sans);
+      font-size: 16px;
+      padding: 10px 0;
+      margin-bottom: var(--s-4);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .connect input:focus,
+    .connect textarea:focus { border-color: var(--gilt); }
+    .connect input::placeholder,
+    .connect textarea::placeholder { color: rgba(246,241,230,0.4); }
+    .connect textarea { min-height: 90px; resize: vertical; }
+    .connect .btn-gilt { margin-top: var(--s-3); }
+
+    /* Honeypot hidden */
+    .hp { position: absolute; left: -5000px; visibility: hidden; }
+
+    @media (max-width: 820px) {
+      .connect-grid { grid-template-columns: 1fr; gap: var(--s-7); }
+    }
+
+    /* ============================================================
        FOOTER
-    ────────────────────────────────────────── */
-    footer {
-      background: var(--ink); color: var(--paper);
-      padding: 80px 0 40px; position: relative; z-index: 2;
-      border-top: 1px solid var(--gilt);
+       ============================================================ */
+    .footer {
+      background: var(--ink);
+      color: rgba(246,241,230,0.65);
+      padding: var(--s-7) var(--s-5) var(--s-5);
+      border-top: 1px solid rgba(246,241,230,0.1);
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 0.04em;
     }
-    .footer-inner {
-      max-width: 1100px; margin: 0 auto;
-      padding: 0 48px; text-align: center;
+    .footer img { height: 48px; margin: 0 auto var(--s-4); }
+    .footer a { color: var(--gilt-soft); }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--s-5);
+      flex-wrap: wrap;
+      margin: var(--s-4) 0;
     }
-    .footer-logo { margin: 0 auto 24px; max-width: 200px; }
-    .footer-logo img { height: 80px; width: auto; margin: 0 auto; display: block; }
-    .footer-tagline {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 22px; color: var(--gilt-soft);
-      margin: 0 0 32px;
+    .footer-small {
+      margin-top: var(--s-5);
+      font-size: 12px;
+      color: rgba(246,241,230,0.4);
+      letter-spacing: 0.08em;
     }
-    .footer-nav {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 28px; margin-bottom: 32px;
-      padding-bottom: 32px; border-bottom: 1px solid rgba(201,191,167,0.2);
-    }
-    .footer-nav a {
-      font-family: var(--sans-accent); font-size: 12px;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--paper); text-decoration: none;
-    }
-    .footer-nav a:hover { color: var(--gilt-soft); }
-    .footer-donate { margin-bottom: 40px; }
-    .footer-donate-btn {
-      font-family: var(--sans-accent); font-size: 12px;
-      font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gilt); border: 1px solid var(--gilt);
-      padding: 14px 28px; text-decoration: none;
-      display: inline-block; transition: all 0.25s ease;
-    }
-    .footer-donate-btn:hover { background: var(--gilt); color: var(--ink); }
-    .footer-social { display: flex; justify-content: center; gap: 16px; margin-bottom: 32px; }
-    .footer-social a {
-      width: 40px; height: 40px; border: 1px solid rgba(201,191,167,0.3);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--paper); transition: all 0.25s ease;
-    }
-    .footer-social a:hover { border-color: var(--gilt); color: var(--gilt); }
-    .footer-social svg { width: 18px; height: 18px; }
-    .footer-meta {
-      font-family: var(--serif-body); font-size: 13px;
-      color: var(--sage-soft); line-height: 1.8;
-    }
-    .footer-meta a { color: var(--sage-soft); text-decoration: none; }
-    .footer-meta a:hover { color: var(--gilt-soft); }
-    @media (max-width: 768px) { footer { padding: 60px 0 32px; } .footer-inner { padding: 0 28px; } }
 
-    /* ──────────────────────────────────────────
-       SCROLL REVEAL
-    ────────────────────────────────────────── */
-    .reveal, .reveal-left, .reveal-right {
-      opacity: 0; transition: opacity 0.9s ease, transform 0.9s ease;
+    /* ============================================================
+       UTILITIES
+       ============================================================ */
+    .visually-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
     }
-    .reveal { transform: translateY(24px); }
-    .reveal-left { transform: translateX(-30px); }
-    .reveal-right { transform: translateX(30px); }
-    .reveal.visible, .reveal-left.visible, .reveal-right.visible {
-      opacity: 1; transform: none;
-    }
-    .stagger > * { transition-delay: 0ms; }
-    .stagger > *:nth-child(1) { transition-delay: 60ms; }
-    .stagger > *:nth-child(2) { transition-delay: 140ms; }
-    .stagger > *:nth-child(3) { transition-delay: 220ms; }
-    .stagger > *:nth-child(4) { transition-delay: 300ms; }
-    .stagger > *:nth-child(5) { transition-delay: 380ms; }
-    .stagger > *:nth-child(6) { transition-delay: 460ms; }
   </style>
 </head>
+
 <body>
 
-  <!-- ══════════════════════════════════════════
-       MASTHEAD
-  ══════════════════════════════════════════ -->
-  <div class="masthead-top">
-    <span class="star">✦</span> Christ-Centered Online Preschool for Ages 3–5
-    <span class="star">·</span> Now Enrolling
-    <span class="star">·</span> <a href="tel:9087381343">908-738-1343</a>
+  <!-- ========== MASTHEAD BAND ========== -->
+  <div class="masthead">
+    ✦ Christ-Centered Online Preschool for Ages 3–5 · Now Enrolling · <a href="tel:9087381343">908-738-1343</a>
   </div>
 
-  <!-- ══════════════════════════════════════════
-       NAV
-  ══════════════════════════════════════════ -->
+  <!-- ========== NAV ========== -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <img src="logo-navbar.png" alt="Taylor Christian Academy of the Arts" height="60" style="display:block; width:auto;">
+      <a href="#hero" class="nav-logo" aria-label="Taylor Christian Academy home">
+        <img src="logo-navbar.png" alt="Taylor Christian Academy of the Arts" />
       </a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
       <div class="nav-links">
-        <a href="index.html#story" class="nav-link">Our Story</a>
-        <a href="index.html#tuition" class="nav-link">Tuition</a>
-        <a href="enroll.html#plans" class="nav-cta">Enroll Now</a>
+        <a href="#story">Our Story</a>
+        <a href="#approach">Our Approach</a>
+        <a href="#tuition">Tuition</a>
+        <a href="enroll.html#plans" class="btn btn-primary nav-cta">Enroll Now</a>
       </div>
     </div>
   </nav>
 
-  <!-- ══════════════════════════════════════════
-       HERO
-  ══════════════════════════════════════════ -->
+  <!-- ========== HERO ========== -->
   <section class="hero" id="hero">
-    <div class="hero-grid">
-      <div class="hero-left reveal-left">
-        <div class="hero-issue">Vol. I &nbsp;·&nbsp; Est. 2022 &nbsp;·&nbsp; Now Enrolling</div>
-        <h1>Where <em>Faith</em><br>Meets Learning</h1>
-        <div class="hero-rule"></div>
-        <p class="hero-subtitle">A Christ-centered online preschool where small classes, patient teachers, and God's Word shape a child's earliest years.</p>
-        <div class="hero-meta">
-          <div class="hero-meta-item">
-            <span class="hero-meta-value">10</span>Max per class
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-value">3–5</span>Ages served
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-value">Live</span>Teacher-led
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="eyebrow">Taylor Christian Academy of the Arts</div>
+          <h1>Where <em>Faith</em><br/>Meets Learning.</h1>
+          <p class="lede">A Christ-centered online preschool where small classes, patient teachers, and God's Word shape a child's earliest years.</p>
+          <div class="hero-cta">
+            <a href="enroll.html#plans" class="btn btn-primary">Enroll Your Child</a>
+            <a href="#story" class="btn btn-outline">Our Story</a>
           </div>
         </div>
-        <div class="hero-ctas">
-          <a href="enroll.html#plans" class="btn-primary">Enroll Today</a>
-          <a href="#story" class="btn-link">Read our story →</a>
-        </div>
-      </div>
-      <div class="hero-right reveal-right">
         <div class="hero-video-frame">
-          <video autoplay muted loop playsinline>
-            <source src="hero-video.mp4" type="video/mp4">
+          <video autoplay muted loop playsinline poster="logo-icon.png">
+            <source src="hero-video.mp4" type="video/mp4" />
           </video>
         </div>
-        <div class="caption">
-          <span class="caption-label">Now Playing —</span>
-          A live look inside a TCA class with Miss Vanessa
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">10</div>
+          <div class="label">Max per class</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3–5</div>
+          <div class="label">Ages welcomed</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">Live</div>
+          <div class="label">Teacher-led Zoom</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">501(c)(3)</div>
+          <div class="label">Non-profit ministry</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       FOUNDATION (STORY)
-  ══════════════════════════════════════════ -->
+  <!-- ========== FOUNDATION + SCRIPTURE ========== -->
   <section class="foundation" id="story">
-    <div class="foundation-inner">
-      <div class="foundation-video-wrap reveal-left">
+    <div class="container">
+      <div class="foundation-grid">
         <div class="foundation-video">
-          <video controls poster="">
-            <source src="Sherri-Why-Choose.mp4" type="video/mp4">
+          <video autoplay muted loop playsinline>
+            <source src="Sherri-Why-Choose.mp4" type="video/mp4" />
           </video>
         </div>
-        <p class="foundation-video-caption">A message from Sherri Taylor, Founder &amp; CEO</p>
-      </div>
-      <div class="foundation-text reveal-right">
-        <span class="section-kicker">Why Choose TCA</span>
-        <h2>A Foundation Built on<br>Faith &amp; <em>Excellence</em></h2>
-        <p>We combine a rigorous early childhood curriculum with the warmth of a Christ-centered community, all delivered conveniently online.</p>
-
-        <div class="foundation-list">
-          <div class="foundation-item">
-            <div class="foundation-item-num">01</div>
-            <p>Faith woven into every lesson — your child will know God's Word and grow in His love daily.</p>
-          </div>
-          <div class="foundation-item">
-            <div class="foundation-item-num">02</div>
-            <p>Live interactive Zoom classes with a real passionate teacher who knows your child by name.</p>
-          </div>
-          <div class="foundation-item">
-            <div class="foundation-item-num">03</div>
-            <p>Small intimate class sizes ensure every child gets the individual attention they deserve.</p>
-          </div>
-          <div class="foundation-item">
-            <div class="foundation-item-num">04</div>
-            <p>Learning materials provided conveniently so your child always has everything they need to engage, explore and grow.</p>
-          </div>
-        </div>
-
-        <div class="foundation-quote">
-          "Our preschool program is designed to help children build confidence in speaking and expressing their ideas."
+        <div class="foundation-text">
+          <div class="eyebrow">A Word From Our Founder</div>
+          <h2>A Foundation Built on <em>Faith &amp; Excellence.</em></h2>
+          <p>The mission of Taylor Christian Academy of the Arts is to become a recognized leader in education, providing children with a rigorous Christ-centered education that will prepare them to be creative critical-thinkers, problem-solvers, and entrepreneurs — to raise a generation to love God and embrace His precepts.</p>
+          <blockquote class="scripture-quote">
+            Train up a child in the way he should go, and when he is old he will not depart from it.
+            <cite>— Proverbs 22:6</cite>
+          </blockquote>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       SCRIPTURE #1 — PROVERBS 22:6
-  ══════════════════════════════════════════ -->
-  <section class="scripture">
-    <video class="scripture-bg" autoplay muted loop playsinline>
-      <source src="proverbs-banner.mp4" type="video/mp4">
-    </video>
-    <div class="scripture-overlay"></div>
-    <div class="scripture-inner reveal">
-      <div class="scripture-mark">"</div>
-      <p class="scripture-text">Train up a child in the way he should go, and when he is old he will not depart from it.</p>
-      <div class="scripture-attribution">Proverbs 22:6</div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       WHAT YOUR CHILD WILL GAIN
-  ══════════════════════════════════════════ -->
-  <section class="ed-section" id="outcomes">
-    <div class="ed-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">What to Expect</span>
-        <h2>What Your Child<br>Will <em>Gain</em></h2>
-        <p>In just a few weeks with TCA your child will build skills that last a lifetime — academically, spiritually and socially — entering Kindergarten with confidence and a strong foundation ready to excel.</p>
+  <!-- ========== WATCH A CLASS ========== -->
+  <section class="watch">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">See For Yourself</div>
+        <h2>Watch <em>a Class</em> in Session.</h2>
+        <p>A look inside a real TCA morning with Miss Vanessa — the warmth, the rhythm, the joy.</p>
       </div>
-
-      <div class="ed-list ed-two-col stagger">
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">01</div>
-          <div class="ed-list-body">
-            <h3>Letter Recognition</h3>
-            <p>Identifies letters and begins building early reading and phonics skills.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">02</div>
-          <div class="ed-list-body">
-            <h3>Number Confidence</h3>
-            <p>Counts, recognizes numbers and understands basic math concepts through hands-on activities.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">03</div>
-          <div class="ed-list-body">
-            <h3>Bible Knowledge</h3>
-            <p>Learns scripture, Bible stories and how to open and close in prayer with confidence.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">04</div>
-          <div class="ed-list-body">
-            <h3>Creative Expression</h3>
-            <p>Develops fine motor skills through art, music, movement and hands-on crafts.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">05</div>
-          <div class="ed-list-body">
-            <h3>Public Speaking</h3>
-            <p>Builds confidence speaking and expressing ideas through show and tell and group discussions.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">06</div>
-          <div class="ed-list-body">
-            <h3>Social Skills</h3>
-            <p>Learns to interact, collaborate and build relationships in a safe nurturing environment.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="ed-quote reveal">
-        <p>"Our goal is to ensure students are academically prepared so they enter Kindergarten with confidence, having a strong foundation, ready to excel."</p>
-        <cite>— Sherri Taylor, Founder &amp; CEO</cite>
-      </div>
-
-      <div class="ed-cta-row reveal">
-        <a href="enroll.html#plans" class="btn-primary">Enroll Today</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       HOW WE TEACH
-  ══════════════════════════════════════════ -->
-  <section class="ed-section alt" id="philosophy">
-    <div class="ed-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">Our Teaching Philosophy</span>
-        <h2>How We <em>Teach</em></h2>
-      </div>
-
-      <div class="ed-list stagger">
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">01</div>
-          <div class="ed-list-body">
-            <h3>Repetition</h3>
-            <p>We use repetition to strengthen understanding and build true mastery of every concept.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">02</div>
-          <div class="ed-list-body">
-            <h3>Hands-On Learning</h3>
-            <p>Engaging, fun, hands-on experiences support deep comprehension and long-term retention.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">03</div>
-          <div class="ed-list-body">
-            <h3>Meaningful Relationships</h3>
-            <p>Through meaningful relationships and interactive activities we make every child feel safe, valued and confident.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">04</div>
-          <div class="ed-list-body">
-            <h3>Whole Child Approach</h3>
-            <p>We nurture the whole child — academically, socially, emotionally and spiritually.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="ed-quote reveal">
-        <p>"At TCA we believe children ages 3–5 learn best in a loving, nurturing environment where they feel safe, valued and confident — equipped to stand head and shoulders beyond their peers with confidence and joy."</p>
-        <cite>— Sherri Taylor, Founder &amp; CEO</cite>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       WHAT YOUR CHILD WILL LEARN
-  ══════════════════════════════════════════ -->
-  <section class="ed-section" id="curriculum">
-    <div class="ed-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">Curriculum</span>
-        <h2>What Your Child<br>Will <em>Learn</em></h2>
-        <p>Our comprehensive preschool curriculum combines academics and faith-based learning to build a strong foundation in every area of your child's development.</p>
-      </div>
-
-      <div class="ed-list ed-two-col stagger">
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">01</div>
-          <div class="ed-list-body">
-            <h3>Literacy &amp; Reading</h3>
-            <p>Building strong foundations in phonics, letter recognition, and early reading skills through fun interactive activities.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">02</div>
-          <div class="ed-list-body">
-            <h3>Math &amp; Numbers</h3>
-            <p>Introducing numbers, counting, patterns and basic math concepts through hands-on learning and movement activities.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">03</div>
-          <div class="ed-list-body">
-            <h3>Science Exploration</h3>
-            <p>Nurturing natural curiosity through simple science experiments and discovery activities that make learning exciting.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">04</div>
-          <div class="ed-list-body">
-            <h3>Arts, Science &amp; Confidence</h3>
-            <p>Music, movement, science exploration, arts and public speaking woven throughout every session.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="ed-cta-row reveal">
-        <a href="enroll.html#plans" class="btn-primary">Enroll Today</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       WATCH A CLASS
-  ══════════════════════════════════════════ -->
-  <section class="watch-class" id="watch">
-    <div class="ed-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">See It In Action</span>
-        <h2>Watch a <em>Class</em></h2>
-        <p>Take a quiet seat in the back of the room. Here's what a TCA session looks like with Miss Vanessa.</p>
-      </div>
-      <div class="watch-frame reveal">
-        <video controls preload="metadata">
-          <source src="Vanessa-Demo.MP4" type="video/mp4">
+      <div class="watch-video">
+        <video controls playsinline poster="Vanessa.png">
+          <source src="Vanessa-Demo.mp4" type="video/mp4" />
         </video>
       </div>
-      <div class="watch-caption">
-        <span class="watch-caption-italic">Featured —</span>
-        Miss Vanessa leading a live preschool session
+    </div>
+  </section>
+
+  <!-- ========== OUR APPROACH (2x2 grid) ========== -->
+  <section class="approach" id="approach">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Our Approach</div>
+        <h2>Four Lenses on <em>Every Lesson.</em></h2>
+        <p>Each class is designed around four intertwined ideas — what children build, what they study, how we teach, and how a day feels.</p>
+      </div>
+
+      <div class="approach-grid">
+
+        <div class="approach-card">
+          <div class="num">i.</div>
+          <h3>Skills We Build</h3>
+          <p>Confidence with letters, numbers, scripture, and self-expression — the foundation of every future classroom.</p>
+          <div class="chip-row">
+            <span class="chip">Letter Recognition</span>
+            <span class="chip">Number Confidence</span>
+            <span class="chip">Bible Knowledge</span>
+            <span class="chip">Public Speaking</span>
+            <span class="chip">Creative Expression</span>
+            <span class="chip">Social Skills</span>
+          </div>
+        </div>
+
+        <div class="approach-card">
+          <div class="num">ii.</div>
+          <h3>Subjects We Cover</h3>
+          <p>A rigorous preschool curriculum that moves between core academics and the arts in every single session.</p>
+          <div class="chip-row">
+            <span class="chip">Literacy</span>
+            <span class="chip">Math</span>
+            <span class="chip">Science</span>
+            <span class="chip">Arts</span>
+          </div>
+        </div>
+
+        <div class="approach-card">
+          <div class="num">iii.</div>
+          <h3>How We Teach</h3>
+          <p>Small classes, patient repetition, and hands-on learning — shaped by the conviction that how we teach matters as much as what we teach.</p>
+          <div class="chip-row">
+            <span class="chip">Repetition</span>
+            <span class="chip">Hands-On</span>
+            <span class="chip">Meaningful Relationships</span>
+            <span class="chip">Whole Child</span>
+          </div>
+        </div>
+
+        <div class="approach-card">
+          <div class="num">iv.</div>
+          <h3>A Day in Class</h3>
+          <p>Every class follows a gentle rhythm — we begin in prayer, move through learning, make something with our hands, and close with encouragement.</p>
+          <div class="chip-row">
+            <span class="chip">Faith First</span>
+            <span class="chip">Academic</span>
+            <span class="chip">Creative</span>
+            <span class="chip">Confidence</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       MISSION
-  ══════════════════════════════════════════ -->
-  <section class="mission" id="mission">
-    <div class="mission-inner reveal">
-      <span class="section-kicker">Our Mission</span>
-      <span class="mission-rule"></span>
-      <p class="mission-quote">"The mission of Taylor Christian Academy of the Arts is to become a recognized leader in education, providing children with a rigorous Christ-centered education that will prepare them to be creative critical-thinkers, problem-solvers, and entrepreneurs — to raise a generation to love God and embrace His precepts."</p>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       WHAT A TCA CLASS LOOKS LIKE
-  ══════════════════════════════════════════ -->
-  <section class="ed-section alt" id="how-it-works">
-    <div class="ed-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">How It Works</span>
-        <h2>What a TCA Class<br><em>Looks Like</em></h2>
-      </div>
-
-      <div class="ed-list ed-two-col stagger">
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">01</div>
-          <div class="ed-list-body">
-            <h3>Faith First</h3>
-            <p>Every class opens with prayer and a Bible story — building a spiritual foundation from day one.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">02</div>
-          <div class="ed-list-body">
-            <h3>Academic Learning</h3>
-            <p>Structured literacy and math lessons using hands-on materials keep young minds engaged and growing.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">03</div>
-          <div class="ed-list-body">
-            <h3>Creative Expression</h3>
-            <p>Music, movement, arts and crafts develop creativity, fine motor skills and joyful self-expression.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">04</div>
-          <div class="ed-list-body">
-            <h3>Confidence Building</h3>
-            <p>Show and tell and group activities build public speaking skills and social confidence every session.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="ed-quote reveal">
-        <p>40–45 min sessions · Max 10 students · Live on Zoom · Faith-based curriculum</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       WHAT HAPPENS NEXT
-  ══════════════════════════════════════════ -->
-  <section class="ed-section" id="parents-receive">
-    <div class="ed-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">After You Enroll</span>
-        <h2>What Happens <em>Next</em></h2>
-      </div>
-
-      <div class="ed-list stagger">
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">01</div>
-          <div class="ed-list-body">
-            <h3>Day 1</h3>
-            <p>Welcome email sent with your class details and Zoom link.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">02</div>
-          <div class="ed-list-body">
-            <h3>Within 1 Week</h3>
-            <p>Your learning materials kit ships directly to your home.</p>
-          </div>
-        </div>
-        <div class="ed-list-item reveal">
-          <div class="ed-list-num">03</div>
-          <div class="ed-list-body">
-            <h3>Class Day</h3>
-            <p>Log in 3 minutes early. Your child's journey begins!</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="ed-quote reveal">
-        <p>Materials kit includes hands-on learning supplies for every session. Optional printed learning sheets available for $30 add-on.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       HEARTS BEHIND TCA
-  ══════════════════════════════════════════ -->
+  <!-- ========== MEET THE TEACHERS ========== -->
   <section class="team" id="team">
-    <div class="team-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">Our Team</span>
-        <h2>The Hearts<br>Behind <em>TCA</em></h2>
-        <p>"I believe all children deserve a quality education in a loving, safe environment — and should have fun while attaining it." — Sherri Taylor</p>
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">The Hearts Behind TCA</div>
+        <h2>Meet <em>Your Teachers.</em></h2>
       </div>
 
       <div class="team-grid">
-        <!-- Sherri -->
-        <div class="team-card reveal-left">
-          <div class="team-photo-wrap">
-            <img src="Sherri.png" alt="Sherri Taylor, Founder & CEO">
+
+        <div class="team-card">
+          <div class="team-portrait">
+            <img src="Sherri.png" alt="Sherri Taylor, Founder" />
           </div>
-          <div class="team-pull-quote">"The people that know their God shall be strong and do great exploits for Him." — Daniel 11:32</div>
-          <div class="team-role">Founder &amp; CEO</div>
-          <div class="team-name">Sherri Taylor</div>
-          <p class="team-bio">Sherri Taylor founded Taylor Christian Academy of the Arts with a singular vision: to make exceptional, faith-rooted education accessible to every family. She believes all children deserve a quality education in a loving, safe environment — and should have fun while attaining it. As a Christian parent, she ensured her own daughter — a recent Harvard graduate and now a Law Clerk at the United States Court of Appeals — enjoyed a quality education that prepared her for lasting success. This is exactly what TCA will make happen for children all over the world.</p>
+          <h3>Sherri Taylor</h3>
+          <div class="role">Founder &amp; CEO</div>
+          <p>Sherri founded Taylor Christian Academy of the Arts to raise a generation rooted in faith, rigor, and creativity.</p>
+          <div class="quote">"I believe all children deserve a quality education in a loving, safe environment — and should have fun while attaining it."</div>
         </div>
 
-        <!-- Vanessa -->
-        <div class="team-card reveal-right">
-          <div class="team-photo-wrap">
-            <img src="Vanessa.png" alt="Miss Vanessa, Lead Preschool Teacher">
+        <div class="team-card">
+          <div class="team-portrait">
+            <img src="Vanessa.png" alt="Miss Vanessa, Lead Teacher" />
           </div>
-          <div class="team-role">Lead Preschool Teacher</div>
-          <div class="team-name">Miss Vanessa</div>
-
-          <div class="team-creds">Credentials</div>
-          <ul class="team-creds-list">
+          <h3>Miss Vanessa</h3>
+          <div class="role">Lead Preschool Teacher</div>
+          <p>Miss Vanessa leads every live class with warmth, patience, and a deep well of early-childhood expertise.</p>
+          <ul class="credentials">
             <li>B.S. Early Childhood Education</li>
             <li>M.S. Psychology — Early Childhood &amp; Adolescent Development</li>
             <li>8 Years Teaching Experience</li>
           </ul>
+        </div>
 
-          <div class="fun-facts">
-            <span class="fun-fact-pill">🍕 Pizza</span>
-            <span class="fun-fact-pill">🍂 Fall</span>
-            <span class="fun-fact-pill">✍️ Writing</span>
-            <span class="fun-fact-pill">🎨 Pink</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TUITION + TESTIMONIALS ========== -->
+  <section class="tuition-section" id="tuition">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Simple, Transparent Pricing</div>
+        <h2>Choose the <em>Rhythm</em> That Fits Your Family.</h2>
+        <p>All plans include a one-time $60 registration fee, bundled into your first payment.</p>
+      </div>
+
+      <div class="tuition-grid">
+
+        <div class="tuition-cards">
+
+          <div class="price-card">
+            <div class="price">$25<span class="per">per week</span></div>
+            <div>
+              <h4>1 Session a Week</h4>
+              <p>One live class each week — a gentle introduction.</p>
+            </div>
+            <a href="enroll.html#plans" class="btn btn-outline">Learn More</a>
           </div>
 
-          <p class="team-bio">Miss Vanessa brings warmth, patience, and deep expertise to every class. Her master's-level training means she understands not just what to teach, but how young minds grow and thrive — making every Zoom session something your child will look forward to all week long.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="price-card">
+            <div class="price">$40<span class="per">per week</span></div>
+            <div>
+              <h4>2 Sessions a Week</h4>
+              <p>Two classes a week — steady progress and rhythm.</p>
+            </div>
+            <a href="enroll.html#plans" class="btn btn-outline">Learn More</a>
+          </div>
 
-  <!-- ══════════════════════════════════════════
-       TUITION PREVIEW
-  ══════════════════════════════════════════ -->
-  <section class="tuition" id="tuition">
-    <div class="tuition-inner">
-      <div class="section-header reveal">
-        <span class="section-kicker">Tuition &amp; Enrollment</span>
-        <h2>Simple, Transparent<br><em>Pricing</em></h2>
-        <p class="section-subtitle">No hidden fees. Every plan includes live Zoom classes with Miss Vanessa and a supportive TCA community. Spaces are limited to ten students per class.</p>
-      </div>
-      <div class="tuition-grid stagger">
-        <div class="plan reveal">
-          <span class="plan-label">One Session / Week</span>
-          <div class="plan-price">$25</div>
-          <div class="plan-period">per week</div>
-          <div class="plan-note">$60 registration included in first payment</div>
-          <ul class="plan-features">
-            <li>One live Zoom class per week</li>
-            <li>Max 10 students per class</li>
-            <li>Materials kit included</li>
-            <li>Cancel anytime</li>
-          </ul>
-        </div>
-        <div class="plan featured reveal">
-          <span class="plan-label">Monthly Plan</span>
-          <div class="plan-price">$150</div>
-          <div class="plan-period">per month</div>
-          <div class="plan-note">$60 registration included</div>
-          <ul class="plan-features">
-            <li>Eight sessions per month</li>
-            <li>Save $10/month vs weekly</li>
-            <li>Materials kit included</li>
-            <li>Cancel anytime</li>
-          </ul>
-        </div>
-        <div class="plan reveal">
-          <span class="plan-label">Two Sessions / Week</span>
-          <div class="plan-price">$40</div>
-          <div class="plan-period">per week</div>
-          <div class="plan-note">$60 registration included in first payment</div>
-          <ul class="plan-features">
-            <li>Two live Zoom classes per week</li>
-            <li>Better routine building</li>
-            <li>Materials kit included</li>
-            <li>Cancel anytime</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tuition-cta reveal">
-        <a href="enroll.html#plans" class="btn-primary">See Plans &amp; Enroll</a>
-        <p class="tuition-cta-note">All plans include your $60 registration fee and materials kit in the first payment.</p>
-      </div>
-    </div>
-  </section>
+          <div class="price-card featured">
+            <span class="badge">Best Value</span>
+            <div class="price">$150<span class="per">per month</span></div>
+            <div>
+              <h4>Monthly Plan</h4>
+              <p>8 sessions a month — our most popular plan.</p>
+            </div>
+            <a href="enroll.html#plans" class="btn btn-gilt">Learn More</a>
+          </div>
 
-  <!-- ══════════════════════════════════════════
-       FAMILIES LOVE TCA
-  ══════════════════════════════════════════ -->
-  <section class="testimonials" id="testimonials">
-    <div class="testimonials-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">What Parents Say</span>
-        <h2>Families <em>Love</em> TCA</h2>
-      </div>
-
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal-left">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">"I am so grateful for TCA! I have watched my daughter grow in confidence in learning, interacting, and opening and closing in prayer on this online school platform. TCA fosters her creativity with their play, work, discuss, dance strategies. Thank you Ms. Vanessa for being an amazing, enthusiastic and patient teacher. Thank you to the founder Mrs. Taylor, for upholding core Christian values, teaching the unwavering truth through Bible stories, and introducing her to the PreK basics. We love the flexibility of the program, being able to do the evening class option at TCA now that she is in fulltime Preschool in the public school system. We highly encourage everyone to enroll their children in this program. What a great place to learn and grow!"</p>
-          <div class="testimonial-author">
-            <span class="testimonial-name">The Simms Family</span>
-            <span class="testimonial-role">TCA Online Preschool Parent</span>
+          <div class="tuition-cta">
+            <a href="enroll.html#plans" class="btn btn-primary">See Plans &amp; Enroll</a>
           </div>
         </div>
 
-        <div class="testimonial-card reveal-right">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">"TCA has been a very fun and meaningful experience for my daughter Zara. 'Read your Bible and Pray Every day' is a song that Zara has learned from one of TCA's teachers. When I asked Zara where she learned it she had the biggest smile on her face and proudly said 'Ms. Vanessa taught me!' TCA is such a great online school because it not only teaches preschool fundamentals but more importantly for me as a mother it is rooted in faith and the teaching of the Bible. That foundation is something every child needs at every age."</p>
-          <div class="testimonial-author">
-            <span class="testimonial-name">The Sykes Family</span>
-            <span class="testimonial-role">TCA Online Preschool Parent</span>
+        <div class="testimonials">
+          <div class="eyebrow" style="margin-bottom: 0;">Families Love TCA</div>
+
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <blockquote>TCA has been such a blessing for our family. Miss Vanessa is patient, prepared, and our son actually asks when his next class is. It's preschool with a soul.</blockquote>
+            <cite>— The Sykes Family</cite>
+          </div>
+
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <blockquote>We love that faith is woven through every lesson. The small class size means our daughter is seen and heard every single day.</blockquote>
+            <cite>— The Simms Family</cite>
+          </div>
+
+          <div class="testimonial-video">
+            <video controls playsinline>
+              <source src="testimonial-video.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
-      </div>
 
-      <div class="testimonial-video-wrap reveal">
-        <video autoplay muted loop playsinline>
-          <source src="testimonial-video.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="testimonial-video-caption">
-        <span class="watch-caption-italic" style="color: var(--gilt);">Inside TCA —</span>
-        Classes are limited to 10 students. Once a class is full enrollment closes.
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       LETTERS FROM SHERRI
-  ══════════════════════════════════════════ -->
-  <section class="newsletter" id="letters">
-    <div class="newsletter-inner reveal">
-      <span class="section-kicker">Letters from Sherri</span>
-      <h2>A <em>quiet invitation</em></h2>
-      <p class="newsletter-intro">Join our small circle of parents. Twice a month, I send notes on raising children in faith, what we're reading in class this month, scripture for weary parents, and a quiet heads-up whenever a new class opens.</p>
-      <form action="PASTE_MAILCHIMP_FORM_ACTION_URL_HERE" method="post" target="_blank" class="newsletter-form" novalidate>
-        <input type="email" name="EMAIL" placeholder="Your email address" required class="newsletter-input">
-        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-          <input type="text" name="b_XXXX_XXXX" tabindex="-1" value="">
-        </div>
-        <button type="submit" class="newsletter-submit">Subscribe</button>
-      </form>
-      <p class="newsletter-disclaimer">No spam. Unsubscribe anytime. Your email stays with us.</p>
-    </div>
-  </section>
+  <!-- ========== STAY IN TOUCH ========== -->
+  <section class="connect" id="connect">
+    <div class="container">
+      <div class="connect-grid">
 
-  <!-- ══════════════════════════════════════════
-       QUESTIONS? (CONTACT)
-  ══════════════════════════════════════════ -->
-  <section class="contact" id="contact">
-    <div class="contact-inner">
-      <div class="contact-grid">
-        <div class="contact-info reveal-left">
-          <span class="section-kicker">Get In Touch</span>
-          <h2><em>Questions?</em></h2>
-          <p>We'd love to welcome your child into the TCA family. Send us a note and we'll be in touch within 24 hours to answer your questions and help you pick the perfect class time.</p>
-          <ul class="contact-list">
-            <li>
-              <span class="label">Phone</span>
-              <a href="tel:9087381343">908-738-1343</a>
-            </li>
-            <li>
-              <span class="label">Email</span>
-              <a href="mailto:info@tcaarts.org">info@tcaarts.org</a>
-            </li>
-            <li>
-              <span class="label">Ages</span>
-              <span class="value">3–5 Years Old</span>
-            </li>
-            <li>
-              <span class="label">Org</span>
-              <span class="value">501(c)(3) Non-Profit</span>
-            </li>
-          </ul>
-        </div>
+        <div class="connect-col">
+          <div class="eyebrow">Letters From Sherri</div>
+          <h2>Not Ready Yet? <em>Stay in Touch.</em></h2>
+          <p>Bi-monthly notes from Sherri — scripture, class updates, and a quiet heads-up when new class times open.</p>
 
-        <div class="contact-form reveal-right">
-          <form action="mailto:info@tcaarts.org" method="POST" enctype="text/plain">
-            <div class="form-field">
-              <label for="f-name">Full Name</label>
-              <input type="text" id="f-name" name="Name" placeholder="Your full name" required>
+          <form action="https://app.us2.list-manage.com/subscribe/post?u=7a33040c91c6b96fa721bccf6&amp;id=c4e48d1be6&amp;f_id=007695e0f0" method="post" target="_blank" novalidate>
+            <label for="mce-EMAIL">Email Address</label>
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="you@example.com" required />
+            <div class="hp" aria-hidden="true">
+              <input type="text" name="b_7a33040c91c6b96fa721bccf6_c4e48d1be6" tabindex="-1" value="" />
             </div>
-            <div class="form-field">
-              <label for="f-email">Email Address</label>
-              <input type="email" id="f-email" name="Email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-field">
-              <label for="f-phone">Phone Number</label>
-              <input type="tel" id="f-phone" name="Phone" placeholder="(555) 000-0000">
-            </div>
-            <div class="form-field">
-              <label for="f-msg">Message</label>
-              <textarea id="f-msg" name="Message" placeholder="Tell us about your child and any questions you have…"></textarea>
-            </div>
-            <label class="form-checkbox">
-              <input type="checkbox" name="newsletter-optin" value="yes">
-              Also add me to Letters from Sherri
-            </label>
-            <button type="submit" class="btn-primary">Send Message</button>
-            <p class="form-note">We respond within 24 hours · Your info is never shared.</p>
+            <button type="submit" class="btn btn-gilt">Subscribe</button>
           </form>
         </div>
+
+        <div class="connect-col" id="questions">
+          <div class="eyebrow">Questions?</div>
+          <h2>Send Us <em>a Note.</em></h2>
+          <p>Have a question about enrollment, class times, or our approach? Sherri reads every message.</p>
+
+          <form action="mailto:info@tcaarts.org" method="POST" enctype="text/plain">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" name="name" placeholder="Your name" required />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(908) 000-0000" />
+
+            <label for="msg">Message</label>
+            <textarea id="msg" name="message" placeholder="Tell us a little about your child…" required></textarea>
+
+            <button type="submit" class="btn btn-gilt">Send Message</button>
+          </form>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════ -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="logo-transparent.png" alt="Taylor Christian Academy of the Arts">
-      </div>
-      <p class="footer-tagline">Rooted in Faith. Built for Excellence.</p>
-
-      <nav class="footer-nav">
-        <a href="index.html">Home</a>
-        <a href="index.html#story">Our Story</a>
-        <a href="index.html#tuition">Tuition</a>
-        <a href="enroll.html#plans">Enroll</a>
-      </nav>
-
-      <div class="footer-donate">
-        <a href="https://www.paypal.com/donate?business=info@tcaarts.org&currency_code=USD" target="_blank" class="footer-donate-btn">Donate to Support TCA</a>
-      </div>
-
-      <div class="footer-social">
-        <a href="https://www.facebook.com/profile.php?id=61556835478280" target="_blank" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/tca_artsacademy?igsh=MXF6MHluczVld3Vj" target="_blank" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-        </a>
-      </div>
-
-      <div class="footer-meta">
-        <div>3 Skiles Avenue #841, Piscataway, NJ 08855</div>
-        <div><a href="mailto:info@tcaarts.org">info@tcaarts.org</a> · <a href="tel:9087381343">908-738-1343</a></div>
-        <div>501(c)(3) Non-Profit Organization · All donations are tax-deductible.</div>
-        <div style="margin-top: 12px;">© 2025 Taylor Christian Academy of the Arts</div>
-      </div>
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <img src="logo-transparent.png" alt="Taylor Christian Academy of the Arts" />
+    <div>Taylor Christian Academy <em>of the Arts</em></div>
+    <div class="footer-links">
+      <a href="#story">Our Story</a>
+      <a href="#approach">Our Approach</a>
+      <a href="#tuition">Tuition</a>
+      <a href="enroll.html#plans">Enroll</a>
+      <a href="tel:9087381343">908-738-1343</a>
+      <a href="mailto:info@tcaarts.org">info@tcaarts.org</a>
+    </div>
+    <div class="footer-small">
+      3 Skiles Avenue #841, Piscataway, NJ 08855 · 501(c)(3) Non-Profit<br/>
+      © 2026 Taylor Christian Academy of the Arts. All rights reserved.
     </div>
   </footer>
-
-  <!-- ══════════════════════════════════════════
-       SCROLL REVEAL
-  ══════════════════════════════════════════ -->
-  <script>
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.10, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
-      .forEach(el => revealObserver.observe(el));
-  </script>
 
 </body>
 </html>

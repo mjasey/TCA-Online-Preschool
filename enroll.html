@@ -1,636 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Enroll your child at Taylor Christian Academy — a Christ-centered online preschool for ages 3–5. Three easy steps to get started.">
-  <title>Enroll — Taylor Christian Academy of the Arts</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enroll · Taylor Christian Academy</title>
+  <meta name="description" content="Enroll your child in Taylor Christian Academy's online preschool. Three simple plans, all materials included." />
+  <link rel="icon" href="logo-icon.png" />
 
-  <link rel="icon" type="image/png" sizes="512x512" href="logo-icon.png">
-  <link rel="apple-touch-icon" href="logo-icon.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
+    /* Same token system as index.html. Kept inline so the file is self-contained. */
     :root {
-      --paper:        #F6F1E6;
-      --paper-dark:   #EEE7D5;
-      --ink:          #1A2340;
-      --ink-soft:     #2A3458;
-      --gilt:         #B8860B;
-      --gilt-soft:    #D4A933;
-      --burgundy:     #8B1A1A;
-      --sage:         #7A8471;
-      --sage-soft:    #A5AF9C;
-      --text:         #2B2418;
-      --text-muted:   #6B6456;
-      --rule:         #C9BFA7;
-      --serif-display: 'Cormorant Garamond', Georgia, serif;
-      --serif-body:    'Lora', Georgia, serif;
-      --sans-accent:   'Inter', -apple-system, sans-serif;
+      --paper:#F6F1E6; --paper-dark:#EEE7D5; --ink:#1A2340; --ink-soft:#2A3458;
+      --gilt:#B8860B; --gilt-soft:#D4A933; --burgundy:#8B1A1A; --sage:#7A8471;
+      --sage-soft:#A5AF9C; --text:#2B2418; --text-muted:#6B6456; --rule:#C9BFA7; --white:#FFFFFF;
+      --serif:'Cormorant Garamond', Georgia, serif;
+      --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px;
+      --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+      --max-w:1200px; --max-w-narrow:920px;
+      --radius:2px; --radius-lg:6px;
+      --shadow-1:0 1px 2px rgba(26,35,64,0.06);
+      --shadow-2:0 8px 24px rgba(26,35,64,0.08);
     }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--serif-body);
-      background: var(--paper);
-      color: var(--text);
-      line-height: 1.65;
-      font-size: 17px;
-      -webkit-font-smoothing: antialiased;
-      margin: 0;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.35;
-      z-index: 1;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.35  0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-    img, video { max-width: 100%; display: block; }
-    h1, h2, h3 { font-family: var(--serif-display); font-weight: 500; letter-spacing: -0.5px; margin: 0; color: var(--ink); }
-    h1 { font-size: clamp(48px, 7vw, 96px); line-height: 0.98; }
-    h2 { font-size: clamp(36px, 5vw, 64px); line-height: 1.05; }
-    h3 { font-size: 28px; line-height: 1.2; }
-    h1 em { font-style: italic; color: var(--gilt); font-weight: 400; }
-    h2 em { font-style: italic; color: var(--burgundy); font-weight: 400; }
-    p { margin: 0 0 20px; }
-    a { color: var(--ink); }
+    *,*::before,*::after{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--text);background:var(--paper);-webkit-font-smoothing:antialiased;}
+    img,video{max-width:100%;display:block;}
+    a{color:var(--ink);text-decoration:none;}
+    a:hover{color:var(--burgundy);}
+    h1,h2,h3,h4{font-family:var(--serif);font-weight:500;color:var(--ink);margin:0 0 var(--s-4) 0;}
+    h1{font-size:clamp(40px,6vw,72px);line-height:1.02;letter-spacing:-0.01em;}
+    h1 em{color:var(--gilt);font-style:italic;}
+    h2{font-size:clamp(32px,4.5vw,48px);line-height:1.05;}
+    h2 em{color:var(--burgundy);font-style:italic;}
+    h3{font-size:24px;line-height:1.25;}
+    p{margin:0 0 var(--s-4) 0;}
+    .eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:var(--gilt);margin-bottom:var(--s-4);}
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 var(--s-5);}
+    .container-narrow{max-width:var(--max-w-narrow);margin:0 auto;padding:0 var(--s-5);}
+    section{padding:var(--s-9) 0;}
+    .section-head{text-align:center;margin-bottom:var(--s-8);}
+    .section-head p{max-width:640px;margin:0 auto;color:var(--text-muted);}
 
-    .btn-primary {
-      font-family: var(--sans-accent);
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 2px; text-transform: uppercase;
-      background: var(--ink); color: var(--paper);
-      padding: 18px 36px; text-decoration: none;
-      border: 1px solid var(--ink);
-      display: inline-block;
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-    .btn-primary:hover { background: var(--burgundy); border-color: var(--burgundy); color: var(--paper); }
+    /* Buttons */
+    .btn{display:inline-block;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;border-radius:var(--radius);border:1px solid transparent;cursor:pointer;transition:all .2s;text-align:center;}
+    .btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+    .btn-primary:hover{background:var(--burgundy);color:var(--paper);border-color:var(--burgundy);}
+    .btn-outline{background:transparent;color:var(--ink);border-color:var(--ink);}
+    .btn-outline:hover{background:var(--ink);color:var(--paper);}
+    .btn-gilt{background:var(--gilt);color:var(--paper);border-color:var(--gilt);}
+    .btn-gilt:hover{background:var(--gilt-soft);color:var(--ink);border-color:var(--gilt-soft);}
 
-    .btn-link {
-      font-family: var(--serif-display);
-      font-style: italic; font-size: 18px;
-      color: var(--ink); text-decoration: none;
-      border-bottom: 1px solid var(--gilt);
-      padding-bottom: 2px;
-    }
-    .btn-link:hover { color: var(--burgundy); }
-
-    .section-kicker {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 3.5px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 20px; display: inline-block;
+    /* Masthead + Nav */
+    .masthead{background:var(--ink);color:var(--gilt-soft);font-size:13px;letter-spacing:0.08em;text-align:center;padding:10px var(--s-5);}
+    .masthead a{color:var(--gilt-soft);}
+    .masthead a:hover{color:var(--paper);}
+    .nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--rule);backdrop-filter:saturate(180%) blur(8px);}
+    .nav-inner{max-width:var(--max-w);margin:0 auto;padding:var(--s-3) var(--s-5);display:flex;align-items:center;justify-content:space-between;gap:var(--s-4);}
+    .nav-logo img{height:56px;width:auto;}
+    .nav-links{display:flex;align-items:center;gap:var(--s-6);font-size:14px;font-weight:500;letter-spacing:0.04em;}
+    .nav-links a{color:var(--text);}
+    .nav-links a:hover{color:var(--burgundy);}
+    .nav-cta{padding:10px 20px!important;font-size:13px!important;}
+    .nav-toggle{display:none;background:none;border:0;cursor:pointer;color:var(--ink);font-size:24px;}
+    @media (max-width:820px){
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:var(--s-4);background:var(--paper);padding:var(--s-5);border-bottom:1px solid var(--rule);}
+      .nav-links.open{display:flex;}
+      .nav-toggle{display:block;}
     }
 
-    /* Masthead */
-    .masthead-top {
-      background: var(--ink); color: var(--paper);
-      text-align: center; padding: 10px 20px;
-      font-family: var(--sans-accent); font-size: 12px;
-      letter-spacing: 1px; position: relative; z-index: 10;
-    }
-    .masthead-top .star { color: var(--gilt); margin: 0 10px; }
-    .masthead-top a { color: var(--gilt); text-decoration: none; }
+    /* Enroll Hero (shorter) */
+    .enroll-hero{padding:var(--s-8) 0;border-bottom:1px solid var(--rule);text-align:center;background:var(--paper-dark);}
+    .enroll-hero h1{margin-bottom:var(--s-4);}
+    .enroll-hero p{max-width:620px;margin:0 auto var(--s-5);color:var(--text-muted);font-family:var(--serif);font-size:20px;line-height:1.5;}
 
-    /* Nav */
-    .nav {
-      background: var(--paper);
-      border-bottom: 1px solid var(--rule);
-      position: sticky; top: 0; z-index: 50;
-      padding: 16px 0;
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 32px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-brand img { height: 60px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 40px; align-items: center; }
-    .nav-link {
-      font-family: var(--serif-display);
-      font-size: 19px; color: var(--ink); text-decoration: none;
-    }
-    .nav-link:hover { color: var(--burgundy); }
-    .nav-cta {
-      font-family: var(--sans-accent);
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--ink); border: 1px solid var(--ink);
-      padding: 10px 22px; text-decoration: none;
-      transition: all 0.25s ease;
-    }
-    .nav-cta:hover { background: var(--ink); color: var(--paper); }
-    @media (max-width: 768px) {
-      .nav-brand img { height: 48px; }
-      .nav-links { gap: 20px; }
-      .nav-link { font-size: 15px; }
-      .nav-cta { padding: 8px 14px; font-size: 11px; }
-    }
+    /* What Happens Next — 3 steps */
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5);counter-reset:step;}
+    .step{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:var(--s-6);position:relative;counter-increment:step;}
+    .step-num{font-family:var(--serif);font-style:italic;font-size:56px;color:var(--gilt);line-height:1;margin-bottom:var(--s-3);}
+    .step h3{margin-bottom:var(--s-2);}
+    .step p{color:var(--text-muted);margin-bottom:0;font-size:16px;}
+    @media (max-width:820px){.steps-grid{grid-template-columns:1fr;}}
 
-    /* Enroll Hero */
-    .enroll-hero { padding: 100px 0 80px; position: relative; z-index: 2; text-align: center; }
-    .enroll-hero-inner { max-width: 920px; margin: 0 auto; padding: 0 48px; }
-    .enroll-hero-issue {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 4px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 28px;
-      display: inline-flex; align-items: center; gap: 16px; justify-content: center;
+    /* Pricing */
+    .plans{background:var(--paper-dark);}
+    .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5);}
+    .plan{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:var(--s-7);display:flex;flex-direction:column;position:relative;}
+    .plan.featured{border-color:var(--gilt);background:#FEFBF0;box-shadow:var(--shadow-2);transform:translateY(-8px);}
+    .plan .plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gilt);color:var(--paper);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;}
+    .plan h3{font-size:22px;margin-bottom:var(--s-3);}
+    .plan .amount{font-family:var(--serif);font-size:56px;color:var(--ink);line-height:1;margin-bottom:var(--s-1);}
+    .plan .cadence{font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:var(--s-5);}
+    .plan .first-pay{font-size:14px;color:var(--text-muted);border-top:1px solid var(--rule);padding-top:var(--s-4);margin-bottom:var(--s-5);}
+    .plan .first-pay strong{color:var(--ink);display:block;font-family:var(--serif);font-size:20px;margin-bottom:2px;}
+    .plan ul{list-style:none;padding:0;margin:0 0 var(--s-6);}
+    .plan ul li{padding:6px 0;padding-left:22px;position:relative;font-size:15px;color:var(--text);}
+    .plan ul li::before{content:"✦";position:absolute;left:0;color:var(--gilt);}
+    .plan .btn{margin-top:auto;}
+    @media (max-width:900px){
+      .plans-grid{grid-template-columns:1fr;}
+      .plan.featured{transform:none;}
     }
-    .enroll-hero-issue::before, .enroll-hero-issue::after {
-      content: ''; width: 32px; height: 1px; background: var(--gilt);
-    }
-    .enroll-hero h1 { margin-bottom: 32px; }
-    .enroll-hero p {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 20px; line-height: 1.6;
-      max-width: 640px; margin: 0 auto 40px; color: var(--text);
-    }
-    .enroll-hero-ctas { display: flex; gap: 28px; justify-content: center; align-items: center; flex-wrap: wrap; }
-    @media (max-width: 768px) { .enroll-hero { padding: 64px 0 48px; } .enroll-hero-inner { padding: 0 28px; } }
-
-    /* Editorial sections */
-    .ed-section { padding: 120px 0; position: relative; z-index: 2; }
-    .ed-section.alt { background: var(--paper-dark); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    .ed-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
-    .ed-header { text-align: center; margin-bottom: 80px; max-width: 760px; margin-left: auto; margin-right: auto; }
-    .ed-header h2 { margin-bottom: 24px; }
-    .ed-header p {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 18px; line-height: 1.65; color: var(--text-muted);
-      max-width: 620px; margin: 0 auto;
-    }
-    @media (max-width: 768px) { .ed-section { padding: 80px 0; } .ed-inner { padding: 0 28px; } .ed-header { margin-bottom: 48px; } }
-
-    /* Steps */
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 32px; margin-top: 32px;
-    }
-    .step-card {
-      background: var(--paper); border: 1px solid var(--rule);
-      padding: 48px 32px; text-align: center; position: relative;
-    }
-    .step-num {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 56px; color: var(--gilt); line-height: 1;
-      margin-bottom: 24px;
-    }
-    .step-card h3 { margin-bottom: 12px; font-size: 24px; }
-    .step-card p {
-      font-family: var(--serif-body); font-size: 15px;
-      line-height: 1.65; color: var(--text); margin-bottom: 20px;
-    }
-    .step-pill {
-      display: inline-block;
-      font-family: var(--sans-accent); font-size: 10px;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gilt); padding: 6px 14px;
-      border: 1px solid var(--gilt);
-    }
-    @media (max-width: 900px) { .steps-grid { grid-template-columns: 1fr; } }
-
-    /* Plans */
-    .plans-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 24px; margin-top: 32px;
-    }
-    .plan {
-      background: var(--paper); border: 1px solid var(--rule);
-      padding: 40px 28px; position: relative;
-      transition: all 0.3s ease;
-      display: flex; flex-direction: column;
-    }
-    .plan:hover { transform: translateY(-4px); border-color: var(--gilt); }
-    .plan.featured { background: var(--ink); border-color: var(--gilt); color: var(--paper); }
-    .plan.featured::before {
-      content: 'BEST VALUE'; position: absolute; top: -12px; left: 50%;
-      transform: translateX(-50%); background: var(--gilt); color: var(--ink);
-      font-family: var(--sans-accent); font-size: 10px; font-weight: 600;
-      letter-spacing: 2.5px; padding: 6px 16px;
-    }
-    .plan-label {
-      font-family: var(--sans-accent); font-size: 10px;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 20px; display: block;
-    }
-    .plan.featured .plan-label { color: var(--gilt-soft); }
-    .plan-price {
-      font-family: var(--serif-display); font-size: 60px;
-      font-weight: 500; line-height: 1; color: var(--ink);
-      letter-spacing: -1.5px; margin-bottom: 6px;
-    }
-    .plan.featured .plan-price { color: var(--paper); }
-    .plan-period {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 15px; color: var(--text-muted); margin-bottom: 24px;
-    }
-    .plan.featured .plan-period { color: var(--sage-soft); }
-    .plan-desc {
-      font-family: var(--serif-body); font-size: 15px;
-      line-height: 1.6; color: var(--text);
-      margin: 0 0 28px; flex: 1;
-    }
-    .plan.featured .plan-desc { color: var(--paper); }
-    .plan-btn {
-      font-family: var(--sans-accent); font-size: 12px;
-      font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--ink); border: 1px solid var(--ink);
-      background: transparent;
-      padding: 14px 20px; text-decoration: none;
-      text-align: center; display: block;
-      transition: all 0.25s ease;
-    }
-    .plan-btn:hover { background: var(--ink); color: var(--paper); }
-    .plan.featured .plan-btn { color: var(--gilt); border-color: var(--gilt); }
-    .plan.featured .plan-btn:hover { background: var(--gilt); color: var(--ink); }
-    .plan-btn.btn-burgundy { background: var(--burgundy); color: var(--paper); border-color: var(--burgundy); }
-    .plan-btn.btn-burgundy:hover { background: var(--ink); border-color: var(--ink); }
-    @media (max-width: 1100px) { .plans-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .plans-grid { grid-template-columns: 1fr; } }
 
     /* Add-on */
-    .addon {
-      max-width: 720px; margin: 80px auto 0;
-      background: var(--paper); border: 1px solid var(--rule);
-      padding: 48px 40px; text-align: center;
-    }
-    .addon-label {
-      font-family: var(--sans-accent); font-size: 10px;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 16px; display: block;
-    }
-    .addon h3 { margin-bottom: 16px; }
-    .addon p {
-      font-family: var(--serif-body); font-size: 16px;
-      line-height: 1.65; color: var(--text); margin-bottom: 24px;
-    }
-    .addon-price {
-      font-family: var(--serif-display); font-size: 48px;
-      color: var(--ink); margin-bottom: 4px;
-    }
-    .addon-period {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 14px; color: var(--text-muted); margin-bottom: 28px;
-    }
-    .addon-note {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 13px; color: var(--text-muted); margin-top: 20px;
-    }
+    .addon{background:var(--paper);}
+    .addon-card{max-width:720px;margin:0 auto;background:var(--paper-dark);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:var(--s-7);display:grid;grid-template-columns:auto 1fr auto;gap:var(--s-5);align-items:center;}
+    .addon-card .amount{font-family:var(--serif);font-size:44px;color:var(--ink);line-height:1;}
+    .addon-card h3{margin:0 0 4px 0;font-size:22px;}
+    .addon-card p{margin:0;color:var(--text-muted);font-size:15px;}
+    @media (max-width:820px){.addon-card{grid-template-columns:1fr;text-align:center;}}
 
-    /* Class Times */
-    .times-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 32px; margin-top: 32px;
-    }
-    .time-card {
-      background: var(--paper); border: 1px solid var(--rule);
-      padding: 40px 28px; text-align: center;
-    }
-    .time-days {
-      font-family: var(--sans-accent); font-size: 11px;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gilt); margin-bottom: 14px;
-    }
-    .time-time {
-      font-family: var(--serif-display); font-size: 42px;
-      color: var(--ink); margin-bottom: 6px;
-    }
-    .time-zone {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 14px; color: var(--text-muted);
-    }
-    .times-note {
-      max-width: 720px; margin: 48px auto 0;
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 15px; color: var(--text-muted); text-align: center;
-    }
-    @media (max-width: 900px) { .times-grid { grid-template-columns: 1fr; } }
-
-    /* Closing CTA */
-    .closing {
-      background: var(--ink); color: var(--paper);
-      padding: 120px 0; position: relative; z-index: 2;
-      border-top: 1px solid var(--gilt);
-    }
-    .closing-inner { max-width: 760px; margin: 0 auto; padding: 0 48px; text-align: center; }
-    .closing h2 { color: var(--paper); margin-bottom: 24px; }
-    .closing h2 em { color: var(--gilt); }
-    .closing p {
-      font-family: var(--serif-body); font-style: italic;
-      font-size: 18px; color: var(--sage-soft); margin-bottom: 40px;
-    }
-    .closing .btn-primary {
-      background: var(--gilt); color: var(--ink); border-color: var(--gilt);
-    }
-    .closing .btn-primary:hover { background: var(--burgundy); border-color: var(--burgundy); color: var(--paper); }
-    .closing-call {
-      display: block; margin-top: 20px;
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 17px; color: var(--gilt-soft);
-      text-decoration: none; border-bottom: 1px solid var(--gilt);
-      padding-bottom: 2px; display: inline-block;
-    }
-    @media (max-width: 768px) { .closing { padding: 80px 0; } .closing-inner { padding: 0 28px; } }
+    /* Schedule */
+    .schedule{background:var(--ink);color:var(--paper);}
+    .schedule h2, .schedule h3{color:var(--paper);}
+    .schedule .eyebrow{color:var(--gilt-soft);}
+    .schedule p{color:rgba(246,241,230,0.75);}
+    .schedule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5);max-width:900px;margin:0 auto;}
+    .schedule-card{background:rgba(246,241,230,0.05);border:1px solid rgba(246,241,230,0.15);border-radius:var(--radius-lg);padding:var(--s-6);text-align:center;}
+    .schedule-card .day{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gilt-soft);margin-bottom:var(--s-2);}
+    .schedule-card .time{font-family:var(--serif);font-size:36px;color:var(--paper);line-height:1;margin-bottom:var(--s-2);}
+    .schedule-card .tz{font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(246,241,230,0.6);}
+    @media (max-width:820px){.schedule-grid{grid-template-columns:1fr;}}
 
     /* Footer */
-    footer {
-      background: var(--ink); color: var(--paper);
-      padding: 80px 0 40px; position: relative; z-index: 2;
-      border-top: 1px solid var(--gilt);
-    }
-    .footer-inner {
-      max-width: 1100px; margin: 0 auto;
-      padding: 0 48px; text-align: center;
-    }
-    .footer-logo { margin: 0 auto 24px; max-width: 200px; }
-    .footer-logo img { height: 80px; width: auto; margin: 0 auto; display: block; }
-    .footer-tagline {
-      font-family: var(--serif-display); font-style: italic;
-      font-size: 22px; color: var(--gilt-soft);
-      margin: 0 0 32px;
-    }
-    .footer-nav {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 28px; margin-bottom: 32px;
-      padding-bottom: 32px; border-bottom: 1px solid rgba(201,191,167,0.2);
-    }
-    .footer-nav a {
-      font-family: var(--sans-accent); font-size: 12px;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--paper); text-decoration: none;
-    }
-    .footer-nav a:hover { color: var(--gilt-soft); }
-    .footer-donate { margin-bottom: 40px; }
-    .footer-donate-btn {
-      font-family: var(--sans-accent); font-size: 12px;
-      font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gilt); border: 1px solid var(--gilt);
-      padding: 14px 28px; text-decoration: none;
-      display: inline-block; transition: all 0.25s ease;
-    }
-    .footer-donate-btn:hover { background: var(--gilt); color: var(--ink); }
-    .footer-social { display: flex; justify-content: center; gap: 16px; margin-bottom: 32px; }
-    .footer-social a {
-      width: 40px; height: 40px; border: 1px solid rgba(201,191,167,0.3);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--paper); transition: all 0.25s ease;
-    }
-    .footer-social a:hover { border-color: var(--gilt); color: var(--gilt); }
-    .footer-social svg { width: 18px; height: 18px; }
-    .footer-meta {
-      font-family: var(--serif-body); font-size: 13px;
-      color: var(--sage-soft); line-height: 1.8;
-    }
-    .footer-meta a { color: var(--sage-soft); text-decoration: none; }
-    .footer-meta a:hover { color: var(--gilt-soft); }
-    @media (max-width: 768px) { footer { padding: 60px 0 32px; } .footer-inner { padding: 0 28px; } }
-
-    /* Reveal */
-    .reveal, .reveal-left, .reveal-right {
-      opacity: 0; transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-    .reveal { transform: translateY(24px); }
-    .reveal-left { transform: translateX(-30px); }
-    .reveal-right { transform: translateX(30px); }
-    .reveal.visible, .reveal-left.visible, .reveal-right.visible {
-      opacity: 1; transform: none;
-    }
-    .stagger > * { transition-delay: 0ms; }
-    .stagger > *:nth-child(1) { transition-delay: 60ms; }
-    .stagger > *:nth-child(2) { transition-delay: 140ms; }
-    .stagger > *:nth-child(3) { transition-delay: 220ms; }
-    .stagger > *:nth-child(4) { transition-delay: 300ms; }
+    .footer{background:var(--ink);color:rgba(246,241,230,0.65);padding:var(--s-7) var(--s-5) var(--s-5);border-top:1px solid rgba(246,241,230,0.1);text-align:center;font-size:13px;letter-spacing:0.04em;}
+    .footer img{height:48px;margin:0 auto var(--s-4);}
+    .footer a{color:var(--gilt-soft);}
+    .footer-links{display:flex;justify-content:center;gap:var(--s-5);flex-wrap:wrap;margin:var(--s-4) 0;}
+    .footer-small{margin-top:var(--s-5);font-size:12px;color:rgba(246,241,230,0.4);letter-spacing:0.08em;}
   </style>
 </head>
+
 <body>
 
-  <!-- MASTHEAD -->
-  <div class="masthead-top">
-    <span class="star">✦</span> Christ-Centered Online Preschool for Ages 3–5
-    <span class="star">·</span> Now Enrolling
-    <span class="star">·</span> <a href="tel:9087381343">908-738-1343</a>
+  <!-- ========== MASTHEAD ========== -->
+  <div class="masthead">
+    ✦ Christ-Centered Online Preschool for Ages 3–5 · Now Enrolling · <a href="tel:9087381343">908-738-1343</a>
   </div>
 
-  <!-- NAV -->
+  <!-- ========== NAV ========== -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <img src="logo-navbar.png" alt="Taylor Christian Academy of the Arts" height="60" style="display:block; width:auto;">
+      <a href="index.html" class="nav-logo" aria-label="Taylor Christian Academy home">
+        <img src="logo-navbar.png" alt="Taylor Christian Academy of the Arts" />
       </a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
       <div class="nav-links">
-        <a href="index.html#story" class="nav-link">Our Story</a>
-        <a href="index.html#tuition" class="nav-link">Tuition</a>
-        <a href="enroll.html#plans" class="nav-cta">Enroll Now</a>
+        <a href="index.html#story">Our Story</a>
+        <a href="index.html#approach">Our Approach</a>
+        <a href="#plans">Tuition</a>
+        <a href="#plans" class="btn btn-primary nav-cta">Enroll Now</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="enroll-hero" id="enroll-hero">
-    <div class="enroll-hero-inner reveal">
-      <div class="enroll-hero-issue">Now Enrolling — Ages 3–5</div>
-      <h1>Secure Your Child's <em>Spot</em></h1>
-      <p>Three simple steps and your child is ready to grow in faith, confidence, and kindergarten readiness — all from the comfort of home.</p>
-      <div class="enroll-hero-ctas">
-        <a href="#plans" class="btn-primary">Choose a Plan</a>
-        <a href="tel:9087381343" class="btn-link">Call 908-738-1343 →</a>
-      </div>
+  <!-- ========== HERO ========== -->
+  <section class="enroll-hero">
+    <div class="container-narrow">
+      <div class="eyebrow">Enrollment</div>
+      <h1>Secure Your Child's <em>Spot Today.</em></h1>
+      <p>Three simple plans. One bundled first payment. Your welcome kit ships within a week.</p>
+      <a href="#plans" class="btn btn-primary">See Plans</a>
     </div>
   </section>
 
-  <!-- THREE EASY STEPS -->
-  <section class="ed-section alt" id="enroll-steps">
-    <div class="ed-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">How To Enroll</span>
-        <h2>Three Easy <em>Steps</em></h2>
-        <p>Getting started is simple. Choose your plan, complete registration, and we handle the rest.</p>
+  <!-- ========== WHAT HAPPENS NEXT ========== -->
+  <section class="next">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">What Happens Next</div>
+        <h2>Three Steps <em>to Your First Class.</em></h2>
+        <p>Enrollment is quick and fully hands-off — here's exactly what to expect after you choose a plan.</p>
       </div>
 
-      <div class="steps-grid stagger">
-        <div class="step-card reveal">
-          <div class="step-num">01</div>
+      <div class="steps-grid">
+
+        <div class="step">
+          <div class="step-num">i.</div>
           <h3>Choose Your Plan</h3>
-          <p>Pick the session plan that fits your family's schedule and budget — from single classes to our best-value monthly plan.</p>
-          <span class="step-pill">Flexible Options</span>
+          <p>Select the rhythm that fits your family. Your first payment includes the $60 registration fee — no separate forms, no follow-up invoice.</p>
         </div>
-        <div class="step-card reveal">
-          <div class="step-num">02</div>
-          <h3>Pay Registration Fee</h3>
-          <p>A one-time $60 registration fee secures your child's spot and covers their welcome materials kit.</p>
-          <span class="step-pill">One-Time Fee</span>
+
+        <div class="step">
+          <div class="step-num">ii.</div>
+          <h3>Receive Your Kit</h3>
+          <p>Your materials kit ships within one week to the address you provided at checkout. Everything your child needs for class, free shipping included.</p>
         </div>
-        <div class="step-card reveal">
-          <div class="step-num">03</div>
-          <h3>We'll Take It From There</h3>
-          <p>Sherri will confirm your class time, send your materials kit, and welcome your family into the TCA community.</p>
-          <span class="step-pill">Personal Onboarding</span>
+
+        <div class="step">
+          <div class="step-num">iii.</div>
+          <h3>Join Your First Class</h3>
+          <p>Sherri emails your Zoom link and class schedule within 24 hours. Log in Tuesday or Thursday morning — and we'll take it from there.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING ========== -->
+  <section class="plans" id="plans">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Tuition</div>
+        <h2>Simple, <em>Transparent Pricing.</em></h2>
+        <p>All plans bundle the one-time $60 registration fee into your first payment — no checkout surprises.</p>
+      </div>
+
+      <div class="plans-grid">
+
+        <!-- Bundle A -->
+        <div class="plan">
+          <h3>1 Session a Week</h3>
+          <div class="amount">$25</div>
+          <div class="cadence">per week · recurring</div>
+          <div class="first-pay">
+            <strong>$85 today</strong>
+            $60 registration + $25 first week
+          </div>
+          <ul>
+            <li>One 45-minute live class</li>
+            <li>Materials kit included</li>
+            <li>Weekly family recap email</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a href="https://buy.stripe.com/6oU5kF1MN6nL7vlaaN9bO02" class="btn btn-outline">Enroll · $85</a>
+        </div>
+
+        <!-- Bundle B -->
+        <div class="plan">
+          <h3>2 Sessions a Week</h3>
+          <div class="amount">$40</div>
+          <div class="cadence">per week · recurring</div>
+          <div class="first-pay">
+            <strong>$100 today</strong>
+            $60 registration + $40 first week
+          </div>
+          <ul>
+            <li>Two 45-minute live classes</li>
+            <li>Materials kit included</li>
+            <li>Weekly family recap email</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a href="https://buy.stripe.com/4gMdRbdvv5jH5nd4Qt9bO03" class="btn btn-outline">Enroll · $100</a>
+        </div>
+
+        <!-- Bundle C (featured) -->
+        <div class="plan featured">
+          <span class="plan-badge">Best Value</span>
+          <h3>Monthly Plan</h3>
+          <div class="amount">$150</div>
+          <div class="cadence">per month · 8 sessions</div>
+          <div class="first-pay">
+            <strong>$210 today</strong>
+            $60 registration + $150 first month
+          </div>
+          <ul>
+            <li>Eight 45-minute live classes</li>
+            <li>Materials kit included</li>
+            <li>Priority class time selection</li>
+            <li>Weekly family recap email</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a href="https://buy.stripe.com/fZu3cxezz27vaHx96J9bO04" class="btn btn-gilt">Enroll · $210</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ADD-ON ========== -->
+  <section class="addon">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Optional Add-On</div>
+        <h2>A Little <em>Extra Practice.</em></h2>
+        <p>An optional printed practice set, mailed to your door.</p>
+      </div>
+
+      <div class="addon-card">
+        <div class="amount">$30</div>
+        <div>
+          <h3>Learning Sheets</h3>
+          <p>Printed worksheets mailed alongside your materials kit — perfect for between-class practice. One-time purchase.</p>
+        </div>
+        <a href="https://buy.stripe.com/9B67sN8bb7rP6rh96J9bO05" class="btn btn-outline">Add to Order</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SCHEDULE ========== -->
+  <section class="schedule">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Class Schedule</div>
+        <h2>Available <em>Class Times.</em></h2>
+        <p>Pick the time that fits your family's rhythm. All times EST.</p>
+      </div>
+
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <div class="day">Tue &amp; Thu</div>
+          <div class="time">10:00 AM</div>
+          <div class="tz">Eastern Time</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Tue &amp; Thu</div>
+          <div class="time">12:00 PM</div>
+          <div class="tz">Eastern Time</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Tuesday</div>
+          <div class="time">5:30 PM</div>
+          <div class="tz">Eastern Time</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PLANS -->
-  <section class="ed-section" id="plans">
-    <div class="ed-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">Choose Your Plan</span>
-        <h2>Enrollment <em>Plans</em></h2>
-        <p>Start with a single session or save with our monthly plan. Every option includes live, teacher-led instruction.</p>
-      </div>
-
-      <div class="plans-grid stagger">
-        <!-- Card 1: Registration -->
-        <div class="plan reveal">
-          <span class="plan-label">One-Time Fee</span>
-          <div class="plan-price">$60</div>
-          <div class="plan-period">registration</div>
-          <p class="plan-desc">Covers enrollment processing and your child's complete learning materials kit mailed to your door within one week.</p>
-          <a href="https://buy.stripe.com/14AbJ3crrdQd02T1Eh9bO01" target="_blank" class="plan-btn btn-burgundy">Pay Registration Fee</a>
-        </div>
-
-        <!-- Card 2: 1 Session / Week -->
-        <div class="plan reveal">
-          <span class="plan-label">1 Session / Week</span>
-          <div class="plan-price">$25</div>
-          <div class="plan-period">per week</div>
-          <p class="plan-desc">One live Zoom class per week. Perfect for families just getting started with TCA.</p>
-          <a href="https://buy.stripe.com/14AbJ3crrdQd02T1Eh9bO01" target="_blank" class="plan-btn">Select This Plan</a>
-        </div>
-
-        <!-- Card 3: 2 Sessions / Week -->
-        <div class="plan reveal">
-          <span class="plan-label">2 Sessions / Week</span>
-          <div class="plan-price">$40</div>
-          <div class="plan-period">per week</div>
-          <p class="plan-desc">Two live Zoom classes per week for deeper learning and a more consistent routine.</p>
-          <a href="https://buy.stripe.com/14AbJ3crrdQd02T1Eh9bO01" target="_blank" class="plan-btn">Select This Plan</a>
-        </div>
-
-        <!-- Card 4: Monthly Plan (Best Value) -->
-        <div class="plan featured reveal">
-          <span class="plan-label">Monthly Plan</span>
-          <div class="plan-price">$150</div>
-          <div class="plan-period">per month · 8 sessions</div>
-          <p class="plan-desc">Maximum learning. Maximum savings. Our most popular plan for committed families.</p>
-          <a href="https://buy.stripe.com/14AbJ3crrdQd02T1Eh9bO01" target="_blank" class="plan-btn">Select This Plan</a>
-        </div>
-      </div>
-
-      <!-- Learning Sheets Add-On -->
-      <div class="addon reveal">
-        <span class="addon-label">Optional Add-On</span>
-        <h3>Want Your Learning Sheets <em style="font-style:italic;color:var(--burgundy);font-weight:400;">Mailed?</em></h3>
-        <p>Skip the printing! Have all your weekly learning sheets mailed directly to your home with your materials kit.</p>
-        <div class="addon-price">$30</div>
-        <div class="addon-period">one-time</div>
-        <a href="https://buy.stripe.com/9B67sN8bb7rP6rh96J9bO05" target="_blank" class="btn-primary">Add Learning Sheets</a>
-        <p class="addon-note">Purchase separately after selecting your class plan above.</p>
-      </div>
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <img src="logo-transparent.png" alt="Taylor Christian Academy of the Arts" />
+    <div>Taylor Christian Academy <em>of the Arts</em></div>
+    <div class="footer-links">
+      <a href="index.html#story">Our Story</a>
+      <a href="index.html#approach">Our Approach</a>
+      <a href="#plans">Tuition</a>
+      <a href="index.html#connect">Contact</a>
+      <a href="tel:9087381343">908-738-1343</a>
+      <a href="mailto:info@tcaarts.org">info@tcaarts.org</a>
     </div>
-  </section>
-
-  <!-- CLASS TIMES -->
-  <section class="ed-section alt" id="class-times">
-    <div class="ed-inner">
-      <div class="ed-header reveal">
-        <span class="section-kicker">Class Schedule</span>
-        <h2>Available Class <em>Times</em></h2>
-        <p>Choose the time that works best for your family. All classes are live on Zoom.</p>
-      </div>
-
-      <div class="times-grid stagger">
-        <div class="time-card reveal">
-          <div class="time-days">Tuesday &amp; Thursday</div>
-          <div class="time-time">10:00 AM</div>
-          <div class="time-zone">Eastern Time</div>
-        </div>
-        <div class="time-card reveal">
-          <div class="time-days">Tuesday &amp; Thursday</div>
-          <div class="time-time">12:00 PM</div>
-          <div class="time-zone">Eastern Time</div>
-        </div>
-        <div class="time-card reveal">
-          <div class="time-days">Tuesday</div>
-          <div class="time-time">5:30 PM</div>
-          <div class="time-zone">Eastern Time</div>
-        </div>
-      </div>
-
-      <p class="times-note">Class times are subject to availability. Your preferred time will be confirmed by Sherri within 24 hours of registration.</p>
-    </div>
-  </section>
-
-  <!-- CLOSING CTA -->
-  <section class="closing">
-    <div class="closing-inner reveal">
-      <h2>Ready to Give Your Child the <em>Best Start?</em></h2>
-      <p>Join the TCA family today and watch your child grow in faith, confidence, and kindergarten readiness.</p>
-      <a href="#plans" class="btn-primary">Choose a Plan</a>
-      <div><a href="tel:9087381343" class="closing-call">Or call 908-738-1343 →</a></div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="logo-transparent.png" alt="Taylor Christian Academy of the Arts">
-      </div>
-      <p class="footer-tagline">Rooted in Faith. Built for Excellence.</p>
-
-      <nav class="footer-nav">
-        <a href="index.html">Home</a>
-        <a href="index.html#story">Our Story</a>
-        <a href="index.html#tuition">Tuition</a>
-        <a href="enroll.html#plans">Enroll</a>
-      </nav>
-
-      <div class="footer-donate">
-        <a href="https://www.paypal.com/donate?business=info@tcaarts.org&currency_code=USD" target="_blank" class="footer-donate-btn">Donate to Support TCA</a>
-      </div>
-
-      <div class="footer-social">
-        <a href="https://www.facebook.com/profile.php?id=61556835478280" target="_blank" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/tca_artsacademy?igsh=MXF6MHluczVld3Vj" target="_blank" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-        </a>
-      </div>
-
-      <div class="footer-meta">
-        <div>3 Skiles Avenue #841, Piscataway, NJ 08855</div>
-        <div><a href="mailto:info@tcaarts.org">info@tcaarts.org</a> · <a href="tel:9087381343">908-738-1343</a></div>
-        <div>501(c)(3) Non-Profit Organization · All donations are tax-deductible.</div>
-        <div style="margin-top: 12px;">© 2025 Taylor Christian Academy of the Arts</div>
-      </div>
+    <div class="footer-small">
+      3 Skiles Avenue #841, Piscataway, NJ 08855 · 501(c)(3) Non-Profit<br/>
+      © 2026 Taylor Christian Academy of the Arts. All rights reserved.
     </div>
   </footer>
-
-  <script>
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.10, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
-      .forEach(el => revealObserver.observe(el));
-  </script>
 
 </body>
 </html>
