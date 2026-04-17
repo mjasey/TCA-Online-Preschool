@@ -1376,7 +1376,7 @@
     ═══════════════════════════════════════════ */
     #pricing {
       padding: 100px 0;
-      background: var(--dark-navy);
+      background: var(--light);
     }
 
     .pricing-header {
@@ -1384,9 +1384,9 @@
       margin-bottom: 64px;
     }
     .pricing-header .section-label { justify-content: center; }
-    .pricing-header .section-heading { color: var(--white); }
+    .pricing-header .section-heading { color: var(--navy); }
     .pricing-header .section-subtext {
-      color: rgba(255,255,255,.65);
+      color: rgba(15, 25, 50, 0.7);
       margin: 0 auto;
     }
 
@@ -1527,6 +1527,107 @@
 
     .pricing-cta {
       text-align: center;
+    }
+
+    /* ─── Pricing preview (clean light cards) ─── */
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .preview-card {
+      background: var(--white);
+      border: 0.5px solid #E8E5DC;
+      border-radius: 12px;
+      padding: 36px 28px;
+      text-align: left;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .preview-card.featured {
+      border: 2px solid var(--gold);
+    }
+    .best-value-pill {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      align-self: flex-start;
+    }
+    .preview-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #6B6B6B;
+      margin-bottom: 14px;
+    }
+    .preview-amount {
+      font-family: var(--font-serif);
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .preview-amount sup {
+      font-size: 22px;
+      vertical-align: top;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    .preview-period {
+      font-size: 14px;
+      color: #6B6B6B;
+      margin-bottom: 14px;
+    }
+    .preview-fee {
+      font-size: 13px;
+      color: #6B6B6B;
+      font-style: italic;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 0.5px solid #E8E5DC;
+    }
+    .preview-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .preview-features li {
+      font-size: 15px;
+      color: #4A4A4A;
+      line-height: 1.6;
+      padding: 8px 0;
+      font-weight: 400;
+    }
+
+    .preview-cta-wrap {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .preview-cta-note {
+      font-size: 14px;
+      color: #6B6B6B;
+      margin-top: 18px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 860px) {
+      .preview-grid { grid-template-columns: 1fr; gap: 16px; }
     }
 
     /* ═══════════════════════════════════════════
@@ -3442,66 +3543,56 @@
         </p>
       </div>
 
-      <div class="pricing-grid stagger">
+      <div class="preview-grid stagger">
 
-        <!-- Card 1 -->
-        <div class="price-card reveal">
-          <div class="price-label">One-Time Fee</div>
-          <div class="price-amount"><sup>$</sup>60</div>
-          <div class="price-period">registration</div>
-          <div class="price-desc">Includes mailed learning materials kit delivered to your door</div>
+        <!-- Card 1: 1 Session / Week -->
+        <div class="preview-card reveal">
+          <div class="preview-label">1 Session / Week</div>
+          <div class="preview-amount"><sup>$</sup>25</div>
+          <div class="preview-period">per week</div>
+          <div class="preview-fee">$60 registration fee included in first payment</div>
+          <ul class="preview-features">
+            <li>One live Zoom class per week</li>
+            <li>Max 10 students per class</li>
+            <li>Materials kit included</li>
+            <li>Cancel anytime</li>
+          </ul>
         </div>
 
-        <!-- Card 2 -->
-        <div class="price-card reveal">
-          <div class="price-label">1 Session / Week</div>
-          <div class="price-amount"><sup>$</sup>25</div>
-          <div class="price-period">per week</div>
-          <div class="price-desc">One live Zoom class per week — perfect for getting started</div>
+        <!-- Card 2: 2 Sessions / Week -->
+        <div class="preview-card reveal">
+          <div class="preview-label">2 Sessions / Week</div>
+          <div class="preview-amount"><sup>$</sup>40</div>
+          <div class="preview-period">per week</div>
+          <div class="preview-fee">$60 registration fee included in first payment</div>
+          <ul class="preview-features">
+            <li>Two live Zoom classes per week</li>
+            <li>Better routine building</li>
+            <li>Materials kit included</li>
+            <li>Cancel anytime</li>
+          </ul>
         </div>
 
-        <!-- Card 3 -->
-        <div class="price-card reveal">
-          <div class="price-label">2 Sessions / Week</div>
-          <div class="price-amount"><sup>$</sup>40</div>
-          <div class="price-period">per week</div>
-          <div class="price-desc">Two live Zoom classes per week for deeper learning</div>
-        </div>
-
-        <!-- Card 4 — Featured -->
-        <div class="price-card featured reveal">
-          <div class="best-value-ribbon">Best Value</div>
-          <div class="price-label">Monthly Plan</div>
-          <div class="price-amount"><sup>$</sup>150</div>
-          <div class="price-period">per month · 8 sessions</div>
-          <div class="price-desc">Maximum learning. Maximum savings.</div>
+        <!-- Card 3: Monthly Plan (Best Value) -->
+        <div class="preview-card featured reveal">
+          <div class="best-value-pill">Best Value</div>
+          <div class="preview-label">Monthly Plan</div>
+          <div class="preview-amount"><sup>$</sup>150</div>
+          <div class="preview-period">per month</div>
+          <div class="preview-fee">$60 registration fee included in first payment</div>
+          <ul class="preview-features">
+            <li>8 sessions per month</li>
+            <li>Save $10/month vs weekly plan</li>
+            <li>Materials kit included</li>
+            <li>Cancel anytime</li>
+          </ul>
         </div>
 
       </div>
 
-      <!-- Card 5 — Add-On -->
-      <div style="max-width: 400px; margin: 0 auto 40px;">
-        <div class="price-card addon reveal" style="text-align: center;">
-          <div class="addon-tag">Optional Add-On</div>
-          <div class="price-label">Learning Sheets Add-On</div>
-          <div class="price-amount"><sup>$</sup>30</div>
-          <div class="price-period">one-time</div>
-          <div class="price-desc">Have your printed learning sheets mailed directly to your home along with your materials kit. Convenient and ready to use.</div>
-        </div>
-      </div>
-
-      <div class="times-box reveal">
-        <h3>Available Class Times (EST)</h3>
-        <div class="times-pills">
-          <div class="time-pill">Tue &amp; Thu &nbsp;·&nbsp; 10:00 AM EST</div>
-          <div class="time-pill">Tue &amp; Thu &nbsp;·&nbsp; 12:00 PM EST</div>
-          <div class="time-pill">Tuesday &nbsp;·&nbsp; 5:30 PM EST</div>
-        </div>
-      </div>
-
-      <div class="pricing-cta reveal">
-        <a href="https://buy.stripe.com/14AbJ3crrdQd02T1Eh9bO01"
-           target="_blank" class="btn btn-gold">Enroll Today</a>
+      <div class="preview-cta-wrap reveal">
+        <a href="enroll.html#plans" class="btn btn-gold">See Plans &amp; Enroll &rarr;</a>
+        <p class="preview-cta-note">All plans include your $60 registration fee and materials kit in the first payment. Cancel anytime.</p>
       </div>
 
     </div>
