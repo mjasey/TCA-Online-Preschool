@@ -221,7 +221,10 @@
       width: 100%; height: 100%;
       object-fit: cover;
       z-index: 0;
+      opacity: 0;
+      transition: opacity 0.9s ease;
     }
+    .hero-bg.is-ready { opacity: 1; }
     .hero-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(
@@ -1238,6 +1241,15 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fade hero video in once it can play — smooths the cut over the gradient fallback
+    (function () {
+      const heroVid = document.querySelector('.hero-bg');
+      if (!heroVid) return;
+      const reveal = () => heroVid.classList.add('is-ready');
+      if (heroVid.readyState >= 2) reveal();
+      else heroVid.addEventListener('loadeddata', reveal, { once: true });
+    })();
 
     // Video modal wiring
     const modal = document.getElementById('vanessa-modal');
