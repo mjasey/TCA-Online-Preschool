@@ -436,6 +436,73 @@
       margin: var(--s-5) 0;
       max-width: none;
     }
+
+    /* Donation block — secondary CTA inside founder section */
+    .donate-block {
+      text-align: center;
+      max-width: 640px;
+      margin: var(--s-7) auto 0;
+      padding-top: var(--s-6);
+      border-top: 1px solid var(--rule);
+    }
+    .donate-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 var(--s-4);
+      letter-spacing: 0.01em;
+    }
+    .donate-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--s-3);
+      margin-bottom: var(--s-4);
+    }
+    .donate-btn {
+      display: inline-block;
+      padding: 10px 22px;
+      min-width: 96px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-align: center;
+      text-decoration: none;
+      transition: background .18s ease, color .18s ease, border-color .18s ease;
+    }
+    .donate-btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--gilt);
+    }
+    .donate-btn-outline:hover {
+      background: var(--paper-dark);
+      border-color: var(--gilt-soft);
+    }
+    .donate-btn-filled {
+      background: var(--gilt);
+      color: var(--paper);
+      border: 1px solid var(--gilt);
+      font-weight: 600;
+    }
+    .donate-btn-filled:hover {
+      background: var(--gilt-soft);
+      border-color: var(--gilt-soft);
+    }
+    .donate-note {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin: 0;
+    }
+    @media (max-width: 520px) {
+      .donate-buttons { flex-direction: column; align-items: center; }
+      .donate-btn { width: 100%; max-width: 240px; }
+    }
     .scripture-verse {
       font-family: var(--serif);
       font-style: italic;
@@ -1231,6 +1298,32 @@
           <a href="enroll.html" class="btn btn-gold">Enroll Today</a>
         </div>
       </div>
+
+      <!-- DONATION BLOCK — secondary CTA below founder message -->
+      <div class="donate-block" aria-label="Support TCA with a donation">
+        <h3 class="donate-title">Support Our Mission</h3>
+        <div class="donate-buttons">
+          <a
+            href="https://buy.stripe.com/8x200l1MNfYl9DtciV9bO06"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="donate-btn donate-btn-outline"
+            >$25</a>
+          <a
+            href="https://buy.stripe.com/dRm3cx9ffbI53f55Ux9bO07"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="donate-btn donate-btn-filled"
+            >$50</a>
+          <a
+            href="https://buy.stripe.com/fZufZj1MNbI53f54Qt9bO08"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="donate-btn donate-btn-outline"
+            >$100</a>
+        </div>
+        <p class="donate-note">Help us continue impacting families through Christ-centered education.</p>
+      </div>
     </div>
   </section>
 
@@ -1242,8 +1335,8 @@
     <div class="banner-overlay"></div>
     <div class="banner-content">
       <p class="banner-verse">
-        "Let the little children come to me, and do not hinder them."
-        <span class="banner-ref">— Matthew 19:14</span>
+        "The people that know their God shall be strong and do great exploits for Him."
+        <span class="banner-ref">— Daniel 11:32</span>
       </p>
     </div>
   </section>
