@@ -213,12 +213,25 @@
     .faq-body a{color:var(--gilt);text-decoration:underline;text-underline-offset:3px;}
     .faq-body a:hover{color:var(--burgundy);}
 
-    /* Footer */
-    .footer{background:var(--ink);color:rgba(246,241,230,0.65);padding:var(--s-7) var(--s-5) var(--s-5);border-top:1px solid rgba(246,241,230,0.1);text-align:center;font-size:13px;letter-spacing:0.04em;}
-    .footer img{height:48px;margin:0 auto var(--s-4);}
-    .footer a{color:var(--gilt-soft);}
-    .footer-links{display:flex;justify-content:center;gap:var(--s-5);flex-wrap:wrap;margin:var(--s-4) 0;}
-    .footer-small{margin-top:var(--s-5);font-size:12px;color:rgba(246,241,230,0.4);letter-spacing:0.08em;}
+    /* Footer — brand close, socials, CTA */
+    .site-footer{background:var(--ink);color:rgba(246,241,230,0.72);padding:var(--s-8) var(--s-5) var(--s-5);text-align:center;border-top:1px solid rgba(246,241,230,0.08);}
+    .site-footer .footer-logo{width:80px;height:80px;border-radius:var(--radius-lg);margin:0 auto var(--s-4);display:block;}
+    .site-footer .footer-tagline{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2vw,22px);color:var(--gilt-soft);margin:0 0 var(--s-5);letter-spacing:0.01em;}
+    .site-footer nav.footer-nav{display:flex;justify-content:center;gap:var(--s-5);flex-wrap:wrap;margin:0 0 var(--s-5);}
+    .site-footer .footer-nav a{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(246,241,230,0.72);text-decoration:none;transition:color 0.2s ease;}
+    .site-footer .footer-nav a:hover{color:var(--gilt-soft);}
+    .footer-socials{display:flex;justify-content:center;gap:var(--s-3);margin:0 0 var(--s-5);}
+    .footer-socials a{width:40px;height:40px;border-radius:50%;background:rgba(246,241,230,0.08);color:var(--paper);display:inline-flex;align-items:center;justify-content:center;transition:background 0.2s ease,color 0.2s ease,transform 0.2s ease;}
+    .footer-socials a:hover{background:var(--gilt);color:var(--ink);transform:translateY(-2px);}
+    .footer-socials svg{width:18px;height:18px;display:block;}
+    .btn-donate{display:inline-flex;align-items:center;gap:10px;padding:12px 32px;border-radius:999px;border:1.5px solid var(--gilt-soft);color:var(--gilt-soft);font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.2s ease,color 0.2s ease,border-color 0.2s ease;}
+    .btn-donate:hover{background:var(--gilt-soft);color:var(--ink);border-color:var(--gilt-soft);}
+    .btn-donate svg{width:14px;height:14px;color:var(--gilt-soft);transition:color 0.2s ease;flex:0 0 auto;}
+    .btn-donate:hover svg{color:var(--ink);}
+    .footer-fine{border-top:1px solid rgba(246,241,230,0.08);margin-top:var(--s-6);padding-top:var(--s-4);font-size:11px;color:rgba(246,241,230,0.45);letter-spacing:0.08em;line-height:1.7;}
+    .footer-fine p{margin:0 0 2px;}
+    .footer-fine a{color:rgba(246,241,230,0.65);}
+    .footer-fine a:hover{color:var(--gilt-soft);}
   </style>
 </head>
 
@@ -483,22 +496,45 @@
   </section>
 
   <!-- ========== FOOTER ========== -->
-  <footer class="footer">
-    <img src="logo-transparent.png" alt="Taylor Christian Academy of the Arts" />
-    <div>Taylor Christian Academy <em>of the Arts</em></div>
-    <div class="footer-links">
-      <a href="index.html#story">Our Story</a>
-      <a href="index.html#approach">Our Approach</a>
+  <footer class="site-footer">
+    <img src="logo-icon.png" alt="Taylor Christian Academy" class="footer-logo" />
+    <p class="footer-tagline">Rooted in Faith. Built for Excellence.</p>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#foundation">Our Foundation</a>
+      <a href="index.html#team">Teachers</a>
+      <a href="index.html#approach">Approach</a>
       <a href="#plans">Tuition</a>
       <a href="#policies">Policies &amp; FAQ</a>
-      <a href="donate.html">Support Our Mission</a>
-      <a href="index.html#connect">Contact</a>
-      <a href="tel:9087381343">908-738-1343</a>
-      <a href="mailto:info@tcaarts.org">info@tcaarts.org</a>
+    </nav>
+
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/profile.php?id=61556835478280" target="_blank" rel="noopener noreferrer" aria-label="Follow Taylor Christian Academy on Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/tca_artsacademy" target="_blank" rel="noopener noreferrer" aria-label="Follow Taylor Christian Academy on Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
     </div>
-    <div class="footer-small">
-      3 Skiles Avenue #841, Piscataway, NJ 08855 · 501(c)(3) Non-Profit<br/>
-      © 2026 Taylor Christian Academy of the Arts. All rights reserved.
+
+    <a href="donate.html" class="btn-donate">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      Donate to Support TCA
+    </a>
+
+    <div class="footer-fine">
+      <p><a href="tel:9087381343">908-738-1343</a> · <a href="mailto:info@tcaarts.org">info@tcaarts.org</a></p>
+      <p>501(c)(3) Non-Profit · Gifts are tax-deductible to the fullest extent allowed by law.</p>
+      <p>© <span id="year"></span> Taylor Christian Academy. All rights reserved.</p>
     </div>
   </footer>
 
@@ -509,6 +545,8 @@
         if (v.readyState >= 2) reveal();
         else v.addEventListener('loadeddata', reveal, { once: true });
       });
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
     })();
   </script>
 </body>
