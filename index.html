@@ -445,13 +445,13 @@
       padding-top: var(--s-6);
       border-top: 1px solid var(--rule);
     }
-    .donate-title {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--ink);
-      margin: 0 0 var(--s-4);
-      letter-spacing: 0.01em;
+    .donate-eyebrow {
+      display: block;
+      margin-bottom: var(--s-4);
+    }
+    .founder-cta {
+      text-align: center;
+      margin-top: var(--s-5);
     }
     .donate-buttons {
       display: flex;
@@ -480,16 +480,6 @@
     }
     .donate-btn-outline:hover {
       background: var(--paper-dark);
-      border-color: var(--gilt-soft);
-    }
-    .donate-btn-filled {
-      background: var(--gilt);
-      color: var(--paper);
-      border: 1px solid var(--gilt);
-      font-weight: 600;
-    }
-    .donate-btn-filled:hover {
-      background: var(--gilt-soft);
       border-color: var(--gilt-soft);
     }
     .donate-note {
@@ -1295,14 +1285,22 @@
           <p class="founder-quote">
             "Our preschool program is designed to help children build confidence in speaking and expressing their ideas."
           </p>
-          <a href="enroll.html" class="btn btn-gold">Enroll Today</a>
+          <div class="founder-cta">
+            <a href="enroll.html" class="btn btn-gold">Enroll Today</a>
+          </div>
         </div>
       </div>
 
       <!-- DONATION BLOCK — secondary CTA below founder message -->
       <div class="donate-block" aria-label="Support TCA with a donation">
-        <h3 class="donate-title">Support Our Mission</h3>
+        <span class="eyebrow donate-eyebrow">Support Our Mission</span>
         <div class="donate-buttons">
+          <a
+            href="https://buy.stripe.com/14A8wR1MNh2p6rhfv79bO09"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="donate-btn donate-btn-outline"
+            >$10</a>
           <a
             href="https://buy.stripe.com/8x200l1MNfYl9DtciV9bO06"
             target="_blank"
@@ -1313,14 +1311,8 @@
             href="https://buy.stripe.com/dRm3cx9ffbI53f55Ux9bO07"
             target="_blank"
             rel="noopener noreferrer"
-            class="donate-btn donate-btn-filled"
-            >$50</a>
-          <a
-            href="https://buy.stripe.com/fZufZj1MNbI53f54Qt9bO08"
-            target="_blank"
-            rel="noopener noreferrer"
             class="donate-btn donate-btn-outline"
-            >$100</a>
+            >$50</a>
         </div>
         <p class="donate-note">Help us continue impacting families through Christ-centered education.</p>
       </div>
