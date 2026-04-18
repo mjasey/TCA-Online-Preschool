@@ -229,12 +229,23 @@
       position: absolute; inset: 0;
       background: linear-gradient(
         135deg,
-        rgba(10, 26, 53, 0.55) 0%,
-        rgba(15, 35, 71, 0.55) 35%,
-        rgba(27, 58, 107, 0.55) 70%,
-        rgba(30, 74, 133, 0.55) 100%
+        rgba(10, 26, 53, 0.32) 0%,
+        rgba(15, 35, 71, 0.32) 35%,
+        rgba(27, 58, 107, 0.32) 70%,
+        rgba(30, 74, 133, 0.32) 100%
       );
       z-index: 1;
+    }
+    .hero-glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(
+        ellipse 70% 55% at 50% 45%,
+        rgba(255, 250, 240, 0.28) 0%,
+        rgba(255, 250, 240, 0.14) 35%,
+        rgba(255, 250, 240, 0) 70%
+      );
+      z-index: 1;
+      pointer-events: none;
     }
     .hero-content h1,
     .hero-content .lede {
@@ -940,6 +951,7 @@
       <source src="hero-video.mp4" type="video/mp4" />
     </video>
     <div class="hero-overlay"></div>
+    <div class="hero-glow"></div>
 
     <div class="hero-content">
       <span class="eyebrow">A Christ-Centered Online Preschool</span>
