@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Give · Taylor Christian Academy</title>
+  <meta name="description" content="Support Taylor Christian Academy's Christ-centered online preschool. Your gift supports scholarship families and Christ-centered curriculum." />
+  <link rel="icon" href="logo-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Same token system as index.html and enroll.html. Kept inline so the file is self-contained. */
+    :root {
+      --paper:#F6F1E6; --paper-dark:#EEE7D5; --ink:#1A2340; --ink-soft:#2A3458;
+      --gilt:#B8860B; --gilt-soft:#D4A933; --burgundy:#8B1A1A; --sage:#7A8471;
+      --sage-soft:#A5AF9C; --text:#2B2418; --text-muted:#6B6456; --rule:#C9BFA7; --white:#FFFFFF;
+      --serif:'Cormorant Garamond', Georgia, serif;
+      --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px;
+      --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+      --max-w:1200px; --max-w-narrow:920px;
+      --radius:2px; --radius-lg:6px;
+      --shadow-1:0 1px 2px rgba(26,35,64,0.06);
+      --shadow-2:0 8px 24px rgba(26,35,64,0.08);
+    }
+    *,*::before,*::after{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--text);background:var(--paper);-webkit-font-smoothing:antialiased;}
+    img{max-width:100%;display:block;}
+    a{color:var(--ink);text-decoration:none;}
+    a:hover{color:var(--burgundy);}
+    h1,h2,h3,h4{font-family:var(--serif);font-weight:500;color:var(--ink);margin:0 0 var(--s-4) 0;}
+    h1{font-size:clamp(40px,6vw,72px);line-height:1.05;letter-spacing:-0.01em;}
+    h1 em{color:var(--gilt);font-style:italic;}
+    h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;}
+    h2 em{color:var(--burgundy);font-style:italic;}
+    h3{font-size:22px;line-height:1.25;}
+    p{margin:0 0 var(--s-4) 0;}
+    .eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:var(--gilt);margin-bottom:var(--s-4);display:block;}
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 var(--s-5);}
+    .container-narrow{max-width:var(--max-w-narrow);margin:0 auto;padding:0 var(--s-5);}
+    section{padding:var(--s-9) 0;}
+
+    /* Buttons (shared) */
+    .btn{display:inline-block;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;border-radius:var(--radius);border:1px solid transparent;cursor:pointer;transition:all .2s;text-align:center;}
+    .btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+    .btn-primary:hover{background:var(--burgundy);color:var(--paper);border-color:var(--burgundy);}
+    .btn-outline{background:transparent;color:var(--ink);border-color:var(--ink);}
+    .btn-outline:hover{background:var(--ink);color:var(--paper);}
+
+    /* Masthead + Nav */
+    .masthead{background:var(--ink);color:var(--gilt-soft);font-size:13px;letter-spacing:0.08em;text-align:center;padding:10px var(--s-5);}
+    .masthead a{color:var(--gilt-soft);}
+    .masthead a:hover{color:var(--paper);}
+    .nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--rule);backdrop-filter:saturate(180%) blur(8px);}
+    .nav-inner{max-width:var(--max-w);margin:0 auto;padding:var(--s-3) var(--s-5);display:flex;align-items:center;justify-content:space-between;gap:var(--s-4);}
+    .nav-logo img{height:56px;width:auto;}
+    .nav-links{display:flex;align-items:center;gap:var(--s-6);font-size:14px;font-weight:500;letter-spacing:0.04em;}
+    .nav-links a{color:var(--text);}
+    .nav-links a:hover{color:var(--burgundy);}
+    .nav-links a.active{color:var(--gilt);}
+    .nav-cta{padding:10px 20px!important;font-size:13px!important;}
+    .nav-toggle{display:none;background:none;border:0;cursor:pointer;color:var(--ink);font-size:24px;}
+    @media (max-width:820px){
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:var(--s-4);background:var(--paper);padding:var(--s-5);border-bottom:1px solid var(--rule);}
+      .nav-links.open{display:flex;}
+      .nav-toggle{display:block;}
+    }
+
+    /* Hero */
+    .give-hero{padding:var(--s-9) 0 var(--s-8);background:var(--paper-dark);text-align:center;border-bottom:1px solid var(--rule);}
+    .give-hero h1{margin-bottom:var(--s-5);max-width:900px;margin-left:auto;margin-right:auto;}
+    .give-hero .mission-line{max-width:640px;margin:0 auto;color:var(--text);font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.2vw,24px);line-height:1.5;}
+
+    /* Give section */
+    .give{background:var(--paper);}
+    .give-intro{text-align:center;max-width:720px;margin:0 auto var(--s-8);}
+    .give-intro h2{margin-bottom:var(--s-4);}
+    .give-intro p{color:var(--text-muted);font-size:17px;}
+
+    /* Amount cards */
+    .amounts-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:var(--s-5);
+      max-width:900px;
+      margin:0 auto var(--s-7);
+    }
+    .amount-card{
+      background:var(--paper);
+      border:1px solid var(--rule);
+      border-radius:var(--radius-lg);
+      padding:var(--s-7) var(--s-5);
+      text-align:center;
+      text-decoration:none;
+      color:var(--ink);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:var(--s-3);
+      position:relative;
+    }
+    .amount-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-2);
+      border-color:var(--gilt);
+      color:var(--ink);
+    }
+    .amount-card.featured{
+      border-color:var(--gilt);
+      background:#FEFBF0;
+      box-shadow:var(--shadow-2);
+      transform:translateY(-6px);
+    }
+    .amount-card.featured:hover{transform:translateY(-10px);}
+    .amount-card .amount-badge{
+      position:absolute;
+      top:-14px;
+      left:50%;
+      transform:translateX(-50%);
+      background:var(--gilt);
+      color:var(--paper);
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      padding:5px 14px;
+      border-radius:100px;
+    }
+    .amount-card .amount-num{
+      font-family:var(--serif);
+      font-size:56px;
+      color:var(--ink);
+      line-height:1;
+    }
+    .amount-card .amount-label{
+      font-size:12px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      color:var(--text-muted);
+      font-weight:600;
+    }
+    @media (max-width:820px){
+      .amounts-grid{grid-template-columns:1fr;max-width:360px;}
+      .amount-card.featured{transform:none;}
+      .amount-card.featured:hover{transform:translateY(-4px);}
+    }
+
+    .other-amount{
+      text-align:center;
+      font-size:13px;
+      color:var(--text-muted);
+      margin-top:var(--s-3);
+    }
+    .other-amount a{color:var(--gilt);text-decoration:underline;text-underline-offset:3px;}
+
+    /* Impact */
+    .impact{background:var(--paper-dark);}
+    .impact-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:var(--s-7);
+      max-width:900px;
+      margin:0 auto;
+    }
+    .impact-card{
+      background:var(--paper);
+      border-left:3px solid var(--gilt);
+      padding:var(--s-6);
+      border-radius:var(--radius);
+    }
+    .impact-card h3{
+      font-size:20px;
+      margin-bottom:var(--s-3);
+      color:var(--ink);
+    }
+    .impact-card p{
+      color:var(--text-muted);
+      font-size:15px;
+      line-height:1.6;
+      margin:0;
+    }
+    @media (max-width:820px){
+      .impact-grid{grid-template-columns:1fr;}
+    }
+
+    /* Scripture */
+    .scripture-give{
+      background:var(--ink);
+      color:var(--paper);
+      text-align:center;
+      padding:var(--s-9) var(--s-5);
+    }
+    .scripture-give .verse{
+      font-family:var(--serif);
+      font-style:italic;
+      font-size:clamp(22px,2.8vw,30px);
+      line-height:1.5;
+      max-width:780px;
+      margin:0 auto var(--s-4);
+      color:var(--paper);
+    }
+    .scripture-give .ref{
+      font-family:var(--sans);
+      font-size:12px;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      color:var(--gilt-soft);
+    }
+
+    /* Thank you */
+    .thanks{background:var(--paper);text-align:center;}
+    .thanks .container-narrow{max-width:720px;}
+    .thanks h2{margin-bottom:var(--s-4);}
+    .thanks p{color:var(--text-muted);font-size:17px;}
+    .thanks .signature{
+      font-family:var(--serif);
+      font-style:italic;
+      font-size:22px;
+      color:var(--ink);
+      margin-top:var(--s-5);
+    }
+
+    /* Footer */
+    .footer{background:var(--ink);color:rgba(246,241,230,0.65);padding:var(--s-7) var(--s-5) var(--s-5);border-top:1px solid rgba(246,241,230,0.1);text-align:center;font-size:13px;letter-spacing:0.04em;}
+    .footer img{height:48px;margin:0 auto var(--s-4);}
+    .footer a{color:var(--gilt-soft);}
+    .footer-links{display:flex;justify-content:center;gap:var(--s-5);flex-wrap:wrap;margin:var(--s-4) 0;}
+    .footer-small{margin-top:var(--s-5);font-size:12px;color:rgba(246,241,230,0.4);letter-spacing:0.08em;}
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== MASTHEAD ========== -->
+  <div class="masthead">
+    ✦ Christ-Centered Online Preschool for Ages 3–5 · Now Enrolling · <a href="tel:9087381343">908-738-1343</a>
+  </div>
+
+  <!-- ========== NAV ========== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Taylor Christian Academy home">
+        <img src="logo-navbar.png" alt="Taylor Christian Academy Online Preschool" />
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+      <div class="nav-links">
+        <a href="index.html#foundation">Our Foundation</a>
+        <a href="index.html#team">Teachers</a>
+        <a href="index.html#approach">Approach</a>
+        <a href="index.html#tuition">Tuition</a>
+        <a href="donate.html" class="active">Give</a>
+        <a href="enroll.html" class="btn btn-primary nav-cta">Enroll Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="give-hero">
+    <div class="container-narrow">
+      <span class="eyebrow">Support Our Mission</span>
+      <h1>Help us bring Christ-centered education to <em>every family.</em></h1>
+      <p class="mission-line">Your gift supports scholarship families and Christ-centered curriculum — so more children can learn the Word, find their voice, and grow with confidence.</p>
+    </div>
+  </section>
+
+  <!-- ========== GIVE — amount cards ========== -->
+  <section class="give" id="give">
+    <div class="container">
+      <div class="give-intro">
+        <span class="eyebrow">Give Today</span>
+        <h2>Choose a gift amount</h2>
+        <p>Every amount matters. Every gift helps a child open a Bible, meet a teacher who knows their name, and grow in a classroom built on faith.</p>
+      </div>
+
+      <div class="amounts-grid">
+        <a
+          href="https://buy.stripe.com/14A8wR1MNh2p6rhfv79bO09"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="amount-card"
+          aria-label="Give ten dollars">
+          <div class="amount-num">$10</div>
+          <div class="amount-label">One-Time Gift</div>
+        </a>
+
+        <a
+          href="https://buy.stripe.com/8x200l1MNfYl9DtciV9bO06"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="amount-card featured"
+          aria-label="Give twenty-five dollars — most common">
+          <span class="amount-badge">Most Common</span>
+          <div class="amount-num">$25</div>
+          <div class="amount-label">One-Time Gift</div>
+        </a>
+
+        <a
+          href="https://buy.stripe.com/dRm3cx9ffbI53f55Ux9bO07"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="amount-card"
+          aria-label="Give fifty dollars">
+          <div class="amount-num">$50</div>
+          <div class="amount-label">One-Time Gift</div>
+        </a>
+      </div>
+
+      <p class="other-amount">Want to give a different amount or partner long-term? <a href="mailto:info@tcaarts.org?subject=Partnering%20with%20TCA">Email us</a> — we'd love to talk.</p>
+    </div>
+  </section>
+
+  <!-- ========== IMPACT ========== -->
+  <section class="impact">
+    <div class="container">
+      <div class="give-intro">
+        <span class="eyebrow">Where Your Gift Goes</span>
+        <h2>Two simple priorities.</h2>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-card">
+          <h3>Scholarship Families</h3>
+          <p>Some families would love Christ-centered education for their child but can't stretch to the monthly tuition. Your gift opens the door — a scholarship seat means one more little one in class next term.</p>
+        </div>
+        <div class="impact-card">
+          <h3>Christ-Centered Curriculum</h3>
+          <p>Scripture cards, printable lesson sheets, Bible-story workbooks, music materials — the tools that make each Zoom class feel like a classroom, not a call. Your gift keeps the shelves stocked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SCRIPTURE ========== -->
+  <section class="scripture-give">
+    <div class="container-narrow">
+      <p class="verse">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+      <span class="ref">— 2 Corinthians 9:7</span>
+    </div>
+  </section>
+
+  <!-- ========== THANKS ========== -->
+  <section class="thanks">
+    <div class="container-narrow">
+      <span class="eyebrow">Thank You</span>
+      <h2>From our family to yours.</h2>
+      <p>Whether you give $10 or pray for our school from afar, you are part of what God is building here. Thank you for believing in this work — and in the children it serves.</p>
+      <p class="signature">— Sherri Taylor, Founder</p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <img src="logo-transparent.png" alt="Taylor Christian Academy Online Preschool" />
+    <div>Taylor Christian Academy</div>
+    <div class="footer-links">
+      <a href="index.html#foundation">Our Foundation</a>
+      <a href="index.html#team">Teachers</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#tuition">Tuition</a>
+      <a href="enroll.html">Enroll</a>
+      <a href="donate.html">Support Our Mission</a>
+      <a href="tel:9087381343">908-738-1343</a>
+      <a href="mailto:info@tcaarts.org">info@tcaarts.org</a>
+    </div>
+    <div class="footer-small">
+      501(c)(3) Non-Profit · Gifts are tax-deductible to the fullest extent allowed by law.<br/>
+      © 2026 Taylor Christian Academy. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
