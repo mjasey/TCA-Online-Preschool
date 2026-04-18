@@ -574,13 +574,14 @@
       margin-bottom: var(--s-1);
     }
     .teacher-role {
-      font-family: var(--sans);
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
       color: var(--gilt);
-      font-weight: 600;
-      margin-bottom: var(--s-4);
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+      margin-bottom: var(--s-5);
     }
     .teacher-card p {
       margin-bottom: var(--s-3);
@@ -592,6 +593,78 @@
       gap: var(--s-3);
       flex-wrap: wrap;
       margin-top: var(--s-5);
+      justify-content: center;
+    }
+
+    /* Credentials checklist (teacher card) */
+    .credential-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto var(--s-5);
+      max-width: 360px;
+      text-align: left;
+    }
+    .credential-list li {
+      position: relative;
+      padding-left: 34px;
+      margin-bottom: var(--s-3);
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .credential-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gilt);
+    }
+    .credential-list li::after {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      width: 9px;
+      height: 4px;
+      border-left: 2px solid var(--paper);
+      border-bottom: 2px solid var(--paper);
+      transform: rotate(-45deg);
+    }
+
+    /* Teacher chip row — favorites / personality */
+    .teacher-card .chip-row {
+      justify-content: center;
+      margin: 0 auto var(--s-5);
+      max-width: 360px;
+    }
+
+    /* Teacher scripture quote (Sherri's card) */
+    .teacher-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--ink);
+      background: transparent;
+      border-left: 3px solid var(--gilt);
+      padding: var(--s-2) var(--s-4);
+      margin: var(--s-5) auto 0;
+      max-width: 360px;
+      text-align: left;
+    }
+    .teacher-quote cite {
+      display: block;
+      margin-top: var(--s-2);
+      font-style: normal;
+      font-size: 13px;
+      color: var(--gilt);
+      font-family: var(--sans);
+      letter-spacing: 0.05em;
+      font-weight: 600;
     }
 
     /* Play-button style link */
@@ -1152,16 +1225,23 @@
           </div>
           <div class="teacher-body">
             <h3>Sherri Taylor</h3>
-            <div class="teacher-role">Founder · Director</div>
+            <div class="teacher-role">Founder &amp; CEO</div>
             <p>
-              Sherri has spent decades teaching children to read, to wonder, and to trust
-              the Lord with their whole hearts. She founded Taylor Christian Academy to
-              bring that same patience and warmth into Christian homes everywhere.
+              Sherri Taylor founded Taylor Christian Academy with a singular vision:
+              to make exceptional, faith-rooted education accessible to every family.
+              She believes all children deserve a quality education in a loving, safe
+              environment — and should have fun while attaining it.
             </p>
             <p>
-              Her passion is simple — to help children fall in love with learning while
-              their hearts are still soft enough to be shaped by God's Word.
+              As a Christian parent, she ensured her own daughter — a recent Harvard
+              graduate and now a Law Clerk at the United States Court of Appeals —
+              enjoyed a quality education that prepared her for lasting success.
+              This is exactly what TCA will make happen for children all over the world.
             </p>
+            <blockquote class="teacher-quote">
+              "The people that know their God shall be strong and do great exploits for Him."
+              <cite>— Daniel 11:32</cite>
+            </blockquote>
           </div>
         </article>
 
@@ -1170,15 +1250,24 @@
             <img src="Vanessa.png" alt="Miss Vanessa, Lead Teacher at Taylor Christian Academy" class="teacher-photo" loading="lazy" />
           </div>
           <div class="teacher-body">
-            <h3>Vanessa</h3>
-            <div class="teacher-role">Lead Teacher</div>
+            <h3>Miss Vanessa</h3>
+            <div class="teacher-role">Lead Preschool Teacher</div>
+            <ul class="credential-list">
+              <li>B.S. Early Childhood Education</li>
+              <li>M.S. Psychology &mdash; Early Childhood &amp; Adolescent Development</li>
+              <li>8 Years Teaching Experience</li>
+            </ul>
+            <div class="chip-row">
+              <span class="chip">🍕 Pizza</span>
+              <span class="chip">🍂 Fall</span>
+              <span class="chip">✏️ Writing</span>
+              <span class="chip">🎨 Pink</span>
+            </div>
             <p>
-              Miss Vanessa brings joy and rhythm into every class — from letter sounds
-              and number games to hymns, prayer, and gentle conversations about faith.
-            </p>
-            <p>
-              Her classroom is calm, kind, and full of laughter. See for yourself with
-              a short look inside one of her lessons.
+              Miss Vanessa brings warmth, patience, and deep expertise to every class.
+              Her master's-level training means she understands not just what to teach,
+              but how young minds grow and thrive — making every Zoom session something
+              your child will look forward to all week long.
             </p>
             <div class="rule" style="margin-left: auto; margin-right: auto;"></div>
             <div class="teacher-actions" style="justify-content: center;">
