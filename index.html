@@ -836,6 +836,45 @@
       font-style: normal;
     }
 
+    /* Reviews — families love TCA */
+    .reviews {
+      background: var(--paper);
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .reviews-grid .review-card {
+      background: var(--paper-dark);
+      padding: var(--s-7);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--gilt);
+      margin-bottom: 0;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    .reviews-grid .review-card .stars {
+      color: var(--gilt);
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      margin-bottom: var(--s-4);
+      font-family: var(--sans);
+      font-style: normal;
+    }
+
+    /* Tuition single-panel (Registration only) */
+    .tuition-single {
+      display: flex;
+      justify-content: center;
+    }
+    .tuition-single .tuition-panel {
+      max-width: 560px;
+      width: 100%;
+    }
+
     /* Contact section */
     .contact {
       background: var(--paper);
@@ -1087,7 +1126,8 @@
         gap: var(--s-7);
       }
       .moments-grid,
-      .stats-grid {
+      .stats-grid,
+      .reviews-grid {
         grid-template-columns: 1fr;
       }
       .stat-divider::before, .stat-divider::after { display: none; }
@@ -1336,26 +1376,40 @@
     </div>
   </section>
 
-  <!-- MOMENTS — photo band -->
-  <section class="moments">
+  <!-- FAMILIES LOVE TCA — reviews -->
+  <section class="reviews">
     <div class="container">
       <div class="section-intro">
-        <span class="eyebrow">Moments from Class</span>
-        <h2>Small hands, <em>big</em> moments.</h2>
+        <span class="eyebrow">Families Love TCA</span>
+        <h2>Hear from our <em>TCA</em> families.</h2>
         <div class="rule"></div>
-        <p>A glimpse of the families, children, and teachers who make up the TCA classroom.</p>
+        <p>Real words from parents watching their children grow in confidence, kindness, and faith.</p>
       </div>
 
-      <div class="moments-grid">
-        <div class="moment-frame">
-          <img src="Parent_and_child_.png" alt="A parent and child learning together at home" loading="lazy" />
-        </div>
-        <div class="moment-frame">
-          <img src="teacher_zoom.png" alt="A teacher on a video call with her class" loading="lazy" />
-        </div>
-        <div class="moment-frame">
-          <img src="bro-sis.png" alt="A brother and sister learning side by side" loading="lazy" />
-        </div>
+      <div class="reviews-grid">
+        <blockquote class="testimonial review-card">
+          <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+          "I am so grateful for TCA! I have watched my daughter grow in confidence in
+          learning, interacting, and opening and closing in prayer on this online
+          school platform. TCA fosters her creativity with their play, work, discuss,
+          dance strategies. Thank you Ms. Vanessa for being an amazing, enthusiastic
+          and patient teacher. Thank you to the founder Mrs. Taylor, for upholding
+          core Christian values, teaching the unwavering truth through Bible stories,
+          and introducing her to the PreK basics."
+          <span class="testimonial-attrib">The Simms Family · TCA Online Preschool Parent</span>
+        </blockquote>
+
+        <blockquote class="testimonial review-card">
+          <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+          "TCA has been a very fun and meaningful experience for my daughter Zara.
+          'Read your Bible and Pray Every day' is a song that Zara has learned from
+          one of TCA's teachers. When I asked Zara where she learned it she had the
+          biggest smile on her face and proudly said 'Ms. Vanessa taught me!' TCA is
+          such a great online school because it not only teaches preschool
+          fundamentals but more importantly it is rooted in faith and the teaching
+          of the Bible."
+          <span class="testimonial-attrib">The Sykes Family · TCA Online Preschool Parent</span>
+        </blockquote>
       </div>
     </div>
   </section>
@@ -1370,7 +1424,7 @@
         <p>One monthly rate, with a small one-time registration — so you can plan with confidence.</p>
       </div>
 
-      <div class="tuition-grid">
+      <div class="tuition-single">
         <div class="tuition-panel">
           <h3>Registration</h3>
           <div class="price-stack">
@@ -1385,43 +1439,6 @@
             <li>Family access to recordings of every session</li>
           </ul>
           <a href="enroll.html" class="btn btn-primary">See Enrollment Bundles</a>
-        </div>
-
-        <div>
-          <span class="eyebrow">Families Love TCA</span>
-
-          <div class="testimonial-video-wrap">
-            <video controls preload="metadata" playsinline>
-              <source src="testimonial-video.mp4" type="video/mp4" />
-              Your browser does not support this video.
-            </video>
-          </div>
-          <p class="testimonial-video-caption">Hear from a TCA family in their own words.</p>
-
-          <div class="stars" aria-label="Five out of five stars" style="color: var(--gilt); font-size: 18px; letter-spacing: 0.2em; margin: var(--s-3) 0 var(--s-4);">★★★★★</div>
-
-          <blockquote class="testimonial">
-            "I am so grateful for TCA! I have watched my daughter grow in confidence in
-            learning, interacting, and opening and closing in prayer on this online
-            school platform. TCA fosters her creativity with their play, work, discuss,
-            dance strategies. Thank you Ms. Vanessa for being an amazing, enthusiastic
-            and patient teacher. Thank you to the founder Mrs. Taylor, for upholding
-            core Christian values, teaching the unwavering truth through Bible stories,
-            and introducing her to the PreK basics."
-            <span class="testimonial-attrib">The Simms Family · TCA Online Preschool Parent</span>
-          </blockquote>
-
-          <blockquote class="testimonial">
-            "TCA has been a very fun and meaningful experience for my daughter Zara.
-            'Read your Bible and Pray Every day' is a song that Zara has learned from
-            one of TCA's teachers. When I asked Zara where she learned it she had the
-            biggest smile on her face and proudly said 'Ms. Vanessa taught me!' TCA is
-            such a great online school because it not only teaches preschool
-            fundamentals but more importantly it is rooted in faith and the teaching
-            of the Bible."
-            <span class="testimonial-attrib">The Sykes Family · TCA Online Preschool Parent</span>
-          </blockquote>
-
         </div>
       </div>
     </div>
