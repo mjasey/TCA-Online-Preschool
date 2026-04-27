@@ -512,57 +512,126 @@
       font-weight: 600;
     }
 
-    /* Scripture banner — full-bleed looping video between Foundation and Teachers */
-    .scripture-banner {
+    /* Mission — full-bleed video moment between Founder and Teachers */
+    .mission {
       position: relative;
-      height: clamp(220px, 38vw, 420px);
+      padding: 110px 32px;
       overflow: hidden;
-      background: var(--ink);
+      color: var(--paper, #f6f1e6);
+      text-align: center;
+      min-height: 600px;
     }
-    .scripture-banner video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
+    .mission-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      z-index: 0;
-    }
-    .scripture-banner .banner-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(10, 26, 53, 0.45) 0%,
-        rgba(10, 26, 53, 0.60) 100%
-      );
       z-index: 1;
     }
-    .scripture-banner .banner-content {
-      position: relative; z-index: 2;
-      height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 0 var(--s-5);
+    .mission-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(135deg,
+        rgba(10, 20, 40, 0.78) 0%,
+        rgba(26, 35, 64, 0.72) 50%,
+        rgba(21, 32, 61, 0.78) 100%);
     }
-    .scripture-banner .banner-verse {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 500;
-      color: var(--paper);
-      font-size: clamp(24px, 3.2vw, 42px);
-      line-height: 1.3;
-      max-width: 880px;
+    .mission-inner {
+      position: relative;
+      z-index: 3;
+      max-width: 580px;
       margin: 0 auto;
-      letter-spacing: -0.005em;
-      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
     }
-    .scripture-banner .banner-ref {
-      display: block;
-      margin-top: var(--s-4);
-      font-family: var(--sans);
-      font-style: normal;
+    .mission-ornament {
+      color: var(--gilt, #B8860B);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 14px;
+      letter-spacing: 14px;
+      margin-bottom: 22px;
+      opacity: 0.8;
+    }
+    .mission-ornament-bottom {
+      margin-top: 22px;
+      margin-bottom: 0;
+    }
+    .mission-kicker {
+      font-family: 'Inter', -apple-system, sans-serif;
       font-size: 11px;
-      letter-spacing: 0.3em;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--gilt-soft);
-      font-weight: 600;
+      color: var(--gilt-soft, #D4A933);
+      margin-bottom: 32px;
+      display: inline-block;
+    }
+    .mission-rule {
+      width: 60px;
+      height: 1px;
+      background: rgba(184, 134, 11, 0.5);
+      margin: 28px auto;
+    }
+    .mission-statement {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--paper, #f6f1e6);
+      margin: 0 auto;
+      letter-spacing: -0.2px;
+      max-width: 560px;
+    }
+    .mission-verse-kicker {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 10px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gilt-soft, #D4A933);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .mission-scripture {
+      font-family: 'Lora', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(16px, 2vw, 19px);
+      font-weight: 400;
+      line-height: 1.65;
+      color: rgba(246, 241, 230, 0.88);
+      margin: 0 auto;
+      max-width: 480px;
+    }
+    .mission-attribution {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(184, 134, 11, 0.85);
+      margin-top: 14px;
+    }
+    .mission-signoff {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gilt, #B8860B);
+      opacity: 0.85;
+    }
+    @media (max-width: 700px) {
+      .mission {
+        padding: 80px 24px;
+        min-height: auto;
+      }
+      .mission-statement {
+        font-size: 20px;
+        line-height: 1.45;
+      }
+      .mission-scripture {
+        font-size: 16px;
+      }
+      .mission-ornament {
+        letter-spacing: 10px;
+      }
     }
 
     /* Featured testimonial video */
@@ -1293,17 +1362,40 @@
     </div>
   </section>
 
-  <!-- SCRIPTURE BANNER — full-bleed video transition -->
-  <section class="scripture-banner" aria-label="Scripture reflection">
-    <video autoplay muted loop playsinline preload="auto" aria-hidden="true">
+  <!-- MISSION — full mission moment with scripture as foundation -->
+  <section class="mission" id="mission" aria-label="Our Mission">
+    <video class="mission-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
       <source src="proverbs-banner.mp4" type="video/mp4" />
     </video>
-    <div class="banner-overlay"></div>
-    <div class="banner-content">
-      <p class="banner-verse">
-        "The people that know their God shall be strong and do great exploits for Him."
-        <span class="banner-ref">— Daniel 11:32</span>
+    <div class="mission-overlay"></div>
+    <div class="mission-inner">
+
+      <div class="mission-ornament">&#x2726; &#x2726; &#x2726;</div>
+
+      <span class="mission-kicker">Our Mission</span>
+
+      <div class="mission-rule"></div>
+
+      <p class="mission-statement">
+        Become a recognized leader in education, providing children with a rigorous Christ-centered education that will prepare them to be creative critical-thinkers, problem-solvers, and entrepreneurs &mdash; to raise a generation to love God and embrace His precepts.
       </p>
+
+      <div class="mission-rule"></div>
+
+      <span class="mission-verse-kicker">Rooted In Scripture</span>
+
+      <p class="mission-scripture">
+        "The people that know their God shall be strong and do great exploits for Him."
+      </p>
+
+      <div class="mission-attribution">&mdash; Daniel 11:32 &mdash;</div>
+
+      <div class="mission-rule"></div>
+
+      <div class="mission-signoff">&#x2726; &nbsp; Taylor Christian Academy &nbsp; &#x2726;</div>
+
+      <div class="mission-ornament mission-ornament-bottom">&#x2726; &#x2726; &#x2726;</div>
+
     </div>
   </section>
 
@@ -1337,10 +1429,6 @@
               enjoyed a quality education that prepared her for lasting success.
               This is exactly what TCA will make happen for children all over the world.
             </p>
-            <blockquote class="teacher-quote">
-              "The people that know their God shall be strong and do great exploits for Him."
-              <cite>— Daniel 11:32</cite>
-            </blockquote>
           </div>
         </article>
 
