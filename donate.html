@@ -235,17 +235,6 @@
       .impact-grid{grid-template-columns:1fr;}
     }
 
-    /* Mobile: hide background videos so devices that block autoplay
-       fall through to the section's CSS gradient/color background.
-       Parent .give-hero carries the navy gradient + dot pattern;
-       parent .scripture-give has background: var(--ink). */
-    @media (max-width: 768px) {
-      video.hero-bg,
-      video.scripture-bg {
-        display: none;
-      }
-    }
-
     /* Scripture — video bed */
     .scripture-give{
       position:relative;
@@ -501,9 +490,18 @@
   <script>
     (function () {
       document.querySelectorAll('.hero-bg, .scripture-bg').forEach(function (v) {
-        var reveal = function () { v.classList.add('is-ready'); };
+        var revealed = false;
+        var reveal = function () {
+          if (revealed) return;
+          revealed = true;
+          v.classList.add('is-ready');
+          v.play().catch(function () {});
+        };
         if (v.readyState >= 2) reveal();
-        else v.addEventListener('loadeddata', reveal, { once: true });
+        ['loadeddata', 'canplay', 'playing'].forEach(function (evt) {
+          v.addEventListener(evt, reveal, { once: true });
+        });
+        setTimeout(reveal, 1500);
       });
       var y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();

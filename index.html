@@ -612,15 +612,6 @@
       }
     }
 
-    /* Mobile: hide background videos so devices that block autoplay
-       fall through to the section's CSS gradient/color background.
-       Parent sections (.hero, .mission) carry their own backgrounds. */
-    @media (max-width: 768px) {
-      video.hero-bg,
-      video.mission-bg {
-        display: none;
-      }
-    }
 
     /* Featured testimonial video */
     .testimonial-video-wrap {
@@ -1706,13 +1697,34 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Fade hero video in once it can play — smooths the cut over the gradient fallback
+    // Background video reveal — robust on flaky mobile networks:
+    // listen for multiple readiness events + 1.5s timeout fallback,
+    // plus an explicit play() nudge in case autoplay was deferred.
     (function () {
       const heroVid = document.querySelector('.hero-bg');
-      if (!heroVid) return;
-      const reveal = () => heroVid.classList.add('is-ready');
-      if (heroVid.readyState >= 2) reveal();
-      else heroVid.addEventListener('loadeddata', reveal, { once: true });
+      if (heroVid) {
+        let revealed = false;
+        const reveal = () => {
+          if (revealed) return;
+          revealed = true;
+          heroVid.classList.add('is-ready');
+          heroVid.play().catch(() => {});
+        };
+        if (heroVid.readyState >= 2) reveal();
+        ['loadeddata', 'canplay', 'playing'].forEach(evt =>
+          heroVid.addEventListener(evt, reveal, { once: true })
+        );
+        setTimeout(reveal, 1500);
+      }
+
+      // Mission-bg has no fade-in (paints immediately) — just nudge play()
+      // in case autoplay was blocked.
+      const missionVid = document.querySelector('.mission-bg');
+      if (missionVid) {
+        const tryPlay = () => missionVid.play().catch(() => {});
+        if (missionVid.readyState >= 2) tryPlay();
+        else missionVid.addEventListener('loadedmetadata', tryPlay, { once: true });
+      }
     })();
 
     // Video modal wiring — Vanessa classroom demo
