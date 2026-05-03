@@ -235,6 +235,17 @@
       .impact-grid{grid-template-columns:1fr;}
     }
 
+    /* Mobile: hide background videos so devices that block autoplay
+       fall through to the section's CSS gradient/color background.
+       Parent .give-hero carries the navy gradient + dot pattern;
+       parent .scripture-give has background: var(--ink). */
+    @media (max-width: 768px) {
+      video.hero-bg,
+      video.scripture-bg {
+        display: none;
+      }
+    }
+
     /* Scripture — video bed */
     .scripture-give{
       position:relative;

@@ -193,6 +193,15 @@
     .addon-note{color:var(--text-muted);font-size:15px;margin:0;padding-top:var(--s-4);border-top:1px solid var(--rule);font-style:italic;}
     @media (max-width:640px){.includes-list{grid-template-columns:1fr;}}
 
+    /* Mobile: hide background videos so devices that block autoplay
+       fall through to the section's CSS gradient/color background.
+       Parent .enroll-hero carries its own gradient + dot-pattern fallback. */
+    @media (max-width: 768px) {
+      video.hero-bg {
+        display: none;
+      }
+    }
+
     /* FAQ accordion */
     .faq{margin-top:var(--s-9);}
     .faq-head{text-align:center;margin-bottom:var(--s-6);}
