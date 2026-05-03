@@ -96,6 +96,15 @@
       transition:opacity 0.9s ease;
     }
     .give-hero .hero-bg.is-ready{opacity:1;}
+    /* Hide iOS Safari's "tap to play" overlay so a blocked-autoplay
+       video falls back to its first frame as a clean poster. */
+    .hero-bg::-webkit-media-controls-start-playback-button,
+    .scripture-bg::-webkit-media-controls-start-playback-button,
+    .hero-bg::-webkit-media-controls,
+    .scripture-bg::-webkit-media-controls{
+      display:none !important;
+      -webkit-appearance:none;
+    }
     .give-hero .hero-overlay{
       position:absolute; inset:0;
       background:linear-gradient(
@@ -489,7 +498,8 @@
 
   <script>
     (function () {
-      document.querySelectorAll('.hero-bg, .scripture-bg').forEach(function (v) {
+      var bgVids = document.querySelectorAll('.hero-bg, .scripture-bg');
+      bgVids.forEach(function (v) {
         var revealed = false;
         var reveal = function () {
           if (revealed) return;
@@ -503,6 +513,15 @@
         });
         setTimeout(reveal, 1500);
       });
+      // First user gesture grants playback permission on iOS Low Power Mode.
+      if (bgVids.length) {
+        var kick = function () {
+          bgVids.forEach(function (v) { if (v.paused) v.play().catch(function () {}); });
+        };
+        ['touchstart', 'click', 'scroll'].forEach(function (evt) {
+          window.addEventListener(evt, kick, { once: true, passive: true });
+        });
+      }
       var y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
     })();

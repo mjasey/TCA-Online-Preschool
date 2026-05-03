@@ -237,6 +237,15 @@
       transition: opacity 0.9s ease;
     }
     .hero-bg.is-ready { opacity: 1; }
+    /* Hide iOS Safari's native "tap to play" overlay so a blocked-autoplay
+       video falls back to showing its first frame as a clean poster instead. */
+    .hero-bg::-webkit-media-controls-start-playback-button,
+    .mission-bg::-webkit-media-controls-start-playback-button,
+    .hero-bg::-webkit-media-controls,
+    .mission-bg::-webkit-media-controls {
+      display: none !important;
+      -webkit-appearance: none;
+    }
     .hero-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(
@@ -1724,6 +1733,19 @@
         const tryPlay = () => missionVid.play().catch(() => {});
         if (missionVid.readyState >= 2) tryPlay();
         else missionVid.addEventListener('loadedmetadata', tryPlay, { once: true });
+      }
+
+      // iOS Low Power Mode + Data Saver block silent autoplay. The first
+      // user gesture (touch/scroll/click) grants playback permission — at
+      // that moment, retry play() on every background video.
+      const bgVids = document.querySelectorAll('.hero-bg, .mission-bg');
+      if (bgVids.length) {
+        const kickPlayback = () => {
+          bgVids.forEach(v => { if (v.paused) v.play().catch(() => {}); });
+        };
+        ['touchstart', 'click', 'scroll'].forEach(evt =>
+          window.addEventListener(evt, kickPlayback, { once: true, passive: true })
+        );
       }
     })();
 
