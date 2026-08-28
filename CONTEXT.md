@@ -14,11 +14,11 @@ A marketing website for **Taylor Christian Academy Online Preschool** — a Chri
 - **Owner workspace:** https://enroll.tcaarts.org/manage/
 - **Vercel project:** `tca-online-preschool`
 - **Supabase project:** `tca-owner-workspace` (`yssnrzbnxrfmeebhbkfr`)
-- **Initial approved editor:** `michael.jasey@gmail.com`
+- **Approved editors:** `michael.jasey@gmail.com` (admin), `sherri.taylor@hotmail.com` (editor)
 
 The owner workspace is a private content editor for the home, enrollment, and giving pages. Editors can save drafts, preview the real page at desktop or mobile size, publish approved content, upload replacement images/videos, and submit larger layout or feature requests. Published values are loaded onto the public pages by `content-runtime.js`; the original HTML remains the fallback.
 
-Larger website requests are stored in Supabase, copied to the Google Sheet's `Website Changes` tab through the existing Apps Script web app, and emailed to the configured request address. Do not add Sherri Taylor as an editor or share the Sheet until testing is approved.
+Larger website requests are stored in Supabase, copied to the Google Sheet's `Website Changes` tab through the existing Apps Script web app, and emailed to the configured request address. Sherri Taylor is approved for the owner workspace but has not been invited to the Google Sheet.
 
 ---
 
