@@ -28,8 +28,9 @@ function doPost(event) {
       const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
       if (!sheet) throw new Error('Inquiry sheet not found');
 
-      const row = sheet.getLastRow() + 1;
-      sheet.getRange(row, 1, 1, 7).setValues([[
+      // appendRow intentionally creates a separate inquiry for every message,
+      // even when a visitor submits the same name or email more than once.
+      sheet.appendRow([
         new Date(),
         name,
         email,
@@ -37,7 +38,8 @@ function doPost(event) {
         message,
         'New',
         '',
-      ]]);
+      ]);
+      const row = sheet.getLastRow();
       sheet.getRange(row, 1).setNumberFormat('yyyy-mm-dd hh:mm:ss');
       sheet.getRange(row, 5).setWrap(true);
       sheet.getRange(row, 6).setDataValidation(

@@ -1100,17 +1100,6 @@
       cursor: wait;
       opacity: 0.72;
     }
-    .form-honeypot {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0, 0, 0, 0) !important;
-      white-space: nowrap !important;
-      border: 0 !important;
-    }
     .form-status {
       min-height: 1.5em;
       margin-top: var(--s-4);
@@ -1663,10 +1652,6 @@
             <div class="form-field">
               <label for="f-msg">Message</label>
               <textarea id="f-msg" name="message" placeholder="Tell us about your child and any questions you have..." maxlength="2000" required></textarea>
-            </div>
-            <div class="form-honeypot" aria-hidden="true">
-              <label for="f-company">Company</label>
-              <input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off" />
             </div>
             <button type="submit" class="btn" id="contact-submit">Send Message</button>
             <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>

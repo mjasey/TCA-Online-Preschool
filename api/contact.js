@@ -12,11 +12,6 @@ module.exports = async function contactHandler(request, response) {
 
   const body = request.body && typeof request.body === 'object' ? request.body : {};
 
-  // Silently accept bot submissions that fill the hidden field.
-  if (clean(body.company, 200)) {
-    return response.status(200).json({ ok: true });
-  }
-
   const inquiry = {
     name: clean(body.name, 100),
     email: clean(body.email, 254),
@@ -51,6 +46,7 @@ module.exports = async function contactHandler(request, response) {
       return response.status(502).json({ ok: false, error: 'Could not save inquiry.' });
     }
 
+    // Every valid request is stored independently, including repeat emails.
     return response.status(200).json({ ok: true });
   } catch (error) {
     console.error('Contact form request failed.');
