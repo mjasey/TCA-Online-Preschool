@@ -348,15 +348,24 @@ async function submitRequest(event) {
     setMessage(els['request-status'], error.message);
     return;
   }
-  fetch('/api/change-request-notify', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${state.session.access_token}` },
-    body: JSON.stringify({ id: data.id, ...request })
-  }).catch(() => {});
+  let notificationSent = false;
+  try {
+    const response = await fetch('/api/change-request-notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${state.session.access_token}` },
+      body: JSON.stringify({ id: data.id, ...request })
+    });
+    notificationSent = response.ok;
+  } catch (_) {}
   setBusy(button, false);
   els['request-form'].reset();
-  setMessage(els['request-status'], 'Request sent. It is now in the website queue.', true);
-  toast('Website request sent.');
+  if (notificationSent) {
+    setMessage(els['request-status'], 'Request emailed and saved in the website queue.', true);
+    toast('Website request emailed.');
+  } else {
+    setMessage(els['request-status'], 'Request saved, but the email could not be sent. Please try again or contact the site administrator.');
+    toast('Request saved; email delivery failed.');
+  }
   await loadRequests();
 }
 

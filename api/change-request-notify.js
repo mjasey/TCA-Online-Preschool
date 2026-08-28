@@ -54,9 +54,16 @@ module.exports = async function changeRequestNotifyHandler(request, response) {
       redirect: 'follow'
     });
     const result = await notifyResponse.json().catch(() => ({}));
-    if (!notifyResponse.ok || !result.ok) return response.status(502).json({ ok: false, error: 'Notification could not be sent.' });
+    if (!notifyResponse.ok || !result.ok) {
+      console.error('Google Apps Script notification failed', {
+        status: notifyResponse.status,
+        error: clean(result.error, 300) || 'Unknown Apps Script error'
+      });
+      return response.status(502).json({ ok: false, error: 'Notification could not be sent.' });
+    }
     return response.status(200).json({ ok: true });
-  } catch (_) {
+  } catch (error) {
+    console.error('Website request notification failed', error instanceof Error ? error.message : String(error));
     return response.status(502).json({ ok: false, error: 'Notification could not be sent.' });
   }
 };

@@ -2,6 +2,10 @@ const SHEET_NAME = 'Inquiries';
 const WEBSITE_REQUEST_SHEET_NAME = 'Website Changes';
 const STATUS_OPTIONS = ['New', 'Contacted', 'Follow-up', 'Enrolled', 'Closed'];
 
+function authorizeWebsiteRequestEmail() {
+  return MailApp.getRemainingDailyQuota();
+}
+
 function doPost(event) {
   try {
     const payload = JSON.parse((event.postData && event.postData.contents) || '{}');
