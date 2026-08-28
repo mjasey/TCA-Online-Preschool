@@ -4,8 +4,8 @@
 
 A marketing website for **Taylor Christian Academy Online Preschool** — a Christ-centered, live online preschool program for children ages 3–5, founded by Sherri Taylor. The site is built as plain HTML/CSS/JS with no frameworks or build tools. All styles and scripts are inline within each HTML file.
 
-**Live Repository:** https://github.com/mjasey/TCA-Online-Preschool
-**GitHub Pages (when enabled):** https://mjasey.github.io/TCA-Online-Preschool/
+**Live repository:** https://github.com/mjasey/TCA-Online-Preschool
+**Production site:** https://enroll.tcaarts.org/
 
 ## Live Hosting & Owner Workspace
 
@@ -51,19 +51,16 @@ Larger website requests are stored in Supabase, copied to the Google Sheet's `We
 |------|---------|
 | `Sherri.png` | Team section (index.html) |
 | `Vanessa.png` | Team section (index.html) |
-| `teacher_zoom.png` | Photo strip (index.html) |
-| `Parent_and_child_.png` | Photo strip (index.html) |
-| `bro-sis.png` | Photo strip (index.html) |
-| `tca-logo.png` | Available but not currently used (CSS logo used instead) |
+| `teacher_zoom.png` | Owner workspace sign-in background |
+| `logo-transparent.png` | Social sharing image |
 
 ### Videos
 | File | Used In | Behavior |
 |------|---------|---------|
 | `hero-video.mp4` | Hero section (index.html) | `autoplay loop muted` background |
 | `proverbs-banner.mp4` | Proverbs/JOIN banner (index.html) | `autoplay loop muted` background |
-| `testimonial-video.mp4` | Enroll video section (index.html) | `autoplay loop muted` background |
 | `Sherri-Why-Choose.mp4` | Why Choose TCA two-column section (index.html) | `controls` — user plays, NOT muted |
-| `Vanessa-Demo.MP4` | Vanessa lightbox overlay (index.html) | `controls` — user plays, NOT muted |
+| `Vanessa-Demo.mp4` | Vanessa lightbox overlay (index.html) | `controls` — user plays, NOT muted |
 
 ### Other
 | File | Purpose |
@@ -119,15 +116,14 @@ Larger website requests are stored in Supabase, copied to the Google Sheet's `We
 
 ---
 
-## What Still Needs to Be Done
+## Current Operations
 
-- [ ] **enroll.html** — "How To Enroll" button currently links to `#pricing` (index) / `index.html#pricing` (about). A dedicated enrollment process page (`enroll.html`) was planned but not yet built.
-- [ ] **Social media URLs** — Confirm correct Facebook and Instagram URLs are in the footer of both files.
-- [ ] **Contact form** — The enroll section has a form that submits to `mailto:info@tcaarts.org`. Consider a proper form handler (Formspree, Netlify Forms, etc.) for reliability.
-- [ ] **GitHub Pages** — Enable in repo Settings → Pages → Branch: `main` → `/root` to make the site publicly accessible.
-- [ ] **Custom domain** — If a custom domain (e.g. `tcaonlinepreschool.com`) is purchased, configure it in GitHub Pages settings and add a `CNAME` file.
-- [ ] **SEO meta tags** — Add `<meta name="description">`, Open Graph tags, and favicon to both pages.
-- [ ] **Mobile polish** — Test on real devices; mobile hamburger menu and video backgrounds may need additional tuning.
+- **Hosting:** Vercel serves the production site at `enroll.tcaarts.org`; `main` is the production branch.
+- **Contact messages:** the homepage form posts to `/api/contact`, which records each submission as a separate Google Sheets row through the Apps Script web app.
+- **Website-change requests:** the private owner workspace records requests in Supabase, adds them to the Google Sheet's `Website Changes` tab, and emails the configured request address.
+- **Current class times (EST):** Tuesday & Thursday 10:00–10:45 AM; Tuesday & Thursday 12:00–12:45 PM; Tuesday 5:30–6:15 PM.
+- **Editor access:** Sherri Taylor is an approved editor. Supabase magic-link delivery to her external address requires custom SMTP; without it, only the site administrator can reliably receive sign-in links.
+- **Accessibility note:** background videos are decorative. The two visitor-played videos still need supplied captions/transcripts before caption tracks can be added accurately.
 
 ---
 

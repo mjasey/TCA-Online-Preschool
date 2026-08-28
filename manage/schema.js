@@ -122,7 +122,7 @@
             two: { name: '2 Sessions a Week', price: '$40', cadence: 'per week · recurring', today: '$100 today', link: 'https://buy.stripe.com/4gMdRbdvv5jH5nd4Qt9bO03' },
             monthly: { name: 'Monthly Plan', price: '$150', cadence: 'per month · 8 sessions', today: '$210 today', link: 'https://buy.stripe.com/fZu3cxezz27vaHx96J9bO04' }
           },
-          schedule: { intro: "Pick the time that fits your family's rhythm. All times EST.", class1: 'Tue & Thu · 10:00 AM · Eastern Time', class2: 'Tue & Thu · 12:00 PM · Eastern Time', class3: 'Tuesday · 5:30 PM · Eastern Time' }
+          schedule: { intro: "Pick the time that fits your family's rhythm. All times EST.", class1: 'Tuesday & Thursday · 10:00–10:45 AM · Eastern Time', class2: 'Tuesday & Thursday · 12:00–12:45 PM · Eastern Time', class3: 'Tuesday · 5:30–6:15 PM · Eastern Time' }
         }
       ),
       donate: page(
