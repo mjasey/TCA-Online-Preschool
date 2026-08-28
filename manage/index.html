@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>TCA Owner Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="setup-view" class="centered-view" hidden>
+    <section class="notice-card">
+      <img src="../logo-icon.png" alt="Taylor Christian Academy" />
+      <p class="kicker">Owner workspace</p>
+      <h1>One last connection.</h1>
+      <p>The editor is built, but its private content service has not been connected to this deployment yet.</p>
+      <p class="notice-detail">Add the Supabase project settings in Vercel, then reload this page.</p>
+    </section>
+  </div>
+
+  <main id="login-view" class="login-layout" hidden>
+    <section class="login-story" aria-label="Taylor Christian Academy owner workspace introduction">
+      <a class="login-brand" href="../index.html">
+        <img src="../logo-navbar.png" alt="Taylor Christian Academy Online Preschool" />
+      </a>
+      <div class="login-copy">
+        <p class="kicker">A quiet place to tend the website</p>
+        <h1>Your school’s story,<br /><em>in your hands.</em></h1>
+        <p>Update the words, pictures, videos, and enrollment details families see—then preview the real site before anything goes live.</p>
+      </div>
+      <blockquote>“Let all things be done decently and in order.” <span>— 1 Corinthians 14:40</span></blockquote>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-card">
+        <p class="kicker">Private access</p>
+        <h2>Welcome back</h2>
+        <p class="subtle">Sign in with the account approved for this website.</p>
+
+        <form id="magic-login" class="login-form">
+          <label>Email address<input id="magic-email" name="email" type="email" autocomplete="email" required /></label>
+          <button class="button primary-button" type="submit">Email me a sign-in link</button>
+        </form>
+
+        <details class="password-option">
+          <summary>Use a password instead</summary>
+          <form id="password-login" class="login-form">
+            <label>Email address<input id="login-email" name="email" type="email" autocomplete="username" required /></label>
+            <label>Password<input id="login-password" name="password" type="password" autocomplete="current-password" required /></label>
+            <button class="button secondary-button" type="submit">Sign in with password</button>
+          </form>
+        </details>
+        <p id="login-status" class="form-message" role="status" aria-live="polite"></p>
+        <p class="privacy-note">Only approved TCA editors can open this workspace.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="denied-view" class="centered-view" hidden>
+    <section class="notice-card">
+      <img src="../logo-icon.png" alt="Taylor Christian Academy" />
+      <p class="kicker">Access not approved</p>
+      <h1>This account is signed in, but it is not an editor.</h1>
+      <p id="denied-email"></p>
+      <button id="denied-signout" class="button secondary-button" type="button">Sign out and try another account</button>
+    </section>
+  </div>
+
+  <div id="workspace" class="workspace" hidden>
+    <aside class="sidebar">
+      <a class="workspace-brand" href="../index.html" target="_blank" rel="noopener">
+        <img src="../logo-navbar.png" alt="Taylor Christian Academy" />
+        <span>Owner workspace</span>
+      </a>
+
+      <nav class="page-nav" aria-label="Website editor pages">
+        <p class="nav-label">Website pages</p>
+        <button class="nav-item active" data-view="page" data-page="home" type="button"><span>Home</span><small>Main website</small></button>
+        <button class="nav-item" data-view="page" data-page="enroll" type="button"><span>Enrollment</span><small>Plans and class times</small></button>
+        <button class="nav-item" data-view="page" data-page="donate" type="button"><span>Giving</span><small>Donations and mission</small></button>
+        <p class="nav-label nav-label-tools">Requests</p>
+        <button class="nav-item request-nav" data-view="requests" type="button">
+          <span>Website changes</span><small>Layouts, pages, and features</small><b id="request-count" hidden>0</b>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-chip"><span id="user-initial">T</span><div><strong id="user-name">TCA editor</strong><small id="user-email"></small></div></div>
+        <button id="signout" class="text-button" type="button">Sign out</button>
+      </div>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <button id="menu-toggle" class="icon-button menu-toggle" type="button" aria-label="Open navigation">☰</button>
+        <div>
+          <p id="page-kicker" class="kicker">Website editor</p>
+          <h1 id="page-title">Home page</h1>
+        </div>
+        <div class="topbar-actions">
+          <span id="save-state" class="save-state"><i></i>All changes saved</span>
+          <a class="button secondary-button visit-button" href="../index.html" target="_blank" rel="noopener">View live site ↗</a>
+        </div>
+      </header>
+
+      <section id="editor-view" class="editor-layout">
+        <div class="editor-pane">
+          <ol class="workflow" aria-label="Publishing workflow">
+            <li class="current"><span>1</span><div><strong>Edit</strong><small>Make your changes</small></div></li>
+            <li><span>2</span><div><strong>Preview</strong><small>Check the real page</small></div></li>
+            <li><span>3</span><div><strong>Publish</strong><small>Share with families</small></div></li>
+          </ol>
+
+          <div id="editor-intro" class="editor-intro"></div>
+          <form id="content-form" class="content-form"></form>
+
+          <div class="editor-actions">
+            <button id="save-draft" class="button secondary-button" type="button">Save draft</button>
+            <button id="publish" class="button primary-button" type="button">Review and publish</button>
+          </div>
+        </div>
+
+        <aside class="preview-pane" aria-label="Live website preview">
+          <div class="preview-toolbar">
+            <div><p class="kicker">Live preview</p><strong id="preview-label">Home page</strong></div>
+            <div class="device-switcher" role="group" aria-label="Preview size">
+              <button class="active" data-device="desktop" type="button" aria-label="Desktop preview">▰</button>
+              <button data-device="mobile" type="button" aria-label="Mobile preview">▯</button>
+            </div>
+          </div>
+          <div id="preview-stage" class="preview-stage">
+            <iframe id="site-preview" title="Draft website preview"></iframe>
+          </div>
+          <p class="preview-note"><span></span>Private preview—visitors cannot see these changes yet.</p>
+        </aside>
+      </section>
+
+      <section id="requests-view" class="requests-layout" hidden>
+        <div class="request-compose">
+          <p class="kicker">Ask for a larger change</p>
+          <h2>What should the website do differently?</h2>
+          <p>Use this for a new layout, page, feature, or design direction. Your request and any example link will be saved together.</p>
+          <form id="request-form" class="request-form">
+            <div class="field-grid">
+              <label>Type of change<select name="category" required><option value="">Choose one</option><option>New page or section</option><option>Different layout</option><option>Colors or branding</option><option>New feature</option><option>Something else</option></select></label>
+              <label>Page affected<select name="page"><option>Home page</option><option>Enrollment page</option><option>Giving page</option><option>Whole website</option><option>New page</option></select></label>
+            </div>
+            <label>Short title<input name="summary" type="text" maxlength="120" placeholder="Example: Add a summer program page" required /></label>
+            <label>Describe what you would like<textarea name="details" rows="6" maxlength="3000" placeholder="Share the wording, goal, and anything families should be able to do..." required></textarea></label>
+            <label>Example or inspiration link <span>optional</span><input name="reference_url" type="url" maxlength="500" placeholder="https://..." /></label>
+            <label>Timing<select name="priority"><option value="normal">No rush</option><option value="soon">In the next few weeks</option><option value="urgent">Time-sensitive</option></select></label>
+            <button class="button primary-button" type="submit">Send website request</button>
+            <p id="request-status" class="form-message" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <aside class="request-history">
+          <div class="history-heading"><div><p class="kicker">Request history</p><h2>What’s in progress</h2></div><button id="refresh-requests" class="icon-button" type="button" aria-label="Refresh requests">↻</button></div>
+          <div id="request-list" class="request-list"></div>
+        </aside>
+      </section>
+    </div>
+  </div>
+
+  <dialog id="publish-dialog" class="publish-dialog">
+    <form method="dialog">
+      <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+      <div class="publish-mark">✓</div>
+      <p class="kicker">Ready when you are</p>
+      <h2>Publish these changes?</h2>
+      <p id="publish-summary">The home page will update for visitors as soon as you publish.</p>
+      <div class="publish-check"><span>✓</span><p><strong>Your draft is saved</strong><br />You can continue editing after publishing.</p></div>
+      <div class="dialog-actions">
+        <button class="button secondary-button" value="cancel">Keep editing</button>
+        <button id="confirm-publish" class="button primary-button" value="default" type="button">Publish now</button>
+      </div>
+      <p id="publish-status" class="form-message" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
+
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+
+  <script src="schema.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

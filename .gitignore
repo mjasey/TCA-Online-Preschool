@@ -1,2 +1,3 @@
 .vercel
 .codex_sheet_build/
+tests/artifacts/

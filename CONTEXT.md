@@ -7,6 +7,19 @@ A marketing website for **Taylor Christian Academy Online Preschool** — a Chri
 **Live Repository:** https://github.com/mjasey/TCA-Online-Preschool
 **GitHub Pages (when enabled):** https://mjasey.github.io/TCA-Online-Preschool/
 
+## Live Hosting & Owner Workspace
+
+- **Primary site:** https://enroll.tcaarts.org/
+- **Enrollment page:** https://enroll.tcaarts.org/enroll.html
+- **Owner workspace:** https://enroll.tcaarts.org/manage/
+- **Vercel project:** `tca-online-preschool`
+- **Supabase project:** `tca-owner-workspace` (`yssnrzbnxrfmeebhbkfr`)
+- **Initial approved editor:** `michael.jasey@gmail.com`
+
+The owner workspace is a private content editor for the home, enrollment, and giving pages. Editors can save drafts, preview the real page at desktop or mobile size, publish approved content, upload replacement images/videos, and submit larger layout or feature requests. Published values are loaded onto the public pages by `content-runtime.js`; the original HTML remains the fallback.
+
+Larger website requests are stored in Supabase, copied to the Google Sheet's `Website Changes` tab through the existing Apps Script web app, and emailed to the configured request address. Do not add Sherri Taylor as an editor or share the Sheet until testing is approved.
+
 ---
 
 ## Brand & Design System
