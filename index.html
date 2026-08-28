@@ -1096,6 +1096,30 @@
       background: var(--ink);
       border-color: var(--ink);
     }
+    .contact-form button:disabled {
+      cursor: wait;
+      opacity: 0.72;
+    }
+    .form-honeypot {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    .form-status {
+      min-height: 1.5em;
+      margin-top: var(--s-4);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .form-status.is-success { color: #2f6b45; }
+    .form-status.is-error { color: var(--burgundy); }
     .form-note {
       text-align: center;
       font-size: 12px;
@@ -1623,24 +1647,29 @@
 
         <div class="contact-form">
           <h3>Send Us a Message</h3>
-          <form action="mailto:info@tcaarts.org" method="POST" enctype="text/plain">
+          <form id="contact-form" action="/api/contact" method="POST">
             <div class="form-field">
               <label for="f-name">Full Name</label>
-              <input type="text" id="f-name" name="Name" placeholder="Your full name" required />
+              <input type="text" id="f-name" name="name" placeholder="Your full name" autocomplete="name" maxlength="100" required />
             </div>
             <div class="form-field">
               <label for="f-email">Email Address</label>
-              <input type="email" id="f-email" name="Email" placeholder="you@example.com" required />
+              <input type="email" id="f-email" name="email" placeholder="you@example.com" autocomplete="email" maxlength="254" required />
             </div>
             <div class="form-field">
               <label for="f-phone">Phone Number</label>
-              <input type="tel" id="f-phone" name="Phone" placeholder="(555) 000-0000" />
+              <input type="tel" id="f-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" maxlength="40" />
             </div>
             <div class="form-field">
               <label for="f-msg">Message</label>
-              <textarea id="f-msg" name="Message" placeholder="Tell us about your child and any questions you have..."></textarea>
+              <textarea id="f-msg" name="message" placeholder="Tell us about your child and any questions you have..." maxlength="2000" required></textarea>
             </div>
-            <button type="submit" class="btn">Send Message</button>
+            <div class="form-honeypot" aria-hidden="true">
+              <label for="f-company">Company</label>
+              <input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off" />
+            </div>
+            <button type="submit" class="btn" id="contact-submit">Send Message</button>
+            <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>
             <p class="form-note">We respond within 24 hours · Your info is never shared</p>
           </form>
         </div>
@@ -1784,6 +1813,45 @@
         if (m) m.close();
       });
     });
+
+    // Submit contact inquiries without opening the visitor's email app.
+    (function () {
+      const form = document.getElementById('contact-form');
+      const submit = document.getElementById('contact-submit');
+      const status = document.getElementById('contact-status');
+      if (!form || !submit || !status) return;
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        const data = Object.fromEntries(new FormData(form).entries());
+        submit.disabled = true;
+        submit.textContent = 'Sending…';
+        status.textContent = '';
+        status.className = 'form-status';
+
+        try {
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok || !result.ok) throw new Error('Submission failed');
+
+          form.reset();
+          status.textContent = 'Thank you! We received your message and will be in touch soon.';
+          status.className = 'form-status is-success';
+        } catch (error) {
+          status.textContent = 'We could not send your message. Please try again in a moment.';
+          status.className = 'form-status is-error';
+        } finally {
+          submit.disabled = false;
+          submit.textContent = 'Send Message';
+        }
+      });
+    })();
   </script>
 </body>
 </html>
