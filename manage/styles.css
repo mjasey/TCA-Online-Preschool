@@ -65,10 +65,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .login-form input, .request-form input, .request-form textarea, .request-form select, .cms-field input, .cms-field textarea { width: 100%; border: 1px solid var(--line); border-radius: 7px; padding: 12px 13px; background: white; color: var(--text); transition: border-color .16s, box-shadow .16s; }
 .login-form input:focus, .request-form input:focus, .request-form textarea:focus, .request-form select:focus, .cms-field input:focus, .cms-field textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(49,95,137,.1); outline: none; }
 .privacy-note { margin-top: 25px; color: #8d98a4; font-size: 11px; text-align: center; }
-.password-option { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; }
-.password-option summary { color: var(--blue); font-size: 11px; font-weight: 900; text-align: center; cursor: pointer; list-style: none; }
-.password-option summary::-webkit-details-marker { display: none; }
-.password-option[open] summary { margin-bottom: 15px; }
 .form-message { min-height: 18px; margin: 12px 0 0; color: var(--coral); font-size: 13px; line-height: 1.4; }
 
 .workspace { display: grid; min-height: 100vh; grid-template-columns: 238px minmax(0, 1fr); }

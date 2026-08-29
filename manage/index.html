@@ -40,19 +40,11 @@
         <h2>Welcome back</h2>
         <p class="subtle">Sign in with the account approved for this website.</p>
 
-        <form id="magic-login" class="login-form">
-          <label>Email address<input id="magic-email" name="email" type="email" autocomplete="email" required /></label>
-          <button class="button primary-button" type="submit">Email me a sign-in link</button>
+        <form id="password-login" class="login-form">
+          <label>Email address<input id="login-email" name="email" type="email" autocomplete="username" required /></label>
+          <label>Password<input id="login-password" name="password" type="password" autocomplete="current-password" required /></label>
+          <button class="button primary-button" type="submit">Sign in</button>
         </form>
-
-        <details class="password-option">
-          <summary>Use a password instead</summary>
-          <form id="password-login" class="login-form">
-            <label>Email address<input id="login-email" name="email" type="email" autocomplete="username" required /></label>
-            <label>Password<input id="login-password" name="password" type="password" autocomplete="current-password" required /></label>
-            <button class="button secondary-button" type="submit">Sign in with password</button>
-          </form>
-        </details>
         <p id="login-status" class="form-message" role="status" aria-live="polite"></p>
         <p class="privacy-note">Only approved TCA editors can open this workspace.</p>
       </div>

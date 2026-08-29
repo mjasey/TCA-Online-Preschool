@@ -3,7 +3,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const CMS = window.TCA_CMS;
 const els = Object.fromEntries([
   'setup-view', 'login-view', 'workspace', 'denied-view', 'denied-email',
-  'magic-login', 'magic-email', 'password-login', 'login-email', 'login-password', 'login-status', 'denied-signout', 'signout',
+  'password-login', 'login-email', 'login-password', 'login-status', 'denied-signout', 'signout',
   'user-initial', 'user-name', 'user-email', 'page-kicker', 'page-title', 'save-state',
   'editor-view', 'requests-view', 'editor-intro', 'content-form', 'save-draft', 'publish',
   'site-preview', 'preview-stage', 'preview-label', 'publish-dialog', 'publish-summary',
@@ -395,17 +395,6 @@ function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
 }
 
-els['magic-login'].addEventListener('submit', async event => {
-  event.preventDefault();
-  const button = event.currentTarget.querySelector('button');
-  setBusy(button, true, 'Sending secure link…');
-  const { error } = await state.supabase.auth.signInWithOtp({
-    email: els['magic-email'].value,
-    options: { emailRedirectTo: `${location.origin}/manage/`, shouldCreateUser: true }
-  });
-  setBusy(button, false);
-  setMessage(els['login-status'], error ? error.message : 'Check your email. The secure sign-in link is ready.', !error);
-});
 els['password-login'].addEventListener('submit', async event => {
   event.preventDefault();
   const button = event.currentTarget.querySelector('button');

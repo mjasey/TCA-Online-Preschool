@@ -29,6 +29,10 @@ async function assert(condition, message) {
     await assert(await page.locator('a[href="index.html#story"]').count() === 0, 'Broken story link remains');
     await assert(await page.locator('a[href="index.html#foundation"]').count() > 0, 'Foundation link is missing');
 
+    await page.goto(`${baseUrl}/manage/`, { waitUntil: 'domcontentloaded' });
+    await assert(await page.locator('#password-login').count() === 1, 'Password sign-in form is missing');
+    await assert(await page.locator('#magic-login').count() === 0, 'Magic-link sign-in form remains');
+
     console.log(`PASS: ${baseUrl}`);
   } finally {
     await browser.close();
