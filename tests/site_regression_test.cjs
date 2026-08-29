@@ -12,7 +12,9 @@ async function assert(condition, message) {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
     await assert(await page.locator('link[rel="canonical"]').getAttribute('href') === 'https://enroll.tcaarts.org/', 'Homepage canonical is missing');
-    await assert((await page.locator('body').innerText()).includes('Monday–Friday · 45-minute sessions available'), 'Homepage session availability is incorrect');
+    await assert((await page.locator('body').innerText()).includes('Monday–Friday · 10:00–10:45 AM EST'), 'Homepage first schedule is incorrect');
+    await assert((await page.locator('body').innerText()).includes('Monday–Friday · 12:00–12:45 PM EST'), 'Homepage second schedule is incorrect');
+    await assert((await page.locator('body').innerText()).includes('Tuesday · 5:30–6:15 PM EST'), 'Homepage evening schedule is incorrect');
     await assert((await page.locator('.stats-bar').innerText()).includes('Mon – Fri'), 'Homepage availability days are incorrect');
     await assert((await page.locator('.stats-bar').innerText()).includes('45 minute sessions'), 'Homepage session length is incorrect');
 
