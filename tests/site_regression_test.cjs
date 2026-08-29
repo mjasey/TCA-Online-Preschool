@@ -14,6 +14,8 @@ async function assert(condition, message) {
     await assert(await page.locator('link[rel="canonical"]').getAttribute('href') === 'https://enroll.tcaarts.org/', 'Homepage canonical is missing');
     await assert((await page.locator('body').innerText()).includes('Tuesday & Thursday · 10:00–10:45 AM EST'), 'Homepage first schedule is incorrect');
     await assert((await page.locator('body').innerText()).includes('Tuesday · 5:30–6:15 PM EST'), 'Homepage evening schedule is incorrect');
+    await assert((await page.locator('.stats-bar').innerText()).includes('Mon – Fri'), 'Homepage availability days are incorrect');
+    await assert((await page.locator('.stats-bar').innerText()).includes('45 minute sessions'), 'Homepage session length is incorrect');
 
     await page.setViewportSize({ width: 390, height: 844 });
     await assert(await page.locator('.nav-toggle').isVisible(), 'Homepage mobile navigation toggle is not visible');
