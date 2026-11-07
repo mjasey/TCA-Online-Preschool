@@ -3,7 +3,9 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const CMS = window.TCA_CMS;
 const els = Object.fromEntries([
   'setup-view', 'login-view', 'workspace', 'denied-view', 'denied-email',
-  'password-login', 'login-email', 'login-password', 'login-status', 'denied-signout', 'signout',
+  'password-login', 'login-email', 'login-password', 'login-status', 'forgot-password',
+  'recovery-request', 'recovery-email', 'recovery-status', 'return-to-login',
+  'password-update', 'new-password', 'confirm-password', 'password-update-status', 'denied-signout', 'signout',
   'user-initial', 'user-name', 'user-email', 'page-kicker', 'page-title', 'save-state',
   'editor-view', 'requests-view', 'editor-intro', 'content-form', 'save-draft', 'publish',
   'site-preview', 'preview-stage', 'preview-label', 'publish-dialog', 'publish-summary',
@@ -22,7 +24,8 @@ const state = {
   dirty: false,
   saving: false,
   previewReady: false,
-  demo: false
+  demo: false,
+  recoveringPassword: false
 };
 
 function clone(value) { return JSON.parse(JSON.stringify(value)); }
@@ -43,6 +46,15 @@ function writePath(object, path, value) {
 }
 function showOnly(id) {
   ['setup-view', 'login-view', 'workspace', 'denied-view'].forEach(key => { els[key].hidden = key !== id; });
+}
+function showLoginForm(form = 'login') {
+  els['password-login'].hidden = form !== 'login';
+  els['forgot-password'].hidden = form !== 'login';
+  els['recovery-request'].hidden = form !== 'recovery';
+  els['password-update'].hidden = form !== 'update';
+  els['login-status'].textContent = '';
+  els['recovery-status'].textContent = '';
+  els['password-update-status'].textContent = '';
 }
 function setMessage(element, message, ok = false) {
   element.textContent = message || '';
@@ -106,12 +118,27 @@ async function init() {
 
   const { data, error } = await state.supabase.auth.getSession();
   if (error) console.warn('Could not restore editor session.', error.message);
-  if (data?.session) await acceptSession(data.session);
-  else showOnly('login-view');
+  const recoveryLink = new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
+  if (recoveryLink && data?.session) {
+    state.recoveringPassword = true;
+    showOnly('login-view');
+    showLoginForm('update');
+  } else if (data?.session) await acceptSession(data.session);
+  else {
+    showOnly('login-view');
+    showLoginForm('login');
+  }
 
   state.supabase.auth.onAuthStateChange(async (event, session) => {
+    if (event === 'PASSWORD_RECOVERY' && session) {
+      state.recoveringPassword = true;
+      state.session = session;
+      showOnly('login-view');
+      showLoginForm('update');
+      return;
+    }
     if (event === 'SIGNED_OUT') showOnly('login-view');
-    if (session && session.access_token !== state.session?.access_token) await acceptSession(session);
+    if (session && !state.recoveringPassword && session.access_token !== state.session?.access_token) await acceptSession(session);
   });
 }
 
@@ -402,6 +429,37 @@ els['password-login'].addEventListener('submit', async event => {
   const { error } = await state.supabase.auth.signInWithPassword({ email: els['login-email'].value, password: els['login-password'].value });
   setBusy(button, false);
   if (error) setMessage(els['login-status'], 'That email and password did not work.');
+});
+els['forgot-password'].addEventListener('click', () => showLoginForm('recovery'));
+els['return-to-login'].addEventListener('click', () => showLoginForm('login'));
+els['recovery-request'].addEventListener('submit', async event => {
+  event.preventDefault();
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  setBusy(button, true, 'Sending…');
+  const redirectTo = `${window.location.origin}${window.location.pathname}`;
+  const { error } = await state.supabase.auth.resetPasswordForEmail(els['recovery-email'].value, { redirectTo });
+  setBusy(button, false);
+  setMessage(els['recovery-status'], error ? 'We could not send a reset email. Please try again shortly.' : 'If that email is approved, a secure reset link is on its way.', !error);
+});
+els['password-update'].addEventListener('submit', async event => {
+  event.preventDefault();
+  const password = els['new-password'].value;
+  if (password !== els['confirm-password'].value) {
+    setMessage(els['password-update-status'], 'The two passwords do not match.');
+    return;
+  }
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  setBusy(button, true, 'Saving…');
+  const { error } = await state.supabase.auth.updateUser({ password });
+  setBusy(button, false);
+  if (error) {
+    setMessage(els['password-update-status'], 'We could not save that password. Please request a new link and try again.');
+    return;
+  }
+  state.recoveringPassword = false;
+  setMessage(els['password-update-status'], 'Password saved. Opening your workspace…', true);
+  const { data } = await state.supabase.auth.getSession();
+  if (data?.session) await acceptSession(data.session);
 });
 [els['signout'], els['denied-signout']].forEach(button => button.addEventListener('click', async () => {
   if (!state.demo) await state.supabase.auth.signOut();
