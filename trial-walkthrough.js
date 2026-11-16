@@ -21,7 +21,7 @@
   function mount() {
     const dialog=document.createElement('dialog');dialog.className='trial-dialog walkthrough-dialog';
     document.body.append(dialog);
-    let request=null,confirmed=false,mailed=false,attended=0,step=0;
+    let request=null,confirmed=false,mailed=false,attended=0,step=0,pendingTestId=null,savedRow=null;
     function show(html,title) {
       dialog.innerHTML=`<div class="trial-dialog-inner"><button class="trial-dialog-close" aria-label="Close trial walkthrough" type="button">×</button>${html}</div>`;
       dialog.setAttribute('aria-labelledby',title);
@@ -32,7 +32,7 @@
     const tag = label => `<span class="eyebrow">${label}</span>`;
     const demo = text => `<p class="trial-demo-note">Preview only · ${text}</p>`;
     const heading = (id,text) => `<h2 id="${id}" tabindex="-1">${text}</h2>`;
-    function open() { request=null;confirmed=false;mailed=false;attended=0;step=0;signup();dialog.showModal(); }
+    function open() { request=null;confirmed=false;mailed=false;attended=0;step=0;pendingTestId=null;savedRow=null;signup();dialog.showModal(); }
     document.querySelectorAll('[data-open-trial]').forEach(button=>button.addEventListener('click',open));
     dialog.addEventListener('click',event=>{
       if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}
@@ -41,7 +41,7 @@
       const dates=eligibleDates();
       const options=dates.slice(0,-1).map(date=>`<option value="${date}">${labelDate(date)}</option>`).join('');
       show(`${tag('Two Thursday classes · 5:30–6:15 PM Eastern')}${heading('signup-title','A little about your <em>little learner.</em>')}
-        ${demo('Use the sample details button to walk through every step. No personal information is sent or saved.')}
+        ${demo('Use fictional details only. Submitting saves a real test row in the Free Trial Test spreadsheet tab. No email, booking, or shipment is created.')}
         <button class="demo-fill" type="button" data-action="sample">Fill with sample details</button>
         <ol class="form-progress" aria-label="Signup progress"><li data-progress="0">1. Your family</li><li data-progress="1">2. Materials</li><li data-progress="2">3. Class dates</li></ol>
         <form class="trial-form" id="trial-signup" novalidate>
@@ -52,6 +52,7 @@
             <div class="trial-field-pair"><label>Child’s date of birth<input name="dob" type="date" required max="${easternToday()}"></label><label>Child’s age<input name="childAge" readonly aria-describedby="age-note" placeholder="Calculated from date of birth"></label></div>
             <p id="age-note" class="field-note">Age is calculated automatically. Our preschool program is for ages 3–5.</p>
             <label>Child’s likes and interests<textarea name="interests" required maxlength="1000" rows="3" placeholder="Favorite animals, stories, songs, activities…"></textarea></label>
+            <label class="test-consent"><input type="checkbox" name="testConsent" required> I’m using fictional sample details and understand this test will be saved to Google Sheets.</label>
           </fieldset>
           <fieldset data-step="1" hidden><legend>Where should we send class materials?</legend>
             <p>We’ll mail the hands-on supplies your child needs for the two trial classes.</p>
@@ -93,15 +94,27 @@
       form.onkeydown=event=>{if(event.key==='Enter'&&event.target.tagName!=='TEXTAREA'&&step<2){event.preventDefault();dialog.querySelector('[data-action=next]').click();}};
       dialog.querySelector('[data-action=sample]').onclick=()=>{
         const sample={parentName:'Demo Parent',email:'demo@example.com',phone:'',childName:'Demo Learner',dob:'2022-06-15',interests:'Dinosaurs, building blocks, singing, and Bible stories.',street:'100 Example Lane',unit:'',city:'Sampletown',region:'NJ',postal:'08855',country:'United States'};
-        Object.entries(sample).forEach(([key,value])=>f(key).value=value);f('dob').onchange();f('class1').value=dates[0];updateSecond();f('class2').value=dates[1];
+        Object.entries(sample).forEach(([key,value])=>f(key).value=value);f('testConsent').checked=true;f('dob').onchange();f('class1').value=dates[0];updateSecond();f('class2').value=dates[1];
       };
-      form.onsubmit=event=>{
+      form.onsubmit=async event=>{
         event.preventDefault();if(!validStep())return;
         const eligible=eligibleDates();
         if(!eligible.includes(f('class1').value)||!eligible.includes(f('class2').value)||f('class2').value<=f('class1').value){dialog.querySelector('#trial-error').textContent='Please choose two available Thursdays, with your second class after the first.';return;}
         const previousStep=step;
         for(step=0;step<3;step++){showStep();if(!validStep())return;}
-        step=previousStep;request=Object.fromEntries(new FormData(form));confirmation();
+        step=previousStep;showStep();
+        const button=form.querySelector('[type=submit]');
+        const errorBox=dialog.querySelector('#trial-error');
+        errorBox.textContent='';button.disabled=true;button.textContent='Saving test to spreadsheet…';
+        pendingTestId ||= crypto.randomUUID();
+        const submission={...Object.fromEntries(new FormData(form)),testId:pendingTestId,testOnly:true};
+        try {
+          const response=await fetch('/api/trial-test',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(submission)});
+          const result=await response.json();
+          if(!response.ok||!result.ok)throw new Error(result.error||'The test could not be saved. Please retry.');
+          request=submission;savedRow=result.row;confirmation();
+        } catch(error){errorBox.textContent=error.message||'The test could not be saved. Please retry.';}
+        finally{button.disabled=false;button.textContent='Request My Free Classes';}
       };
       showStep();
     }
@@ -110,7 +123,8 @@
       show(`${tag('Parent view · Request received')}${heading('confirmation-title','Let the discovery <em>begin.</em>')}
         <p>Thank you, ${safe(request.parentName)}! Sherri will review your requested dates and contact you at <strong>${safe(request.email)}</strong> to confirm your two classes.</p>${dateSummary()}
         <div class="trial-next"><ol><li>Sherri confirms your dates and mailing address.</li><li>Your class materials are mailed to your home.</li><li>You receive instructions for joining class. After both trial classes, you’ll have the option to register.</li></ol></div>
-        ${demo('This is a sample request. No email, shipment, or booking has been created. Next, try Sherri’s side of the process below.')}
+        <div class="trial-test-saved" role="status"><strong>✓ Test saved to Google Sheets · Row ${safe(savedRow)}</strong><a href="https://docs.google.com/spreadsheets/d/1q0nGGA6CpFyhQYY0hvNnNjHo_hoP86zSzUBDuE5aF3o/edit#gid=9182026" target="_blank" rel="noopener">Open the Free Trial Test tab ↗</a></div>
+        ${demo('The sample details were saved in the test tab. No email, shipment, or booking has been created. Next, try Sherri’s side of the process below.')}
         <button class="btn btn-primary" data-action="owner" type="button">Preview Sherri’s next steps →</button>`, 'confirmation-title');
       dialog.querySelector('[data-action=owner]').onclick=owner;
     }

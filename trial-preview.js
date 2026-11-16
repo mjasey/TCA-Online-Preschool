@@ -3,7 +3,7 @@
   const enrollment = location.pathname.endsWith('enroll.html');
   const ribbon = document.createElement('div');
   ribbon.className = 'preview-ribbon';
-  ribbon.innerHTML = '<strong>Design preview for Sherri</strong> · Two free classes · Forms are demonstrations only.<a href="#free-trial">View the trial offer ↓</a>';
+  ribbon.innerHTML = '<strong>Design preview for Sherri</strong> · Sample trial submissions save to the Free Trial Test tab. Use fictional details only.<a href="#free-trial">View the trial offer ↓</a>';
   document.body.prepend(ribbon);
   const section = document.createElement('section');
   section.id = 'free-trial';

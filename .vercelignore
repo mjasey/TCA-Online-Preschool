@@ -2,7 +2,9 @@ testimonial-video.mp4
 Parent_and_child_.png
 tca-logo.png
 TCA CUTEY tips.txt
-api/
+api/contact.js
+api/cms-config.js
+api/change-request-notify.js
 manage/
 supabase/
 google-apps-script/

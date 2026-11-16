@@ -35,6 +35,8 @@
 .trial-floating{position:fixed;bottom:max(24px,env(safe-area-inset-bottom));right:24px;z-index:80;display:flex;align-items:center;gap:20px;padding:16px 22px;background:var(--gilt-soft);border:1px solid var(--gilt);color:var(--ink);text-decoration:none;font:600 14px/1.5 var(--sans);border-radius:40px;box-shadow:0 6px 24px #1a234030;min-height:52px}
 .trial-floating:hover{background:var(--paper);color:var(--ink)}.trial-floating:focus-visible{outline:3px solid var(--ink);outline-offset:4px}.trial-floating[hidden],body:has(.trial-dialog[open]) .trial-floating{display:none}
 body{padding-bottom:90px}
+.trial-form label.test-consent{display:flex;align-items:flex-start;gap:10px;font-weight:400}.trial-form .test-consent input{width:18px;min-width:18px;height:18px;padding:0;margin:2px 0 0;accent-color:var(--ink)}
+.trial-test-saved{margin:20px 0;padding:16px;border:1px solid var(--gilt);background:#fffdf7;font-size:13px;color:var(--ink)}.trial-test-saved strong{display:block;margin-bottom:8px}.trial-test-saved a{color:var(--ink);text-decoration:underline}.trial-form button:disabled{opacity:.65;cursor:wait}
 .trial-invitation h2{font-size:clamp(40px,4.1vw,58px);line-height:1.04;margin:18px 0 24px}.trial-invitation h2 em{color:var(--gilt)}
 .nav-links a.trial-nav-link{background:var(--gilt);color:var(--ink)!important;padding:10px 15px;border:1px solid var(--gilt);white-space:nowrap;font-weight:600;font-size:12px}
 .hero-actions .trial-hero-cta{background:var(--gilt-soft);border-color:var(--gilt-soft);color:var(--ink)}
