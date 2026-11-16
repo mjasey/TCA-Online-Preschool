@@ -39,7 +39,7 @@
         <div class="trial-step"><b>3</b><div><strong>Try two classes, then decide</strong><p>After attending both classes, you’ll receive an invitation to register for TCA.</p></div></div>
       </div>
     </div>`;
-  const anchor = enrollment ? document.querySelector('.next') : document.querySelector('.stats');
+  const anchor = enrollment ? document.querySelector('.next') : document.querySelector('#foundation');
   if (enrollment) anchor.before(section); else anchor.after(section);
   const floating = document.createElement('a');
   floating.href = '#free-trial';
