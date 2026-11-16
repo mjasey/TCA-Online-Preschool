@@ -13,15 +13,13 @@
     <div class="container">
       <div class="trial-layout">
         <div class="trial-copy">
-          <span class="eyebrow">A warm welcome to TCA</span>
-          <h2 id="trial-title">Little learners.<br>Big possibilities.<br><em>2 classes, on us.</em></h2>
-          <p>Get to know our teachers and experience the joy of Christ-centered learning. Your child can join two live, 45-minute preschool classes before you choose a plan.</p>
-          <div class="trial-promise"><span>Ages 3–5</span><span>No card required</span><span>No registration fee</span></div>
-          <a href="trial-classes-flyer.png" target="_blank" rel="noopener" class="trial-flyer-link"><img class="trial-flyer" src="trial-classes-flyer.png" alt="TCA flyer: two free trial classes for ages 3–5 with interactive 45-minute sessions, kindergarten readiness, hands-on learning, Bible stories and faith. Paid sessions are $25 after the free trial." loading="lazy" width="941" height="1672"><span>View Sherri’s flyer ↗</span></a>
+          <img class="trial-flyer" src="trial-classes-flyer.png" alt="Two free TCA trial classes for ages 3–5: interactive 45-minute sessions, kindergarten readiness, hands-on learning, Bible stories and faith. Paid sessions are $25 after the free trial." loading="lazy" width="941" height="1672">
         </div>
         <div class="trial-invitation">
-          <span class="eyebrow">Your first two classes are free</span>
-          <h3>A little introduction.<br>A world of discovery.</h3>
+          <span class="eyebrow">A warm welcome to TCA · Ages 3–5</span>
+          <h2 id="trial-title">Their first two classes.<br><em>Absolutely free.</em></h2>
+          <p>Meet the teacher. Explore hands-on activities. Experience Christ-centered preschool together before choosing a plan.</p>
+          <div class="trial-promise"><span>No card required</span><span>No registration fee</span></div>
           <p>Tell us about your little learner and where to send their class materials. Choose two Thursday evenings, and Sherri will confirm the dates and send everything you need.</p>
           <ul class="trial-session-list">
             <li>Thursday trial classes<span>5:30–6:15 PM Eastern · Two live, 45-minute classes</span></li>
@@ -49,15 +47,21 @@
     if (existing) existing.className = 'btn btn-outline-light';
     heroActions.querySelector('a[href="#foundation"]')?.remove();
     heroActions.prepend(trialCTA);
+    const eyebrow = document.querySelector('.hero-content .eyebrow');
+    if(eyebrow)eyebrow.textContent='Start with 2 free preschool classes';
+    const intro = document.querySelector('.hero-content .lede');
+    if(intro)intro.textContent='Discover our Christ-centered online preschool with two free, 45-minute Thursday classes. Small groups, caring teachers, and hands-on learning for ages 3–5.';
+    trialCTA.classList.add('trial-hero-cta');
   } else {
     const hero = document.querySelector('.enroll-hero .hero-content');
     const a = document.createElement('a');
     a.href = '#free-trial'; a.className = 'btn btn-gilt'; a.textContent = 'Try 2 Classes Free';
     a.style.margin = '12px'; hero?.append(a);
+    const eyebrow=hero?.querySelector('.eyebrow');if(eyebrow)eyebrow.textContent='Try two free classes · Then choose your plan';
   }
   const nav = document.querySelector('.nav-links');
   if (nav) {
-    const link = document.createElement('a'); link.className = 'trial-nav-link'; link.href = '#free-trial'; link.textContent = '2 Free Classes';
+    const link = document.createElement('a'); link.className = 'trial-nav-link'; link.href = '#free-trial'; link.textContent = 'Try Free Classes';
     if (nav.tagName === 'UL') { const li = document.createElement('li'); li.append(link); nav.insertBefore(li,nav.lastElementChild); }
     else nav.insertBefore(link,nav.lastElementChild);
   }
