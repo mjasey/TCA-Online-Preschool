@@ -12,8 +12,12 @@
   section.innerHTML = `
     <div class="container">
       <div class="trial-layout">
-        <div class="trial-copy">
-          <img class="trial-flyer" src="trial-classes-flyer.png" alt="Two free TCA trial classes for ages 3–5: interactive 45-minute sessions, kindergarten readiness, hands-on learning, Bible stories and faith. Paid sessions are $25 after the free trial." loading="lazy" width="941" height="1672">
+        <div class="trial-benefits">
+          <span class="eyebrow">A joyful first step · Ages 3–5</span>
+          <div class="trial-free-count" aria-hidden="true">2 <em>free</em></div>
+          <h3>Real classes.<br>A little room to grow.</h3>
+          <p>A welcoming introduction to Christ-centered preschool, with activities made for curious little learners.</p>
+          <ul><li>Interactive 45-minute sessions</li><li>Kindergarten readiness</li><li>Hands-on learning materials</li><li>Bible stories and faith</li></ul>
         </div>
         <div class="trial-invitation">
           <span class="eyebrow">A warm welcome to TCA · Ages 3–5</span>
@@ -37,6 +41,16 @@
     </div>`;
   const anchor = enrollment ? document.querySelector('.next') : document.querySelector('.stats');
   if (enrollment) anchor.before(section); else anchor.after(section);
+  const floating = document.createElement('a');
+  floating.href = '#free-trial';
+  floating.className = 'trial-floating';
+  floating.innerHTML = '<span>Try 2 Free Classes</span><span aria-hidden="true">↗</span>';
+  document.body.append(floating);
+  const signupButton = section.querySelector('[data-open-trial]');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => { floating.hidden = entry.isIntersecting; }, {threshold:0.5});
+    observer.observe(signupButton);
+  }
   const heroActions = document.querySelector('.hero-actions');
   if (heroActions) {
     const trialCTA = document.createElement('a');
