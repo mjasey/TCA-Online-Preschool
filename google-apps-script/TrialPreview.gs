@@ -27,7 +27,7 @@ function handleTrialPreview(payload) {
       cell(data.parentName, 100), cell(data.email, 254), cell(data.phone, 40),
       cell(data.childName, 100), cell(data.dob, 10), cell(data.childAge, 30), cell(data.interests),
       cell(data.street, 160), cell(data.unit, 60), cell(data.city, 80), cell(data.region, 80),
-      cell(data.postal, 20), cell(data.country, 80), cell(data.class1, 10), cell(data.class2, 10),
+      "'" + cell(data.postal, 20), cell(data.country, 80), cell(data.class1, 10), cell(data.class2, 10),
       'Thursday 5:30–6:15 PM Eastern', cell(data.notes), 'TEST — Not a booking'
     ]);
     const row = sheet.getLastRow();
