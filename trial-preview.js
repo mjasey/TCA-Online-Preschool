@@ -12,12 +12,8 @@
   section.innerHTML = `
     <div class="container">
       <div class="trial-layout">
-        <div class="trial-benefits">
-          <span class="eyebrow">A joyful first step · Ages 3–5</span>
-          <div class="trial-free-count" aria-hidden="true">2 <em>free</em></div>
-          <h3>Real classes.<br>A little room to grow.</h3>
-          <p>A welcoming introduction to Christ-centered preschool, with activities made for curious little learners.</p>
-          <ul><li>Interactive 45-minute sessions</li><li>Kindergarten readiness</li><li>Hands-on learning materials</li><li>Bible stories and faith</li></ul>
+        <div class="trial-flyer-frame">
+          <img class="trial-flyer" src="trial-flyer-960.webp" srcset="trial-flyer-480.webp 480w, trial-flyer-960.webp 960w" sizes="(max-width: 820px) 330px, 380px" width="960" height="1706" loading="eager" fetchpriority="high" decoding="async" alt="TCA offers two free trial classes for ages 3–5: interactive 45-minute sessions, kindergarten readiness, hands-on learning, Bible stories and faith. Paid sessions are $25 after the free trial.">
         </div>
         <div class="trial-invitation">
           <span class="eyebrow">A warm welcome to TCA · Ages 3–5</span>
