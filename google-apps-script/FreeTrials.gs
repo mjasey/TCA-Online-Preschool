@@ -17,22 +17,31 @@ function handleFreeTrial(payload) {
       const text = cleanValue(value,max || 1000);
       return /^[=+\-@]/.test(text) ? "'" + text : text;
     };
+    // Checkbox values in unused rows must never push real requests to the bottom.
+    const submitted = sheet.getRange(1,1,sheet.getLastRow(),1).getValues();
+    let lastDataRow = submitted.length;
+    while (lastDataRow > 1 && !submitted[lastDataRow-1][0]) lastDataRow--;
     let row = 0;
-    if (sheet.getLastRow() > 1) {
-      const found = sheet.getRange(2,26,sheet.getLastRow()-1,1).createTextFinder(data.requestId).matchEntireCell(true).findNext();
+    if (lastDataRow > 1) {
+      const found = sheet.getRange(2,26,lastDataRow-1,1).createTextFinder(data.requestId).matchEntireCell(true).findNext();
       if (found) row = found.getRow();
     }
     // New submissions from the same email are separate rows; network retries reuse an ID.
     if (!row) {
-      sheet.appendRow([
+      row = lastDataRow + 1;
+      if (row > sheet.getMaxRows()) sheet.insertRowAfter(lastDataRow);
+      sheet.getRange(row,1,1,26).setValues([[
         Utilities.formatDate(new Date(),'America/New_York','yyyy-MM-dd HH:mm:ss'),
         cell(data.parentName,100),cell(data.email,254),cell(data.phone,40),cell(data.childName,100),cell(data.childAge,30),
         cell(data.class1,10),cell(data.class2,10),'Thursday 5:30–6:15 PM Eastern','New',
         false,false,false,false,'',
         cell(data.dob,10),cell(data.interests),cell(data.street,160),cell(data.unit,60),cell(data.city,80),cell(data.region,80),
         "'" + cleanValue(data.postal,20),cell(data.country,80),cell(data.notes),'Pending',cell(data.requestId,80)
-      ]);
-      row = sheet.getLastRow();
+      ]]);
+      sheet.getRange(row,11,1,4).setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().build());
+      sheet.getRange(row,1).setNumberFormat('yyyy-mm-dd hh:mm:ss');
+      sheet.getRange(row,7,1,2).setNumberFormat('ddd, mmm d, yyyy');
+      sheet.getRange(row,16).setNumberFormat('yyyy-mm-dd');
       sheet.getRange(row,1,1,26).setWrap(true).setVerticalAlignment('top');
       SpreadsheetApp.flush();
     }

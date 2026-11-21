@@ -18,7 +18,7 @@ A marketing website for **Taylor Christian Academy Online Preschool** — a Chri
 
 The owner workspace is a private content editor for the home, enrollment, and giving pages. Editors can save drafts, preview the real page at desktop or mobile size, publish approved content, upload replacement images/videos, and submit larger layout or feature requests. Published values are loaded onto the public pages by `content-runtime.js`; the original HTML remains the fallback.
 
-Larger website requests are stored in Supabase, copied to the Google Sheet's `Website Changes` tab through the existing Apps Script web app, and emailed to the configured request address. Sherri Taylor is approved for the owner workspace but has not been invited to the Google Sheet.
+Larger website requests are stored in Supabase, copied to the Google Sheet's `Website Changes` tab through the existing Apps Script web app, and emailed to the configured request address. Sherri Taylor is approved for the owner workspace and has writer access to the Google Sheet.
 
 ---
 
@@ -126,7 +126,7 @@ Larger website requests are stored in Supabase, copied to the Google Sheet's `We
 - Form collects guardian contact, child name/DOB/calculated age/interests, mailing address, two dates, notes, and guardian consent. No payment or automatic subscription.
 - `POST /api/free-trial` validates on the server, forwards through the existing protected Apps Script receiver, and never returns a spreadsheet URL or family data.
 - Production requests append to **Free Trials**, gid `9212026`, in https://docs.google.com/spreadsheets/d/1q0nGGA6CpFyhQYY0hvNnNjHo_hoP86zSzUBDuE5aF3o/edit . The preview-only **Free Trial Test** tab remains separate.
-- Apps Script source: `Code.gs` + `TrialPreview.gs` + `FreeTrials.gs` combined in the bound project. Existing webhook URL and secret are unchanged. Version 7 adds the live receiver.
+- Apps Script source: `Code.gs` + `TrialPreview.gs` + `FreeTrials.gs` combined in the bound project. Existing webhook URL and secret are unchanged. Version 8 adds the live receiver with checkbox-safe row placement and readable dates. Checkboxes are created only on real request rows, so unused rows stay empty.
 - Each new request emails `sherri.taylor@hotmail.com`. Reply-To is the parent. Alert links to the private sheet and omits DOB/address/child details. Email Alert column records Sent or Needs attention. Retrying the same request ID reuses the saved row and retries a failed alert; a new submission from the same email creates a separate row.
 - Sherri has writer access to the spreadsheet; Google sharing invitation sent at launch.
 - Sherri manually confirms dates, mails supplies, sends joining instructions, checks actual attendance, then sends https://enroll.tcaarts.org/enroll.html#plans after both classes. Checkboxes do not send automatic follow-up emails.
@@ -137,8 +137,8 @@ Larger website requests are stored in Supabase, copied to the Google Sheet's `We
 - **Hosting:** Vercel serves the production site at `enroll.tcaarts.org`; `main` is the production branch.
 - **Contact messages:** the homepage form posts to `/api/contact`, which records each submission as a separate Google Sheets row through the Apps Script web app.
 - **Website-change requests:** the private owner workspace records requests in Supabase, adds them to the Google Sheet's `Website Changes` tab, and emails the configured request address.
-- **Current class times (EST):** Tuesday & Thursday 10:00–10:45 AM; Tuesday & Thursday 12:00–12:45 PM; Tuesday 5:30–6:15 PM.
-- **Editor access:** Sherri Taylor is an approved editor. Supabase magic-link delivery to her external address requires custom SMTP; without it, only the site administrator can reliably receive sign-in links.
+- **Current class times (Eastern):** Monday–Friday 10:00–10:45 AM; Thursday 5:30–6:15 PM.
+- **Editor access:** Sherri Taylor is an approved editor. The portal uses email/password sign-in and provides a Forgot your password flow.
 - **Accessibility note:** background videos are decorative. The two visitor-played videos still need supplied captions/transcripts before caption tracks can be added accurately.
 
 ---
@@ -172,4 +172,4 @@ git config --global user.email "michael.jasey@gmail.com"
 
 ---
 
-*Last updated: April 2026*
+*Last updated: November 21, 2026*

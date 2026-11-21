@@ -27,11 +27,14 @@ async function call(body=payload,headers={host:'enroll.tcaarts.org',origin:'http
  global.fetch=async()=>{throw new Error('outage')};assert.equal((await call()).code,502);
  // Exercise the actual receiver's retry and alert behavior with a small Sheets fixture.
  const rows=[[]],alerts=[];let failEmail=false;
- const sheet={getLastRow:()=>rows.length,appendRow:r=>rows.push(r),getSheetId:()=>9212026,getRange:(row,col,count)=>({
+ const sheet={getLastRow:()=>Math.max(rows.length,1000),getMaxRows:()=>1000,getSheetId:()=>9212026,getRange:(row,col,count)=>({
   createTextFinder:id=>({matchEntireCell(){return this},findNext:()=>{const i=rows.findIndex((r,n)=>n>0&&r[25]===id);return i<0?null:{getRow:()=>i+1}}}),
+  getValues:()=>Array.from({length:count},(_,i)=>[rows[row-1+i]?.[col-1]]),setValues:values=>{rows[row-1]=values[0]},setDataValidation(){return this},setNumberFormat(){return this},
   getValue:()=>rows[row-1][col-1],setValue:v=>{rows[row-1][col-1]=v},setWrap(){return this},setVerticalAlignment(){return this}
  })};
  const context={console,Date,cleanValue:(v,max)=>String(v||'').trim().slice(0,max),jsonResponse:v=>v,LockService:{getScriptLock:()=>({tryLock:()=>true,releaseLock(){}})},SpreadsheetApp:{getActiveSpreadsheet:()=>({getSheetByName:()=>sheet,getUrl:()=>'https://docs.google.com/spreadsheets/d/fixture/edit'}),flush(){}},Utilities:{formatDate:()=>today+' 12:00:00'},MailApp:{sendEmail:m=>{if(failEmail)throw new Error('mail unavailable');alerts.push(m)}}};
+ context.SpreadsheetApp.newDataValidation=()=>({requireCheckbox(){return this},build(){return {}}});
+ rows[0][0]='Submitted';
  vm.createContext(context);vm.runInContext(fs.readFileSync(require.resolve('../google-apps-script/FreeTrials.gs'),'utf8'),context);
  const run=trial=>context.handleFreeTrial({trial});const data={...payload,childAge:'4 years old',interests:'=bad',notes:'@bad'};
  assert(run(data).ok);assert.equal(rows.length,2);assert.equal(alerts[0].to,'sherri.taylor@hotmail.com');assert(!alerts[0].body.includes(data.street));assert.equal(rows[1][21],"'08855");assert.equal(rows[1][16],"'=bad");
