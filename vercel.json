@@ -1,0 +1,5 @@
+{
+  "functions": {
+    "api/free-trial.js": { "maxDuration": 30 }
+  }
+}

@@ -13,10 +13,10 @@ async function assert(condition, message) {
     await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
     await assert(await page.locator('link[rel="canonical"]').getAttribute('href') === 'https://enroll.tcaarts.org/', 'Homepage canonical is missing');
     await assert((await page.locator('body').innerText()).includes('Monday–Friday · 10:00–10:45 AM EST'), 'Homepage first schedule is incorrect');
-    await assert((await page.locator('body').innerText()).includes('Monday–Friday · 12:00–12:45 PM EST'), 'Homepage second schedule is incorrect');
-    await assert((await page.locator('body').innerText()).includes('Monday · 5:30–6:15 PM EST'), 'Homepage evening schedule is incorrect');
-    await assert((await page.locator('.stats-bar').innerText()).includes('Mon – Fri'), 'Homepage availability days are incorrect');
-    await assert((await page.locator('.stats-bar').innerText()).includes('45 minute sessions'), 'Homepage session length is incorrect');
+    await assert((await page.locator('body').innerText()).includes('Thursday · 5:30–6:15 PM EST'), 'Homepage evening schedule is incorrect');
+    await assert(await page.locator('.trial-floating').count() === 1, 'Floating free-trial button is missing');
+    await assert((await page.locator('.stats').innerText()).includes('Mon – Fri'), 'Homepage availability days are incorrect');
+    await assert((await page.locator('.stats').innerText()).toLowerCase().includes('45 minute sessions'), 'Homepage session length is incorrect');
 
     await page.setViewportSize({ width: 390, height: 844 });
     await assert(await page.locator('.nav-toggle').isVisible(), 'Homepage mobile navigation toggle is not visible');
@@ -25,10 +25,10 @@ async function assert(condition, message) {
 
     await page.goto(`${baseUrl}/enroll.html`, { waitUntil: 'domcontentloaded' });
     const scheduleCards = page.locator('.schedule-card');
-    await assert((await scheduleCards.nth(0).locator('.day').innerText()) === 'Tuesday & Thursday', 'Enrollment morning days are incorrect');
+    await assert((await scheduleCards.nth(0).locator('.day').innerText()) === 'Monday–Friday', 'Enrollment morning days are incorrect');
     await assert((await scheduleCards.nth(0).locator('.time').innerText()) === '10:00–10:45 AM', 'Enrollment morning slot is incorrect');
-    await assert((await scheduleCards.nth(1).locator('.time').innerText()) === '12:00–12:45 PM', 'Enrollment noon slot is incorrect');
-    await assert((await scheduleCards.nth(2).locator('.time').innerText()) === '5:30–6:15 PM', 'Enrollment evening slot is incorrect');
+    await assert(await scheduleCards.count() === 2, 'Enrollment has an obsolete class slot');
+    await assert((await scheduleCards.nth(1).locator('.time').innerText()) === '5:30–6:15 PM', 'Enrollment evening slot is incorrect');
     await assert(await page.locator('a[href="index.html#story"]').count() === 0, 'Broken story link remains');
     await assert(await page.locator('a[href="index.html#foundation"]').count() > 0, 'Foundation link is missing');
 

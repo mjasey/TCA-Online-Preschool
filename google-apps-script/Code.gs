@@ -15,6 +15,9 @@ function doPost(event) {
       return jsonResponse({ ok: false, error: 'Unauthorized' });
     }
 
+    if (payload.kind === 'trial_preview') return handleTrialPreview(payload);
+    if (payload.kind === 'free_trial') return handleFreeTrial(payload);
+
     if (payload.kind === 'website_change_request') {
       return handleWebsiteChangeRequest(payload);
     }

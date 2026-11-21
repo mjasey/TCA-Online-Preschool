@@ -118,6 +118,22 @@ Larger website requests are stored in Supabase, copied to the Google Sheet's `We
 
 ## Current Operations
 
+### Free trial launch — November 21, 2026
+
+- Home and enrollment pages load `trial-signup.js`, `free-trial.js`, and `trial.css`.
+- Approved design: gold Try Free Classes navigation, floating Try 2 Free Classes button, and compressed responsive WebP flyer. Homepage trial section follows What Makes TCA Different (`#foundation`). Mobile shows the signup information before the flyer.
+- Parents request two Thursday classes, 5:30–6:15 PM Eastern. The next upcoming Thursday is skipped for mailing time. Both dates require Sherri’s confirmation; holidays are not automatically excluded.
+- Form collects guardian contact, child name/DOB/calculated age/interests, mailing address, two dates, notes, and guardian consent. No payment or automatic subscription.
+- `POST /api/free-trial` validates on the server, forwards through the existing protected Apps Script receiver, and never returns a spreadsheet URL or family data.
+- Production requests append to **Free Trials**, gid `9212026`, in https://docs.google.com/spreadsheets/d/1q0nGGA6CpFyhQYY0hvNnNjHo_hoP86zSzUBDuE5aF3o/edit . The preview-only **Free Trial Test** tab remains separate.
+- Apps Script source: `Code.gs` + `TrialPreview.gs` + `FreeTrials.gs` combined in the bound project. Existing webhook URL and secret are unchanged. Version 7 adds the live receiver.
+- Each new request emails `sherri.taylor@hotmail.com`. Reply-To is the parent. Alert links to the private sheet and omits DOB/address/child details. Email Alert column records Sent or Needs attention. Retrying the same request ID reuses the saved row and retries a failed alert; a new submission from the same email creates a separate row.
+- Sherri has writer access to the spreadsheet; Google sharing invitation sent at launch.
+- Sherri manually confirms dates, mails supplies, sends joining instructions, checks actual attendance, then sends https://enroll.tcaarts.org/enroll.html#plans after both classes. Checkboxes do not send automatic follow-up emails.
+- SMS is not configured; email and spreadsheet tracking are the approved first version.
+- Current paid class availability: Monday–Friday 10:00–10:45 AM Eastern and Thursday 5:30–6:15 PM Eastern. Local fallbacks, owner schema defaults, and saved CMS content are aligned at launch.
+- Checks: `node tests/free_trial_api_test.cjs`, `node tests/free_trial_browser_test.cjs`, and `node tests/site_regression_test.cjs` (Playwright dependency available in the Codex runtime; use BASE_URL for a deployed target). Browser tests mock submissions; a separately labeled live launch test verifies the real sheet/alert path.
+
 - **Hosting:** Vercel serves the production site at `enroll.tcaarts.org`; `main` is the production branch.
 - **Contact messages:** the homepage form posts to `/api/contact`, which records each submission as a separate Google Sheets row through the Apps Script web app.
 - **Website-change requests:** the private owner workspace records requests in Supabase, adds them to the Google Sheet's `Website Changes` tab, and emails the configured request address.
