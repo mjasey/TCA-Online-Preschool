@@ -123,7 +123,7 @@ Larger website requests are stored in Supabase, copied to the Google Sheet's `We
 - Home and enrollment pages load `trial-signup.js`, `free-trial.js`, and `trial.css`.
 - Approved design: gold Try Free Classes navigation, floating Try 2 Free Classes button, and compressed responsive WebP flyer. Homepage trial section follows What Makes TCA Different (`#foundation`). Mobile shows the signup information before the flyer.
 - Parents request two Thursday classes, 5:30–6:15 PM Eastern. The next upcoming Thursday is skipped for mailing time. Both dates require Sherri’s confirmation; holidays are not automatically excluded.
-- Form collects guardian contact, child name/DOB/calculated age/interests, mailing address, two dates, notes, and guardian consent. No payment or automatic subscription.
+- Form collects guardian contact, child name/DOB/editable age/interests, mailing address, two dates, notes, and guardian consent. Age initially fills from DOB; parent corrections are preserved through submission and stored in Sheets. No payment or automatic subscription.
 - `POST /api/free-trial` validates on the server, forwards through the existing protected Apps Script receiver, and never returns a spreadsheet URL or family data.
 - Production requests append to **Free Trials**, gid `9212026`, in https://docs.google.com/spreadsheets/d/1q0nGGA6CpFyhQYY0hvNnNjHo_hoP86zSzUBDuE5aF3o/edit . The preview-only **Free Trial Test** tab remains separate.
 - Apps Script source: `Code.gs` + `TrialPreview.gs` + `FreeTrials.gs` combined in the bound project. Existing webhook URL and secret are unchanged. Version 8 adds the live receiver with checkbox-safe row placement and readable dates. Checkboxes are created only on real request rows, so unused rows stay empty.

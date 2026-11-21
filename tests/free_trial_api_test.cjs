@@ -16,6 +16,9 @@ async function call(body=payload,headers={host:'enroll.tcaarts.org',origin:'http
 (async()=>{
  let forwarded;global.fetch=async(url,args)=>{forwarded=JSON.parse(args.body);return {ok:true,json:async()=>({ok:true,row:2})}};
  assert.equal((await call()).code,200);assert.equal(forwarded.kind,'free_trial');assert.equal(forwarded.trial.postal,'08855');assert.equal(forwarded.trial.childAge,'4 years old');
+ assert.equal((await call({...payload,childAge:'5'})).code,200);assert.equal(forwarded.trial.childAge,'5 years old');
+ assert.equal((await call({...payload,childAge:'3 years old'})).code,200);assert.equal(forwarded.trial.childAge,'3 years old');
+ for(const childAge of ['3.5','19','-1','unknown'])assert.equal((await call({...payload,childAge})).code,400);
  assert.equal((await call({...payload,consent:false})).code,400);
  assert.equal((await call({...payload,dob:'2022-02-30'})).code,400);
  assert.equal((await call({...payload,class2:payload.class1})).code,400);

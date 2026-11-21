@@ -1,4 +1,4 @@
-const LIMITS={requestId:80,parentName:100,email:254,phone:40,childName:100,dob:10,interests:1000,street:160,unit:60,city:80,region:80,postal:20,country:80,class1:10,class2:10,notes:1000};
+const LIMITS={requestId:80,parentName:100,email:254,phone:40,childName:100,dob:10,childAge:30,interests:1000,street:160,unit:60,city:80,region:80,postal:20,country:80,class1:10,class2:10,notes:1000};
 const REQUIRED=['requestId','parentName','email','childName','dob','interests','street','city','region','postal','country','class1','class2'];
 function calendarDate(value){
   if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return null;
@@ -24,7 +24,11 @@ module.exports=async function freeTrial(request,response){
   const earliest=new Date(today);earliest.setUTCDate(earliest.getUTCDate()+((4-earliest.getUTCDay()+7)%7||7)+7);
   const latest=new Date(earliest);latest.setUTCDate(latest.getUTCDate()+11*7);
   if(!dob||dob>today||today.getUTCFullYear()-dob.getUTCFullYear()>18||!first||!second||first<earliest||second<=first||second>latest||first.getUTCDay()!==4||second.getUTCDay()!==4)return response.status(400).json({ok:false,error:'Please check the birth date and choose available Thursday dates.'});
-  trial.childAge=`${today.getUTCFullYear()-dob.getUTCFullYear()-(todayString.slice(5)<trial.dob.slice(5)?1:0)} years old`;
+  // Accept the parent's correction; older forms may still send "4 years old".
+  const enteredAge=trial.childAge.match(/^(\d{1,2})(?: years? old)?$/i);
+  if(trial.childAge&&(!enteredAge||Number(enteredAge[1])>18))return response.status(400).json({ok:false,error:'Please enter the child’s age in whole years.'});
+  const age=enteredAge?Number(enteredAge[1]):today.getUTCFullYear()-dob.getUTCFullYear()-(todayString.slice(5)<trial.dob.slice(5)?1:0);
+  trial.childAge=`${age} ${age===1?'year':'years'} old`;
   const url=process.env.GOOGLE_APPS_SCRIPT_URL,secret=process.env.GOOGLE_APPS_SCRIPT_SECRET;
   if(!url||!secret)return response.status(503).json({ok:false,error:'Please try again shortly or contact TCA at 908-738-1343.'});
   try{

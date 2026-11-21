@@ -49,8 +49,8 @@
             <label>Parent or guardian’s full name<input name="parentName" required maxlength="100" autocomplete="on"></label>
             <div class="trial-field-pair"><label>Email address<input name="email" type="email" required maxlength="254" autocomplete="on"></label><label>Phone number (optional)<input name="phone" type="tel" maxlength="40" autocomplete="on"></label></div>
             <label>Child’s full name<input name="childName" required maxlength="100" autocomplete="on"></label>
-            <div class="trial-field-pair"><label>Child’s date of birth<input name="dob" type="date" required max="${easternToday()}"></label><label>Child’s age<input name="childAge" readonly aria-describedby="age-note" placeholder="Calculated from date of birth"></label></div>
-            <p id="age-note" class="field-note">Age is calculated automatically. Our preschool program is for ages 3–5.</p>
+            <div class="trial-field-pair"><label>Child’s date of birth<input name="dob" type="date" required max="${easternToday()}"></label><label>Child’s age<input name="childAge" type="number" required min="0" max="18" step="1" inputmode="numeric" aria-describedby="age-note" placeholder="Age in years"></label></div>
+            <p id="age-note" class="field-note">Age fills in from the date of birth. You can change it if needed. Our preschool program is for ages 3–5.</p>
             <label>Child’s likes and interests<textarea name="interests" required maxlength="1000" rows="3" placeholder="Favorite animals, stories, songs, activities…"></textarea></label>
             <label class="test-consent"><input type="checkbox" name="testConsent" required> I am the child’s parent or guardian and agree that TCA may use these details to arrange trial classes and mail materials.</label>
           </fieldset>
@@ -86,7 +86,12 @@
         f('class2').innerHTML='<option value="">Choose a later Thursday</option>'+eligibleDates().filter(d=>d>f('class1').value&&f('class1').value).map(d=>`<option value="${d}">${labelDate(d)}</option>`).join('');
         if([...f('class2').options].some(o=>o.value===old))f('class2').value=old;
       };
-      f('dob').onchange=()=>{const age=ageFromDOB(f('dob').value);f('childAge').value=age===''?'':`${age} years old`;};
+      let calculatedAge='';
+      f('dob').onchange=()=>{
+        const age=String(ageFromDOB(f('dob').value));
+        if(!f('childAge').value||f('childAge').value===calculatedAge)f('childAge').value=age;
+        calculatedAge=age;
+      };
       f('class1').onchange=updateSecond;
       function validStep(){for(const el of form.querySelectorAll(`[data-step="${step}"] input,[data-step="${step}"] select,[data-step="${step}"] textarea`)){if(!el.checkValidity()){el.reportValidity();return false;}}return true;}
       dialog.querySelector('[data-action=next]').onclick=()=>{if(validStep()){step++;showStep();dialog.querySelector(`[data-step="${step}"] input,[data-step="${step}"] select`)?.focus();}};
